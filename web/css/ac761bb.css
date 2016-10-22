@@ -40,7 +40,7 @@ a:hover{
     margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
     background: repeating-linear-gradient(
             -45deg,
-            transparent,
+            #ffffff,
             #fefffe 30px,
             #fffeff 30px,
             #fefefe 60px
@@ -284,5 +284,11 @@ padding: 10px;
 }
 #populatedScale li{
     margin: 20px;
+    display: inline;
+}
+
+
+#realbook-tuneList ul>li{
+    list-style: none;
     display: inline;
 }

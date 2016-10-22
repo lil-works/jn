@@ -48,6 +48,11 @@
             {% endfor %}
 
         </ul>
+
+        <div>
+            <canvas id="myNeck" width="500" height="200"></canvas>
+        </div>
+
         {% if  matchingScales|length > 0 %}
         <h2>matching root scale</h2>
         <ul>
@@ -57,8 +62,16 @@
 
         {% endfor %}
         </ul>
+
         {% else %}
             No matching root scale ...
         {% endif %}
+
+
     </div>
+    <script>
+        var n = neck.init("myNeck");
+        n.displayedCase=12;
+        n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
+    </script>
 {% endblock %}

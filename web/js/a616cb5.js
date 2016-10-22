@@ -606,10 +606,34 @@ var neck = {
         this.ctx = this.c.getContext("2d");
         this.setControls();
         this.getInstrument();
-
+        return this;
     },
 
+    insertRootScale:function(){
+        console.log("insertRootScale");
+        var ajax_neck_rootScale = Routing.generate('ajax_neck_rootScale');
+        var r = 21;
+        var s = 1;
+        Neck.rsBasket[0] = r+"_"+s;
+        console.log(r,s);
+        var request = $.ajax({
+            url: ajax_neck_rootScale,
+            method: "POST",
+            data: {i: 1, r: r, s: s},
+            dataType: "html",
+            async: false
+        });
 
+
+        request.done(function (msg) {
+            $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
+                Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = value.currentIntervale;
+            });
+            Neck.drawNeck();
+
+        });
+
+    },
 
 
     getInstrument:function(instrument_id){
@@ -703,6 +727,14 @@ var neck = {
             Neck.drawNeck();
         });
 
+        $( "#nbrCasesMax" ).click(function() {
+            Neck.displayedCase = Neck.displayedCaseMax
+            Neck.drawNeck();
+        });
+        $( "#nbrCasesReset" ).click(function() {
+            Neck.displayedCase = Neck.displayedCaseMin
+            Neck.drawNeck();
+        });
         $( "#nbrCasesAdd" ).click(function() {
             if(Neck.displayedCase<Neck.displayedCaseMax)
                 Neck.displayedCase++;
@@ -786,8 +818,16 @@ var neck = {
 
 
         });
+
         this.fillRootScaleSelector();
+
         $( "#addRootScale" ).click(function() {
+            Neck.rsAction();
+        });
+
+    },
+        rsAction:function(){
+            console.log(Neck.rsBasket);
             var ajax_neck_rootScale = Routing.generate('ajax_neck_rootScale');
             var r = $("#rootSelector").attr('option','selected').val();
             var s = $("#scaleSelector").attr('option','selected').val();
@@ -838,10 +878,7 @@ var neck = {
                 }
             });
             Neck.drawNeck();
-        });
-
-    },
-
+        },
     fillRootScaleSelector:function(){
         var ajax_neck_scale = Routing.generate('ajax_neck_scale');
         var request = $.ajax({
