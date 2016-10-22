@@ -13,7 +13,7 @@ class TuneRepository extends \Doctrine\ORM\EntityRepository
     public function findVersions($tune,$realbook){
         $em = $this->getEntityManager();
         $dql = "
-            SELECT r.id,r.indexName,r.firstPage+tr.page-1 as page  FROM AppBundle:Tune t
+            SELECT r.id,r.indexName,r.name as realbookName,r.firstPage+tr.page-1 as page  FROM AppBundle:Tune t
             LEFT JOIN AppBundle:TunesRealbooks tr WITH tr.tune = t.id
             LEFT JOIN AppBundle:Realbook r WITH tr.realbook = r.id
             WHERE tr.tune = :tune AND r.id != :realbook

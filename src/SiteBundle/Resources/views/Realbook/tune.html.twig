@@ -11,7 +11,7 @@
         <ul>Other entries
         {%  for version in versions %}
         <li>
-            <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:version.indexName }) }}">{{ tune.title }} • {{ version.indexName }}</a>
+            <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:version.realbookName }) }}">{{ tune.title }} • {{ version.indexName }}</a>
         </li>
         {%  endfor %}
         </ul>
