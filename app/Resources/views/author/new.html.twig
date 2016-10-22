@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'form/fields.html.twig' %}
+{% block body %}
+    <h1>Author creation</h1>
+
+    <ul class="contentMenu">
+        <li>
+            <a href="{{ path('author_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+{% endblock %}

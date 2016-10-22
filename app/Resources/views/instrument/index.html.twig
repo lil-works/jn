@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Instrument list</h1>
+    <ul class="contentMenu">
+        <li>
+            <a href="{{ path('instrument_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Casemax</th>
+                <th>Color</th>
+                <th>Icon</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for instrument in instruments %}
+            <tr>
+                <td><a href="{{ path('instrument_show', { 'id': instrument.id }) }}">{{ instrument.id }}</a></td>
+                <td>{{ instrument.name }}</td>
+                <td>{{ instrument.caseMax }}</td>
+                <td>{{ instrument.color }}</td>
+                <td>{{ instrument.icon }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('instrument_show', { 'id': instrument.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('instrument_edit', { 'id': instrument.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

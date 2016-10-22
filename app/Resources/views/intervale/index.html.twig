@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Intervale list</h1>
+    <ul class="contentMenu">
+        <li>
+            <a href="{{ path('intervale_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Delta</th>
+                <th>Color</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for intervale in intervales %}
+            <tr>
+                <td><a href="{{ path('intervale_show', { 'id': intervale.id }) }}">{{ intervale.id }}</a></td>
+                <td>{{ intervale.name }}</td>
+                <td>{{ intervale.delta }}</td>
+                <td>{{ intervale.color }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('intervale_show', { 'id': intervale.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('intervale_edit', { 'id': intervale.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

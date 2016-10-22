@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Descriptor list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for descriptor in descriptors %}
+            <tr>
+                <td><a href="{{ path('descriptor_show', { 'id': descriptor.id }) }}">{{ descriptor.id }}</a></td>
+                <td>{{ descriptor.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('descriptor_show', { 'id': descriptor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('descriptor_edit', { 'id': descriptor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('descriptor_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

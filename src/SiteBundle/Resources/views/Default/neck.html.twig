@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>JoliNeck</h1>
+<div id="neck">
+    <div id="controls" class="inline">
+    <h2>Controls:</h2>
+        <div id="neckControls">
+            <h3>Neck Controls:</h3>
+            <ul>
+                <li><label for="instrumentSelector">instrument</label><select id="instrumentSelector"></select></li>
+                <li>case {<span id="nbrCasesReset" class="textButton">5</span>|<span id="nbrCasesAdd" class="textButton">+</span>|<span id="nbrCasesRemove" class="textButton">-</span>|<span id="nbrCasesMax" class="textButton">all</span>}</li>
+               {# <li>first {<span class="textButton">0</span>|<span class="textButton"><</span>|<span class="textButton">></span>}</li>#}
+                <li><label for="inlaysSelector">show inlays</label>
+                    <input type="checkbox" id="inlaysSelector" checked></li>
+                <li><label for="fretNumSelector">show fret number</label>
+                    <input type="checkbox" id="fretNumSelector" checked></li>
+                <li>
+                    <label for="soundSelector">sound</label>
+                    <select id="soundSelector">
+                        <option value="piano" selected="selected">piano</option>
+                        <option value="organ" >organ</option>
+                        <option value="acoustic" >acoustic</option>
+                        <option value="edm" >edm</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div id="displayControls">
+            <h3>Display Controls:</h3>
+            <ul>
+                <li id="rootScaleSelector">
+                    <label for="rootSelector">root</label><select id="rootSelector"><select>
+                    <label for="scaleSelector">scale</label><select id="scaleSelector"><select>
+                    <span class="textButton" id="addRootScale">show on neck</span>
+                </li>
+                <li><span class="textButton" id="clearRootScaleSelection">clear selection</span></li>
+
+            </ul>
+            <div id="currentRootScaleSelection">
+                <h4>current root/scale selection</h4>
+                <ul id="currentRootScaleSelectionUl"></ul>
+            </div>
+        </div>
+        <div id="selectionControls">
+            <h3>Selection Controls:</h3>
+            <ul>
+                <li><span class="textButton" id="searchScaleFromSelection">find scales containing selection</span></li>
+                <li><span class="textButton" id="clearSelection">clear selection</span></li>
+            </ul>
+            <div id="currentSelection">
+                <h4>current selection</h4>
+                <ul id="currentSelectionUl"></ul>
+            </div>
+        </div>
+    </div>
+    <div id="neckContainer" class="inline">
+        <canvas id="myNeck" width="700" height="290"></canvas>
+    </div>
+    <br class="clearBoth" />
+    <div id="neckResults">
+    </div>
+</div>
+    <script>
+        neck.init("myNeck");
+    </script>
+{% endblock %}

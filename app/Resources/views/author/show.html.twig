@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Author</h1>
+
+    <ul class="contentMenu">
+        <li>
+            <a href="{{ path('author_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('author_edit', { 'id': author.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ author.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ author.name }}</td>
+            </tr>
+            <tr>
+                <th>Icon</th>
+                <td>{{ author.icon }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ author.link }}</td>
+            </tr>
+            <tr>
+                <th>Quotes</th>
+                <td>
+                    <ul>
+                    {% for quote in author.quotes %}
+                        <li><p class="quote">{{ quote.quote }}</p><a href="{{ path('quote_show', { 'id': quote.id }) }}">show</a></li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}

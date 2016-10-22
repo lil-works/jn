@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1>Scale list</h1>
+
+    <table>
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Actions</th>
+                <th>Descriptors</th>
+                <th>Name</th>
+                <th>Intervals</th>
+                <th>Diagram</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for scale in scales %}
+            <tr>
+                <td><a href="{{ path('scale_show', { 'id': scale.id }) }}">{{ scale.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('scale_show', { 'id': scale.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('scale_edit', { 'id': scale.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+
+                <td>{% for descriptor in scale.descriptors  %} {{ descriptor.name }} {% endfor %}</td>
+                <td>{{ scale.name }}</td>
+                <td>{{ scale.intervales|length }}</td>
+                <td><canvas width="200" height="200" id="scale_{{ scale.id }}"></canvas></td>
+
+            </tr>
+            <script>
+                var datas = {};
+                {% for intervale in scale.intervales %}
+                    datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                {% endfor %}
+                new diagram("scale_{{ scale.id }}",datas);
+            </script>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('scale_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ scale.name }}</h1>
+
+    <div style="float: left; min-height:600px;width:400px; ">
+        <div>
+            <ul class="tagged">tagged as:
+                {% for descriptor in scale.descriptors %}
+                    <li style="color: #{{ descriptor.color }}">{{ descriptor.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h2>Intervals</h2>
+            {%  for intervale in scale.intervales %}
+                <span class="intervale" style="color: #{{  intervale.color }}">{{  intervale.name }}</span>
+            {% endfor %}
+        </div>
+
+        <div>
+            <h2>Diagram:</h2>
+            <canvas id="diagram" width="180" height="180"></canvas>
+            <script>
+                var datas = {};
+                {% for intervale in scale.intervales %}
+                datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                {% endfor %}
+                new diagram("diagram",datas);
+            </script>
+        </div>
+        <div style="margin-right:50px;text-align: justify; ">
+            <ul id="scaleList">All intervals matching scales  ({{ matchingScales|length }}):
+                {% for scale in matchingScales %}
+                    <li><a href="{{ path('site_scale_show',{ scale_name:scale.scaleName }) }}">{{ scale.scaleName }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div style="margin-left:30px ">
+        <h2>Scale in key:</h2>
+        <ul id="populatedScale">
+        {% for p in populatedScale %}
+            <li>
+                <ul class="rootedPopulatedScale">
+                    <span onclick="jnSynth.play('{{  p.digitAList }}','scale')" class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
+                    {% for tone in p.toneList|split(',') %}
+                        <li>{{ tone }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+
+        </ul>
+    </div>
+
+{% endblock %}

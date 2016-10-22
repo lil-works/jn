@@ -1,0 +1,61 @@
+site_homepage:
+    path:     /
+    defaults: { _controller: SiteBundle:Default:neck }
+site_neck:
+    path: /
+    defaults: { _controller: SiteBundle:Default:neck }
+site_realbook:
+    path: /realbook/all/{firstletter}
+    defaults: { _controller: SiteBundle:Realbook:index ,firstletter: "%"  }
+site_realbook_tune:
+    path: /realbook/{tune}/{realbook}
+    defaults: { _controller: SiteBundle:Realbook:tune }
+site_realbook_download:
+    path: /realbook/download/{tune}/{realbook}
+    defaults: { _controller: SiteBundle:Realbook:download }
+site_realbook_generate:
+    path: /realbook/generate
+    defaults: { _controller: SiteBundle:Realbook:generate }
+
+
+site_scale_index:
+    path: /scale
+    defaults: { _controller: "SiteBundle:Scale:index" }
+    methods:  [GET, POST]
+
+site_scale_show:
+    path:     /scale/{scale_name}
+    defaults: { _controller: "SiteBundle:Scale:show" }
+    options:
+        expose: true
+
+ajax_neck_instrument:
+    path:     /ajax_neck_instrument
+    defaults: { _controller: SiteBundle:Ajax:instrument }
+    options:
+      expose: true
+ajax_neck_instruments:
+    path:     /ajax_neck_instruments
+    defaults: { _controller: SiteBundle:Ajax:instruments }
+    options:
+        expose: true
+ajax_neck_root:
+    path:     /ajax_neck_root
+    defaults: { _controller: SiteBundle:Ajax:root  }
+    options:
+        expose: true
+ajax_neck_scale:
+    path:     /ajax_neck_scale
+    defaults: { _controller: SiteBundle:Ajax:scale  }
+    options:
+        expose: true
+ajax_neck_rootScale:
+    path:     /ajax_neck_rootScale
+    defaults: { _controller: SiteBundle:Ajax:rootScale  }
+    options:
+        expose: true
+ajax_neck_searchRootScaleByDigits:
+    path:     /ajax_neck_searchRootScaleByDigits
+    defaults: { _controller: SiteBundle:Ajax:searchRootScaleByDigits  }
+    options:
+        expose: true

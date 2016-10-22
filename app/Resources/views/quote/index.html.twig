@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Quote list</h1>
+    <ul class="contentMenu">
+        <li>
+            <a href="{{ path('quote_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quote</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quote in quotes %}
+            <tr>
+                <td><a href="{{ path('quote_show', { 'id': quote.id }) }}">{{ quote.id }}</a></td>
+                <td>{{ quote.quote }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('quote_show', { 'id': quote.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('quote_edit', { 'id': quote.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

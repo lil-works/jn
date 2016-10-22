@@ -1,0 +1,31 @@
+app_instrument:
+    resource: "@AppBundle/Resources/config/routing/instrument.yml"
+    prefix:   /instrument
+
+app_scale:
+    resource: "@AppBundle/Resources/config/routing/scale.yml"
+    prefix:   /scale
+
+app_intervale:
+    resource: "@AppBundle/Resources/config/routing/intervale.yml"
+    prefix:   /intervale
+
+app_digit:
+    resource: "@AppBundle/Resources/config/routing/digit.yml"
+    prefix:   /digit
+
+app_descriptor:
+    resource: "@AppBundle/Resources/config/routing/descriptor.yml"
+    prefix:   /descriptor
+
+app_author:
+    resource: "@AppBundle/Resources/config/routing/author.yml"
+    prefix:   /author
+
+app_quote:
+    resource: "@AppBundle/Resources/config/routing/quote.yml"
+    prefix:   /quote
+
+app_admin_scale:
+    resource: "@AppBundle/Resources/config/routing/scale-admin.yml"
+    prefix:   /admin/scale

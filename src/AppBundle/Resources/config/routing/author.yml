@@ -1,0 +1,24 @@
+author_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Author:index" }
+    methods:  GET
+
+author_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Author:show" }
+    methods:  GET
+
+author_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Author:new" }
+    methods:  [GET, POST]
+
+author_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Author:edit" }
+    methods:  [GET, POST]
+
+author_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Author:delete" }
+    methods:  DELETE

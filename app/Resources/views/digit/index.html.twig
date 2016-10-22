@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Digit list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Frequency0</th>
+                <th>Value</th>
+                <th>Infotone</th>
+                <th>Color</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for digit in digits %}
+            <tr>
+                <td><a href="{{ path('digit_show', { 'id': digit.id }) }}">{{ digit.id }}</a></td>
+                <td>{{ digit.frequency0 }}</td>
+                <td>{{ digit.value }}</td>
+                <td>{{ digit.infoTone }}</td>
+                <td>{{ digit.color }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('digit_show', { 'id': digit.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('digit_edit', { 'id': digit.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('digit_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

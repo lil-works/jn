@@ -1,0 +1,24 @@
+scale_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Scale:index" }
+    methods:  GET
+
+scale_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Scale:show" }
+    methods:  GET
+
+scale_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Scale:new" }
+    methods:  [GET, POST]
+
+scale_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Scale:edit" }
+    methods:  [GET, POST]
+
+scale_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Scale:delete" }
+    methods:  DELETE

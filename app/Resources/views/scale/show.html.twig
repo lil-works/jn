@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Scale</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ scale.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ scale.name }}</td>
+            </tr>
+            <tr>
+                <th>Descriptors</th>
+                <td>
+                    <ul>
+                    {%  for descriptor in scale.descriptors %}
+                        <span class="descriptor" style="color: #{{  descriptor.color }}">
+                            {% if loop.first != 1 %},{% endif %}
+                            {{  descriptor.name }}
+                        </span>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Intervals</th>
+                <td>
+                    {%  for intervale in scale.intervales %}
+                        <span class="intervale" style="color: #{{  intervale.color }}">{{  intervale.name }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Diagram</th>
+                <td>
+                    <canvas id="diagram" width="180" height="180"></canvas>
+                    <script>
+                        var datas = {};
+                        {% for intervale in scale.intervales %}
+                        datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                        {% endfor %}
+                        new diagram("diagram",datas);
+                    </script>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('scale_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('scale_edit', { 'id': scale.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

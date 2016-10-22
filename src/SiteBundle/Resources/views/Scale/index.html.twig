@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'form/fields.html.twig' %}
+
+{% block body %}
+  <h1>Scales</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Search in scales" />
+    {{ form_end(form) }}
+
+
+
+    <ul id="scaleList">All scales ({{ scales|length }}):
+    {% for scale in scales %}
+        <li><a href="{{ path('site_scale_show',{ scale_name:scale.name }) }}">{{ scale.name }}</a></li>
+    {% endfor %}
+    </ul>
+
+
+    <script>
+
+        {% if search is null %}
+            $("#search_scale_intervales").children("input").attr("checked",true);
+            $("#search_scale_descriptors").children("input").attr("checked",true);
+        {% endif %}
+    </script>
+
+{% endblock %}

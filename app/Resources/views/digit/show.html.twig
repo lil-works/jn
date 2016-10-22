@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Digit</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ digit.id }}</td>
+            </tr>
+            <tr>
+                <th>Frequency0</th>
+                <td>{{ digit.frequency0 }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ digit.value }}</td>
+            </tr>
+            <tr>
+                <th>Infotone</th>
+                <td>{{ digit.infoTone }}</td>
+            </tr>
+            <tr>
+                <th>Color</th>
+                <td>{{ digit.color }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('digit_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('digit_edit', { 'id': digit.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

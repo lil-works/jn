@@ -1,0 +1,1 @@
+fos.Router.setData({"base_url":"","routes":{"ajax_neck_instruments":{"tokens":[["text","\/ajax_neck_instruments"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});

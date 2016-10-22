@@ -1,0 +1,24 @@
+intervale_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Intervale:index" }
+    methods:  GET
+
+intervale_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Intervale:show"  }
+    methods:  GET
+
+intervale_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Intervale:new"  }
+    methods:  [GET, POST]
+
+intervale_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Intervale:edit" }
+    methods:  [GET, POST]
+
+intervale_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Intervale:delete" }
+    methods:  DELETE

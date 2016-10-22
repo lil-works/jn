@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>{{ tune.title }} • {{ realbook.name }} </h1>
+    <div>
+        <a href="{{ path('site_realbook') }}">All</a>,
+        {% for i in range("A", "Z") %}
+            <a href="{{ path('site_realbook',{firstletter:i}) }}">{{ i }}</a>,
+        {% endfor %}
+        {% if versions|length > 0 %}
+        <ul>Other entries
+        {%  for version in versions %}
+        <li>
+            <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:version.indexName }) }}">{{ tune.title }} • {{ version.indexName }}</a>
+        </li>
+        {%  endfor %}
+        </ul>
+        {% endif %}
+        <ul>
+        <li><a href="{{ path('site_realbook_download',{ tune:tune.title, realbook:realbook.name }) }}">download</a></li>
+        </ul>
+    </div>
+
+    <div style="text-align: center;">
+        <img width="60%" src="{{ asset('bundles/site/realbooks/'~img) }}" />
+    </div>
+{% endblock %}
