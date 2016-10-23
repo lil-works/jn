@@ -31,11 +31,23 @@
             </tr>
             <tr>
                 <th>Color</th>
-                <td>{{ instrument.color }}</td>
+                <td>
+                    {% if instrument.color is not null %}
+                    <span style="color:  #{{ instrument.color }}">{{ instrument.color }}</span>
+                    {% else %}
+                        No color set ...
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Icon</th>
-                <td>{{ instrument.icon }}</td>
+                <td>
+                    {% if instrument.icon is not null %}
+                        <img src="{{ asset('uploads/instrument/' ~ instrument.icon) }}">
+                    {% else %}
+                        No icon uploaded ...
+                    {% endif %}
+                </td>
             </tr>
         </tbody>
     </table>

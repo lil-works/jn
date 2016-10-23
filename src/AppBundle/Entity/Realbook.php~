@@ -246,4 +246,28 @@ class Realbook
     {
         return $this->tunes_realbooks;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Realbook
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

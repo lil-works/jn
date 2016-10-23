@@ -49,28 +49,48 @@
 
         </ul>
 
-        <div>
-            <canvas id="myNeck" width="500" height="200"></canvas>
+
+
+        <div id="neck">
+            <div id="neckControls">
+                <h3>Neck Controls:</h3>
+                <ul>
+                    <li><label for="instrumentSelector">instrument</label><select id="instrumentSelector"></select></li>
+                    <li>
+                        <label for="soundSelector">sound</label>
+                        <select id="soundSelector">
+                            <option value="piano" selected="selected">piano</option>
+                            <option value="organ" >organ</option>
+                            <option value="acoustic" >acoustic</option>
+                            <option value="edm" >edm</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <canvas id="myNeck" width="500" height="200"></canvas>
+            </div>
         </div>
 
-        {% if  matchingScales|length > 0 %}
-        <h2>matching root scale</h2>
-        <ul>
-        {% for matchingScale in matchingScales %}
+        <div>
+            {% if  matchingScales|length > 0 %}
+            <h2>matching root scale</h2>
+            <ul>
+            {% for matchingScale in matchingScales %}
 
-            <li style="display: inline"><a href="{{ path('site_rootscale_index',{ root:matchingScale.rootName , scale:matchingScale.scaleName }) }}">{{ matchingScale.rootInfoTone }}{{ matchingScale.scaleName }}</a></li>
+                <li style="display: inline"><a href="{{ path('site_rootscale_index',{ root:matchingScale.rootName , scale:matchingScale.scaleName }) }}">{{ matchingScale.rootInfoTone }}{{ matchingScale.scaleName }}</a></li>
 
-        {% endfor %}
-        </ul>
+            {% endfor %}
+            </ul>
 
-        {% else %}
-            No matching root scale ...
-        {% endif %}
-
+            {% else %}
+                No matching root scale ...
+            {% endif %}
+        </div>
 
     </div>
     <script>
-        var n = neck.init("myNeck");
+        var n = neck.init("myNeck" );
         n.displayedCase=12;
         n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
     </script>

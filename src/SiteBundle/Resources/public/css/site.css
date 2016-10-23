@@ -40,10 +40,10 @@ a:hover{
     margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
     background: repeating-linear-gradient(
             -45deg,
-            #ffffff,
-            #fefffe 30px,
-            #fffeff 30px,
-            #fefefe 60px
+            #fbfbfb,
+            #fefefe 3px,
+            #fefefe 4px,
+            #ffffff 8px
     )
 }
 #footer, .push {
@@ -190,7 +190,6 @@ div.inline { float:left; }
 
 }
 #neckContainer{
-
     padding: 14px;
     margin:35px;
     text-align: center;
@@ -198,15 +197,7 @@ div.inline { float:left; }
     background: #fff none repeat scroll 0 0;
     box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
 }
-.neckContainer{
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 900px;
-    margin:100px auto;
-    padding:100px;
-    border: 1px solid #fefefe;
-    border-radius: 10px;
-}
+
 #controls>div{
     padding: 14px;
     margin: 14px;

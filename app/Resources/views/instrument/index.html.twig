@@ -25,7 +25,13 @@
                 <td>{{ instrument.name }}</td>
                 <td>{{ instrument.caseMax }}</td>
                 <td>{{ instrument.color }}</td>
-                <td>{{ instrument.icon }}</td>
+                <td>
+                    {% if instrument.icon is not null %}
+                        <img width="50px" src="{{ asset('uploads/instrument/' ~ instrument.icon) }}">
+                    {% else %}
+                        No icon uploaded ...
+                    {% endif %}
+                </td>
                 <td>
                     <ul>
                         <li>

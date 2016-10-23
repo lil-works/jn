@@ -2,27 +2,47 @@ var neck = {
 
     init:function(canvasId){
 
+
+
         Neck = this;
+
+        this.getSession();
+
 
         this.canvasId = canvasId;
         this.c = document.getElementById(canvasId);
         this.width = this.c.width;
         this.height = this.c.height;
         this.ctx = this.c.getContext("2d");
+
+
+
+        this.instrumentId=this.session["instrumentId"];
+        this.sound=this.session["sound"];
+
+
         this.setControls();
-        this.getInstrument();
+        this.getInstrument( this.instrumentId );
+
         return this;
     },
 
+    insertAllRootScale:function(){
+        $.each(Neck.rsBasket,function(index,value){
+            var splited =  value.split("_");
+            Neck.insertRootScale(splited[0],splited[1]);
+        });
+
+    },
     insertRootScale:function(r,s){
-        console.log("insertRootScale");
+
         var ajax_neck_rootScale = Routing.generate('ajax_neck_rootScale');
         Neck.rsBasket[0] = r+"_"+s;
-        console.log(r,s);
+
         var request = $.ajax({
             url: ajax_neck_rootScale,
             method: "POST",
-            data: {i: 1, r: r, s: s},
+            data: {i: Neck.instrumentId, r: r, s: s},
             dataType: "html",
             async: false
         });
@@ -51,6 +71,7 @@ var neck = {
         });
 
         request.done(function( msg ) {
+
             JSONNodes = msg;
             this.matrice = $.parseJSON(JSONNodes.replace(/&quot;/g, '\"'));
             formatedMatrice = [];
@@ -123,12 +144,19 @@ var neck = {
         this.fillInstrumentSelector();
         $( "#instrumentSelector" ).change(function() {
             Neck.getInstrument(this.value);
+            Neck.instrumentId =this.value;
+            Neck.storeSession();
+
+            Neck.insertAllRootScale();
         });
 
+        $('#soundSelector').val(Neck.sound);
         $( "#soundSelector" ).change(function() {
             Neck.sound = this.value;
+            Neck.storeSession();
             Neck.drawNeck();
         });
+
 
         $( "#nbrCasesMax" ).click(function() {
             Neck.displayedCase = Neck.displayedCaseMax
@@ -194,7 +222,7 @@ var neck = {
                 var html="<h2>Results</h2><ul id=\"neckResultsList\"></ul>";
                 $("#neckResults").append(html);
                 $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
-                    console.log(msg);
+
                     var datas = [];
                     var nameList = value.intervaleNameList.split(",");
                     var deltaList = value.intervaleDeltaList.split(",");
@@ -204,6 +232,8 @@ var neck = {
                         datas[deltaList[i]] = ["C",nameList[i],colorList[i]];
                     }
                     var site_scale_show = Routing.generate('site_scale_show',{scale_name:value.scaleName});
+
+
                     html="<li><div class=\"titleInVignette\">"+value.rootInfoTone+" <a href=\""+site_scale_show+"\">"+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas></div></li>";
                     $("#neckResultsList").append(html);
                     new diagram("root_"+value.rootInfoTone+"_scale_"+value.scaleId,datas);
@@ -230,7 +260,7 @@ var neck = {
 
     },
         rsAction:function(){
-            console.log(Neck.rsBasket);
+
             var ajax_neck_rootScale = Routing.generate('ajax_neck_rootScale');
             var r = $("#rootSelector").attr('option','selected').val();
             var s = $("#scaleSelector").attr('option','selected').val();
@@ -260,7 +290,8 @@ var neck = {
                     var request = $.ajax({
                         url: ajax_neck_rootScale,
                         method: "POST",
-                        data: {i: $("#instrumentSelector").attr("option", "selected").val(), r: r, s: s},
+                        //data: {i: $("#instrumentSelector").attr("option", "selected").val(), r: r, s: s},
+                        data: {i: Neck.instrumentId, r: r, s: s},
                         dataType: "html",
                         async: false
                     });
@@ -333,6 +364,50 @@ var neck = {
         return true;
     },
 
+    storeSession:function(){
+        console.log("Neck.instrumentId=",Neck.instrumentId);
+        var ajax_neck_session_set = Routing.generate('ajax_neck_session_set');
+        var request = $.ajax({
+            url: ajax_neck_session_set,
+            method: "POST",
+            data: {instrumentId: Neck.instrumentId, sound: Neck.sound},
+            dataType: "html",
+            async: false
+        });
+
+        request.done(function( msg ) {
+            return true;
+        });
+
+
+        request.fail(function( jqXHR, textStatus ) {
+            return false
+        });
+    },
+    getSession:function(){
+        var ajax_neck_session_get = Routing.generate('ajax_neck_session_get');
+
+        var request = $.ajax({
+            url: ajax_neck_session_get,
+            method: "POST",
+            data: {},
+            dataType: "html",
+            async: false
+        });
+
+        request.done(function( msg ) {
+            Neck.session = Array();
+            $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
+                Neck.session[index]=value;
+            });
+
+        });
+
+
+        request.fail(function( jqXHR, textStatus ) {
+            return false
+        });
+    },
     fillInstrumentSelector:function(){
         var ajax_neck_instruments = Routing.generate('ajax_neck_instruments');
         var request = $.ajax({
@@ -350,6 +425,9 @@ var neck = {
                     text: value.name
                 }));
             });
+
+            $('#instrumentSelector').val(Neck.instrumentId);
+
         });
 
 
@@ -360,6 +438,8 @@ var neck = {
         return true;
     },
     drawNeck:function(){
+
+
         jnSynth.init(this.sound);
 
         this.ctx.clearRect(0, 0, this.width, this.height);
@@ -373,7 +453,12 @@ var neck = {
 
 
         for(i=0;i<this.formatedMatrice.length;i++){
-
+            this.ctx.beginPath();
+            this.ctx.strokeStyle='gold';
+            this.ctx.lineWidth=100/this.formatedMatrice[i][0].digitA;
+            this.ctx.moveTo( caseW, this.height - i*caseH - caseH/2);
+            this.ctx.lineTo(this.width, this.height - i*caseH - caseH/2)  ;
+            this.ctx.stroke();
             for(j=0;j<this.displayedCase+1;j++){
                 rects.push({x: j*caseW, y:(this.height-caseH) - i*caseH, w: caseW, h: caseH , case:j,string:i});
                 // dont draw in case 0
@@ -406,12 +491,8 @@ var neck = {
                 });
 
             }
-            this.ctx.beginPath();
-            this.ctx.strokeStyle='gold';
-            this.ctx.lineWidth=100/this.formatedMatrice[i][0].digitA;
-            this.ctx.moveTo( caseW, this.height - i*caseH - caseH/2);
-            this.ctx.lineTo(this.width, this.height - i*caseH - caseH/2)  ;
-            this.ctx.stroke();
+
+
 
 
         }
@@ -491,6 +572,9 @@ var neck = {
                 Neck.drawNeck();
             });
         });
+
+
+
     },
     cleanSelection:function () {
         $("#currentSelectionUl").empty();
@@ -529,7 +613,9 @@ var neck = {
         }
         return isCollision;
     },
+    session:Array,
     instrument:null,
+    instrumentId:null,
     formatedMatrice:null,
     matrice:null,
     scBasket:[],

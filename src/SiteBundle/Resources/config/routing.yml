@@ -65,3 +65,13 @@ ajax_neck_searchRootScaleByDigits:
     defaults: { _controller: SiteBundle:Ajax:searchRootScaleByDigits  }
     options:
         expose: true
+ajax_neck_session_set:
+    path:     /ajax_neck_session_set
+    defaults: { _controller: SiteBundle:Ajax:SessionSet  }
+    options:
+        expose: true
+ajax_neck_session_get:
+    path:     /ajax_neck_session_get
+    defaults: { _controller: SiteBundle:Ajax:SessionGet  }
+    options:
+        expose: true

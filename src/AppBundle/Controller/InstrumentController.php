@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Instrument;
 use AppBundle\Form\InstrumentType;
 
@@ -41,6 +41,10 @@ class InstrumentController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if($file = $instrument->getIcon()){
+                $fileName = $this->get('app.instrument_uploader')->upload($file);
+                $instrument->setIcon($fileName);
+            }
             $em->persist($instrument);
             $em->flush();
 
@@ -54,8 +58,8 @@ class InstrumentController extends Controller
     }
 
     /**
-     * Finds and displays a Instrument entity.
-     *
+     * Displays an existing Instrument entity.
+     * @ParamConverter("instrument", class="AppBundle\Entity\Instrument",options={"mapping": {"id": "id"  }})
      */
     public function showAction(Instrument $instrument)
     {
@@ -69,7 +73,7 @@ class InstrumentController extends Controller
 
     /**
      * Displays a form to edit an existing Instrument entity.
-     *
+     * @ParamConverter("instrument", class="AppBundle\Entity\Instrument",options={"mapping": {"id": "id"  }})
      */
     public function editAction(Request $request, Instrument $instrument)
     {
@@ -78,6 +82,12 @@ class InstrumentController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            if($file = $instrument->getIcon()){
+                $fileName = $this->get('app.instrument_uploader')->upload($file);
+                $instrument->setIcon($fileName);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($instrument);
             $em->flush();
@@ -93,8 +103,8 @@ class InstrumentController extends Controller
     }
 
     /**
-     * Deletes a Instrument entity.
-     *
+     * Displays an existing Instrument entity.
+     * @ParamConverter("instrument", class="AppBundle\Entity\Instrument",options={"mapping": {"id": "id"  }})
      */
     public function deleteAction(Request $request, Instrument $instrument)
     {
@@ -114,7 +124,7 @@ class InstrumentController extends Controller
      * Creates a form to delete a Instrument entity.
      *
      * @param Instrument $instrument The Instrument entity
-     *
+     * @ParamConverter("instrument", class="AppBundle\Entity\Instrument",options={"mapping": {"id": "id"  }})
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Instrument $instrument)

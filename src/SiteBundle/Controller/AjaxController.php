@@ -8,6 +8,35 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AjaxController extends Controller
 {
+
+    public function sessionGetAction(Request $request)
+    {
+        $session = $request->getSession();
+        $response = new Response();
+
+        $output = array();
+        $output["instrumentId"] = $session->get("neck/instrumentId");
+        $output["sound"] = $session->get("neck/sound");
+
+        $response->setContent(json_encode($output));
+        return $response;
+    }
+    public function sessionSetAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $instrumentId = $request->get('instrumentId');
+        $sound = $request->get('sound');
+        if($instrumentId<=0){
+            $instrument = $em->getRepository('AppBundle:Instrument')->findOneByIsDefault(1);
+            $instrumentId = $instrument->getId();
+        }
+        $session = $request->getSession();
+        $session->set('neck/instrumentId', $instrumentId);
+        $session->set('neck/sound', $sound);
+        $response = new Response();
+        $response->setContent($session->get("neck"));
+        return $response;
+    }
     public function instrumentAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -20,10 +49,8 @@ class AjaxController extends Controller
 
         $instrument = $em->getRepository('AppBundle:Instrument')->getMatrice($instrument_id);
 
-
         $response = new Response();
         $response->setContent(json_encode($instrument));
-
 
         return $response;
     }

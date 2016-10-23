@@ -32,11 +32,15 @@ class RootScaleController extends Controller
             ->addMeta('name', 'description', "details for ".$westernSystem->getName().$scale->getName())
         ;
 
+        $session = $request->getSession();
+
+
         return $this->render('SiteBundle:RootScale:index.html.twig',array(
             "scale"=>$scale,
             "westernSystem"=>$westernSystem,
             "populatedScale"=>$populatedScale,
-            "matchingScales"=>$matchingScales
+            "matchingScales"=>$matchingScales,
+            "instrumentId"=>$session->get("neck/instrumentId")
         ));
     }
 

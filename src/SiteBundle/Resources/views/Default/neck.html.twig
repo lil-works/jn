@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <h1>JoliNeck</h1>
+
 <div id="neck">
     <div id="controls" class="inline">
     <h2>Controls:</h2>
@@ -61,6 +62,12 @@
     </div>
 </div>
     <script>
-        neck.init("myNeck");
+        if("{{ instrumentId }}" == ""){
+            var instrumentId = null;
+        }else{
+            var instrumentId = {{ instrumentId }};
+        }
+        var n = neck.init("myNeck",instrumentId);
+
     </script>
 {% endblock %}
