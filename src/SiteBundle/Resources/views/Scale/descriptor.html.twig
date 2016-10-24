@@ -4,7 +4,9 @@
 
     <ul>Scales in other descriptor:
         {% for scaleType in scaleTypes %}
-        <li style="display: inline"><a href="{{ path('site_scale_descriptor_show' , {descriptor_name:scaleType.name} ) }}">{{ scaleType.name }}</a></li>
+        <li style="display: inline">
+            <a style="color: #{{ scaleType.color }}" href="{{ path('site_scale_descriptor_show' , {descriptor_name:scaleType.name} ) }}">{{ scaleType.name }}</a>
+        </li>
         {% endfor %}
     </ul>
 

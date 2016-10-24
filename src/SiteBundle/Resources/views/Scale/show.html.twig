@@ -6,8 +6,8 @@
         <div>
             <ul class="tagged">tagged as:
                 {% for descriptor in scale.descriptors %}
-                    <li style="color: #{{ descriptor.color }}">
-                        <a href="{{ path('site_scale_descriptor_show',{descriptor_name:descriptor.name}) }}">{{ descriptor.name }}</a>
+                    <li >
+                        <a style="color: #{{ descriptor.color }}" href="{{ path('site_scale_descriptor_show',{descriptor_name:descriptor.name}) }}">{{ descriptor.name }}</a>
                     </li>
                 {% endfor %}
             </ul>

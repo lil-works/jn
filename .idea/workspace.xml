@@ -28,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScaleController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScaleController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24512987" vertical-offset="494" max-vertical-offset="1290">
+            <state vertical-scroll-proportion="-6.2916665" vertical-offset="494" max-vertical-offset="1290">
               <caret line="43" column="74" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
               <folding>
                 <element signature="e#40#72#0#PHP" expanded="true" />
@@ -102,27 +102,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="descriptor.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="descriptor.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/descriptor.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="570">
-              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.17045455" vertical-offset="0" max-vertical-offset="616">
+              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
               <folding>
                 <element signature="e#170#193#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="22.458334" vertical-offset="1034" max-vertical-offset="1665">
-              <caret line="33" column="25" selection-start-line="26" selection-start-column="16" selection-end-line="33" selection-end-column="25" />
-              <folding>
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,10 +117,10 @@
       <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.7083333" vertical-offset="224" max-vertical-offset="1095">
-              <caret line="9" column="68" selection-start-line="9" selection-start-column="68" selection-end-line="9" selection-end-column="68" />
+            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="1095">
+              <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
               <folding>
-                <element signature="e#254#292#0#HTML" expanded="true" />
+                <element signature="e#283#321#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -195,12 +181,12 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/InstrumentRepository.php" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/neck.js" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/css/site.css" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/show.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/descriptor.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php" />
       </list>
     </option>
   </component>
@@ -1184,24 +1170,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/show.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Descriptor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.7083333" vertical-offset="224" max-vertical-offset="1095">
-          <caret line="9" column="68" selection-start-line="9" selection-start-column="68" selection-end-line="9" selection-end-column="68" />
+        <state vertical-scroll-proportion="7.5" vertical-offset="180" max-vertical-offset="2190">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.2916665" vertical-offset="494" max-vertical-offset="1290">
+          <caret line="43" column="74" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
           <folding>
-            <element signature="e#254#292#0#HTML" expanded="true" />
+            <element signature="e#40#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="22.458334" vertical-offset="1034" max-vertical-offset="1665">
-          <caret line="33" column="25" selection-start-line="26" selection-start-column="16" selection-end-line="33" selection-end-column="25" />
+        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="1095">
+          <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
           <folding>
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#283#321#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1214,30 +1206,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Descriptor.php">
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.5" vertical-offset="180" max-vertical-offset="2190">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.31655845" vertical-offset="0" max-vertical-offset="1695">
+          <caret line="13" column="70" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/descriptor.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="570">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.17045455" vertical-offset="0" max-vertical-offset="616">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
           <folding>
             <element signature="e#170#193#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24512987" vertical-offset="494" max-vertical-offset="1290">
-          <caret line="43" column="74" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
-          <folding>
-            <element signature="e#40#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
