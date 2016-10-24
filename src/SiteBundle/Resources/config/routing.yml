@@ -29,6 +29,10 @@ site_scale_show:
     options:
         expose: true
 
+site_scale_descriptor_show:
+    path:     /scale/descriptor/{descriptor_name}
+    defaults: { _controller: "SiteBundle:Scale:descriptor" }
+
 site_rootscale_index:
     path: /root/{root}/scale/{scale}
     defaults: { _controller: "SiteBundle:RootScale:index" , root: C }

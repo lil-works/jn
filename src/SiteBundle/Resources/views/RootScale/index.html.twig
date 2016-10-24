@@ -1,97 +1,105 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <h1>{{ westernSystem.name }} {{ scale.name }}</h1>
-    <div style="float: left; min-height:600px;width:400px; ">
-        <h2>scale detail:</h2>
-        <div>
-            <ul class="tagged">tagged as:
-                {% for descriptor in scale.descriptors %}
-                    <li style="color: #{{ descriptor.color }}">{{ descriptor.name }}</li>
-                {% endfor %}
-            </ul>
-        </div>
 
-        <div>
-            <h2>Intervals</h2>
-            {%  for intervale in scale.intervales %}
-                <span class="intervale" style="color: #{{  intervale.color }}">{{  intervale.name }}</span>
-            {% endfor %}
-        </div>
+    <h1>{{ westernSystem.name }} {{ scale.name }}</h1>
+    <div id="container1">
 
-        <div>
-            <h2>Diagram:</h2>
-            <canvas id="diagram" width="180" height="180"></canvas>
-            <script>
-                var datas = {};
-                {% for intervale in scale.intervales %}
-                datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
-                {% endfor %}
-                new diagram("diagram",datas);
-            </script>
-        </div>
-
-    </div>
-
-    <div style="margin-left:30px;min-height: 400px; ">
-        <h2>Scale in key:</h2>
-        <ul id="populatedScale">
-            {% for p in populatedScale %}
-                <li>
-                    <ul class="rootedPopulatedScale">
-                        <span onclick="jnSynth.play('{{  p.digitAList }}','scale')" class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
-                        {% for tone in p.toneList|split(',') %}
-                            <li>{{ tone }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-
-        </ul>
-
-
-
-        <div id="neck">
-            <div id="neckControls">
-                <h3>Neck Controls:</h3>
-                <ul>
-                    <li><label for="instrumentSelector">instrument</label><select id="instrumentSelector"></select></li>
-                    <li>
-                        <label for="soundSelector">sound</label>
-                        <select id="soundSelector">
-                            <option value="piano" selected="selected">piano</option>
-                            <option value="organ" >organ</option>
-                            <option value="acoustic" >acoustic</option>
-                            <option value="edm" >edm</option>
-                        </select>
-                    </li>
+        <div id="col1">
+            <h2><a href="{{ path('site_scale_show',{ scale_name:scale.name }) }}">scale {{ scale.name }}</a>:</h2>
+            <div>
+                <ul class="tagged">tagged as:
+                    {% for descriptor in scale.descriptors %}
+                        <li style="color: #{{ descriptor.color }}">{{ descriptor.name }}</li>
+                    {% endfor %}
                 </ul>
             </div>
+
             <div>
-                <canvas id="myNeck" width="500" height="200"></canvas>
+                <h2>Intervals</h2>
+                {%  for intervale in scale.intervales %}
+                    <span class="intervale" style="color: #{{  intervale.color }}">{{  intervale.name }}</span>
+                {% endfor %}
             </div>
+
+            <div>
+                <h2>Diagram:</h2>
+                <canvas id="diagram" width="180" height="180"></canvas>
+                <script>
+                    var datas = {};
+                    {% for intervale in scale.intervales %}
+                    datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                    {% endfor %}
+                    new diagram("diagram",datas);
+                </script>
+            </div>
+
         </div>
 
-        <div>
-            {% if  matchingScales|length > 0 %}
-            <h2>matching root scale</h2>
-            <ul>
-            {% for matchingScale in matchingScales %}
+        <div id="col2">
+            <h2>Scale in key:</h2>
+            <ul id="populatedScale">
+                {% for p in populatedScale %}
+                    <li>
+                        <ul class="rootedPopulatedScale">
+                            <span onclick="jnSynth.play('{{  p.digitAList }}','scale')" class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
+                            {% for tone in p.toneList|split(',') %}
+                                <li>{{ tone }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
 
-                <li style="display: inline"><a href="{{ path('site_rootscale_index',{ root:matchingScale.rootName , scale:matchingScale.scaleName }) }}">{{ matchingScale.rootInfoTone }}{{ matchingScale.scaleName }}</a></li>
-
-            {% endfor %}
             </ul>
 
-            {% else %}
-                No matching root scale ...
-            {% endif %}
-        </div>
 
+
+            <div id="neck">
+                <div id="neckControls">
+                    <h3>Neck Controls:</h3>
+                    <ul>
+                        <li><label for="instrumentSelector">instrument</label><select id="instrumentSelector"></select></li>
+                        <li>
+                            <label for="soundSelector">sound</label>
+                            <select id="soundSelector">
+                                <option value="piano" selected="selected">piano</option>
+                                <option value="organ" >organ</option>
+                                <option value="acoustic" >acoustic</option>
+                                <option value="edm" >edm</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <canvas id="myNeck" width="500" height="200"></canvas>
+                </div>
+            </div>
+
+            <div >
+                {% if  matchingScales|length > 0 %}
+                <h2>matching root scale ({{ matchingScales|length }})</h2>
+                <ul class="neckResultsList">
+                {% for matchingScale in matchingScales %}
+
+                    <li style="display: inline;margin: 5px;" >
+                            <a href="{{ path('site_rootscale_index',{ root:matchingScale.rootName , scale:matchingScale.scaleName }) }}">
+                                {{ matchingScale.rootInfoTone }} {{ matchingScale.scaleName }}
+                            </a>
+                    </li>
+
+                {% endfor %}
+                </ul>
+
+                {% else %}
+                    No matching root scale ...
+                {% endif %}
+            </div>
+
+        </div>
+        <script>
+            var n = neck.init("myNeck" );
+            n.displayedCase=14;
+            n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
+        </script>
     </div>
-    <script>
-        var n = neck.init("myNeck" );
-        n.displayedCase=12;
-        n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
-    </script>
 {% endblock %}

@@ -1,6 +1,7 @@
 <?php
 namespace SiteBundle\Controller;
 
+use AppBundle\Entity\Descriptor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -31,6 +32,22 @@ class ScaleController extends Controller
             'scales'=>$scales,
             'form' => $form->createView(),
             'search'=>$search
+        ));
+    }
+    /**
+     * Finds and displays a Author entity.
+     * @ParamConverter("descriptor", class="AppBundle\Entity\Descriptor",options={"mapping": {"descriptor_name": "name"  }})
+     */
+    public function descriptorAction(Request $request,Descriptor $descriptor)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $scaleTypes = $em->getRepository('AppBundle:Descriptor')->findAll() ;
+        $scales = $descriptor->getScales() ;
+
+        return $this->render('SiteBundle:Scale:descriptor.html.twig',array(
+            'descriptor'=>$descriptor,
+            'scales'=>$scales,
+            'scaleTypes'=>$scaleTypes
         ));
     }
     /**
