@@ -252,7 +252,7 @@ padding: 10px;
     list-style: none;
 }
 #scaleList>li:after{
-    content: " | ";
+    /*content: " | ";*/
 }
 #contentQuote{
     background-color: #fff;
@@ -265,16 +265,21 @@ padding: 10px;
     margin-top: 10px;
 }
 .rootScaleName{
-    font-size: 1.6em;
+    font-size: 1.2em;
     width: 250px;
     font-weight: 100;
     color: #454588;
 }
 #populatedScale {
-    margin: 10px;
+    margin: 0 10px;
 }
+#populatedScale ul{
+    margin: 0 ;
+
+}
+
 #populatedScale li{
-    margin: 20px;
+    margin: 0 20px;
     display: inline;
 }
 

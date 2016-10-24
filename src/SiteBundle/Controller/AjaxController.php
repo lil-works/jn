@@ -109,15 +109,11 @@ class AjaxController extends Controller
     public function searchRootScaleByDigitsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
         $digits = $request->get('digits');
-
         $instrument = $em->getRepository('AppBundle:Instrument')->findRootScaleByDigits($digits);
-
 
         $response = new Response();
         $response->setContent(json_encode($instrument));
-
 
         return $response;
     }

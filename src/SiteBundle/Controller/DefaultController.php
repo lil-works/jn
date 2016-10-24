@@ -9,11 +9,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-
         $em = $this->getDoctrine()->getManager();
         $instrument = $em->getRepository('AppBundle:Instrument')->find(1);
         $matrice = $em->getRepository('AppBundle:Instrument')->getMatrice(1);
-
 
         return $this->render('SiteBundle:Default:index.html.twig',array('instrument'=>$instrument,'matrice'=>json_encode($matrice)));
     }
@@ -27,7 +25,7 @@ class DefaultController extends Controller
             ->addMeta('name', 'description', "Choose your instrument and plot tones from scale or search scale selecting tones over the neck")
         ;
         return $this->render('SiteBundle:Default:neck.html.twig',array(
-            "instrumentId"=>$session->get('neck/instrumentId')#$request->getSession()->get("instrumentId")
+            "instrumentId"=>$session->get('neck/instrumentId')
         ));
     }
 }

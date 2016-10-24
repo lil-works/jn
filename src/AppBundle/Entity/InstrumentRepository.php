@@ -13,59 +13,15 @@ class InstrumentRepository extends \Doctrine\ORM\EntityRepository
 
 
     public function findRootScaleByDigits($digits){
-
-        $sql="
+        $sql = "
 
 
 
 SELECT
-    scaleId,
-    scaleName,
-    rootInfoTone,
-    ROUND(COUNT(rootInfoTone) / totTone, 1) AS scoreInternal,
-    ROUND(COUNT(rootInfoTone) / :digitsCount, 1) AS scoreExternal
-FROM
-    (SELECT
-        s1.id AS scaleId,
-            s1.name AS scaleName,
-            d1.infoTone AS rootInfoTone,
-            d1.value AS rootDigit,
-            (SELECT
-                    value
-                FROM
-                    digit
-                WHERE
-                    value = MOD(d1.value + i1.delta, 12)) AS calculatedDigit,
-            i1.name AS intervaleName,
-            i1.delta AS intervaleDelta,
-            (SELECT
-                    COUNT(si2.intervale_id)
-                FROM
-                    scales_intervales si2
-                WHERE
-                    si2.scale_id = scaleId) AS totTone
-    FROM
-        scale s1
-    LEFT JOIN scales_intervales si1 ON si1.scale_id = s1.id
-    LEFT JOIN intervale i1 ON i1.id = si1.intervale_id
-    JOIN digit d1
-    HAVING
-    calculatedDigit IN (:digits)) r1
-GROUP BY scaleId , rootInfoTone
-
-HAVING scoreExternal=1
-
-ORDER BY scoreInternal DESC,scoreExternal DESC
-
-
-;
-
-
-
-        ";
-        $sql = "
-                SELECT
+			(SELECT group_concat(descriptor_id) from scales_descriptors sd  where sd.scale_id=scaleId) as descriptorListId,
+            (SELECT group_concat(d.name) from scales_descriptors sd left join descriptor d on d.id = sd.descriptor_id where sd.scale_id=scaleId) as descriptorListName,
             scaleId,scaleName,rootInfoTone,
+            COUNT(i.id) AS toneCount,
             GROUP_CONCAT(i.name) AS intervaleNameList,
             GROUP_CONCAT(i.delta) AS intervaleDeltaList,
             GROUP_CONCAT(i.color) AS intervaleColorList
@@ -109,11 +65,20 @@ ORDER BY scoreInternal DESC,scoreExternal DESC
             scales_intervales si ON si.scale_id = scaleId
                 LEFT JOIN
             intervale i ON i.id = si.intervale_id
+
+
         GROUP BY scaleId , rootInfoTone
+;
+
+
+
 ";
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
 
+        $rsm->addScalarResult('descriptorListName', 'descriptorListName');
+        $rsm->addScalarResult('descriptorListId', 'descriptorListId');
+        $rsm->addScalarResult('toneCount', 'toneCount');
         $rsm->addScalarResult('scoreInternal', 'scoreInternal');
         $rsm->addScalarResult('scoreExternal', 'scoreExternal');
         $rsm->addScalarResult('scaleId', 'scaleId');
@@ -161,71 +126,52 @@ SET @ROOT_NAME := "C";
         $ws = $query->getScalarResult();
 
 
-        $sql = "SELECT instrumentName,currentCase,currentString,currentDigit,currentOctave,currentDigitA,currentIntervale,formatedName
-    FROM (
-    SELECT
-
+        $sql = "
+SELECT
     instrument.id AS instrumentId,
     instrument.name AS instrumentName,
     oneCase AS currentCase,
     instrument_string.pos AS currentString,
-    MOD(oneCase + digit, 12) AS currentDigit,
+    ROUND(((12 * octave + (d2.value + oneCase)) - MOD((d2.value + oneCase), 12)) / 12) AS currentOctave,
+    (12 * octave + (d2.value + oneCase)) AS currentDigitA,
+    MOD((d2.value + oneCase), 12) AS currentDigit,
     (SELECT
             infoTone
         FROM
             digit
         WHERE
-            value = MOD(oneCase + digit, 12)) AS currentInfoTone,
-    12 * octave + (oneCase + digit) AS currentDigitA,
-    ROUND(((12 * octave + (oneCase + digit)) - MOD(oneCase + digit, 12)) / 12) AS currentOctave,
-    (SELECT
-            i.name AS intervale
-        FROM
-            scale s
-                LEFT JOIN
-            scales_intervales si ON si.scale_id = s.id
-                LEFT JOIN
-            intervale i ON si.intervale_id = i.id
-                JOIN
-            digit d
-                LEFT JOIN
-            digit d2 ON d2.value = MOD(d.value + (SELECT
-                        value
-                    FROM
-                        digit
-                    WHERE
-                        id = :rootDigitId) + i.delta,
-                12)
-                LEFT JOIN
-            digit d3 ON d3.value = d.value
-        WHERE
-            s.id = :scaleId
-                AND d2.value = MOD(oneCase + digit, 12)
-                AND d3.value = 0
-        LIMIT 1) AS currentIntervale
+            value = MOD((d2.value + oneCase), 12)) AS currentInfoTone,
+    IF(d.value = MOD((d2.value + oneCase), 12),
+        i.name,
+        NULL) AS currentIntervale,
+        (select ws2.name from western_system ws2 where ws.id=ws2.root and ws2.intervale=i.id LIMIT 1) as wsName
 FROM
     instrument instrument
         LEFT JOIN
     instrument_string instrument_string ON instrument_string.instrument = instrument.id
         JOIN
-    (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16) virtualCase
+    (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) virtualCase
         LEFT JOIN
-    digit d2 ON MOD(oneCase + digit, 12) = d2.value
-HAVING instrumentId = :instrumentId
-
-    )R1
-
-    LEFT JOIN (
-
-    SELECT ws2.name as formatedName,d.value as westernDigitValue,i.name as intervalName FROM western_system  ws1
-LEFT JOIN western_system ws2 ON ws2.root = ws1.id
-LEFT JOIN intervale i ON i.id=ws2.intervale
-LEFT JOIN digit d ON d.id=ws2.digit
-WHERE ws1.intervale=1 and ws1.name = :wsName
-ORDER by delta ASC
-    )R2 ON R1.currentIntervale = R2.intervalName
-    HAVING currentIntervale IS NOT NULL
-		";
+    digit d2 ON instrument_string.digit = d2.id
+        LEFT JOIN
+    scale s ON s.id = :scaleId
+        LEFT JOIN
+    scales_intervales si ON s.id = si.scale_id
+        LEFT JOIN
+    intervale i ON i.id = si.intervale_id
+        LEFT JOIN
+    western_system ws ON ws.name = :wsName AND ws.intervale = 1
+        LEFT JOIN
+    digit d ON d.value = MOD((SELECT
+                value
+            FROM
+                digit
+            WHERE
+                id = ws.digit) + i.delta,
+        12)
+WHERE
+    instrument.id = :instrumentId
+HAVING currentIntervale IS NOT NULL";
 
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
@@ -236,7 +182,7 @@ ORDER by delta ASC
         $rsm->addScalarResult('currentDigit', 'currentDigit');
         $rsm->addScalarResult('currentDigitA', 'currentDigitA');
         $rsm->addScalarResult('currentOctave', 'currentOctave');
-        #$rsm->addScalarResult('currentInfoTone', 'currentInfoTone');
+        $rsm->addScalarResult('wsName', 'wsName');
         $rsm->addScalarResult('currentIntervale', 'currentIntervale');
 
         $query = $em->createNativeQuery($sql, $rsm);
@@ -253,44 +199,27 @@ ORDER by delta ASC
      *
      */
     public function getMatrice($id,$r = null ,$s = null){
-        $sql = "SELECT
+        $sql = "
+SELECT
     instrument.id AS instrumentId,
     instrument.name AS instrumentName,
     oneCase AS currentCase,
     instrument_string.pos AS currentString,
-    MOD(oneCase + digit, 12) AS currentDigit,
-    (SELECT infoTone FROM digit WHERE value = MOD(oneCase + digit, 12)) as currentInfoTone,
-    12 * octave + (oneCase + digit) AS currentDigitA,
-    ROUND(((12 * octave + (oneCase + digit)) - MOD(oneCase + digit, 12)) / 12) AS currentOctave,
-    (SELECT
-            i.name AS intervale
-        FROM
-            scale s
-                LEFT JOIN
-            scales_intervales si ON si.scale_id = s.id
-                LEFT JOIN
-            intervale i ON si.intervale_id = i.id
-                JOIN
-            digit d
-                LEFT JOIN
-            digit d2 ON d2.value = MOD(d.value + i.delta, 12)
-                LEFT JOIN
-            digit d3 ON d3.value = d.value
-        WHERE
-            s.id = 6
-            AND d2.value = MOD(oneCase + digit, 12)
-            AND d3.value = 0
-        LIMIT 0) AS currentIntervale
+
+    ROUND(((12 * octave + (d2.value + oneCase)) - MOD((d2.value + oneCase), 12)) / 12) AS currentOctave,
+    (12 * octave + (d2.value + oneCase)) AS currentDigitA,
+     MOD((d2.value + oneCase ), 12) AS currentDigit,
+     (select infoTone from digit where value = MOD((d2.value + oneCase ), 12)) as currentInfoTone
 FROM
     instrument instrument
         LEFT JOIN
     instrument_string instrument_string ON instrument_string.instrument = instrument.id
         JOIN
-        (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) virtualCase
+    (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) virtualCase
         LEFT JOIN
-    digit d2 ON MOD(oneCase + digit, 12) = d2.value
-WHERE instrument.id = :instrument_id
-		";
+    digit d2 ON instrument_string.digit = d2.id
+WHERE
+    instrument.id = :instrument_id";
 
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
@@ -302,7 +231,6 @@ WHERE instrument.id = :instrument_id
         $rsm->addScalarResult('currentDigitA', 'currentDigitA');
         $rsm->addScalarResult('currentOctave', 'currentOctave');
         $rsm->addScalarResult('currentInfoTone', 'currentInfoTone');
-        $rsm->addScalarResult('currentIntervale', 'currentIntervale');
 
         $query = $em->createNativeQuery($sql, $rsm);
 

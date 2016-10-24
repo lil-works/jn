@@ -62,12 +62,6 @@
     </div>
 </div>
     <script>
-        if("{{ instrumentId }}" == ""){
-            var instrumentId = null;
-        }else{
-            var instrumentId = {{ instrumentId }};
-        }
-        var n = neck.init("myNeck",instrumentId);
-
+        neck.init("myNeck");
     </script>
 {% endblock %}

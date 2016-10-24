@@ -9,16 +9,30 @@
     {{ form_end(form) }}
 
 
-
-    <ul id="scaleList">All scales ({{ scales|length }}):
+    <h2>finded scales ({{ scales|length }}):</h2>
+    <ul id="neckResultsList">
     {% for scale in scales %}
-        <li><a href="{{ path('site_scale_show',{ scale_name:scale.name }) }}">{{ scale.name }}</a></li>
+        <li >
+            <div class="titleInVignette">
+            <a href="{{ path('site_scale_show',{ scale_name:scale.name }) }}">{{ scale.name }}</a>
+            </div>
+            <div>
+                <canvas id="d{{ scale.id }}" width="180" height="180"></canvas>
+            </div>
+            <script>
+                var datas = {};
+                {% for intervale in scale.intervales %}
+                datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                {% endfor %}
+                new diagram("d{{ scale.id  }}",datas);
+            </script>
+            
+        </li>
     {% endfor %}
     </ul>
 
 
     <script>
-
         {% if search is null %}
             $("#search_scale_intervales").children("input").attr("checked",true);
             $("#search_scale_descriptors").children("input").attr("checked",true);

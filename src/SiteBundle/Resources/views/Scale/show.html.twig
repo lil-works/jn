@@ -44,13 +44,13 @@
             <li>
                 <ul>
                     <li><a href="{{ path('site_rootscale_index',{ root:p.rootName , scale:scale.name }) }}">details</a></li>
-                    <li><a href="#">play</a></li>
+                    <li><a onclick="jnSynth.play('{{  p.digitAList }}','scale')"  href="#play">play</a></li>
                 </ul>
             </li>
             <li>
 
                 <ul class="rootedPopulatedScale">
-                    <span onclick="jnSynth.play('{{  p.digitAList }}','scale')" class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
+                    <span class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
                     {% for tone in p.toneList|split(',') %}
                         <li>{{ tone }}</li>
                     {% endfor %}

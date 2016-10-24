@@ -8,7 +8,6 @@ var neck = {
 
         this.getSession();
 
-
         this.canvasId = canvasId;
         this.c = document.getElementById(canvasId);
         this.width = this.c.width;
@@ -20,6 +19,11 @@ var neck = {
         this.instrumentId=this.session["instrumentId"];
         this.sound=this.session["sound"];
 
+        if(!this.instrumentId)
+            this.instrumentId = 1;
+
+        if(!this.sound)
+            this.sound = "piano";
 
         this.setControls();
         this.getInstrument( this.instrumentId );
@@ -50,7 +54,7 @@ var neck = {
 
         request.done(function (msg) {
             $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
-                Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = value.currentIntervale;
+                Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = {intervaleName:value.currentIntervale,toneName:value.wsName};
             });
             Neck.drawNeck();
 
@@ -219,10 +223,11 @@ var neck = {
             request.done(function (msg) {
 
                 $("#neckResults").empty();
+
                 var html="<h2>Results</h2><ul id=\"neckResultsList\"></ul>";
                 $("#neckResults").append(html);
                 $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
-
+                    console.log(index,value);
                     var datas = [];
                     var nameList = value.intervaleNameList.split(",");
                     var deltaList = value.intervaleDeltaList.split(",");
@@ -236,6 +241,7 @@ var neck = {
 
                     html="<li><div class=\"titleInVignette\">"+value.rootInfoTone+" <a href=\""+site_scale_show+"\">"+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas></div></li>";
                     $("#neckResultsList").append(html);
+
                     new diagram("root_"+value.rootInfoTone+"_scale_"+value.scaleId,datas);
                 });
 
@@ -300,7 +306,7 @@ var neck = {
                     request.done(function (msg) {
 
                         $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
-                            Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = value.currentIntervale;
+                            Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = { intervaleName:value.currentIntervale , toneName:value.wsName };
                         });
 
                     });
@@ -453,12 +459,19 @@ var neck = {
 
 
         for(i=0;i<this.formatedMatrice.length;i++){
+
             this.ctx.beginPath();
             this.ctx.strokeStyle='gold';
             this.ctx.lineWidth=100/this.formatedMatrice[i][0].digitA;
             this.ctx.moveTo( caseW, this.height - i*caseH - caseH/2);
             this.ctx.lineTo(this.width, this.height - i*caseH - caseH/2)  ;
             this.ctx.stroke();
+
+            this.ctx.fillStyle = "#666";
+            this.ctx.font="9px Georgia black";
+
+            this.ctx.fillText(this.formatedMatrice[i][0].infoTone+this.formatedMatrice[i][0].octave,   3, Neck.height-i*caseH -caseH/2 +2 );
+
             for(j=0;j<this.displayedCase+1;j++){
                 rects.push({x: j*caseW, y:(this.height-caseH) - i*caseH, w: caseW, h: caseH , case:j,string:i});
                 // dont draw in case 0
@@ -486,7 +499,9 @@ var neck = {
                     Neck.ctx.fillStyle = Neck.rsColors[rsBasketKey];
                     Neck.ctx.fillRect(   j*caseW + caseW*k*1/(1+len)  ,Neck.height-i*caseH -caseH/2 ,5,5);
                     Neck.ctx.font="12px Georgia";
-                    Neck.ctx.fillText(value,   j*caseW + caseW*k*1/(1+len), Neck.height-i*caseH -caseH/2 -5);
+                    Neck.ctx.fillText(value.intervaleName,   j*caseW + caseW*k*1/(1+len), Neck.height-i*caseH -caseH/2 -5);
+                    Neck.ctx.font="10px Georgia";
+                    Neck.ctx.fillText(value.toneName,   j*caseW + caseW*k*1/(1+len), Neck.height-i*caseH -caseH/2 +15);
                     k++;
                 });
 
@@ -545,7 +560,7 @@ var neck = {
             var c =  splitedValue[1];
 
             Neck.ctx.fillStyle = "rgba(10, 10, 10, 1)";
-            Neck.ctx.fillRect( caseW/2 + c*caseW,Neck.height-s*caseH -caseH/2 - 5,10,10);
+            Neck.ctx.fillRect( caseW/2 + c*caseW,Neck.height-s*caseH -caseH/2 - 3,6,6);
 
             $("#currentSelectionUl").append("<li>string "+s+",case "+c+" "+Neck.formatedMatrice[s][c].infoTone+Neck.formatedMatrice[s][c].octave+"</li>");
         });
