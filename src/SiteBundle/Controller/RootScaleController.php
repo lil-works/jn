@@ -24,7 +24,7 @@ class RootScaleController extends Controller
         $session = $request->getSession();
         if(!$session->get('neck/instrumentId'))
             $session->set('neck/instrumentId',1);
-        
+
         $instrument = $em->getRepository('AppBundle:Instrument')->find($session->get('neck/instrumentId')) ;
         $matrice = $em->getRepository('AppBundle:Instrument')->getMatrice($instrument->getId());
 

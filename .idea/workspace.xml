@@ -28,6 +28,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="ScaleController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2400636" vertical-offset="794" max-vertical-offset="1530">
+              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+              <folding>
+                <element signature="e#40#72#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
@@ -70,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RootScaleController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RootScaleController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38155803" vertical-offset="90" max-vertical-offset="1035">
-              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+            <state vertical-scroll-proportion="-8.75" vertical-offset="90" max-vertical-offset="1035">
+              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -147,7 +159,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/fingering/show.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Session/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/show.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/descriptor.html.twig" />
         <option value="$PROJECT_DIR$/app/config/routing_dev.yml" />
@@ -161,6 +172,7 @@
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/fingering.js" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Controller/SessionController.php" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php" />
       </list>
     </option>
   </component>
@@ -1228,16 +1240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4386503" vertical-offset="794" max-vertical-offset="1485">
-          <caret line="72" column="102" selection-start-line="72" selection-start-column="102" selection-end-line="72" selection-end-column="102" />
-          <folding>
-            <element signature="e#40#72#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33226836" vertical-offset="482" max-vertical-offset="1620">
@@ -1401,9 +1403,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38155803" vertical-offset="90" max-vertical-offset="1035">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        <state vertical-scroll-proportion="-8.75" vertical-offset="90" max-vertical-offset="1035">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2400636" vertical-offset="794" max-vertical-offset="1530">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+          <folding>
+            <element signature="e#40#72#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
