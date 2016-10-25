@@ -60,6 +60,12 @@ class WesternSystem
      * @ORM\Column(name="alteration", type="integer" , nullable=false)
      */
     private $alteration;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="relativePosition", type="integer" , nullable=true)
+     */
+    private $relativePosition;
 
 
     public function __construct() {
@@ -230,5 +236,29 @@ class WesternSystem
     public function getIntervale()
     {
         return $this->intervale;
+    }
+
+    /**
+     * Set relativePosition
+     *
+     * @param integer $relativePosition
+     *
+     * @return WesternSystem
+     */
+    public function setRelativePosition($relativePosition)
+    {
+        $this->relativePosition = $relativePosition;
+
+        return $this;
+    }
+
+    /**
+     * Get relativePosition
+     *
+     * @return integer
+     */
+    public function getRelativePosition()
+    {
+        return $this->relativePosition;
     }
 }

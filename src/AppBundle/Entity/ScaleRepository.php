@@ -229,8 +229,10 @@ order by ratio asc
         $sql = "
 
             SELECT
+
                 name as rootName,
                 digit as rootDigitId,
+                relativePosition,
                 (SELECT d2.value FROM digit d2 WHERE d2.id=digit) as rootDigitA,
                 group_concat(newToneName order by intervaleDelta1) as toneList ,
                 group_concat(newDigitA+36 order by intervaleDelta1) as digitAList
@@ -269,9 +271,12 @@ order by ratio asc
                         s1.id = :scaleId) r1
                         JOIN
                     western_system ws2 ON ws2.intervale = 1
+
+
                     )r2
 
                     group by root
+                    ORDER BY ABS (relativePosition)
 
             ";
         $em = $this->getEntityManager();

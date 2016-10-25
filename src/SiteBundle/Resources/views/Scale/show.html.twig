@@ -4,7 +4,8 @@
 <div id="container1">
     <div id="col1">
         <div>
-            <ul class="tagged">tagged as:
+            <h2>tagged as:</h2>
+            <ul class="tagged">
                 {% for descriptor in scale.descriptors %}
                     <li >
                         <a style="color: #{{ descriptor.color }}" href="{{ path('site_scale_descriptor_show',{descriptor_name:descriptor.name}) }}">{{ descriptor.name }}</a>
@@ -38,31 +39,65 @@
                 {% endfor %}
             </ul>
         </div>
-    </div>
-    <div id="col2">
         <h2>Scale in key:</h2>
         <ul id="populatedScale">
-        {% for p in populatedScale %}
-            <li>
-                <ul>
-                    <li><a href="{{ path('site_rootscale_index',{ root:p.rootName , scale:scale.name }) }}">details</a></li>
-                    <li><a onclick="jnSynth.play('{{  p.digitAList }}','scale')"  href="#play">play</a></li>
-                </ul>
-            </li>
-            <li>
+            {% for p in populatedScale %}
+                <li>
+                    <a  href="{{ path('site_rootscale_index',{ root:p.rootName , scale:scale.name }) }}">details</a>
+                    <a  onclick="jnSynth.play('{{  p.digitAList }}','scale')"  href="#play">play</a>
 
-                <ul class="rootedPopulatedScale">
-                    <span class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
-                    {% for tone in p.toneList|split(',') %}
-                        <li>{{ tone }}</li>
-                    {% endfor %}
+                </li>
+                <li>
 
-                </ul>
+                    <ul class="rootedPopulatedScale">
+                        <span class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
+                        {% for tone in p.toneList|split(',') %}
+                            <li>{{ tone }}</li>
+                        {% endfor %}
+                    </ul>
 
-            </li>
-        {% endfor %}
+                </li>
+            {% endfor %}
 
         </ul>
     </div>
+    <div id="col2">
+
+
+        <h2>{{ instrument.name|capitalize }} neck for {{ westernSystem.name }} {{ scale.name  }}</h2>
+        <div>
+            <canvas id="myNeck" width="500" height="200"></canvas>
+        </div>
+
+        <div>
+            {% if  fingerings|length > 0 %}
+                <h2>fingerings ({{ fingerings|length }})</h2>
+                <ul  class="fingeringList">
+                {% for fingering in fingerings %}
+                    <li>
+                        <div class="fingeringContainer">
+                            <canvas id="myFingering_{{ fingering.fId }}" width="100" height="80"></canvas>
+                        </div>
+                        <script>
+                                var f = fingering.init("myFingering_{{ fingering.fId }}" ,'{{ fingeringsJSON }}','{{ instrumentJSON }}' );
+                        </script>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                No matching fingering found ...
+            {% endif %}
+        </div>
+
+
+
+    </div>
 </div>
+    <script>
+        var n = neck.init("myNeck" );
+        n.displayedCase=14;
+        n.insertFingerings('{{ fingeringsJSON }}');
+        n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
+
+    </script>
 {% endblock %}

@@ -3,7 +3,13 @@
 {% block body %}
 
 
-    <h1>Scale list</h1>
+    <h1>Admin Scale list</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_scale_new') }}">Create a new entry</a>
+        </li>
+    </ul>
 
     <table>
         <thead>
@@ -50,11 +56,7 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('scale_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
 
 
 {% endblock %}

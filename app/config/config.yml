@@ -137,3 +137,5 @@ sonata_seo:
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 parameters:
     instrument_directory: '%kernel.root_dir%/../web/uploads/instrument'
+twig:
+    exception_controller:  SiteBundle:Exception:showException

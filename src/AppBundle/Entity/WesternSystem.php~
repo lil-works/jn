@@ -60,6 +60,12 @@ class WesternSystem
      * @ORM\Column(name="alteration", type="integer" , nullable=false)
      */
     private $alteration;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="relativePosition", type="integer" , nullable=true)
+     */
+    private $relativePosition;
 
 
     public function __construct() {

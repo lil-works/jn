@@ -27,5 +27,8 @@ app_quote:
     prefix:   /quote
 
 app_admin_scale:
-    resource: "@AppBundle/Resources/config/routing/scale-admin.yml"
+    resource: "@AppBundle/Resources/config/routing/scale.yml"
     prefix:   /admin/scale
+app_fingering:
+    resource: "@AppBundle/Resources/config/routing/fingering.yml"
+    prefix:   /admin/fingering

@@ -247,13 +247,22 @@ padding: 10px;
 .contentMenu>li:before{
     content: " | ";
 }
-#scaleList>li{
+
+
+#scaleList > li{
     display: inline;
     list-style: none;
+    width: 200px;
+}
+#scaleList > li > div{
+    display: inline;
+
 }
 #scaleList>li:after{
     /*content: " | ";*/
 }
+
+
 #contentQuote{
     background-color: #fff;
     text-align: right;
@@ -287,4 +296,50 @@ padding: 10px;
 #realbook-tuneList ul>li{
     list-style: none;
     display: inline;
+}
+#container1 {
+    float:left;
+    width:100%;
+    position:relative;
+    right:50%;
+}
+#col1 {
+    float:left;
+    width:46%;
+    position:relative;
+    left:52%;
+    overflow:hidden;
+}
+#col2 {
+    float:left;
+    width:46%;
+    position:relative;
+    left:56%;
+    overflow:hidden;
+}
+
+#populatedScale{
+    margin: 0;
+    padding: 0;
+}
+.fingeringList li{
+  display: inline;
+    float: left;
+}
+.fingeringContainer {
+    border-radius: 4px;
+    background: #fff none repeat scroll 0 0;
+    box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
+    margin: 10px;
+    padding: 10px;
+    width:100px;
+}
+#descriptorList{
+    font-size: 1.4em;
+
+}
+#descriptorList li{
+    display: inline;
+    padding: 10px;
+
 }

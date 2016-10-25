@@ -2,6 +2,8 @@
 
 namespace SiteBundle\Controller;
 
+use AppBundle\Entity\Fingering;
+use AppBundle\Entity\FingeringFinger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -114,6 +116,30 @@ class AjaxController extends Controller
 
         $response = new Response();
         $response->setContent(json_encode($instrument));
+
+        return $response;
+    }
+
+    public function fingeringAction(Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $em = $this->getDoctrine()->getManager();
+        $fingering = new Fingering();
+        $fingering->setDescription("From controller");
+        $em->persist($fingering);
+        foreach( $request->get('i') as $k=>$v){
+            $ssc = explode("_",$v);
+            $finger = new FingeringFinger();
+            $finger->setX($ssc[1]);
+            $finger->setY($ssc[0]);
+            $finger->setFingering($fingering);
+            $em->persist($finger);
+        }
+
+        $em->flush();
+        $response = new Response();
+        $response->setContent(json_encode($request->get('i')));
 
         return $response;
     }

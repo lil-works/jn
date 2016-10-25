@@ -1,0 +1,24 @@
+admin_fingering_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Fingering:index" }
+    methods:  GET
+
+admin_fingering_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Fingering:show" }
+    methods:  GET
+
+admin_fingering_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Fingering:new" }
+    methods:  [GET, POST]
+
+admin_fingering_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Fingering:edit" }
+    methods:  [GET, POST]
+
+admin_fingering_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Fingering:delete" }
+    methods:  DELETE

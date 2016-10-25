@@ -8,7 +8,6 @@ var neck = {
 
         this.getSession();
 
-
         this.canvasId = canvasId;
         this.c = document.getElementById(canvasId);
         this.width = this.c.width;
@@ -22,8 +21,10 @@ var neck = {
 
         if(!this.instrumentId)
             this.instrumentId = 1;
+
         if(!this.sound)
             this.sound = "piano";
+
         this.setControls();
         this.getInstrument( this.instrumentId );
 
@@ -53,14 +54,17 @@ var neck = {
 
         request.done(function (msg) {
             $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
-                Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = {intervalName:value.currentIntervale,toneName:value.wsName};
+                Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = {intervaleName:value.currentIntervale,toneName:value.wsName};
             });
             Neck.drawNeck();
 
         });
 
     },
+    insertFingerings:function(jsonobj){
+        this.fBasket = $.parseJSON(jsonobj.replace(/&quot;/g, '\"'));
 
+    },
 
     getInstrument:function(instrument_id){
         var ajax_neck_instrument = Routing.generate('ajax_neck_instrument');
@@ -222,10 +226,11 @@ var neck = {
             request.done(function (msg) {
 
                 $("#neckResults").empty();
+
                 var html="<h2>Results</h2><ul id=\"neckResultsList\"></ul>";
                 $("#neckResults").append(html);
                 $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
-
+                    console.log(index,value);
                     var datas = [];
                     var nameList = value.intervaleNameList.split(",");
                     var deltaList = value.intervaleDeltaList.split(",");
@@ -239,6 +244,7 @@ var neck = {
 
                     html="<li><div class=\"titleInVignette\">"+value.rootInfoTone+" <a href=\""+site_scale_show+"\">"+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas></div></li>";
                     $("#neckResultsList").append(html);
+
                     new diagram("root_"+value.rootInfoTone+"_scale_"+value.scaleId,datas);
                 });
 
@@ -509,6 +515,28 @@ var neck = {
 
         }
 
+        $.each(this.fBasket, function(key, value)
+        {
+
+
+                var yvalues = value.yList.split(",");
+                var xvalues = value.xList.split(",");
+                var wsname = value.wsNameList.split(",");
+                var intervals= value.intervaleList.split(",");
+
+            $.each(yvalues, function(yk, vk)
+            {
+
+                Neck.ctx.fillStyle = Neck.rsColors[3];
+                Neck.ctx.beginPath();
+                Neck.ctx.arc(xvalues[yk]*caseW + caseW/2, Neck.height-yvalues[yk]*caseH -caseH/2, (caseW/2)-8, 0, 2 * Math.PI, false);
+
+            })
+
+
+        });
+
+
         this.ctx.beginPath();
         this.ctx.strokeStyle='#000';
         this.ctx.lineWidth=1;
@@ -638,6 +666,7 @@ var neck = {
     roman:['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVII','XIX','XX','XXI','XXII','XXIII','XXIV'],
     sound:"piano",
     rsColors:["hsl(265, 33%, 67%)", "hsl(344, 95%, 77%)","hsl(159, 96%, 63%)","hsl(27, 76%, 73%)","hsl(359, 96%, 90%)"],
+    fColors:["hsl(265, 33%, 67%)", "hsl(344, 95%, 77%)","hsl(159, 96%, 63%)","hsl(27, 76%, 73%)","hsl(359, 96%, 90%)"],
     firstCase:1,
     displayedCase:5,
     displayedCaseMin:5,

@@ -79,3 +79,9 @@ ajax_neck_session_get:
     defaults: { _controller: SiteBundle:Ajax:SessionGet  }
     options:
         expose: true
+
+ajax_neck_fingering:
+    path:     /ajax_neck_fingering
+    defaults: { _controller: SiteBundle:Ajax:Fingering  }
+    options:
+        expose: true

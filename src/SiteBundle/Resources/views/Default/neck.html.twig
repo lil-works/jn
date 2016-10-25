@@ -47,6 +47,9 @@
             <ul>
                 <li><span class="textButton" id="searchScaleFromSelection">find scales containing selection</span></li>
                 <li><span class="textButton" id="clearSelection">clear selection</span></li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><span class="textButton" id="fingeringSelection">add as fingering</span></li>
+                {% endif %}
             </ul>
             <div id="currentSelection">
                 <h4>current selection</h4>

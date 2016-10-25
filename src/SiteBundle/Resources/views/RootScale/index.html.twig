@@ -35,6 +35,25 @@
                     new diagram("diagram",datas);
                 </script>
             </div>
+            <div >
+                {% if  matchingScales|length > 0 %}
+                    <h2>matching root scale ({{ matchingScales|length }})</h2>
+                    <ul class="neckResultsList">
+                        {% for matchingScale in matchingScales %}
+
+                            <li style="display: inline;margin: 5px;" >
+                                <a href="{{ path('site_rootscale_index',{ root:matchingScale.rootName , scale:matchingScale.scaleName }) }}">
+                                    {{ matchingScale.rootInfoTone }} {{ matchingScale.scaleName }}
+                                </a>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    No matching root scale ...
+                {% endif %}
+            </div>
 
         </div>
 
@@ -43,8 +62,9 @@
             <ul id="populatedScale">
                 {% for p in populatedScale %}
                     <li>
+                        <a  onclick="jnSynth.play('{{  p.digitAList }}','scale')"  href="#play">play</a>
                         <ul class="rootedPopulatedScale">
-                            <span onclick="jnSynth.play('{{  p.digitAList }}','scale')" class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
+                            <span class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
                             {% for tone in p.toneList|split(',') %}
                                 <li>{{ tone }}</li>
                             {% endfor %}
@@ -55,53 +75,44 @@
             </ul>
 
 
-
+            <h2>{{ instrument.name|capitalize }} neck for {{ westernSystem.name }} {{ scale.name  }}</h2>
             <div id="neck">
-                <div id="neckControls">
-                    <h3>Neck Controls:</h3>
-                    <ul>
-                        <li><label for="instrumentSelector">instrument</label><select id="instrumentSelector"></select></li>
-                        <li>
-                            <label for="soundSelector">sound</label>
-                            <select id="soundSelector">
-                                <option value="piano" selected="selected">piano</option>
-                                <option value="organ" >organ</option>
-                                <option value="acoustic" >acoustic</option>
-                                <option value="edm" >edm</option>
-                            </select>
-                        </li>
-                    </ul>
-                </div>
+
                 <div>
                     <canvas id="myNeck" width="500" height="200"></canvas>
                 </div>
             </div>
-
-            <div >
-                {% if  matchingScales|length > 0 %}
-                <h2>matching root scale ({{ matchingScales|length }})</h2>
-                <ul class="neckResultsList">
-                {% for matchingScale in matchingScales %}
-
-                    <li style="display: inline;margin: 5px;" >
-                            <a href="{{ path('site_rootscale_index',{ root:matchingScale.rootName , scale:matchingScale.scaleName }) }}">
-                                {{ matchingScale.rootInfoTone }} {{ matchingScale.scaleName }}
-                            </a>
-                    </li>
-
-                {% endfor %}
-                </ul>
-
+            <div>
+                {% if  fingerings|length > 0 %}
+                    <h2>fingerings ({{ fingerings|length }})</h2>
+                    <ul  class="fingeringList">
+                        {% for k,fingeringJSON in arrayOfFingeringJSON %}
+                            <li>
+                                <div class="fingeringContainer">
+                                    <canvas id="myFingering_{{ k }}" width="100" height="160"></canvas>
+                                </div>
+                                <script>
+                                    var f = fingering.init(
+                                            "myFingering_{{ k }}" ,
+                                            '{{ fingeringJSON }}',
+                                            '{{ instrumentJSON }}' );
+                                </script>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 {% else %}
-                    No matching root scale ...
+                    No matching fingering found ...
                 {% endif %}
             </div>
+
 
         </div>
         <script>
             var n = neck.init("myNeck" );
             n.displayedCase=14;
+            n.insertFingerings('{{ fingeringsJSON }}');
             n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
+
         </script>
     </div>
 {% endblock %}

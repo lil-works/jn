@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fingering list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Difficulty</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fingering in fingerings %}
+            <tr>
+                <td><a href="{{ path('admin_fingering_show', { 'id': fingering.id }) }}">{{ fingering.id }}</a></td>
+                <td>{{ fingering.description }}</td>
+                <td>{{ fingering.difficulty }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_fingering_show', { 'id': fingering.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_fingering_edit', { 'id': fingering.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_fingering_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -2,9 +2,10 @@
 {% block body %}
 <h1>{{ descriptor.name }}</h1>
 
-    <ul>Scales in other descriptor:
+    <h2>Select scales by descriptor:</h2>
+    <ul id="descriptorList">
         {% for scaleType in scaleTypes %}
-        <li style="display: inline">
+        <li>
             <a style="color: #{{ scaleType.color }}" href="{{ path('site_scale_descriptor_show' , {descriptor_name:scaleType.name} ) }}">{{ scaleType.name }}</a>
         </li>
         {% endfor %}

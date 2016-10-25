@@ -1,0 +1,179 @@
+var fingering = {
+
+    init:function(canvasId,datas,instrumentDatas){
+
+
+        Fingering = this;
+
+        this.datas = $.parseJSON(datas.replace(/&quot;/g, '\"'));
+        this.instrumentDatas = $.parseJSON(instrumentDatas.replace(/&quot;/g, '\"'));
+
+
+
+        this.canvasId = canvasId;
+        this.c = document.getElementById(canvasId);
+        this.width = this.c.width;
+        this.height = this.c.height;
+        this.ctx = this.c.getContext("2d");
+        this.formatedMatrice = [];
+        this.minX = 0;
+        $.each($.parseJSON(instrumentDatas.replace(/&quot;/g, '\"')), function (index, value) {
+            if(!Fingering.formatedMatrice[value.currentString]){
+                Fingering.formatedMatrice[value.currentString] = [];
+            }
+            if(!Fingering.formatedMatrice[value.currentString][value.currentCase]){
+                Fingering.formatedMatrice[value.currentString][value.currentCase] = [];
+            }
+            Fingering.formatedMatrice[value.currentString][value.currentCase]["case"] = value.currentCase;
+            Fingering.formatedMatrice[value.currentString][value.currentCase]["string"] = value.currentString;
+            Fingering.formatedMatrice[value.currentString][value.currentCase]["digitA"] = value.currentDigitA;
+            Fingering.formatedMatrice[value.currentString][value.currentCase]["digit"] = value.currentDigit;
+            Fingering.formatedMatrice[value.currentString][value.currentCase]["intervale"] = {};
+            Fingering.formatedMatrice[value.currentString][value.currentCase]["octave"] = value.currentOctave;
+        });
+
+
+
+        var aXList = this.datas.xList.split(",");
+        var aIntervaleList = this.datas.intervaleList.split(",");
+        var aDigitAList = this.datas.digitAList.split(",");
+        var aWsNameList = this.datas.wsNameList.split(",");
+        $.each(this.datas.yList.split(","), function (index, value) {
+
+
+            Fingering.formatedMatrice[value][aXList[index]]["intervale"]={interval:aIntervaleList[index],wsname:aWsNameList[index]}
+        });
+        this.maxX=Math.max.apply(Math,aXList); // 3
+        this.minX=Math.min.apply(Math,aXList); // 1
+        if(this.maxX-this.minX+1 > this.deltaMin){
+            this.deltaX = this.maxX-this.minX+1;
+        }else{
+            this.deltaX = this.deltaMin;
+        }
+
+        this.nbrString = Fingering.formatedMatrice.length;
+
+
+        this.draw();
+
+
+        $("#"+canvasId).click(function () {
+            jnSynth.play(aDigitAList, 'chord');
+        });
+
+        return this;
+
+    },
+    draw:function(){
+
+
+        this.ctx.clearRect(0, 0, this.width, this.height);
+
+
+
+
+
+
+        for(i=0;i<this.nbrString;i++){
+
+
+            this.osH =  20;
+            this.nMX = 5;
+            this.nMY = 5;
+            this.nW  =this.width - 2*this.nMX;
+            this.nH = (this.height - 2*this.nMY)-this.osH;
+            this.nX0 =  this.nMX;
+            this.nY0 = this.osH+this.nMY;
+            this.iX =  this.nW/this.nbrString;
+            this.iY =  this.nH/this.deltaX;
+
+
+            this.ctx.beginPath();
+            this.ctx.strokeStyle='gold';
+            this.ctx.lineWidth=1;
+
+            this.ctx.moveTo( this.nX0 + i * this.iX + this.iX/2, this.nY0);
+            this.ctx.lineTo( this.nX0 + i * this.iX + this.iX/2, this.nY0+this.nH )  ;
+            this.ctx.stroke();
+            // caseloop
+            for(j=0;j<this.deltaX+1;j++){
+
+                // if open string
+                if(this.minX == 0 || this.minX == 1){
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle='#CCC';
+                    this.ctx.lineWidth=0.1;
+                    this.ctx.moveTo(this.nX0 ,this.nY0 - 3  );
+                    this.ctx.lineTo(this.nX0 + this.nW  ,this.nY0 - 3)  ;
+                    this.ctx.stroke();
+                }
+
+
+                if(this.minX > 0){
+                    this.ctx.beginPath();
+                    this.ctx.fillStyle = "black";
+                    this.ctx.font="9px Arial";
+                    this.ctx.fillText(this.roman[this.minX],   0 , this.nY0+9);
+
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle='#444';
+                    this.ctx.lineWidth=.1;
+                    this.ctx.moveTo(this.nX0 ,this.nY0 + j * this.iY  );
+                    this.ctx.lineTo(this.nX0 + this.nW ,this.nY0 + j * this.iY)  ;
+                    this.ctx.stroke();
+
+
+                    if(this.formatedMatrice[i][j+this.minX]["intervale"].wsname){
+
+                        Fingering.ctx.fillStyle = "black";
+                        Fingering.ctx.fillRect(
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 2.5,
+                            Fingering.nY0 + j * Fingering.iY + Fingering.iY/2 - 2.5
+                            ,5,5);
+                    }
+                }else{
+                    this.ctx.beginPath();
+                    this.ctx.fillStyle = "black";
+                    this.ctx.font="9px Arial";
+                    this.ctx.fillText(this.roman[1],   0 , this.nY0+9);
+
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle='#444';
+                    this.ctx.lineWidth=.1;
+                    this.ctx.moveTo(this.nX0 ,this.nY0 + j * this.iY  );
+                    this.ctx.lineTo(this.nX0 + this.nW ,this.nY0 + j * this.iY)  ;
+                    this.ctx.stroke();
+
+
+                    if(this.formatedMatrice[i][j+this.minX]["intervale"].wsname){
+
+                        Fingering.ctx.fillStyle = "black";
+                        Fingering.ctx.fillRect(
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 2.5,
+                            Fingering.nY0 + (j-1) * Fingering.iY + Fingering.iY/2 - 2.5
+                            ,5,5);
+                    }
+                }
+            }
+
+
+
+
+
+        }
+
+
+
+
+
+    },
+    formatedMatrice:null,
+    nbrString:0,
+    minX:0,
+    minY:0,
+    deltaMin:3,
+    deltaX:5,
+    roman:['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVII','XIX','XX','XXI','XXII','XXIII','XXIV'],
+
+
+};
