@@ -84,7 +84,7 @@ doctrine:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: true
-    bundles:        [ AppBundle , SiteBundle ]
+    bundles:        [ AppBundle , SiteBundle , FOSUserBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

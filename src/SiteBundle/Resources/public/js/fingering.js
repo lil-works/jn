@@ -36,12 +36,13 @@ var fingering = {
 
         var aXList = this.datas.xList.split(",");
         var aIntervaleList = this.datas.intervaleList.split(",");
+
         var aDigitAList = this.datas.digitAList.split(",");
         var aWsNameList = this.datas.wsNameList.split(",");
         $.each(this.datas.yList.split(","), function (index, value) {
 
 
-            Fingering.formatedMatrice[value][aXList[index]]["intervale"]={interval:aIntervaleList[index],wsname:aWsNameList[index]}
+            Fingering.formatedMatrice[value][aXList[index]]["intervale"]={intervale:aIntervaleList[index],wsname:aWsNameList[index]}
         });
         this.maxX=Math.max.apply(Math,aXList); // 3
         this.minX=Math.min.apply(Math,aXList); // 1
@@ -76,6 +77,8 @@ var fingering = {
 
         for(i=0;i<this.nbrString;i++){
 
+
+            this.dotSize = 4;
 
             this.osH =  20;
             this.nMX = 5;
@@ -127,9 +130,22 @@ var fingering = {
 
                         Fingering.ctx.fillStyle = "black";
                         Fingering.ctx.fillRect(
-                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 2.5,
-                            Fingering.nY0 + j * Fingering.iY + Fingering.iY/2 - 2.5
-                            ,5,5);
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - Fingering.dotSize/2,
+                            Fingering.nY0 + j * Fingering.iY + Fingering.iY/2 - Fingering.dotSize/2
+                            ,Fingering.dotSize,Fingering.dotSize);
+
+
+                        Fingering.ctx.font="10px Georgia";
+                        Fingering.ctx.fillText(
+                            this.formatedMatrice[i][j+this.minX]["intervale"].wsname,
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 4,
+                            Fingering.nY0 + j * Fingering.iY + Fingering.iY/2 - 4
+                            );
+                        Fingering.ctx.fillText(
+                            this.formatedMatrice[i][j+this.minX]["intervale"].intervale,
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 4,
+                            Fingering.nY0 + j * Fingering.iY + Fingering.iY/2 + 11
+                        );
                     }
                 }else{
                     this.ctx.beginPath();
@@ -149,9 +165,20 @@ var fingering = {
 
                         Fingering.ctx.fillStyle = "black";
                         Fingering.ctx.fillRect(
-                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 2.5,
-                            Fingering.nY0 + (j-1) * Fingering.iY + Fingering.iY/2 - 2.5
-                            ,5,5);
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - Fingering.dotSize/2,
+                            Fingering.nY0 + (j-1) * Fingering.iY + Fingering.iY/2 - Fingering.dotSize/2
+                            ,Fingering.dotSize,Fingering.dotSize);
+                        Fingering.ctx.font="10px Georgia";
+                        Fingering.ctx.fillText(
+                            this.formatedMatrice[i][j+this.minX]["intervale"].wsname,
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 4,
+                            Fingering.nY0 + (j-1) * Fingering.iY + Fingering.iY/2 - 4
+                        );
+                        Fingering.ctx.fillText(
+                            this.formatedMatrice[i][j+this.minX]["intervale"].intervale,
+                            Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 4,
+                            Fingering.nY0 + (j-1) * Fingering.iY + Fingering.iY/2 +11
+                        );
                     }
                 }
             }

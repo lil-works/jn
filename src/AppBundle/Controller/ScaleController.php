@@ -47,7 +47,7 @@ class ScaleController extends Controller
             $em->persist($scale);
             $em->flush();
 
-            return $this->redirectToRoute('scale_show', array('id' => $scale->getId()));
+            return $this->redirectToRoute('admin_scale_show', array('id' => $scale->getId()));
         }
 
         return $this->render('scale/new.html.twig', array(
@@ -87,7 +87,7 @@ class ScaleController extends Controller
             $em->persist($scale);
             $em->flush();
 
-            return $this->redirectToRoute('scale_edit', array('id' => $scale->getId()));
+            return $this->redirectToRoute('admin_scale_edit', array('id' => $scale->getId()));
         }
 
         return $this->render('scale/edit.html.twig', array(
@@ -114,7 +114,7 @@ class ScaleController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('scale_index');
+        return $this->redirectToRoute('admin_scale_index');
     }
 
     /**
@@ -127,7 +127,7 @@ class ScaleController extends Controller
     private function createDeleteForm(Scale $scale)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('scale_delete', array('id' => $scale->getId())))
+            ->setAction($this->generateUrl('admin_scale_delete', array('id' => $scale->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

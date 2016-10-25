@@ -18,6 +18,10 @@
                 <td><a href="{{ path('admin_fingering_show', { 'id': fingering.id }) }}">{{ fingering.id }}</a></td>
                 <td>{{ fingering.description }}</td>
                 <td>{{ fingering.difficulty }}</td>
+                <td  style="margin: 10px;padding:10px">{% for finger in fingering.fingers %}
+                    <li>{{ finger.y }} • {{ finger.x }}</li>
+                {% endfor %}
+                <td>
                 <td>
                     <ul>
                         <li>

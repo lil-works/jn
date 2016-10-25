@@ -27,14 +27,14 @@
         <tbody>
         {% for scale in scales %}
             <tr>
-                <td><a href="{{ path('scale_show', { 'id': scale.id }) }}">{{ scale.id }}</a></td>
+                <td><a href="{{ path('admin_scale_show', { 'id': scale.id }) }}">{{ scale.id }}</a></td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('scale_show', { 'id': scale.id }) }}">show</a>
+                            <a href="{{ path('admin_scale_show', { 'id': scale.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('scale_edit', { 'id': scale.id }) }}">edit</a>
+                            <a href="{{ path('admin_scale_edit', { 'id': scale.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

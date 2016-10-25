@@ -17,6 +17,14 @@
                 <th>Difficulty</th>
                 <td>{{ fingering.difficulty }}</td>
             </tr>
+            <tr>
+                <th>finger</th>
+                <td>
+                    {% for finger in fingering.fingers %}
+                        <li>{{ finger.y }} • {{ finger.x }}</li>
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
