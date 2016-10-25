@@ -13,6 +13,7 @@ class SessionController extends Controller
 
     public function indexAction(Request $request)
     {
+
         $session = $request->getSession();
         $response = new Response();
 
