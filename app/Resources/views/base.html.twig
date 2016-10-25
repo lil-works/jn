@@ -4,10 +4,7 @@
 
     {{ sonata_seo_title() }}
     {{ sonata_seo_metadatas() }}
-    {#
-    <title>JoliNeck {% if page_title is defined %} • {{ page_title|capitalize }} {% endif %}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    #}
+
     {% image '@SiteBundle/Resources/public/images/favicon.ico' %}
     <link rel="icon" type="image/x-icon" href="{{ asset_url }}" />
     {% endimage %}

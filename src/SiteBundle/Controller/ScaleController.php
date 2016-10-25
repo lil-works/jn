@@ -61,7 +61,7 @@ class ScaleController extends Controller
 
         if(!$session->get('neck/instrumentId'))
             $session->set('neck/instrumentId',1);
-        
+
         $instrument = $em->getRepository('AppBundle:Instrument')->find($session->get('neck/instrumentId')) ;
         $matrice = $em->getRepository('AppBundle:Instrument')->getMatrice($instrument->getId());
 
@@ -74,6 +74,7 @@ class ScaleController extends Controller
         $matchingScales = $em->getRepository('AppBundle:Scale')->matchingScale($intervales,$scale->getId()) ;
 
         $westernSystem = $em->getRepository('AppBundle:WesternSystem')->findOneByName(array("name"=>"D","intervale"=>1));
+
         $fingerings = $em->getRepository('AppBundle:Fingering')->findFingeringByRootAndScale($instrument,$scale,$westernSystem) ;
 
         $seoPage = $this->container->get('sonata.seo.page');
@@ -81,6 +82,10 @@ class ScaleController extends Controller
             ->setTitle($seoPage->getTitle() . " • ".$scale->getName())
             ->addMeta('name', 'description', "details for ".$scale->getName())
         ;
+        $arrayOfFingeringJSON = array();
+        foreach($fingerings as $fingering){
+            array_push($arrayOfFingeringJSON,json_encode($fingering));
+        }
         return $this->render('SiteBundle:Scale:show.html.twig',array(
             "scale"=>$scale,
             "populatedScale"=>$populatedScale,
@@ -90,6 +95,7 @@ class ScaleController extends Controller
             "instrumentJSON"=>json_encode($matrice),
             "fingerings"=>$fingerings,
             "westernSystem"=>$westernSystem,
+            "arrayOfFingeringJSON"=>$arrayOfFingeringJSON,
             "instrument"=>$instrument,
         ));
     }

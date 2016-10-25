@@ -7,3 +7,6 @@ services:
     app.instrument_uploader:
         class: AppBundle\FileUploader
         arguments: ['%instrument_directory%']
+
+    app.my_custom_sitemap_service:
+        class: AppBundle\Iterator\SitemapIterator

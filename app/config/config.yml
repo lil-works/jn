@@ -104,6 +104,8 @@ fos_user:
     user_class: AppBundle\Entity\User
 
 sonata_seo:
+#    sitemap:
+#        enabled: true
     encoding:         UTF-8
     page:
         title:            JoliNeck
@@ -139,3 +141,5 @@ parameters:
     instrument_directory: '%kernel.root_dir%/../web/uploads/instrument'
 twig:
     exception_controller:  SiteBundle:Exception:showException
+
+

@@ -73,13 +73,16 @@
             {% if  fingerings|length > 0 %}
                 <h2>fingerings ({{ fingerings|length }})</h2>
                 <ul  class="fingeringList">
-                {% for fingering in fingerings %}
+                    {% for k,fingeringJSON in arrayOfFingeringJSON %}
                     <li>
                         <div class="fingeringContainer">
-                            <canvas id="myFingering_{{ fingering.fId }}" width="100" height="80"></canvas>
+                            <canvas id="myFingering_{{ k }}" width="100" height="160"></canvas>
                         </div>
                         <script>
-                                var f = fingering.init("myFingering_{{ fingering.fId }}" ,'{{ fingeringsJSON }}','{{ instrumentJSON }}' );
+                            var f = fingering.init(
+                                    "myFingering_{{ k }}" ,
+                                    '{{ fingeringJSON }}',
+                                    '{{ instrumentJSON }}' );
                         </script>
                     </li>
                 {% endfor %}
