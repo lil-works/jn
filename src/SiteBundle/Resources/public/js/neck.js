@@ -455,11 +455,13 @@ var neck = {
         });
 
         request.done(function( msg ) {
+
             $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function( index, value ) {
                 $('#instrumentSelector').append($('<option>', {
-                    value: value.id,
+                    value: value.id ,
                     text: value.name
                 }));
+
             });
 
             $('#instrumentSelector').val(Neck.instrumentId);

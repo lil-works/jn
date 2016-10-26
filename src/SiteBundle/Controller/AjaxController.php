@@ -127,16 +127,17 @@ class AjaxController extends Controller
         $em = $this->getDoctrine()->getManager();
         $fingering = new Fingering();
         $fingering->setDescription("From controller");
-        $em->persist($fingering);
+        //$em->persist($fingering);
         foreach( $request->get('i') as $k=>$v){
             $ssc = explode("_",$v);
             $finger = new FingeringFinger();
             $finger->setX($ssc[1]);
             $finger->setY($ssc[0]);
             $finger->setFingering($fingering);
-            $em->persist($finger);
+            $fingering->addFinger($finger);
+            //$em->persist($finger);
         }
-
+        $em->persist($fingering);
         $em->flush();
         $response = new Response();
         $response->setContent(json_encode($request->get('i')));

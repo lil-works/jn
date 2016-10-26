@@ -41,7 +41,7 @@ class WesternSystem
      */
     private $root;
     /**
-     * @ORM\ManyToOne(targetEntity="Digit")
+     * @ORM\ManyToOne(targetEntity="Digit" ,  inversedBy="westernSystems")
      * @ORM\JoinColumn(name="digit", referencedColumnName="id")
      */
     private $digit;
@@ -236,5 +236,29 @@ class WesternSystem
     public function getIntervale()
     {
         return $this->intervale;
+    }
+
+    /**
+     * Set relativePosition
+     *
+     * @param integer $relativePosition
+     *
+     * @return WesternSystem
+     */
+    public function setRelativePosition($relativePosition)
+    {
+        $this->relativePosition = $relativePosition;
+
+        return $this;
+    }
+
+    /**
+     * Get relativePosition
+     *
+     * @return integer
+     */
+    public function getRelativePosition()
+    {
+        return $this->relativePosition;
     }
 }

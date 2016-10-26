@@ -35,12 +35,26 @@ var fingering = {
 
 
         var aXList = this.datas.xList.split(",");
+        var aYList = this.datas.yList.split(",");
         var aIntervaleList = this.datas.intervaleList.split(",");
 
         var aDigitAList = this.datas.digitAList.split(",");
         var aWsNameList = this.datas.wsNameList.split(",");
-        $.each(this.datas.yList.split(","), function (index, value) {
 
+
+
+        var recipientsArray = aYList.sort();
+        var reportRecipientsDuplicate = [];
+        for (var i = 0; i < recipientsArray.length - 1; i++) {
+            if (recipientsArray[i + 1] == recipientsArray[i]) {
+                reportRecipientsDuplicate.push(recipientsArray[i]);
+            }
+        }
+        if(reportRecipientsDuplicate.length>0){
+            this.mode = "scale";
+        }
+
+        $.each(aYList, function (index, value) {
 
             Fingering.formatedMatrice[value][aXList[index]]["intervale"]={intervale:aIntervaleList[index],wsname:aWsNameList[index]}
         });
@@ -54,12 +68,12 @@ var fingering = {
 
         this.nbrString = Fingering.formatedMatrice.length;
 
-
+console.log(this.canvasId,this.datas);
         this.draw();
 
 
         $("#"+canvasId).click(function () {
-            jnSynth.play(aDigitAList, 'chord');
+            jnSynth.play(aDigitAList, Fingering.mode);
         });
 
         return this;
@@ -194,6 +208,7 @@ var fingering = {
 
 
     },
+    mode:"chord",
     formatedMatrice:null,
     nbrString:0,
     minX:0,

@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class FingeringType extends AbstractType
 {
@@ -17,6 +18,14 @@ class FingeringType extends AbstractType
         $builder
             ->add('description')
             ->add('difficulty')
+            ->add('fingers', EntityType::class, array(
+                'class'    => 'AppBundle:FingeringFinger' ,
+                'choice_label' => function ($obj) { return   "y:".$obj->getY()." x:".$obj->getX(); },
+                'required' => true ,
+                'mapped'=> true,
+                'expanded' => true ,
+                'multiple' => true
+            ))
         ;
     }
     

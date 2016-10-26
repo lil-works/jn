@@ -1,27 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <h1>{{ tune.title }} • {{ realbook.name }} </h1>
-    <div>
-        <a href="{{ path('site_realbook') }}">All</a>,
-        {% for i in range("A", "Z") %}
-            <a href="{{ path('site_realbook',{firstletter:i}) }}">{{ i }}</a>,
-        {% endfor %}
-        {% if versions|length > 0 %}
-        <ul>Other entries
-        {%  for version in versions %}
-        <li>
-            <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:version.realbookName }) }}">{{ tune.title }} • {{ version.indexName }}</a>
-        </li>
-        {%  endfor %}
-        </ul>
-        {% endif %}
-        <ul>
-        <li><a href="{{ path('site_realbook_download',{ tune:tune.title, realbook:realbook.name }) }}">download</a></li>
-        </ul>
-    </div>
+<h1>{{ tune.title }} • {{ realbook.name }} </h1>
+<div id="container1">
+    <div id="col1">
 
-    <div style="text-align: center;">
-        <img width="60%" src="{{ asset('bundles/site/realbooks/'~img) }}" />
+
+        <div>
+            <h2>Filter</h2>
+            <div id="realbook-tuneList">
+                <a href="{{ path('site_realbook') }}">All index</a><br>
+                {% for i in range("A", "Z") %}
+                    <a href="{{ path('site_realbook',{firstletter:i}) }}">{{ i }}</a>,
+                {% endfor %}
+            </div>
+
+            {% if versions|length > 0 %}
+                <div>
+                    <h3>Other version</h3>
+                    <ul>
+                        {%  for version in versions %}
+                            <li>
+                                <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:version.realbookName }) }}">{{ tune.title }} • {{ version.indexName }}</a>
+                            </li>
+                        {%  endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div>
+                <a href="{{ path('site_realbook_download',{ tune:tune.title, realbook:realbook.name }) }}">download</a>
+            </div>
+        </div>
+</div>
+    <div id="col2">
+
+
+        <div id="realbookImageContainer" >
+                <img width="500px" src="{{ asset('bundles/site/realbooks/'~img) }}" />
+            
+        </div>
     </div>
+</div>
 {% endblock %}

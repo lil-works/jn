@@ -41,7 +41,7 @@ class WesternSystem
      */
     private $root;
     /**
-     * @ORM\ManyToOne(targetEntity="Digit")
+     * @ORM\ManyToOne(targetEntity="Digit" ,  inversedBy="westernSystems")
      * @ORM\JoinColumn(name="digit", referencedColumnName="id")
      */
     private $digit;

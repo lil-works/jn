@@ -96,11 +96,12 @@ SELECT
     }
 
     public function ajaxFindAll(){
-        $sql = "SELECT id,name FROM instrument";
+        $sql = "SELECT id,name,icon FROM instrument";
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
         $rsm->addScalarResult('id', 'id');
         $rsm->addScalarResult('name', 'name');
+        $rsm->addScalarResult('icon', 'icon');
 
         $query = $em->createNativeQuery($sql, $rsm);
         return $query->getScalarResult();

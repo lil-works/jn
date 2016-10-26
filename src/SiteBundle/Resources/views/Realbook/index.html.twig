@@ -1,28 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-  <h1>Realbooks</h1>
-    <div id="realbook-tuneList">
-        <a href="{{ path('site_realbook') }}">All</a>,
-        {% for i in range("A", "Z") %}
-            <a href="{{ path('site_realbook',{firstletter:i}) }}">{{ i }}</a>,
-        {% endfor %}
-    <ul>Tune list:
-    {% for tune in tunes %}
-        <li>
-            <ul>{{ tune.title }}:
-               {% for tune_realbook in tune.tunesrealbooks  %}
-                    {%  set realbook = tune_realbook.realbook %}
-                    <li>
-                        <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:realbook.name }) }}">
-                            {{ realbook.name }}</a>
-                    </li>
-                {% endfor %}
-
-            </ul>
-        </li>
-    {% endfor %}
-    </ul>
+    <h1>Realbooks</h1>
+    <div id="container1">
+    <div id="col1">
+        <h2>Filter</h2>
+        <div id="realbook-tuneList">
+            <a href="{{ path('site_realbook') }}">All index</a><br>
+            {% for i in range("A", "Z") %}
+                <a href="{{ path('site_realbook',{firstletter:i}) }}">{{ i }}</a>,
+            {% endfor %}
+        </div>
     </div>
+    <div id="col2">
+        <div>
+            <h2>Tune list:</h2>
+        <ul>
+            {% for tune in tunes %}
+                <li>
+                    <ul>{{ tune.title }}:
+                        {% for tune_realbook in tune.tunesrealbooks  %}
+                            {%  set realbook = tune_realbook.realbook %}
+                            <li>
+                                <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:realbook.name }) }}">
+                                    {{ realbook.name }}</a>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}

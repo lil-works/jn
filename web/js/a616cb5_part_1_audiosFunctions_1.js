@@ -19,7 +19,7 @@ var jnSynth = {
         if(!$.isArray(digits)){
             digits = digits.split(",");
         }
-        //digits.sort();
+        digits.sort();
         $.each(digits,function(key,value){
             if(key>0){
                 if(digits[key-1]>value){

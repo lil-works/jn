@@ -36,7 +36,7 @@ class FingeringFinger
     private $x;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Fingering", inversedBy="strings")
+     * @ORM\ManyToOne(targetEntity="Fingering", inversedBy="fingers")
      * @ORM\JoinColumn(name="fingering", referencedColumnName="id", nullable=FALSE)
      */
     protected $fingering;

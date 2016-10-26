@@ -71,7 +71,9 @@
     <div id="content">
         {% block body %}
         {% endblock %}
-        <div id="contentQuote">{{ render(controller("SiteBundle:Quote:Random")) }}</div>
+        <div id="contentQuote">
+            {{ render(controller("SiteBundle:Quote:Random")) }}
+        </div>
     </div>
     <div class="push"></div>
 </div>

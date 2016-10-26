@@ -1,6 +1,6 @@
 app_instrument:
     resource: "@AppBundle/Resources/config/routing/instrument.yml"
-    prefix:   /instrument
+    prefix:   /admin/instrument
 
 app_scale:
     resource: "@AppBundle/Resources/config/routing/scale.yml"
@@ -29,6 +29,7 @@ app_quote:
 app_admin_scale:
     resource: "@AppBundle/Resources/config/routing/scale.yml"
     prefix:   /admin/scale
+
 app_fingering:
     resource: "@AppBundle/Resources/config/routing/fingering.yml"
     prefix:   /admin/fingering
