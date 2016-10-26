@@ -242,10 +242,10 @@ var neck = {
                     for(i=0;i<nameList.length;i++){
                         datas[deltaList[i]] = ["C",nameList[i],colorList[i]];
                     }
-                    var site_scale_show = Routing.generate('site_scale_show',{scale_name:value.scaleName});
+                    var site_rootscale_index = Routing.generate('site_rootscale_index',{scale:value.scaleName,root:value.wsName});
 
 
-                    html="<li><div class=\"titleInVignette\">"+value.rootInfoTone+" <a href=\""+site_scale_show+"\">"+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas></div></li>";
+                    html="<li><div class=\"titleInVignette\"><a href=\""+site_rootscale_index+"\">"+value.rootInfoTone+" "+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas></div></li>";
                     $("#neckResultsList").append(html);
 
                     new diagram("root_"+value.rootInfoTone+"_scale_"+value.scaleId,datas);
@@ -616,7 +616,7 @@ var neck = {
             Neck.ctx.fillStyle = "rgba(10, 10, 10, 1)";
             Neck.ctx.fillRect( caseW/2 + c*caseW,Neck.height-s*caseH -caseH/2 - 3,6,6);
 
-            $("#currentSelectionUl").append("<li>string "+s+",case "+c+" "+Neck.formatedMatrice[s][c].infoTone+Neck.formatedMatrice[s][c].octave+"</li>");
+            $("#currentSelectionUl").append("<li>[ "+s+"-"+c+" ]"+Neck.formatedMatrice[s][c].infoTone+Neck.formatedMatrice[s][c].octave+"</li>");
         });
 
         if(Neck.scBasket.length>0){

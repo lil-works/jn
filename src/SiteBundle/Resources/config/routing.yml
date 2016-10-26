@@ -37,6 +37,8 @@ site_rootscale_index:
     path: /root/{root}/scale/{scale}
     defaults: { _controller: "SiteBundle:RootScale:index" , root: C }
     methods:  [GET, POST]
+    options:
+            expose: true
 
 
 ajax_neck_instrument:

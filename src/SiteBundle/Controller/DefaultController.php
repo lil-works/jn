@@ -17,6 +17,8 @@ class DefaultController extends Controller
     }
     public function neckAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $session = $request->getSession();
 
         $seoPage = $this->container->get('sonata.seo.page');
@@ -26,6 +28,7 @@ class DefaultController extends Controller
         ;
         return $this->render('SiteBundle:Default:neck.html.twig',array(
             "instrumentId"=>$session->get('neck/instrumentId')
+
         ));
     }
 }

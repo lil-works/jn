@@ -21,6 +21,7 @@ SELECT
 			(SELECT group_concat(descriptor_id) from scales_descriptors sd  where sd.scale_id=scaleId) as descriptorListId,
             (SELECT group_concat(d.name) from scales_descriptors sd left join descriptor d on d.id = sd.descriptor_id where sd.scale_id=scaleId) as descriptorListName,
             scaleId,scaleName,rootInfoTone,
+            (SELECT name from western_system where intervale=1 and digit=rootDigitId order by abs(relativePosition) limit 1) as wsName,
             COUNT(i.id) AS toneCount,
             GROUP_CONCAT(i.name) AS intervaleNameList,
             GROUP_CONCAT(i.delta) AS intervaleDeltaList,
@@ -29,7 +30,7 @@ SELECT
             (SELECT
                 scaleId,
                     scaleName,
-                    rootInfoTone,
+                    rootInfoTone,rootDigitId,
                     ROUND(COUNT(rootInfoTone) / totTone, 1) AS scoreInternal,
                     ROUND(COUNT(rootInfoTone) / :digitsCount, 1) AS scoreExternal
             FROM
@@ -38,6 +39,7 @@ SELECT
                     s1.name AS scaleName,
                     d1.infoTone AS rootInfoTone,
                     d1.value AS rootDigit,
+                    d1.id AS rootDigitId,
                     (SELECT
                             value
                         FROM
@@ -68,6 +70,7 @@ SELECT
 
 
         GROUP BY scaleId , rootInfoTone
+        order by toneCount
 ;
 
 
@@ -84,6 +87,7 @@ SELECT
         $rsm->addScalarResult('scaleId', 'scaleId');
         $rsm->addScalarResult('scaleName', 'scaleName');
         $rsm->addScalarResult('rootInfoTone', 'rootInfoTone');
+        $rsm->addScalarResult('wsName', 'wsName');
         $rsm->addScalarResult('intervaleNameList', 'intervaleNameList');
         $rsm->addScalarResult('intervaleDeltaList', 'intervaleDeltaList');
         $rsm->addScalarResult('intervaleColorList', 'intervaleColorList');
