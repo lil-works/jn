@@ -39,15 +39,6 @@
             </ul>
         </div>
 
-        {#
-        <div id="login">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a href="{{ path('fos_user_security_logout') }}">logout</a>
-            {% else %}
-                {{ render(controller("FOSUserBundle:Security:login")) }}
-            {% endif %}
-        </div>
-        #}
         {% if app.environment == "prod"  %}
             <div id="add">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

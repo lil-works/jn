@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>JoliNeck</h1>
+<h1><h1>{% if instrument.icon is not null %}
+    <img class="instrumentIcon" src="{{ asset('uploads/instrument/' ~ instrument.icon) }}">
+        {% endif %}JoliNeck</h1>
 
 <div id="neck">
     <div id="controls" class="inline">

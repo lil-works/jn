@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AjaxController extends Controller
 {
 
+
     public function sessionGetAction(Request $request)
     {
         $session = $request->getSession();

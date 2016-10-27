@@ -15,6 +15,15 @@
                         </li>
                     {% endfor %}
                 </ul>
+
+                <ul style="margin: 10px;padding: 10px;text-align: justify; border-bottom: .1px solid #ccc">
+                    Other roots:
+                    {% for root in roots|root %}
+                        <li style="list-style: none;display: inline;">
+                            <a href="{{ path('site_rootscale_index',{root:root.name,scale:scale.name}) }}">{{ root.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
 
             <div>
@@ -58,7 +67,7 @@
         </div>
 
         <div id="col2">
-            <h2>Scale in key:</h2>
+            <h2>Scale in key off {{ westernSystem.name }}:</h2>
             <ul id="populatedScale">
                 {% for p in populatedScale %}
                     <li>
@@ -75,9 +84,32 @@
             </ul>
 
 
-            <h2>{{ instrument.name|capitalize }} neck for {{ westernSystem.name }} {{ scale.name  }}</h2>
-            <div id="neck">
 
+            <h2>
+                {% if instrument.icon is not null %}
+                    <img class="instrumentIcon" src="{{ asset('uploads/instrument/' ~ instrument.icon) }}">
+                {% endif %}
+                {{ instrument.name|capitalize }} neck for {{ westernSystem.name }} {{ scale.name  }}</h2>
+
+            <div id="neck">
+                <ul>
+                    <li><label for="instrumentSelector">instrument</label><select id="instrumentSelector"></select></li>
+                    <li>case {<span id="nbrCasesReset" class="textButton">5</span>|<span id="nbrCasesAdd" class="textButton">+</span>|<span id="nbrCasesRemove" class="textButton">-</span>|<span id="nbrCasesMax" class="textButton">all</span>}</li>
+                    {# <li>first {<span class="textButton">0</span>|<span class="textButton"><</span>|<span class="textButton">></span>}</li>#}
+                    <li><label for="inlaysSelector">show inlays</label>
+                        <input type="checkbox" id="inlaysSelector" checked></li>
+                    <li><label for="fretNumSelector">show fret number</label>
+                        <input type="checkbox" id="fretNumSelector" checked></li>
+                    <li>
+                        <label for="soundSelector">sound</label>
+                        <select id="soundSelector">
+                            <option value="piano" selected="selected">piano</option>
+                            <option value="organ" >organ</option>
+                            <option value="acoustic" >acoustic</option>
+                            <option value="edm" >edm</option>
+                        </select>
+                    </li>
+                </ul>
                 <div>
                     <canvas id="myNeck" width="500" height="200"></canvas>
                 </div>

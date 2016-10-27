@@ -25,8 +25,10 @@
 <body onload="jnSynth.init();">
 <div class="wrapper">
     <div id="header">
+
+
         {% image '@SiteBundle/Resources/public/images/jolineck.png' %}
-        <a href="{{ path('site_homepage') }}">
+        <a href="{{  path('site_homepage' ) }}">
             <img id="logo" src="{{ asset_url }}" alt="Logo" />
         </a>
         {% endimage %}
@@ -39,16 +41,6 @@
             </ul>
         </div>
 
-        {#
-        <div id="login">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a href="{{ path('fos_user_security_logout') }}">logout</a>
-            {% else %}
-                {{ render(controller("FOSUserBundle:Security:login")) }}
-            {% endif %}
-        </div>
-        #}
-
         <div id="add">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- jolineck -->
@@ -60,7 +52,7 @@
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
-        
+
         <div id="contentSession">
             {{ render(controller("SiteBundle:Session:Index")) }}
         </div>

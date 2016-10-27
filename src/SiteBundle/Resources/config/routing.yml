@@ -1,6 +1,7 @@
 site_homepage:
     path:     /
-    defaults: { _controller: SiteBundle:Default:neck }
+    defaults: { _controller: SiteBundle:Default:neck  }
+
 site_neck:
     path: /
     defaults: { _controller: SiteBundle:Default:neck }
@@ -34,13 +35,18 @@ site_scale_descriptor_show:
     defaults: { _controller: "SiteBundle:Scale:descriptor" }
 
 site_rootscale_index:
-    path: /root/{root}/scale/{scale}
+    path: /scale-root/{scale}/{root}
     defaults: { _controller: "SiteBundle:RootScale:index" , root: C }
     methods:  [GET, POST]
     options:
             expose: true
 
 
+site_instrument_set:
+    path:     /site_instrument_set/{instrument}
+    defaults: { _controller: SiteBundle:Default:sessionSet ,instrument: 1  }
+    options:
+        expose: true
 ajax_neck_instrument:
     path:     /ajax_neck_instrument
     defaults: { _controller: SiteBundle:Ajax:instrument }

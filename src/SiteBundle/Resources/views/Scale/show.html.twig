@@ -64,7 +64,9 @@
     <div id="col2">
 
 
-        <h2>{{ instrument.name|capitalize }} neck for {{ westernSystem.name }} {{ scale.name  }}</h2>
+        <h2>{% if instrument.icon is not null %}
+                <img class="instrumentIcon" src="{{ asset('uploads/instrument/' ~ instrument.icon) }}">
+            {% endif %}{{ instrument.name|capitalize }} neck for {{ westernSystem.name }} {{ scale.name  }}</h2>
         <div>
             <canvas id="myNeck" width="500" height="200"></canvas>
         </div>

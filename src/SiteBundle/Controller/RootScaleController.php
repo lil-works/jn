@@ -27,6 +27,7 @@ class RootScaleController extends Controller
 
         $instrument = $em->getRepository('AppBundle:Instrument')->find($session->get('neck/instrumentId')) ;
         $matrice = $em->getRepository('AppBundle:Instrument')->getMatrice($instrument->getId());
+        $roots = $em->getRepository('AppBundle:WesternSystem')->findByIntervale(1);
 
         $populatedScale = $em->getRepository('AppBundle:Scale')->westernPopulateRootScale($scale->getId(),$westernSystem->getName()) ;
         $intervales = array();
@@ -60,7 +61,8 @@ class RootScaleController extends Controller
             "instrumentJSON"=>json_encode($matrice),
             "fingerings"=>$fingerings,
             "arrayOfFingeringJSON"=>$arrayOfFingeringJSON,
-            "instrument"=>$instrument
+            "instrument"=>$instrument,
+            "roots"=>$roots
         ));
     }
 

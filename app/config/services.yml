@@ -4,6 +4,12 @@ parameters:
 #    parameter_name: value
 
 services:
+    app.twig_extension:
+        class: AppBundle\Twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
     app.instrument_uploader:
         class: AppBundle\FileUploader
         arguments: ['%instrument_directory%']

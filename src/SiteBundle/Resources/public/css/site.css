@@ -384,3 +384,6 @@ padding: 10px;
 #currentRootScaleSelectionUl li:before{content: " • "}
 #currentSelectionUl  li{display: inline;}
 #currentSelectionUl li:before{content: " • "}
+.instrumentIcon{
+    width: 28px;
+}

@@ -150,11 +150,12 @@ var neck = {
         });
         this.fillInstrumentSelector();
         $( "#instrumentSelector" ).change(function() {
-            Neck.getInstrument(this.value);
+            //Neck.getInstrument(this.value);
             Neck.instrumentId =this.value;
             Neck.storeSession();
+            location.reload();
 
-            Neck.insertAllRootScale();
+            //Neck.insertAllRootScale();
         });
 
         $('#soundSelector').val(Neck.sound);
@@ -401,7 +402,6 @@ var neck = {
     },
 
     storeSession:function(){
-        console.log("Neck.instrumentId=",Neck.instrumentId);
         var ajax_neck_session_set = Routing.generate('ajax_neck_session_set');
         var request = $.ajax({
             url: ajax_neck_session_set,
