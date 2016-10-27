@@ -3,34 +3,36 @@
 
 {% block body %}
   <h1>Scales</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type="submit" value="Search in scales" />
-    {{ form_end(form) }}
 
+    <div>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Search in scales" />
+        {{ form_end(form) }}
+    </div>
+    <div>
+        <h2>finded scales ({{ scales|length }}):</h2>
+        <ul id="neckResultsList">
+        {% for scale in scales %}
+            <li >
+                <div class="titleInVignette">
+                <a href="{{ path('site_scale_show',{ scale_name:scale.name }) }}">{{ scale.name }}</a>
+                </div>
+                <div>
+                    <canvas id="d{{ scale.id }}" width="180" height="180"></canvas>
+                </div>
+                <script>
+                    var datas = {};
+                    {% for intervale in scale.intervales %}
+                    datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                    {% endfor %}
+                    new diagram("d{{ scale.id  }}",datas);
+                </script>
 
-    <h2>finded scales ({{ scales|length }}):</h2>
-    <ul id="neckResultsList">
-    {% for scale in scales %}
-        <li >
-            <div class="titleInVignette">
-            <a href="{{ path('site_scale_show',{ scale_name:scale.name }) }}">{{ scale.name }}</a>
-            </div>
-            <div>
-                <canvas id="d{{ scale.id }}" width="180" height="180"></canvas>
-            </div>
-            <script>
-                var datas = {};
-                {% for intervale in scale.intervales %}
-                datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
-                {% endfor %}
-                new diagram("d{{ scale.id  }}",datas);
-            </script>
-
-        </li>
-    {% endfor %}
-    </ul>
-
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 
     <script>
         {% if search is null %}

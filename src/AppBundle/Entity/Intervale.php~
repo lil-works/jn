@@ -29,6 +29,20 @@ class Intervale
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="roman", type="string" , nullable=true)
+     */
+    private $roman;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="distance", type="integer" , nullable=true)
+     */
+    private $distance;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="delta", type="integer" , nullable=false)
@@ -169,5 +183,29 @@ class Intervale
     public function getColor()
     {
         return $this->color;
+    }
+
+    /**
+     * Set roman
+     *
+     * @param string $roman
+     *
+     * @return Intervale
+     */
+    public function setRoman($roman)
+    {
+        $this->roman = $roman;
+
+        return $this;
+    }
+
+    /**
+     * Get roman
+     *
+     * @return string
+     */
+    public function getRoman()
+    {
+        return $this->roman;
     }
 }

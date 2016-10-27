@@ -38,7 +38,7 @@ class Fingering
     /**
      * @ORM\OneToMany(targetEntity="FingeringFinger", mappedBy="fingering", cascade={ "persist","remove"}, orphanRemoval=TRUE)
      * @Assert\NotBlank
-     * @AppAssert\UniqueInCollectionValidator
+     * @AppAssert\UniqueInCollection
      */
     protected $fingers;
 
