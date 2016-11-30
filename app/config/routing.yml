@@ -1,3 +1,7 @@
+basket:
+    resource: "@BasketBundle/Resources/config/routing.yml"
+    prefix:   /
+
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,6 +9,7 @@ site:
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
+    options: { i18n: false }
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
@@ -12,3 +17,9 @@ fos_js_routing:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+_bazinga_jstranslation:
+    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
+
+liip_theme:
+    resource: "@LiipThemeBundle/Resources/config/routing.xml"
+    prefix: /theme

@@ -1,0 +1,48 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Rhythmmaterial</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rhythmMaterial.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ rhythmMaterial.name }}</td>
+            </tr>
+            <tr>
+                <th>Nominator</th>
+                <td>{{ rhythmMaterial.nominator }}</td>
+            </tr>
+            <tr>
+                <th>Denominator</th>
+                <td>{{ rhythmMaterial.denominator }}</td>
+            </tr>
+            <tr>
+                <th>Symbol</th>
+                <td>{{ rhythmMaterial.symbol }}</td>
+            </tr>
+            <tr>
+                <th>Symbolsilence</th>
+                <td>{{ rhythmMaterial.symbolSilence }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rhythmmaterial_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('rhythmmaterial_edit', { 'id': rhythmMaterial.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

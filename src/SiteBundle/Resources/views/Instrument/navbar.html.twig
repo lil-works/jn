@@ -1,0 +1,72 @@
+{% if currentRouteParams.instrumentId is not defined %}
+    {% set currentRouteParams = currentRouteParams|merge({'instrumentId': 0}) %}
+    {% set currentRouteParams = currentRouteParams|merge({'instrumentName': 'any'}) %}
+{% endif %}
+{% if currentRouteParams.descriptorId is not defined %}
+    {% set currentRouteParams = currentRouteParams|merge({'descriptorId': 'null'}) %}
+    {% set currentRouteParams = currentRouteParams|merge({'descriptorName': 'null'}) %}
+{% endif %}
+{% if currentRouteParams.root is not defined %}
+    {% set currentRouteParams = currentRouteParams|merge({'root': 'null'}) %}
+{% endif %}
+{% if currentRouteParams.scale is not defined %}
+    {% set currentRouteParams = currentRouteParams|merge({'scale': 'null'}) %}
+{% endif %}
+{% if currentRouteParams.fingeringId is not defined %}
+    {% set currentRouteParams = currentRouteParams|merge({'fingeringId': 'null'}) %}
+{% endif %}
+{% if currentRouteParams.fBasketId is not defined %}
+    {% set currentRouteParams = currentRouteParams|merge({'fBasketId': 'null'}) %}
+{% endif %}
+{% if currentRouteParams.username is not defined %}
+    {% set currentRouteParams = currentRouteParams|merge({'username': 'null'}) %}
+{% endif %}
+
+{% for family in instrumentFamilies %}
+    <li class="dropdown-header">
+        {% if family.icon is not null %}
+            <img style="width: 16px;"  src="{{ asset('uploads/instrument/' ~ family.icon) }}">
+        {% endif %}
+        {{ family.name|trans|capitalize }}
+    </li>
+
+    {% for instrument in family.instruments %}
+        <li>
+            <a href="{{ path(currentRoute, {
+            "_locale": "en" ,
+            'fingeringId':currentRouteParams.fingeringId,
+            'instrumentId':instrument.id,
+            'instrumentName':instrument.name|trans,
+            'scale':currentRouteParams.scale|trans,
+            'root':currentRouteParams.root|trans,
+            'descriptorId':currentRouteParams.descriptorId,
+            'descriptorName':currentRouteParams.descriptorName|trans,
+            'fBasketId':currentRouteParams.fBasketId,
+            'username':currentRouteParams.username
+            }) }}">
+                {{ instrument.name|trans|capitalize }}</a></li>
+    {% endfor %}
+
+    <li role="separator" class="divider"></li>
+{% endfor %}
+
+
+
+<li>
+    <a href="{{ path(currentRoute, {
+    "_locale": "en" ,
+    'fingeringId':currentRouteParams.fingeringId,
+    'instrumentId':0,
+    'instrumentName':'any',
+    'scale':currentRouteParams.scale|trans,
+    'root':currentRouteParams.root|trans,
+    'descriptorId':currentRouteParams.descriptorId,
+    'descriptorName':currentRouteParams.descriptorName|trans,
+    'fBasketId':currentRouteParams.fBasketId,
+    'username':currentRouteParams.username
+    }) }}">
+        {% image '@SiteBundle/Resources/public/images/no-instrument-64.png' %}
+        <img style="width: 16px;" src="{{ asset_url }}" />
+        {% endimage %}
+
+        {% trans %}no neck selected{% endtrans %}</a></li>

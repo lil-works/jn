@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
     <h1>Intervale creation</h1>
@@ -9,10 +9,10 @@
         </li>
     </ul>
 
-    {{ form_start(form) }}
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <input type="submit" value="Create Interval" />
+        {{ form_end(form) }}
 
 
 {% endblock %}

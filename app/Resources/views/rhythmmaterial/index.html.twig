@@ -1,0 +1,47 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Rhythmmaterials list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Nominator</th>
+                <th>Denominator</th>
+                <th>Symbol</th>
+                <th>Symbolsilence</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rhythmMaterial in rhythmMaterials %}
+            <tr>
+                <td><a href="{{ path('rhythmmaterial_show', { 'id': rhythmMaterial.id }) }}">{{ rhythmMaterial.id }}</a></td>
+                <td>{{ rhythmMaterial.name }}</td>
+                <td>{{ rhythmMaterial.nominator }}</td>
+                <td>{{ rhythmMaterial.denominator }}</td>
+                <td>{{ rhythmMaterial.symbol }}</td>
+                <td>{{ rhythmMaterial.symbolSilence }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('rhythmmaterial_show', { 'id': rhythmMaterial.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rhythmmaterial_edit', { 'id': rhythmMaterial.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rhythmmaterial_new') }}">Create a new rhythmMaterial</a>
+        </li>
+    </ul>
+{% endblock %}

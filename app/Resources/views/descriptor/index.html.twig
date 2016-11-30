@@ -1,13 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
     <h1>Descriptor list</h1>
 
-    <table>
+    <table class="table myPaginator">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Color</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('descriptor_show', { 'id': descriptor.id }) }}">{{ descriptor.id }}</a></td>
                 <td>{{ descriptor.name }}</td>
+                <td  style="background-color: #{{  descriptor.color  }};">{{ descriptor.color }}</td>
                 <td>
                     <ul>
                         <li>

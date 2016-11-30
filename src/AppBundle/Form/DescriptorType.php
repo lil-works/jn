@@ -16,7 +16,7 @@ class DescriptorType extends AbstractType
     {
         $builder
             ->add('name')
-            //->add('scales')
+            ->add('color')
         ;
     }
     

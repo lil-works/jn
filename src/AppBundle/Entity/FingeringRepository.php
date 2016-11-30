@@ -12,6 +12,41 @@ class FingeringRepository extends \Doctrine\ORM\EntityRepository
 {
 
 
+    public function findAllAvailablesForInstrument($instrumentId){
+        $sql="
+
+
+SELECT
+    f.id AS fId,group_concat(fg.y) as yList, group_concat(fg.x) as xList,
+    MAX(fg.y) - MIN(fg.y) AS minString,
+    (SELECT
+            COUNT(istr.id)
+        FROM
+            instrument i
+                LEFT JOIN
+            instrument_string istr ON istr.instrument = :instrumentId
+        WHERE
+            istr.instrument = i.id) instrumentString
+FROM
+    fingering f
+        LEFT JOIN
+    fingering_finger fg ON fg.fingering = f.id
+GROUP BY f.id
+HAVING minString IS NOT NULL and minString<=instrumentString
+";
+
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('fId', 'fId');
+        $rsm->addScalarResult('xList', 'xList');
+        $rsm->addScalarResult('yList', 'yList');
+
+
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        $query->setParameter("instrumentId",$instrumentId);
+        return $query->getScalarResult();
+    }
     public function findOneByFingers($arrayOfFinger){
 
         $xList =  $yList = array();
@@ -20,11 +55,14 @@ class FingeringRepository extends \Doctrine\ORM\EntityRepository
             array_push($xList,$finger->getX());
         }
 
-        $sql = "SELECT f.id as fId,group_concat(ff.x order by y) as xList,group_concat(ff.y order by y) as yList
+        $sql = "
+SELECT f.id as fId,count(ff.x) as countx,count(ff.y) as county, group_concat(ff.x order by y) as xList,group_concat(ff.y order by y) as yList
         FROM fingering AS f
         LEFT JOIN fingering_finger ff ON ff.fingering = f.id
         group by f.id
-        Having xList = :xList and yList = :yList
+        Having
+        (xList IN (:xList) and yList IN  (:yList)) AND countx=:countx AND county=:county
+
         LIMIT 1";
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
@@ -35,6 +73,8 @@ class FingeringRepository extends \Doctrine\ORM\EntityRepository
         $query = $em->createNativeQuery($sql, $rsm);
         $query->setParameter("xList",implode(',',$xList));
         $query->setParameter("yList",implode(',',$yList));
+        $query->setParameter("countx",count($xList));
+        $query->setParameter("county",count($yList));
 
         $result = $query->getScalarResult();
         if(count($result)>0){
@@ -50,16 +90,15 @@ class FingeringRepository extends \Doctrine\ORM\EntityRepository
 
         $sql = "
 
-
-
-		 SELECT
+SELECT
+    'no' AS openstring,
+    if(arpeggio=1,'yes','no') as arpeggio,
+    GROUP_CONCAT(DISTINCT (iName) ORDER BY iDelta),
     fId,
-    (SELECT
-            COUNT(*)
-        FROM
-            scales_intervales
-        WHERE
-            scale_id = sId),
+    IF(COUNT(currentIntervale) = (SELECT COUNT(*) FROM scales_intervales WHERE scale_id = sId),'yes','no') AS exact,
+    (SELECT COUNT(*) FROM scales_intervales WHERE scale_id = sId) AS scaleCount,
+    COUNT(currentIntervale) AS fingeringCount,
+
     IF((SELECT
                 COUNT(id)
             FROM
@@ -82,12 +121,26 @@ class FingeringRepository extends \Doctrine\ORM\EntityRepository
                 'ok',
                 NULL)),
         NULL) AS ok,
-    GROUP_CONCAT(x ORDER BY y) as xList,
-    GROUP_CONCAT(y ORDER BY y) as yList,
-    GROUP_CONCAT(currentDigitA order by y) as digitAList,
-    GROUP_CONCAT(currentIntervale order by y) as intervaleList,
-    GROUP_CONCAT(wsName order by y) as wsNameList
 
+    MIN(x) AS minX,
+    MAX(x) AS maxX,
+    MAX(x) - MIN(x) AS rangeX,
+    MIN(y) AS minY,
+    MAX(y) AS maxY,
+    MAX(y) - MIN(y) AS rangeY,
+
+    GROUP_CONCAT(x
+        ORDER BY y) AS xList,
+    GROUP_CONCAT(y
+        ORDER BY y) AS yList,
+    GROUP_CONCAT(currentDigitA
+        ORDER BY y) AS digitAList,
+    GROUP_CONCAT(currentIntervale
+        ORDER BY y) AS intervaleList,
+    GROUP_CONCAT(color
+        ORDER BY y) AS intervaleColorList,
+    GROUP_CONCAT(wsName
+        ORDER BY y) AS wsNameList
 FROM
     (SELECT
         instrument.id AS instrumentId,
@@ -95,6 +148,9 @@ FROM
             oneCase AS currentCase,
             instrument_string.pos AS currentString,
             s.id AS sId,
+            si.intervale_id AS siId,
+            i.name AS iName,
+            i.delta AS iDelta,
             ROUND(((12 * octave + (d2.value + oneCase)) - MOD((d2.value + oneCase), 12)) / 12) AS currentOctave,
             (12 * octave + (d2.value + oneCase)) AS currentDigitA,
             MOD((d2.value + oneCase), 12) AS currentDigit,
@@ -105,6 +161,7 @@ FROM
                 WHERE
                     value = MOD((d2.value + oneCase), 12)) AS currentInfoTone,
             IF(d.value = MOD((d2.value + oneCase), 12), i.name, NULL) AS currentIntervale,
+            i.color AS color,
             (SELECT
                     ws2.name
                 FROM
@@ -116,7 +173,7 @@ FROM
     FROM
         instrument instrument
     LEFT JOIN instrument_string instrument_string ON instrument_string.instrument = instrument.id
-    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 ) virtualCase
+    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) virtualCase ON oneCase BETWEEN :minX AND :maxX
     LEFT JOIN digit d2 ON instrument_string.digit = d2.id
     LEFT JOIN scale s ON s.id = :scaleId
     LEFT JOIN scales_intervales si ON s.id = si.scale_id
@@ -134,20 +191,356 @@ FROM
         LEFT JOIN
     (SELECT
         f.id AS fId,
+        f.arpeggio as arpeggio,
             y + stringLoop AS y,
-            x + caseLoop - 1 AS x,
+            IF(x = 0, x, x + caseLoop - 1) AS x,
             caseLoop AS caseLoopIndex,
             stringLoop AS stringLoopIndex
     FROM
         fingering f
     LEFT JOIN fingering_finger ff ON ff.fingering = f.id
-    JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4) rStringLoop
-    JOIN (SELECT 0 caseLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17) rCaseLoop
+    LEFT JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3) rStringLoop ON stringLoop BETWEEN :minY AND :maxY
+    JOIN (SELECT 0 caseLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) rCaseLoop ON caseLoop BETWEEN :minX AND :maxX
+    WHERE
+     IF( ISNULL(:arpeggio)  ,1 ,f.arpeggio = :arpeggio ) AND
+        f.id IN (SELECT
+                id
+            FROM
+                (SELECT
+                MIN(x) AS os, f.id
+            FROM
+                fingering f
+            LEFT JOIN fingering_finger ff ON f.id = ff.fingering
+            GROUP BY f.id) r3
+            WHERE
+                os = 1)
     GROUP BY f.id , ff.id , stringLoopIndex , caseLoopIndex) r2 ON r2.x = r1.currentCase
         AND r2.y = r1.currentString
 GROUP BY fId , stringLoopIndex , caseLoopIndex
-HAVING fId IS NOT NULL AND ok IS NOT NULL
+HAVING
+    minX >= :minX AND maxX <= :maxX
+    AND minY >= :minY AND maxY <= :maxY
+    AND IF(:openstring  , 1 ,openstring = :openstring )
+    AND IF(:exact   ,1 ,exact = :exact )
+    AND fId IS NOT NULL AND ok IS NOT NULL
+
+
+
+UNION
+
+
+
+
+
+
+SELECT
+	    'yes' AS openstring,
+	    if(arpeggio=1,'yes','no') as arpeggio,
+    GROUP_CONCAT(DISTINCT (iName) ORDER BY iDelta),
+    fId,
+    IF(COUNT(currentIntervale) = (SELECT COUNT(*) FROM scales_intervales WHERE scale_id = sId),'yes','no') AS exact,
+    (SELECT COUNT(*) FROM scales_intervales WHERE scale_id = sId) AS scaleCount,
+    COUNT(currentIntervale) AS fingeringCount,
+
+    IF((SELECT
+                COUNT(id)
+            FROM
+                fingering_finger
+            WHERE
+                fingering = fId) = COUNT(x),
+        IF((SELECT
+                    COUNT(*)
+                FROM
+                    scales_intervales
+                WHERE
+                    scale_id = sId) > COUNT(x),
+            NULL,
+            IF(COUNT(DISTINCT (currentDigit)) = (SELECT
+                        COUNT(*)
+                    FROM
+                        scales_intervales
+                    WHERE
+                        scale_id = sId),
+                'ok',
+                NULL)),
+        NULL) AS ok,
+
+    MIN(x) AS minX,
+    MAX(x) AS maxX,
+    MAX(x) - MIN(x) AS rangeX,
+    MIN(y) AS minY,
+    MAX(y) AS maxY,
+    MAX(y) - MIN(y) AS rangeY,
+
+    GROUP_CONCAT(x
+        ORDER BY y) AS xList,
+    GROUP_CONCAT(y
+        ORDER BY y) AS yList,
+    GROUP_CONCAT(currentDigitA
+        ORDER BY y) AS digitAList,
+    GROUP_CONCAT(currentIntervale
+        ORDER BY y) AS intervaleList,
+    GROUP_CONCAT(color
+        ORDER BY y) AS intervaleColorList,
+    GROUP_CONCAT(wsName
+        ORDER BY y) AS wsNameList
+FROM
+    (SELECT
+        instrument.id AS instrumentId,
+            instrument.name AS instrumentName,
+            oneCase AS currentCase,
+            instrument_string.pos AS currentString,
+            s.id AS sId,
+            si.intervale_id AS siId,
+            i.name AS iName,
+            i.delta AS iDelta,
+            ROUND(((12 * octave + (d2.value + oneCase)) - MOD((d2.value + oneCase), 12)) / 12) AS currentOctave,
+            (12 * octave + (d2.value + oneCase)) AS currentDigitA,
+            MOD((d2.value + oneCase), 12) AS currentDigit,
+            (SELECT
+                    infoTone
+                FROM
+                    digit
+                WHERE
+                    value = MOD((d2.value + oneCase), 12)) AS currentInfoTone,
+            IF(d.value = MOD((d2.value + oneCase), 12), i.name, NULL) AS currentIntervale,
+            i.color AS color,
+            (SELECT
+                    ws2.name
+                FROM
+                    western_system ws2
+                WHERE
+                    ws.id = ws2.root
+                        AND ws2.intervale = i.id
+                LIMIT 1) AS wsName
+    FROM
+        instrument instrument
+    LEFT JOIN instrument_string instrument_string ON instrument_string.instrument = instrument.id
+    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) virtualCase ON oneCase BETWEEN :minX AND :maxX
+    LEFT JOIN digit d2 ON instrument_string.digit = d2.id
+    LEFT JOIN scale s ON s.id = :scaleId
+    LEFT JOIN scales_intervales si ON s.id = si.scale_id
+    LEFT JOIN intervale i ON i.id = si.intervale_id
+    LEFT JOIN western_system ws ON ws.name = :wsName AND ws.intervale = 1
+    LEFT JOIN digit d ON d.value = MOD((SELECT
+            value
+        FROM
+            digit
+        WHERE
+            id = ws.digit) + i.delta, 12)
+    WHERE
+        instrument.id = :instrumentId
+    HAVING currentIntervale IS NOT NULL) r1
+        LEFT JOIN
+    (SELECT
+        f.id AS fId,
+        f.arpeggio as arpeggio,
+            y + stringLoop AS y,
+            IF(x = 0 OR x = 1, 0, x + caseLoop - 1) AS x,
+            caseLoop AS caseLoopIndex,
+            stringLoop AS stringLoopIndex
+    FROM
+        fingering f
+    LEFT JOIN fingering_finger ff ON ff.fingering = f.id AND f.arpeggio != 1
+    LEFT JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3) rStringLoop ON stringLoop BETWEEN :minY AND :maxY
+    JOIN (SELECT 0 caseLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) rCaseLoop ON caseLoop BETWEEN :minX AND :maxX
+    WHERE
+     IF( ISNULL(:arpeggio)   ,1 ,f.arpeggio = :arpeggio ) AND
+        f.id IN (SELECT
+                fId
+            FROM
+                (SELECT
+                GROUP_CONCAT(y, '|', IF(x = 0 OR x = 1, 0, 1)
+                        ORDER BY y) AS osPrint,
+                    SUBSTRING_INDEX(GROUP_CONCAT(f.id), ',', 1) AS fId
+            FROM
+                fingering f
+            LEFT JOIN fingering_finger ff ON f.id = ff.fingering
+            GROUP BY f.id) rUniqueOsPrint)
+            AND f.id IN (SELECT
+                id
+            FROM
+                (SELECT
+                MIN(x) AS os, f.id
+            FROM
+                fingering f
+            LEFT JOIN fingering_finger ff ON f.id = ff.fingering
+            GROUP BY f.id) r3
+            WHERE
+                os = 1)
+    GROUP BY f.id , ff.id , stringLoopIndex , caseLoopIndex) r2 ON r2.x = r1.currentCase
+        AND r2.y = r1.currentString
+GROUP BY fId , stringLoopIndex , caseLoopIndex
+HAVING
+    minX >= :minX AND maxX <= :maxX
+    AND minY >= :minY AND maxY <= :maxY
+    AND IF(:openstring  , 1 ,openstring = :openstring )
+    AND IF(:exact   ,1 ,exact = :exact )
+    AND fId IS NOT NULL AND ok IS NOT NULL
+
+
+
+
+
+
+
+
+
+UNION
+
+SELECT
+       'yes' AS openstring,
+       if(arpeggio=1,'yes','no') as arpeggio,
+    GROUP_CONCAT(DISTINCT (iName) ORDER BY iDelta),
+    fId,
+    IF(COUNT(currentIntervale) = (SELECT COUNT(*) FROM scales_intervales WHERE scale_id = sId),'yes','no') AS exact,
+    (SELECT COUNT(*) FROM scales_intervales WHERE scale_id = sId) AS scaleCount,
+    COUNT(currentIntervale) AS fingeringCount,
+
+    IF((SELECT
+                COUNT(id)
+            FROM
+                fingering_finger
+            WHERE
+                fingering = fId) = COUNT(x),
+        IF((SELECT
+                    COUNT(*)
+                FROM
+                    scales_intervales
+                WHERE
+                    scale_id = sId) > COUNT(x),
+            NULL,
+            IF(COUNT(DISTINCT (currentDigit)) = (SELECT
+                        COUNT(*)
+                    FROM
+                        scales_intervales
+                    WHERE
+                        scale_id = sId),
+                'ok',
+                NULL)),
+        NULL) AS ok,
+
+    MIN(x) AS minX,
+    MAX(x) AS maxX,
+    MAX(x) - MIN(x) AS rangeX,
+    MIN(y) AS minY,
+    MAX(y) AS maxY,
+    MAX(y) - MIN(y) AS rangeY,
+
+    GROUP_CONCAT(x
+        ORDER BY y) AS xList,
+    GROUP_CONCAT(y
+        ORDER BY y) AS yList,
+    GROUP_CONCAT(currentDigitA
+        ORDER BY y) AS digitAList,
+    GROUP_CONCAT(currentIntervale
+        ORDER BY y) AS intervaleList,
+    GROUP_CONCAT(color
+        ORDER BY y) AS intervaleColorList,
+    GROUP_CONCAT(wsName
+        ORDER BY y) AS wsNameList
+FROM
+    (SELECT
+        instrument.id AS instrumentId,
+            instrument.name AS instrumentName,
+            oneCase AS currentCase,
+            instrument_string.pos AS currentString,
+            s.id AS sId,
+			si.intervale_id AS siId,
+            i.name AS iName,
+            i.delta AS iDelta,
+            ROUND(((12 * octave + (d2.value + oneCase)) - MOD((d2.value + oneCase), 12)) / 12) AS currentOctave,
+            (12 * octave + (d2.value + oneCase)) AS currentDigitA,
+            MOD((d2.value + oneCase), 12) AS currentDigit,
+            (SELECT
+                    infoTone
+                FROM
+                    digit
+                WHERE
+                    value = MOD((d2.value + oneCase), 12)) AS currentInfoTone,
+            IF(d.value = MOD((d2.value + oneCase), 12), i.name, NULL) AS currentIntervale,
+            i.color as color,
+            (SELECT
+                    ws2.name
+                FROM
+                    western_system ws2
+                WHERE
+                    ws.id = ws2.root
+                        AND ws2.intervale = i.id
+                LIMIT 1) AS wsName
+    FROM
+        instrument instrument
+    LEFT JOIN instrument_string instrument_string ON instrument_string.instrument = instrument.id
+    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) virtualCase ON oneCase BETWEEN :minX AND :maxX
+    LEFT JOIN digit d2 ON instrument_string.digit = d2.id
+    LEFT JOIN scale s ON s.id = :scaleId
+    LEFT JOIN scales_intervales si ON s.id = si.scale_id
+    LEFT JOIN intervale i ON i.id = si.intervale_id
+    LEFT JOIN western_system ws ON ws.name = :wsName AND ws.intervale = 1
+    LEFT JOIN digit d ON d.value = MOD((SELECT
+            value
+        FROM
+            digit
+        WHERE
+            id = ws.digit) + i.delta, 12)
+    WHERE
+        instrument.id = :instrumentId
+    HAVING currentIntervale IS NOT NULL) r1
+        LEFT JOIN
+    (SELECT
+        f.id AS fId,
+        f.arpeggio as arpeggio,
+            y + stringLoop AS y,
+            IF(x=0 , 0 ,x + caseLoop  ) AS x,
+            caseLoop AS caseLoopIndex,
+            stringLoop AS stringLoopIndex
+    FROM
+        fingering f
+    LEFT JOIN fingering_finger ff ON ff.fingering = f.id AND f.arpeggio != 1
+    LEFT JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3) rStringLoop ON stringLoop BETWEEN :minY AND :maxY
+    JOIN (SELECT 0 caseLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) rCaseLoop ON caseLoop BETWEEN :minX AND :maxX
+
+
+        WHERE  IF( ISNULL(:arpeggio) ,1 ,f.arpeggio = :arpeggio ) AND f.id IN (
+        SELECT fId FROM(SELECT
+            GROUP_CONCAT(y, '|', IF(x = 0 , 0, 1)
+                ORDER BY y) AS osPrint,
+            SUBSTRING_INDEX(GROUP_CONCAT(f.id),',',1) AS fId
+        FROM
+            fingering f
+                LEFT JOIN
+            fingering_finger ff ON f.id = ff.fingering
+        GROUP BY f.id
+        )rUniqueOsPrint)
+
+        AND  f.id IN
+(SELECT id from
+(SELECT
+   min(x) as os , f.id
+FROM
+    fingering f
+        LEFT JOIN
+    fingering_finger ff ON f.id = ff.fingering
+GROUP BY f.id)r3
+where os = 0
+)
+
+
+
+    GROUP BY f.id , ff.id , stringLoopIndex , caseLoopIndex) r2 ON r2.x = r1.currentCase
+        AND r2.y = r1.currentString
+
+GROUP BY fId , stringLoopIndex , caseLoopIndex
+HAVING
+    minX >= :minX AND maxX <= :maxX
+    AND minY >= :minY AND maxY <= :maxY
+    AND IF(:openstring  , 1 ,openstring = :openstring )
+    AND IF(:exact   ,1 ,exact = :exact )
+
+    AND fId IS NOT NULL AND ok IS NOT NULL
+
         ";
+
 
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
@@ -156,13 +549,424 @@ HAVING fId IS NOT NULL AND ok IS NOT NULL
         $rsm->addScalarResult('xList', 'xList');
         $rsm->addScalarResult('digitAList', 'digitAList');
         $rsm->addScalarResult('intervaleList', 'intervaleList');
+        $rsm->addScalarResult('intervaleColorList', 'intervaleColorList');
         $rsm->addScalarResult('wsNameList', 'wsNameList');
+        $rsm->addScalarResult('wsIdList', 'wsIdList');
 
 
         $query = $em->createNativeQuery($sql, $rsm);
         $query->setParameter("scaleId",$scale->getId());
         $query->setParameter("instrumentId",$instrument->getId());
         $query->setParameter("wsName",$westernScale->getName());
+        $query->setParameter("exact",1);
+        $query->setParameter("openstring",1);
+        $query->setParameter("arpeggio",0);
+        $query->setParameter("minX",0);
+        $query->setParameter("maxX",12);
+        $query->setParameter("minY",0);
+        $query->setParameter("maxY",5);
+        return $query->getScalarResult();
+    }
+
+    public function findRootScaleForInstrument($fingering,$instrument){
+        $sql="
+
+
+SELECT
+stringLoop,
+ scaleId, scaleName,rootDigit,rootInfoTone,
+count(ff.y+stringLoop ) as usedFinger,
+group_concat(ff.y+stringLoop  order by ff.y) as yList,
+group_concat(ff.x+caseLoop order by ff.y) as xList,
+group_concat((currentDigitA )  order by ff.y) as digitAList,
+group_concat(rootedWName order by ff.y) as wsNameList,
+group_concat(rootedWIntervalName order by ff.y) as intervaleList,
+group_concat(rootedWIntervalColor order by ff.y) as intervaleColorList,
+IF(count(distinct(rootedIntervalDigitId) ) = (select count(*) from scales_intervales where scale_id = scaleId),1,null) as scaleCheck,
+0 as isOpenString
+
+ FROM
+(
+
+SELECT
+
+        rootDigit.id AS rootDigit,
+        rootDigit.infoTone AS rootInfoTone,
+        s.name as scaleName,
+        w.digit as rootedIntervalDigitId,
+        (select name from intervale where id = w.intervale) as rootedWIntervalName,
+        (select color from intervale where id = w.intervale) as rootedWIntervalColor,
+        w.name as rootedWName,
+        (12 * istr.octave + ( (select value from digit where id=istr.digit ) + oneCase )) AS currentDigitA,
+        s.id AS scaleId,
+        istr.pos AS y,
+        oneCase AS x
+    FROM
+        instrument i
+    LEFT JOIN instrument_string istr ON istr.instrument = i.id
+    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13) virtualCase
+
+    LEFT JOIN digit d ON d.id = (SELECT
+            id
+        FROM
+            digit
+        WHERE
+            value = MOD((SELECT
+                    value
+                FROM
+                    digit
+                WHERE
+                    id = istr.digit) + oneCase, 12))
+
+
+
+    JOIN scale s
+    LEFT JOIN scales_intervales si ON si.scale_id = s.id
+    JOIN digit rootDigit
+    LEFT JOIN western_system w ON w.root = (SELECT
+            id
+        FROM
+            western_system
+        WHERE
+            intervale = 1 AND digit = rootDigit.id
+        LIMIT 1)
+        AND w.intervale = si.intervale_id
+    WHERE
+
+        i.id = :instrumentId AND d.id = w.digit
+            AND (SELECT
+                COUNT(*)
+            FROM
+                scales_intervales
+            WHERE
+                scale_id = s.id) <= :fingeringFingerCount
+
+
+ )R1
+
+    LEFT JOIN
+		fingering f on f.id=:fingeringId
+	LEFT JOIN
+		fingering_finger ff on f.id=ff.fingering AND (
+
+		SELECT if( count(*)-1 = 0 , 0,1 )  from
+            (SELECT
+                x AS os
+            FROM
+                fingering f
+            LEFT JOIN fingering_finger ff ON f.id = ff.fingering
+             where ff.x=0
+            GROUP BY f.id
+
+            HAVING  f.id = :fingeringId
+
+            union
+            select 1)rIsOS2)  = 0
+
+
+	JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3  ) virtualStringForFingering
+	JOIN (SELECT -1 caseLoop UNION SELECT 0  UNION SELECT 1  UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 ) virtualCaseForFingering
+
+
+    WHERE ff.x+caseLoop = R1.x AND ff.y+stringLoop = R1.y
+    group by rootDigit,scaleId,stringLoop,caseLoop
+
+    HAVING usedFinger = :fingeringFingerCount and scaleCheck IS NOT NULL
+
+
+
+
+UNION
+
+
+
+SELECT
+stringLoop,
+ scaleId, scaleName,rootDigit,rootInfoTone,
+count(ff.y+stringLoop ) as usedFinger,
+group_concat(ff.y+stringLoop  order by ff.y) as yList,
+group_concat(if( ff.x=1 or ff.x=0 , 0,ff.x+caseLoop )  order by ff.y) as xList,
+group_concat((currentDigitA )  order by ff.y) as digitAList,
+group_concat(rootedWName order by ff.y) as wsNameList,
+group_concat(rootedWIntervalName order by ff.y) as intervaleList,
+group_concat(rootedWIntervalColor order by ff.y) as intervaleColorList,
+IF(count(distinct(rootedIntervalDigitId) ) = (select count(*) from scales_intervales where scale_id = scaleId),1,null) as scaleCheck,
+1 as isOpenString
+
+ FROM
+(
+
+SELECT
+        rootDigit.id AS rootDigit,
+        rootDigit.infoTone AS rootInfoTone,
+        s.name as scaleName,
+        w.digit as rootedIntervalDigitId,
+        (select name from intervale where id = w.intervale) as rootedWIntervalName,
+        (select color from intervale where id = w.intervale) as rootedWIntervalColor,
+        w.name as rootedWName,
+        (12 * istr.octave + ( (select value from digit where id=istr.digit ) + oneCase )) AS currentDigitA,
+        s.id AS scaleId,
+        istr.pos AS y,
+        oneCase AS x
+    FROM
+        instrument i
+    LEFT JOIN instrument_string istr ON istr.instrument = i.id
+    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13) virtualCase
+
+    LEFT JOIN digit d ON d.id = (SELECT
+            id
+        FROM
+            digit
+        WHERE
+            value = MOD((SELECT
+                    value
+                FROM
+                    digit
+                WHERE
+                    id = istr.digit) + oneCase, 12))
+
+
+
+    JOIN scale s
+    LEFT JOIN scales_intervales si ON si.scale_id = s.id
+    JOIN digit rootDigit
+    LEFT JOIN western_system w ON w.root = (SELECT
+            id
+        FROM
+            western_system
+        WHERE
+            intervale = 1 AND digit = rootDigit.id
+        LIMIT 1)
+        AND w.intervale = si.intervale_id
+    WHERE
+
+        i.id = :instrumentId  AND d.id = w.digit
+            AND (SELECT
+                COUNT(*)
+            FROM
+                scales_intervales
+            WHERE
+                scale_id = s.id) <= :fingeringFingerCount
+
+
+ )R1
+
+    LEFT JOIN
+            fingering f on f.id=:fingeringId AND f.arpeggio != 1 AND (
+
+		SELECT if( count(*)-1 = 0 , 0,1 )  from
+            (SELECT
+                x AS os
+            FROM
+                fingering f
+            LEFT JOIN fingering_finger ff ON f.id = ff.fingering
+             where ff.x=0
+            GROUP BY f.id
+
+            HAVING  f.id = :fingeringId
+
+            union
+            select 1)rIsOS2)  = 0
+
+
+	LEFT JOIN
+		fingering_finger ff on f.id=ff.fingering
+	JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3  ) virtualStringForFingering
+	JOIN (SELECT -1 caseLoop UNION SELECT 0  UNION SELECT 1  UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 ) virtualCaseForFingering
+
+
+    WHERE IF( ff.x=1 or ff.x=0,0 ,ff.x+caseLoop) = R1.x AND ff.y+stringLoop = R1.y
+    group by rootDigit,scaleId,stringLoop,caseLoop
+
+    HAVING usedFinger = :fingeringFingerCount and scaleCheck IS NOT NULL
+
+
+
+
+
+    UNION
+
+
+
+SELECT
+stringLoop,
+ scaleId, scaleName,rootDigit,rootInfoTone,
+count(ff.y+stringLoop ) as usedFinger,
+group_concat(ff.y+stringLoop  order by ff.y) as yList,
+group_concat(if(  ff.x=0 , 0,ff.x+caseLoop )  order by ff.y) as xList,
+group_concat((currentDigitA )  order by ff.y) as digitAList,
+group_concat(rootedWName order by ff.y) as wsNameList,
+group_concat(rootedWIntervalName order by ff.y) as intervaleList,
+group_concat(rootedWIntervalColor order by ff.y) as intervaleColorList,
+IF(count(distinct(rootedIntervalDigitId) ) = (select count(*) from scales_intervales where scale_id = scaleId),1,null) as scaleCheck,
+1 as isOpenString
+
+ FROM
+(
+
+SELECT
+        rootDigit.id AS rootDigit,
+        rootDigit.infoTone AS rootInfoTone,
+        s.name as scaleName,
+        w.digit as rootedIntervalDigitId,
+        (select name from intervale where id = w.intervale) as rootedWIntervalName,
+        (select color from intervale where id = w.intervale) as rootedWIntervalColor,
+        w.name as rootedWName,
+        (12 * istr.octave + ( (select value from digit where id=istr.digit ) + oneCase )) AS currentDigitA,
+        s.id AS scaleId,
+        istr.pos AS y,
+        oneCase AS x
+    FROM
+        instrument i
+    LEFT JOIN instrument_string istr ON istr.instrument = i.id
+    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13) virtualCase
+
+    LEFT JOIN digit d ON d.id = (SELECT
+            id
+        FROM
+            digit
+        WHERE
+            value = MOD((SELECT
+                    value
+                FROM
+                    digit
+                WHERE
+                    id = istr.digit) + oneCase, 12))
+
+
+
+    JOIN scale s
+    LEFT JOIN scales_intervales si ON si.scale_id = s.id
+    JOIN digit rootDigit
+    LEFT JOIN western_system w ON w.root = (SELECT
+            id
+        FROM
+            western_system
+        WHERE
+            intervale = 1 AND digit = rootDigit.id
+        LIMIT 1)
+        AND w.intervale = si.intervale_id
+    WHERE
+
+        i.id = :instrumentId  AND d.id = w.digit
+            AND (SELECT
+                COUNT(*)
+            FROM
+                scales_intervales
+            WHERE
+                scale_id = s.id) <= :fingeringFingerCount
+
+
+ )R1
+
+    LEFT JOIN
+		fingering f on f.id=:fingeringId AND f.arpeggio != 1 AND (
+                       SELECT if( count(*)-1 = 0 , 0,1 )  from
+            (SELECT
+                x AS os
+            FROM
+                fingering f
+            LEFT JOIN fingering_finger ff ON f.id = ff.fingering
+             where ff.x=0
+            GROUP BY f.id
+
+            HAVING  f.id = :fingeringId
+
+            union
+            select 1)rIsOS2)  = 1
+
+	LEFT JOIN
+		fingering_finger ff on f.id=ff.fingering
+	JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3  ) virtualStringForFingering
+	JOIN (SELECT 0 caseLoop   UNION SELECT 1  UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 ) virtualCaseForFingering
+
+
+    WHERE IF(  ff.x=0,0 ,ff.x+caseLoop) = R1.x AND ff.y+stringLoop = R1.y
+    group by rootDigit,scaleId,stringLoop,caseLoop
+
+    HAVING usedFinger = :fingeringFingerCount and scaleCheck IS NOT NULL
+";
+
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('scaleId', 'scaleId');
+        $rsm->addScalarResult('scaleName', 'scaleName');
+        $rsm->addScalarResult('stringLoop', 'stringLoop');
+        $rsm->addScalarResult('rootInfoTone', 'rootInfoTone');
+        $rsm->addScalarResult('yList', 'yList');
+        $rsm->addScalarResult('xList', 'xList');
+        $rsm->addScalarResult('digitAList', 'digitAList');
+        $rsm->addScalarResult('intervaleList', 'intervaleList');
+        $rsm->addScalarResult('intervaleColorList', 'intervaleColorList');
+        $rsm->addScalarResult('wsNameList', 'wsNameList');
+
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        $query->setParameter("instrumentId",$instrument->getId());
+
+        $query->setParameter("fingeringFingerCount",count($fingering->getFingers()));
+        $query->setParameter("fingeringId",$fingering->getId());
+        return $query->getScalarResult();
+    }
+
+    public function findOneByFingersFromNeck($fingers,$fingersIncremented=array()){
+
+        $sql = "
+
+SELECT
+                fId
+
+            FROM
+                (SELECT
+                    oneCase,f.id as fId, CONCAT(ff.y, '_', ff.x) AS y_x
+                FROM
+                    fingering f
+                LEFT JOIN fingering_finger ff ON ff.fingering = f.id
+                JOIN (SELECT -1 oneCase ) virtualCase
+                HAVING y_x IN (:sc) ) r1
+            GROUP BY fId,oneCase
+            HAVING COUNT(y_x) =  (SELECT count(*) FROM fingering_finger WHERE fingering = fId ) AND COUNT(y_x) = :countFinger
+
+            UNION
+
+
+            SELECT
+                fId
+
+            FROM
+                (SELECT
+                    oneCase,f.id as fId, CONCAT(ff.y, '_', IF(ff.x=0,0,ff.x+oneCase)) AS y_x
+                FROM
+                    fingering f
+                LEFT JOIN fingering_finger ff ON ff.fingering = f.id
+                JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13) virtualCase
+                HAVING IF( :haveIncremented= 'yes' ,y_x IN (:scIncremented) ,0 )) r1
+            GROUP BY fId,oneCase
+            HAVING COUNT(y_x) =  (SELECT count(*) FROM fingering_finger WHERE fingering = fId ) AND COUNT(y_x) = :countFinger
+
+            LIMIT 1
+
+        ;
+
+
+
+        ";
+
+
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('fId', 'fId');
+        $query = $em->createNativeQuery($sql, $rsm);
+        $query->setParameter("countFinger",count($fingers));
+        if(count($fingersIncremented) == count($fingers)) {
+            $query->setParameter("haveIncremented",'yes');
+            $query->setParameter("scIncremented", $fingersIncremented);
+        }else{
+            $query->setParameter("haveIncremented",0);
+            $query->setParameter("scIncremented",'no');
+        }
+
+        $query->setParameter("sc",$fingers);
         return $query->getScalarResult();
     }
 }

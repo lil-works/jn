@@ -35,6 +35,21 @@ class FingeringFinger
      */
     private $x;
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="lh", type="integer" , nullable=true)
+     */
+    private $lh;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rh", type="integer" , nullable=true)
+     */
+    private $rh;
+
     /**
      * @ORM\ManyToOne(targetEntity="Fingering", inversedBy="fingers")
      * @ORM\JoinColumn(name="fingering", referencedColumnName="id", nullable=FALSE)
@@ -123,5 +138,53 @@ class FingeringFinger
     public function getFingering()
     {
         return $this->fingering;
+    }
+
+    /**
+     * Set lh
+     *
+     * @param integer $lh
+     *
+     * @return FingeringFinger
+     */
+    public function setLh($lh)
+    {
+        $this->lh = $lh;
+
+        return $this;
+    }
+
+    /**
+     * Get lh
+     *
+     * @return integer
+     */
+    public function getLh()
+    {
+        return $this->lh;
+    }
+
+    /**
+     * Set rh
+     *
+     * @param integer $rh
+     *
+     * @return FingeringFinger
+     */
+    public function setRh($rh)
+    {
+        $this->rh = $rh;
+
+        return $this;
+    }
+
+    /**
+     * Get rh
+     *
+     * @return integer
+     */
+    public function getRh()
+    {
+        return $this->rh;
     }
 }

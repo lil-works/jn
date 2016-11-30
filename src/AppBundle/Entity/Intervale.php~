@@ -208,4 +208,28 @@ class Intervale
     {
         return $this->roman;
     }
+
+    /**
+     * Set distance
+     *
+     * @param integer $distance
+     *
+     * @return Intervale
+     */
+    public function setDistance($distance)
+    {
+        $this->distance = $distance;
+
+        return $this;
+    }
+
+    /**
+     * Get distance
+     *
+     * @return integer
+     */
+    public function getDistance()
+    {
+        return $this->distance;
+    }
 }

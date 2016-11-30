@@ -11,9 +11,12 @@ use AppBundle\Validator\Constraints as AppAssert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Entity\FingeringRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Fingering
 {
+
+
     /**
      * @var integer
      *
@@ -25,7 +28,7 @@ class Fingering
     /**
      * @var description
      *
-     * @ORM\Column(name="description", type="string" , nullable=false)
+     * @ORM\Column(name="description", type="string" , nullable=true)
      */
     private $description;
     /**
@@ -34,6 +37,13 @@ class Fingering
      * @ORM\Column(name="difficulty", type="float" , nullable=true)
      */
     private $difficulty;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="arpeggio", type="boolean" , nullable=true)
+     */
+    private $arpeggio;
 
     /**
      * @ORM\OneToMany(targetEntity="FingeringFinger", mappedBy="fingering", cascade={ "persist","remove"}, orphanRemoval=TRUE)
@@ -140,5 +150,29 @@ class Fingering
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set arpeggio
+     *
+     * @param boolean $arpeggio
+     *
+     * @return Fingering
+     */
+    public function setArpeggio($arpeggio)
+    {
+        $this->arpeggio = $arpeggio;
+
+        return $this;
+    }
+
+    /**
+     * Get arpeggio
+     *
+     * @return boolean
+     */
+    public function getArpeggio()
+    {
+        return $this->arpeggio;
     }
 }

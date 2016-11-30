@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet"
+          href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+
+
+    {% stylesheets '@SiteBundle/Resources/public/css/sticky-footer-navbar.css' filter="cssrewrite"  %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('assets/vendor/bootstrap/docs/assets/js/ie8-responsive-file-warning.js') }}"></script>
+    <![endif]-->
+    <script src="{{ asset('assets/vendor/bootstrap/docs/assets/js/ie-emulation-modes-warning.js') }}"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_metadatas() }}
+
+    {% image '@SiteBundle/Resources/public/images/favicon.ico' %}
+    <link rel="icon" type="image/x-icon" href="{{ asset_url }}" />
+    {% endimage %}
+
+    {% javascripts
+    'bundles/bazingajstranslation/js/translator.min.js'
+    'bundles/app/js/translations/config.js'
+    'bundles/app/js/translations/messages/*.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    {% javascripts '@SiteBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+    {% stylesheets '@SiteBundle/Resources/public/css/*.css' filter="cssrewrite"  %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Rubik">
+</head>
+
+<body>
+
+<!-- Wrap all page content here -->
+<div id="wrap">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">JoliNeck</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scales<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Scales</a></li>
+                            <li><a href="#">Modes</a></li>
+                            <li><a href="#">Chords</a></li>
+                            <li><a href="#">Partial chords</a></li>
+                            <li><a href="#">Pentatonics</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{{ path('site_realbook') }}">Realbooks</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Available necks <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {{ render(controller("SiteBundle:Instrument:Menu" , {context:"navbar"})) }}
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Available languages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {{ render(controller("SiteBundle:Lang:Menu" , {context:"navbar"})) }}
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <!-- Begin page content -->
+    <div class="container">
+        {% block body %}
+        {% endblock %}
+        <div class="row">
+            <div class="col-lg-12" style="margin: 60px;">
+                <p>{{ render(controller("SiteBundle:Quote:Random")) }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+
+
+
+        <p class="pull-right"><a href="http://www.lil-works.com">lil-works</a> &nbsp; ©Copyright 2017</p>
+
+    </div>
+</footer>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{{ asset('assets/vendor/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js') }}"></script>
+
+
+</body>
+</html>

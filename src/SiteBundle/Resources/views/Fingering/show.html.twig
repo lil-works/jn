@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{% trans %}Fingering {% endtrans %}#{{ fingering.id }} for {{ instrument.name }}</h1>
+
+<p>{% trans %}difficulty {% endtrans %}{{ fingering.difficulty|trans }}</p>
+
+
+
+
+        <div>
+            {% set canvasId = 0 %}
+            {% for k,fingerings in rootScales|fingeringStringLoop %}
+                <h2>{% trans %}fingering string loop{% endtrans %} {{ k }}</h2>
+                <ul class="list list-inline">
+                {% for fingering in fingerings %}
+                    <li>
+                        <div class="fingeringContainer">
+                            <canvas id="myFingering_{{ canvasId }}" width="140" height="200"></canvas>
+                        </div>
+                        <script>
+                            var f = fingering2.init(
+                                    "myFingering_{{ canvasId }}" ,
+                                    '{{ fingering.JSON }}',
+                                    '{{ instrumentJSON }}' );
+                        </script>
+                       <a href="{{ path('site_rootscale_instrumented_index' , {
+                            instrumentId:instrument.id,
+                            instrumentName:instrument.name,
+                            scale:fingering.scaleName,
+                            root:fingering.rootInfoTone|infoToneToWs
+                       }) }}">
+
+                           {{ fingering.rootInfoTone }} {{ fingering.scaleName }}
+                       </a>
+                    </li>
+                    {% set canvasId = canvasId+1 %}
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+
+
+{% endblock %}

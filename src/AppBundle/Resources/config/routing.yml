@@ -1,30 +1,36 @@
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: "AppBundle:Default:index" }
+
+
+
 app_instrument:
     resource: "@AppBundle/Resources/config/routing/instrument.yml"
     prefix:   /admin/instrument
 
 app_scale:
     resource: "@AppBundle/Resources/config/routing/scale.yml"
-    prefix:   /scale
+    prefix:   /admin/scale
 
 app_intervale:
     resource: "@AppBundle/Resources/config/routing/intervale.yml"
-    prefix:   /intervale
+    prefix:   /admin/intervale
 
 app_digit:
     resource: "@AppBundle/Resources/config/routing/digit.yml"
-    prefix:   /digit
+    prefix:   /admin/digit
 
 app_descriptor:
     resource: "@AppBundle/Resources/config/routing/descriptor.yml"
-    prefix:   /descriptor
+    prefix:   /admin/descriptor
 
 app_author:
     resource: "@AppBundle/Resources/config/routing/author.yml"
-    prefix:   /author
+    prefix:   /admin/author
 
 app_quote:
     resource: "@AppBundle/Resources/config/routing/quote.yml"
-    prefix:   /quote
+    prefix:   /admin/quote
 
 app_admin_scale:
     resource: "@AppBundle/Resources/config/routing/scale.yml"
@@ -33,3 +39,21 @@ app_admin_scale:
 app_fingering:
     resource: "@AppBundle/Resources/config/routing/fingering.yml"
     prefix:   /admin/fingering
+
+app_instrumentfamily:
+    resource: "@AppBundle/Resources/config/routing/instrumentfamily.yml"
+    prefix:   /admin/instrumentfamily
+
+app_rhythm_material:
+    resource: "@AppBundle/Resources/config/routing/rhythmmaterial.yml"
+    prefix:   /admin/rhythm-material
+app_rhythm_sequence:
+    resource: "@AppBundle/Resources/config/routing/rhythmsequence.yml"
+    prefix:   /admin/rhythm-sequence
+app_user:
+    resource: "@AppBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/user
+
+app_fbasket:
+    resource: "@AppBundle/Resources/config/routing/fbasket.yml"
+    prefix:   /admin/fbasket

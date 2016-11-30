@@ -7,6 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Entity\Scale;
+use AppBundle\Entity\Instrument;
+
+use Knp\Menu\Matcher\Matcher;
+use Knp\Menu\MenuFactory;
+use Knp\Menu\Renderer\ListRenderer;
+
 class ScaleController extends Controller
 {
     public function indexAction(Request $request)
@@ -36,10 +42,11 @@ class ScaleController extends Controller
     }
     /**
      * Finds and displays a Author entity.
-     * @ParamConverter("descriptor", class="AppBundle\Entity\Descriptor",options={"mapping": {"descriptor_name": "name"  }})
+     * @ParamConverter("descriptor", class="AppBundle\Entity\Descriptor",options={"mapping": {"descriptorId": "id"  }})
      */
     public function descriptorAction(Request $request,Descriptor $descriptor)
     {
+
         $em = $this->getDoctrine()->getManager();
         $scaleTypes = $em->getRepository('AppBundle:Descriptor')->findAll() ;
         $scales = $descriptor->getScales() ;
@@ -52,18 +59,16 @@ class ScaleController extends Controller
     }
     /**
      * Finds and displays a Author entity.
-     * @ParamConverter("scale", class="AppBundle\Entity\Scale",options={"mapping": {"scale_name": "name"  }})
+     * @ParamConverter("scale", class="AppBundle\Entity\Scale",options={"mapping": {"scale": "name"  }})
+
      */
     public function showAction(Request $request,Scale $scale)
     {
         $session = $request->getSession();
         $em = $this->getDoctrine()->getManager();
 
-        if(!$session->get('neck/instrumentId'))
-            $session->set('neck/instrumentId',1);
 
-        $instrument = $em->getRepository('AppBundle:Instrument')->find($session->get('neck/instrumentId')) ;
-        $matrice = $em->getRepository('AppBundle:Instrument')->getMatrice($instrument->getId());
+        //$matrice = $em->getRepository('AppBundle:Instrument')->getMatrice($instrument->getId());
 
 
         $populatedScale = $em->getRepository('AppBundle:Scale')->westernPopulateScale($scale->getId()) ;
@@ -75,28 +80,49 @@ class ScaleController extends Controller
 
         $westernSystem = $em->getRepository('AppBundle:WesternSystem')->findOneByName(array("name"=>"D","intervale"=>1));
 
-        $fingerings = $em->getRepository('AppBundle:Fingering')->findFingeringByRootAndScale($instrument,$scale,$westernSystem) ;
+        //$fingerings = $em->getRepository('AppBundle:Fingering')->findFingeringByRootAndScale($instrument,$scale,$westernSystem) ;
 
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage
             ->setTitle($seoPage->getTitle() . " • ".$scale->getName())
             ->addMeta('name', 'description', "details for ".$scale->getName())
         ;
+        /*
         $arrayOfFingeringJSON = array();
         foreach($fingerings as $fingering){
             array_push($arrayOfFingeringJSON,json_encode($fingering));
-        }
+        }*/
         return $this->render('SiteBundle:Scale:show.html.twig',array(
             "scale"=>$scale,
             "populatedScale"=>$populatedScale,
             "matchingScales"=>$matchingScales,
             "instrumentId"=>$session->get("neck/instrumentId"),
-            "fingeringsJSON"=>json_encode($fingerings),
-            "instrumentJSON"=>json_encode($matrice),
-            "fingerings"=>$fingerings,
+          //  "fingeringsJSON"=>json_encode($fingerings),
+          //  "instrumentJSON"=>json_encode($matrice),
+          //  "fingerings"=>$fingerings,
             "westernSystem"=>$westernSystem,
-            "arrayOfFingeringJSON"=>$arrayOfFingeringJSON,
-            "instrument"=>$instrument,
+          //  "arrayOfFingeringJSON"=>$arrayOfFingeringJSON,
+           // "instrument"=>$instrument,
         ));
+    }
+
+    public function networkAction(Request $request)
+    {
+
+
+        return $this->render('SiteBundle:Scale:network.html.twig',array(
+
+        ));
+    }
+
+    public function menuAction($context = null)
+    {
+        if(is_null($context)){
+            $view = "menu";
+        }else{
+            $view = "navbar";
+        }
+
+        return $this->render('SiteBundle:Scale:'.$view.'.html.twig',array());
     }
 }

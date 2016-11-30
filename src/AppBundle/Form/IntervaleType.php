@@ -18,7 +18,6 @@ class IntervaleType extends AbstractType
             ->add('name')
             ->add('delta')
             ->add('color')
-            ->add('scales')
         ;
     }
     

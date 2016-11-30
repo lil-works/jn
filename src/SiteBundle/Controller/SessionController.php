@@ -34,5 +34,16 @@ class SessionController extends Controller
         $response->setContent("");
         return $response;
     }
+    public function removeParamAction(Request $request)
+    {
 
+        $session = $request->getSession();
+        $response = new Response();
+
+        $param = $request->get('target');
+        $session->remove($param);
+
+        $response->setContent(json_encode($session->get($param)));
+        return $response;
+    }
 }

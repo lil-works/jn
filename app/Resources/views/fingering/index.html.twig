@@ -1,45 +1,86 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
+
     <h1>Fingering list</h1>
 
-    <table>
+    <div class="row">
+        <div class="col-lg-8">
+            <h2>
+                My fingering selector
+            </h2>
+            <canvas id="myFP" width="680" height="400"></canvas>
+        </div>
+        <div class="col-lg-4">
+            <h2>Controls</h2>
+            <div id="myFPButtons">
+                <button class="btn btn-default btn-xs" id="myFP_clearSelection">
+                    <i class="glyphicon glyphicon-erase"></i> Clear selection
+                </button>
+                <button class="btn btn-default btn-xs" id="myFP_addFingering">
+                    <i class="glyphicon glyphicon-plus"></i> Add fingering
+                </button>
+            </div>
+            <div id="myFPControls"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-sm-6">
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(form, {'attr': {'class': 'form'}}) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <script>
+        var myFP = fingeringPicker.init("myFP");
+    </script>
+
+    <table class="table myPaginator">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Description</th>
-                <th>Difficulty</th>
+                {% set direction = pagination.getDirection() %}
                 <th>Actions</th>
+                <th{% if pagination.isSorted('f.id') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'id', 'f.id') }}
+                </th>
+                <th>Description</th>
+                <th{% if pagination.isSorted('f.difficulty') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'difficulty', 'f.difficulty') }}
+                </th>
+                <th>String/Case</th>
             </tr>
         </thead>
         <tbody>
-        {% for fingering in fingerings %}
+        {% for fingering in pagination %}
             <tr>
-                <td><a href="{{ path('admin_fingering_show', { 'id': fingering.id }) }}">{{ fingering.id }}</a></td>
-                <td>{{ fingering.description }}</td>
-                <td>{{ fingering.difficulty }}</td>
-                <td  style="margin: 10px;padding:10px">count:{{ fingering.fingers|length }} {% for finger in fingering.fingers %}
-                    <li>{{ finger.y }} • {{ finger.x }}</li>
-                {% endfor %}
-                <td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('admin_fingering_show', { 'id': fingering.id }) }}">show</a>
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            <a href="{{ path('admin_fingering_show', { 'fingeringId': fingering.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('admin_fingering_edit', { 'id': fingering.id }) }}">edit</a>
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            <a href="{{ path('admin_fingering_edit', { 'fingeringId': fingering.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
+                <td><a href="{{ path('admin_fingering_show', { 'fingeringId': fingering.id }) }}">{{ fingering.id }}</a></td>
+                <td>{{ fingering.description }}</td>
+                <td>{{ fingering.difficulty }}</td>
+                <td  style="margin: 10px;padding:10px">count:{{ fingering.fingers|length }} {% for finger in fingering.fingers %}
+                    <li>{{ finger.y }} • {{ finger.x }} - {{ finger.lh }} • {{ finger.rh }}</li>
+                {% endfor %}
+                <td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_fingering_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

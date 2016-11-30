@@ -1,0 +1,44 @@
+<div class="row" style="padding: 0 42px;">
+{% for family in instrumentFamilies %}
+    <div class="col-xs-12 col-md-3 list-group" >
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3>
+                    {% if family.icon is not null %}
+                        <img style="width: 32px;" class="instrumentIcon" src="{{ asset('uploads/instrument/' ~ family.icon) }}">
+                    {% endif %}
+                    {{  family.name|trans|capitalize }}
+                </h3>
+            </div>
+        {% for instrument in family.instruments %}
+            <div class="list-group-item">
+                <a href="{{ path('site_neck',{instrumentId:instrument.id ,instrumentName:instrument.name|trans}) }}">
+                    {{ instrument.name|trans }}
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<div class="row" style="margin-bottom: 30px;">
+    <div class="col-xs-6 col-xs-offset-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3>
+                    {% image '@SiteBundle/Resources/public/images/no-instrument-64.png' %}
+                        <img style="width: 64px;" src="{{ asset_url }}" />
+                    {% endimage %}
+                    {% trans %}You don't want to select a neck{% endtrans %}
+                </h3>
+            </div>
+            <div>
+                >
+                <a href="{{ path('site_neck',{instrumentId:0 ,instrumentName:"any"|trans}) }}">
+                    {% trans %}enter here{% endtrans %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

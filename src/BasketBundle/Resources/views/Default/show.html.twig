@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>{% trans %}fingering basket{% endtrans %}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans %}action{% endtrans %}</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="btn-group" role="group" >
+                        {% if isOwner == "true" %}
+                            <button type="button" class="btn btn-default btn-danger" role="group"><i class="glyphicon glyphicon-unchecked"></i> {% trans %}empty basket{% endtrans %}</button>
+                            <button type="button" class="btn btn-default btn-danger" role="group"><i class="glyphicon glyphicon-trash"></i> {% trans %}remove basket{% endtrans %}</button>
+                            {% if isCurrent == "true" %}
+                                <a class="btn btn-default btn-warning" role="group" href="{{ path('basket_fingering_unselect',{fBasketId:fingeringBasket.id}) }}"><i class="glyphicon glyphicon-remove"></i> {% trans %}unselect fingering basket{% endtrans %}</a>
+                            {% else  %}
+                               <a  class="btn btn-default btn-success" role="group" href="{{ path('basket_fingering_select',{fBasketId:fingeringBasket.id}) }}"><i class="glyphicon glyphicon-asterisk"></i> {% trans %}set as current fingering basket{% endtrans %}</a>
+                            {% endif  %}
+                        {% endif %}
+                        <a class="btn btn-default" role="group" href="{{ path('basket_fingering_new',{fBasketId:fingeringBasket.id}) }}"><i class="glyphicon glyphicon-plus"></i> {% trans %}create new basket{% endtrans %}</a>
+                        <a class="btn btn-default" role="group" href="{{ path('basket_fingering_duplicate',{fBasketId:fingeringBasket.id}) }}"><i class="glyphicon glyphicon-log-in"></i> {% trans %}duplicate this basket{% endtrans %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-lg-4">
+
+
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    {% set instrument = fingeringBasket.instrument %}
+                    {% if instrument.id == 0 %}
+                        {% image '@SiteBundle/Resources/public/images/no-instrument-64.png' %}
+                        <img style="width: 32px;" src="{{ asset_url }}" />
+                        {% endimage %}
+                        {% trans %}no selected neck{% endtrans %}
+                    {% else %}
+                        {% if instrument.family.icon is not null %}
+                            <img  style="width: 32px;" class="instrumentIcon" src="{{ asset('uploads/instrument/' ~ instrument.icon) }}">
+                        {% endif %}<a href="{{ path('site_neck',{instrumentId:instrument.id,instrumentName:instrument.name|trans}) }}">{{ instrument.name|trans }}</a>
+                    {% endif %}
+                     •
+                    {{ fingeringBasket.title }}
+                </h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div>
+                    {% trans %}created by{% endtrans %}:
+                    <i class="glyphicon glyphicon-user"></i> {{ fingeringBasket.createdBy.username }}
+                </div>
+
+                <div>
+                    {% trans %}publish status{% endtrans %}:
+                    {% if fingeringBasket.private > 0 %}
+                        <i class="glyphicon glyphicon-ban-circle"></i> {% trans %}private{% endtrans %}
+                    {% else %}
+                        <i class="glyphicon glyphicon-ok-circle"></i> {% trans %}public{% endtrans %}
+                    {% endif %}
+                </div>
+                <div>
+                    {{ fingeringBasket.description|raw }}
+                </div>
+            </div>
+            <div class="panel-footer">
+                <i class="glyphicon glyphicon-calendar"></i>
+                {{ fingeringBasket.createdAt is empty ? "" : fingeringBasket.createdAt|date("F jS \\a\\t g:ia") }}
+                {{ fingeringBasket.updatedAt is empty ? "" : fingeringBasket.updatedAt|date("F jS \\a\\t g:ia") }}
+            </div>
+        </div>
+        </div>
+
+        <div class="col-lg-8">
+            {% if  fingeringBasket.fingeringbasketsFingerings|length > 0 %}
+                <h2>{% trans %}fingering found{% endtrans %} ({{ fingeringBasket.fingeringbasketsFingerings|length }})</h2>
+                <ul  class="fingeringList list-inline">
+                    {%  for k, fingeringInBasket in fingeringBasket.fingeringbasketsFingerings %}
+                        <li>
+                            {{ fingeringInBasket.fingeringOffline.root.name }} {{ fingeringInBasket.fingeringOffline.scale.name }}
+                            <div class="fingeringContainer">
+                                <canvas id="myFingering_{{ k }}" width="160" height="220"></canvas>
+                            </div>
+                            <a class="btn btn-default btn-warning btn-xs" href="{{ path('basket_fingering_deletefingering' , {fingeringId:fingeringInBasket.id , fBasketId:fingeringBasket.id}) }}">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                {% trans %}remove fingering{% endtrans %}
+                            </a>
+                            <script>
+                                var d = {
+                                    instrument:{
+                                        strings:'{{ instrumentToFretboard(instrument.strings) }}'
+                                    },
+                                    options:{
+                                        format:"auto", // portrait,landscape,auto
+                                        autoSize:true, // Set fret num automaticaly
+                                        showInterval:true,
+                                        showTone:true
+                                    }
+                                }
+                                var myFTB = FTB.init(d,'{{ fingeringOffline(fingeringInBasket.fingeringOffline.yxs) }}');
+                                myFTB.draw("myFingering_{{ k }}");
+                            </script>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                {% trans %}No fingering found{% endtrans %} ...
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -35,7 +35,13 @@
         "symfony/security-acl": "^3.0",
         "sonata-project/seo-bundle": "^2.0",
         "sonata-project/translation-bundle": "^2.0",
-        "smalot/pdfparser": "*"
+        "jms/i18n-routing-bundle": "dev-master",
+        "jms/translation-bundle": "dev-master",
+        "smalot/pdfparser": "*",
+        "willdurand/js-translation-bundle": "^2.6",
+        "liip/theme-bundle": "^1.4",
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "knplabs/knp-menu": "^2.2"
 
     },
     "require-dev": {

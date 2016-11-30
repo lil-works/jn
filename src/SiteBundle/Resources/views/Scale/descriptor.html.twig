@@ -1,36 +1,53 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>{{ descriptor.name }}</h1>
+    <div class="row">
+        <div class="col-lg-2">
+            <h2>{{ descriptor.name|trans|capitalize }}</h2>
+        </div>
 
-    <h2>Select scales by descriptor:</h2>
-    <ul id="descriptorList">
-        {% for scaleType in scaleTypes %}
-        <li>
-            <a style="color: #{{ scaleType.color }}" href="{{ path('site_scale_descriptor_show' , {descriptor_name:scaleType.name} ) }}">{{ scaleType.name }}</a>
-        </li>
-        {% endfor %}
-    </ul>
 
-    <h2>Scale described as {{ descriptor.name }}</h2>
-    <ul id="neckResultsList">
-    {% for scale in scales %}
-        <li>
-            <div class="titleInVignette">
-                <a href="{{ path('site_scale_show' , {scale_name:scale.name} ) }}">{{ scale.name }}</a>
+        <div class="col-lg-10">
+            <h3>{% trans %}Select scales by descriptor:{% endtrans %}</h3>
+            <div class="btn-group" role="group" aria-label="descriptors">
+            {% for scaleType in scaleTypes %}
+                <div type="button" class="btn btn-default btn-md" style="color: #{{ scaleType.color }}">
+                    <i class="glyphicon glyphicon-tag"></i>
+                    <a href="{{ path('site_scale_descriptor_show' , {descriptorId:scaleType.id,descriptorName:scaleType.name} ) }}">{{ scaleType.name }}</a>
+                </div>
+
+            {% endfor %}
             </div>
-            <div>
-                <canvas id="d{{ scale.id }}" width="180" height="180"></canvas>
-                <script>
-                    var datas = {};
-                    {% for intervale in scale.intervales %}
-                    datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
-                    {% endfor %}
-                    new diagram("d{{ scale.id }}",datas);
-                </script>
-            </div>
-        </li>
-    {% endfor %}
-    </ul>
+        </div>
+    </div>
 
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Scale described as {{ descriptor.name }}</h2>
+
+            {% for scale in scales %}
+                <div class="panel panel-default text-center" style="width: 280px; float: left">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            <a href="{{ path('site_scale_show' , {scale:scale.name} ) }}">{{ scale.name }}</a>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="d{{ scale.id }}" width="180" height="180"></canvas>
+                        <script>
+                            var datas = {};
+                            {% for intervale in scale.intervales %}
+                            datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                            {% endfor %}
+                            new diagram("d{{ scale.id }}",datas);
+                        </script>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
 
 {% endblock %}

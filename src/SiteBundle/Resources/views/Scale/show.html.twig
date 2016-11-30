@@ -8,7 +8,7 @@
             <ul class="tagged">
                 {% for descriptor in scale.descriptors %}
                     <li >
-                        <a style="color: #{{ descriptor.color }}" href="{{ path('site_scale_descriptor_show',{descriptor_name:descriptor.name}) }}">{{ descriptor.name }}</a>
+                        <a style="color: #{{ descriptor.color }}" href="{{ path('site_scale_descriptor_show',{descriptorName:descriptor.name,descriptorId:descriptor.id}) }}">{{ descriptor.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -35,7 +35,7 @@
         <div style="margin-right:50px;text-align: justify; ">
             <ul id="scaleList">All intervals matching scales  ({{ matchingScales|length }}):
                 {% for scale in matchingScales %}
-                    <li><a href="{{ path('site_scale_show',{ scale_name:scale.scaleName }) }}">{{ scale.scaleName }}</a></li>
+                    <li><a href="{{ path('site_scale_show',{ scale:scale.scaleName }) }}">{{ scale.scaleName }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -43,7 +43,7 @@
         <ul id="populatedScale">
             {% for p in populatedScale %}
                 <li>
-                    <a  href="{{ path('site_rootscale_index',{ root:p.rootName , scale:scale.name }) }}">details</a>
+
                     <a  onclick="jnSynth.play('{{  p.digitAList }}','scale')"  href="#play">play</a>
 
                 </li>
@@ -61,48 +61,7 @@
 
         </ul>
     </div>
-    <div id="col2">
 
-
-        <h2>{% if instrument.icon is not null %}
-                <img class="instrumentIcon" src="{{ asset('uploads/instrument/' ~ instrument.icon) }}">
-            {% endif %}{{ instrument.name|capitalize }} neck for {{ westernSystem.name }} {{ scale.name  }}</h2>
-        <div>
-            <canvas id="myNeck" width="500" height="200"></canvas>
-        </div>
-
-        <div>
-            {% if  fingerings|length > 0 %}
-                <h2>fingerings ({{ fingerings|length }})</h2>
-                <ul  class="fingeringList">
-                    {% for k,fingeringJSON in arrayOfFingeringJSON %}
-                    <li>
-                        <div class="fingeringContainer">
-                            <canvas id="myFingering_{{ k }}" width="100" height="160"></canvas>
-                        </div>
-                        <script>
-                            var f = fingering.init(
-                                    "myFingering_{{ k }}" ,
-                                    '{{ fingeringJSON }}',
-                                    '{{ instrumentJSON }}' );
-                        </script>
-                    </li>
-                {% endfor %}
-                </ul>
-            {% else %}
-                No matching fingering found ...
-            {% endif %}
-        </div>
-
-
-
-    </div>
 </div>
-    <script>
-        var n = neck.init("myNeck" );
-        n.displayedCase=14;
-        n.insertFingerings('{{ fingeringsJSON }}');
-        n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
 
-    </script>
 {% endblock %}

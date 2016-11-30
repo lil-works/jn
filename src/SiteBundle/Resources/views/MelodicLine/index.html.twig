@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<h1>Melodic Lines Creator</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Generate lines" />
+    {{ form_end(form) }}
+
+
+
+    <button id="stop" type="button">stop</button>
+
+
+
+
+    <ul id="lines">
+
+    </ul>
+<script>
+    jQuery(document).ready(function () {
+        lineCreator.init();
+    });
+
+
+
+
+</script>
+    {% endblock body %}

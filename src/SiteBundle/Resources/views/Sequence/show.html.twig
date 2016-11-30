@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ dump(sequence) }}
+    {#
+    <h1>Sequence {{ sequence.name }}</h1>
+
+
+    <ul>
+    {% for change in sequence.changes %}
+        <li>
+        {{ change.intervale.roman }} {{ change.scale.name }}
+        <ul>intervals
+        {% for interval in change.scale.intervales %}
+            <li>{{ interval.name }}</li>
+        {% endfor %}
+        </ul>
+        </li>
+    {% endfor %}
+    </ul>
+        #}
+{% endblock %}

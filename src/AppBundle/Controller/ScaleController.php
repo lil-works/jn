@@ -17,16 +17,22 @@ class ScaleController extends Controller
 {
     /**
      * Lists all Scale entities.
-     *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT s FROM AppBundle:Scale s";
+        $query = $em->createQuery($dql);
 
-        $scales = $em->getRepository('AppBundle:Scale')->findAll() ;
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
         return $this->render('scale/index.html.twig', array(
-            'scales' => $scales,
+            'pagination' => $pagination,
         ));
     }
 

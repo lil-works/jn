@@ -121,6 +121,17 @@ class AjaxController extends Controller
         return $response;
     }
 
+
+    public function searchFingeringAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $fingering = $em->getRepository('AppBundle:Fingering')->findOneByFingersFromNeck($request->get('fingerprint'),$request->get('fingerprintIncremented'));
+        $response = new Response(json_encode($fingering));
+
+
+        return $response;
+    }
     public function fingeringAction(Request $request)
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');

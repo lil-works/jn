@@ -20,11 +20,11 @@ class UniqueInCollectionValidator extends ConstraintValidator
 
     public function validate($value, Constraint $constraint)
     {
+
         if( $this->entityManager->getRepository('AppBundle:Fingering')->findOneByFingers($value) ){
             $this->context->buildViolation($constraint->message)
-                ->setParameter('%string%', "==== FIND IN DB ======")
+                ->setParameter('%parameters%', "Fingering already in database")
                 ->addViolation();
-
         }
 
 

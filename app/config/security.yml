@@ -13,19 +13,22 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
-        main:
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
-                # if you are using Symfony < 2.8, use the following config instead:
-                # csrf_provider: form.csrf_provider
+            main:
+                pattern: ^/
+                form_login:
+                    provider: fos_userbundle
+                    login_path: fos_user_security_login
+                    check_path: fos_user_security_check
+                logout:
+                    path:   fos_user_security_logout
+                anonymous:    true
 
-            logout:       true
-            anonymous:    true
-
-    access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+#    access_control:
+#            - { path: ^/_wdt, roles: IS_AUTHENTICATED_ANONYMOUSLY }         # allow wdt for debugging
+#            - { path: ^/_profiler/, role: IS_AUTHENTICATED_ANONYMOUSLY }    # allow profiler for debugging
+#            - { path: ^/bundles/, role: IS_AUTHENTICATED_ANONYMOUSLY }      # allow assets to be loaded anonymously
+#            - { path: ^/[a-z]+/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#            - { path: ^/[a-z]+/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#            - { path: ^/[a-z]+/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#            - { path: ^/admin, role: ROLE_ADMIN }
+#            - { path: ^/, role: ROLE_USER } # this must be the last match, as url patterns are checked in the order they appear

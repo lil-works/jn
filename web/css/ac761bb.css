@@ -1,356 +1,190 @@
-*{
-    margin: 0;
-    padding: 0;
-    -moz-box-sizing: border-box; box-sizing: border-box;
-}
-html , body{
-    height: 100%;
+@import url(http://fonts.googleapis.com/css?family=Rubik);
+
+html,body {
+    height:100%;
+    font-family: 'Rubik', serif;
 }
 
-body {
-    position: relative;
-    min-height: 100%;
-    background-color: #fff;
-    font-family: 'Rubik', Andale Mono, monospace;
-    font-size: 12px;
-    letter-spacing: 1.6px;
-
-}
-h1,h2,h3,h4,h5,h6{
-    margin: 10px;
-    border-bottom: 1px dotted #f0f0f0;
-
-    overflow: hidden;
-}
-a{
-    color: #0088CC;
-    font-weight: 100;
-    text-decoration: none;
-}
-a:hover{
-    color: #0077BB;
-    font-weight: 300;
-    text-decoration: underline;
+h1 {
+    font-size:60px;
+    color:#444;
 }
 
-.wrapper {
-    min-height: 100%;
-    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
-    height: 100%;
-    margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
-    background: repeating-linear-gradient(
-            -45deg,
-            #fbfbfb,
-            #fefefe 3px,
-            #fefefe 4px,
-            #ffffff 8px
-    )
-}
-#footer, .push {
-    height: 40px; /* .push must be the same height as .footer */
-
-}
-#footer{
-    text-shadow: 1px 1px 1px #ccc;
-    color: #ffffff;
-    padding: 8px;
-    text-align: right;
-    width:100%;
-    background-image:
-    linear-gradient(
-            to top,
-            #eee, #fefefe
-    );
-    border-top: 1px solid #eee;
-
-}
-#footer>img{
-
-height: 30px;
-    float: left;
-
-}
-#menu{float: right;}
-#menu > ul > li > a{
-    font-size: 2em;
-    letter-spacing: 5px;
-
-}
-#menu > ul > li:after {
-    content: " • ";
-}
-#menu>ul>li{display: inline;list-style: none;}
-#header{
-    width:100%;
-    margin:  auto;
-
-    background-image:
-    linear-gradient(
-            to bottom,
-            #eee, #fefefe
-    );
-    border-bottom: 1px solid #eee;
-
-}
-#menu{
-margin: 10px;
-    padding: 10px;
-}
-#logo{
-    margin: 5px;
-    height:80px;
-
-}
-#content{
-
-    width:1280px;
-    margin:auto auto;
-    padding-top: 22px ;
-
-}
-
-#content h1{
-    color: rgba(0,0,0,.1);
-    font-size: 3em;
-    font-weight: 100;
-    letter-spacing: .3em;
-    margin:5px;
-    text-align: right;
-    text-shadow: 1px 1px 1px #000;
-
+.lead {
+    color:#555;
 }
 
 
-.form_row{
-    margin:5px;
-    padding:5px;
-}
-.form_row > label{
-    display: block;
-    color: #565656;
-}
-.form_row > select , input{
-    border: 1px solid #ccc ;
-    border-radius: 2px ;
-    margin: 5px;
-    padding: 5px;
-    font-size:1em;
-}
-.form_row > select >option{
-    display: inline;
-    margin: 3px;
-    padding: 3px;
-}
-table{
-    border-radius: 4px;
-    background: #fff none repeat scroll 0 0;
-    box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
-    margin: 10px;
-    padding: 10px;
-    width:100%;
-
-}
-table>thead{
-
-}
-table>tbody{
-
-}
-table>thead>tr{
-    margin: 5px;
-    padding: 5px;
-}
-table>thead>tr>td{
-    margin: 5px;
-    padding: 5px;
-}
-.intervale{
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 1px #ccc solid;
-    border-radius: 2px;
-    padding: 2px;
-    margin: 2px;
-    background-color: #f0f0f0;
+/* Custom container */
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+    min-height:100%;
+    background-image: linear-gradient(0deg, #888, #FFFFFF);
+    color:#ccc;
+    overflow:hidden;
 }
 
-
-div.inline { float:left; }
-.clearBoth { clear:both; }
-
-.textButton{
-    color: #0088CC;
-    font-size: 1em;
-    font-weight: bolder;
-    cursor: pointer;
+.container-full a {
+    color:#333366;
+    text-decoration:none;
 }
-#logo{
 
-
-
+.v-center {
+    margin-top:7%;
 }
-#neckContainer{
-    padding: 14px;
-    margin:35px;
+
+#langHome{
+
+    position: absolute;left: 15px;top: 15px;
+
     text-align: center;
-    border-radius: 4px;
-    background: #fff none repeat scroll 0 0;
-    box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
-}
+    z-index: 1;
 
-#controls>div{
-    padding: 14px;
-    margin: 14px;
-    width:400px;
-    border-radius: 4px;
-    background: #f0f0f0 none repeat scroll 0 0;
-    box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
-}
-#controls>div>ul>li{
-
-    list-style: none;
-}
-#neckResultsList>li {
-    width:250px;
-    height:250px;
-    text-align: center;
-    border-radius: 2px;
-padding: 10px;
-    margin:auto;
-
-    display: inline-block;
-    background-color: #fff;
-    box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
-}
-#neckResultsList>li>div {
-
-}
-#add{
-     text-align: center;
- }
-.quote{
-    color: rgba(0,0,0,.2);
-    font-weight: 100;
-    padding: 20px;
-    font-weight: 100;
-    font-size: 2.2em;
-}
-.quote:before{
-    content: "\201C";
-}
-.quote:after{
-    content: "\201D";
-}
-.contentMenu>li{
-    display: inline;
-}
-.contentMenu>li:before{
-    content: " | ";
 }
 
 
-#scaleList > li{
-    display: inline;
-    list-style: none;
-    width: 200px;
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
 }
-#scaleList > li > div{
-    display: inline;
-
-}
-#scaleList>li:after{
-    /*content: " | ";*/
-}
-
-
-#contentQuote{
-    background-color: #fff;
-    text-align: right;
-    border-radius:8px;
-    border: 1px solid #f0f0f0;
-    margin: auto;
-    padding:10px;
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
     margin-bottom: 10px;
-    margin-top: 10px;
 }
-.rootScaleName{
-    font-size: 1.2em;
-    width: 250px;
-    font-weight: 100;
-    color: #454588;
+.form-signin .checkbox {
+    font-weight: normal;
 }
-#populatedScale {
-    margin: 0 10px;
-}
-#populatedScale ul{
-    margin: 0 ;
-
-}
-
-#populatedScale li{
-    margin: 0 20px;
-    display: inline;
-}
-
-
-#realbook-tuneList ul>li{
-    list-style: none;
-    display: inline;
-}
-#container1 {
-    float:left;
-    width:100%;
-    position:relative;
-    right:50%;
-}
-#col1 {
-    float:left;
-    width:46%;
-    position:relative;
-    left:52%;
-    overflow:hidden;
-}
-#col2 {
-    float:left;
-    width:46%;
-    position:relative;
-    left:56%;
-    overflow:hidden;
-}
-
-#populatedScale{
-    margin: 0;
-    padding: 0;
-}
-.fingeringList li{
-  display: inline;
-    float: left;
-}
-.fingeringContainer {
-    border-radius: 4px;
-    background: #fff none repeat scroll 0 0;
-    box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
-    margin: 10px;
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     padding: 10px;
-    width:120px;
-    height:180px;
+    font-size: 16px;
 }
-#descriptorList{
-    font-size: 1.4em;
-
+.form-signin .form-control:focus {
+    z-index: 2;
 }
-#descriptorList li{
-    display: inline;
-    padding: 10px;
-
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
-#content>#loginInContent{
-    border-radius: 4px;
-    background: #fff none repeat scroll 0 0;
-    box-shadow: 0 0 1em #f0f0f0 inset, 0 0 1em #f0f0f0;
-    margin: auto;
-    padding: 100px;
-    width:80%;
 
+
+.color-1 {
+    color:#ccbbba;
+}
+.color-2 {
+    color:#331916;
+}
+.color-3 {
+    color:#210e0b;
+}
+.color-4 {
+    color:#d7c5bf;
+}
+.color-5 {
+    color:#e7d1c4;
+}
+.color-6 {
+    color:#51385b;
+}
+.color-7 {
+    color:#61486b;
+}
+.color-8 {
+    color:#715777;
+}
+.color-9 {
+    color:#806784;
+}
+.color-10 {
+    color:#422945;
+}
+.color-11 {
+    color:#8f7790;
+}
+.color-12 {
+    color:#998398;
+}
+.color-13 {
+    color:#a18b9e;
+}
+.color-14 {
+    color:#ab96a4;
+}
+.color-15 {
+    color:#371f29;
+}
+.color-16 {
+    color:#5b3443;
+}
+.color-17 {
+    color:#6a4452;
+}
+.color-18 {
+    color:#baa9af;
+}
+.color-19 {
+    color:#c3b3b5;
+}
+.color-20 {
+    color:#55262b;
+}
+@import url(http://fonts.googleapis.com/css?family=Rubik);
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+    padding-top: 70px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 20px;
+  background-color: #f5f5f5;
+}
+/*
+footer {
+    position: fixed;
+    bottom: 0;
+    height: 1.5rem;
+    overflow: hidden;
+}*/
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
 }

@@ -13,6 +13,7 @@ class InstrumentRepository extends \Doctrine\ORM\EntityRepository
 
 
     public function findRootScaleByDigits($digits){
+
         $sql = "
 
 
@@ -22,20 +23,25 @@ SELECT
             (SELECT group_concat(d.name) from scales_descriptors sd left join descriptor d on d.id = sd.descriptor_id where sd.scale_id=scaleId) as descriptorListName,
             scaleId,scaleName,rootInfoTone,
             (SELECT name from western_system where intervale=1 and digit=rootDigitId order by abs(relativePosition) limit 1) as wsName,
+            (SELECT id from western_system where intervale=1 and digit=rootDigitId order by abs(relativePosition) limit 1) as wsId,
             COUNT(i.id) AS toneCount,
+            GROUP_CONCAT((SELECT value FROM digit WHERE id=(
+            (SELECT digit from western_system where intervale=i.id AND root = (SELECT id from western_system where intervale=1 and digit=rootDigitId order by abs(relativePosition) limit 1) limit 1)
+            ))) AS dList,
+            GROUP_CONCAT((SELECT name from western_system where intervale=i.id AND root = (SELECT id from western_system where intervale=1 and digit=rootDigitId order by abs(relativePosition) limit 1) limit 1)) AS wsList,
             GROUP_CONCAT(i.name) AS intervaleNameList,
             GROUP_CONCAT(i.delta) AS intervaleDeltaList,
             GROUP_CONCAT(i.color) AS intervaleColorList
         FROM
             (SELECT
-                scaleId,
+                    scaleId,
                     scaleName,
                     rootInfoTone,rootDigitId,
                     ROUND(COUNT(rootInfoTone) / totTone, 1) AS scoreInternal,
                     ROUND(COUNT(rootInfoTone) / :digitsCount, 1) AS scoreExternal
             FROM
                 (SELECT
-                s1.id AS scaleId,
+                    s1.id AS scaleId,
                     s1.name AS scaleName,
                     d1.infoTone AS rootInfoTone,
                     d1.value AS rootDigit,
@@ -70,6 +76,7 @@ SELECT
 
 
         GROUP BY scaleId , rootInfoTone
+        HAVING toneCount = :digitsCount
         order by toneCount
 ;
 
@@ -88,6 +95,9 @@ SELECT
         $rsm->addScalarResult('scaleName', 'scaleName');
         $rsm->addScalarResult('rootInfoTone', 'rootInfoTone');
         $rsm->addScalarResult('wsName', 'wsName');
+        $rsm->addScalarResult('wsId', 'wsId');
+        $rsm->addScalarResult('wsList', 'wsList');
+        $rsm->addScalarResult('dList', 'dList');
         $rsm->addScalarResult('intervaleNameList', 'intervaleNameList');
         $rsm->addScalarResult('intervaleDeltaList', 'intervaleDeltaList');
         $rsm->addScalarResult('intervaleColorList', 'intervaleColorList');

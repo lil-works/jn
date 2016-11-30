@@ -1,193 +1,54 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseHome.html.twig' %}
 
 {% block body %}
-<h1>{{ instrument.name }}</h1>
-#{{ instrument.id }}
-max case = {{ instrument.caseMax }}
-<ul>
-{% for string in instrument.strings %}
-    <li>POS:{{ string.pos }} • frequency0:{{ string.digit.frequency0 }}Hz • digit:{{ string.digit.value }} • octave{{ string.octave }}</li>
-{% endfor %}
-</ul>
-<div class="neckContainer">
+
+    <h1>
+        JoliNeck
+    </h1>
+
     <div>
-        <h2>Control Neck</h2>
-        <ul style="font-size: 2em;">
-            <li id="addCase">+</li>
-            <li id="removeCase">-</li>
+        <p>
+            {% trans %}Welcome here... Jolineck is happy to provide tools for neck instrument players (as well as all kind of musician).{% endtrans %}
+        </p>
+    </div>
+
+    <div>
+
+        <h2>
+            {% trans %}Available necks{% endtrans %}
+        </h2>
+
+        <ul class="instrumentsByFamily_family">
+           {% for family in instrumentFamilies %}
+               <h3>
+               {% if family.icon is not null %}
+                   <img class="instrumentIcon" src="{{ asset('uploads/instrument/' ~ family.icon) }}">
+               {% endif %}
+               {{  family.name|trans|capitalize }}</h3>
+               <ul class="instrumentsByFamily_instrument">
+                   {% for instrument in family.instruments %}
+                   <li>
+                       <a href="{{ path('site_neck',{instrumentId:instrument.id ,instrumentName:instrument.name|trans}) }}">
+                           {{ instrument.name|trans }}
+                       </a>
+                   </li>
+                   {% endfor %}
+               </ul>
+           {% endfor %}
         </ul>
     </div>
-    <canvas id="neck" width="600" height="150">
-        Texte alternatif pour les navigateurs ne supportant pas Canvas.
-    </canvas>
-</div>
 
 
-<script type="text/javascript">
-    function String(pos,digit,octave) {
-        this.pos = pos;
-        this.digit = digit;
-        this.octave = octave;
-    }
-    function Neck(matrice,id,name,maxCase,strings){
-
-        JSONNodes = matrice;
-        this.matrice = $.parseJSON(JSONNodes.replace(/&quot;/g, '\"'));
-
-        this.currentNbrCase = 5;
-        this.currentNbrCaseMin = 5;
-        this.currentNbrCaseMax = maxCase;
-        this.name = name;
-        this.maxCase = maxCase;
-        this.strings = strings;
-        Neck = this;
-
-        this.c = document.getElementById(id);
-        this.ctx = this.c.getContext("2d");
-
-        this.width = this.c.width;
-        this.height = this.c.height;
+    <div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+    </div>
 
 
-
-        function collides(rects, x, y) {
-            var isCollision = false;
-            for (var i = 0, len = rects.length; i < len; i++) {
-                var left = rects[i].x, right = rects[i].x+rects[i].w;
-                var top = rects[i].y, bottom = rects[i].y+rects[i].h;
-                if (right >= x
-                        && left <= x
-                        && bottom >= y
-                        && top <= y) {
-                    isCollision = rects[i];
-                }
-            }
-            return isCollision;
-        }
-
-        this.draw = function(){
-
-
-            this.ctx.clearRect(0, 0, this.width, this.height);
-
-            var caseW = this.width/this.currentNbrCase;
-            var caseH = this.height/this.strings.length;
-
-
-            var rects = [];
-            for(i=0;i<this.strings.length;i++){
-                this.ctx.beginPath();
-                this.ctx.strokeStyle='#AAAAAA';
-                this.ctx.lineWidth=parseInt(1+i/2);
-                this.ctx.moveTo( 0, i*caseH + caseH/2);
-                this.ctx.lineTo(this.width, i*caseH + caseH/2)  ;
-                this.ctx.stroke();
-                for(j=0;j<this.maxCase;j++){
-                    rects.push({x: j*caseW, y:(this.height-caseH) - i*caseH, w: caseW, h: caseH , case:j,string:i});
-                    this.ctx.beginPath();
-                    this.ctx.strokeStyle='#666666';
-                    this.ctx.lineWidth=1;
-                    this.ctx.moveTo( j*(caseW+1), (caseH/2));
-                    this.ctx.lineTo(j*(caseW+1), this.height - caseH/2)  ;
-                    this.ctx.stroke();
-                   /* this.ctx.rect(
-                            j*caseW-2,
-                            i*caseH-2,
-                            caseW-2,
-                            caseH-2
-                    );*/
-                }
-
-            }
-            this.ctx.beginPath();
-            this.ctx.strokeStyle='#333';
-            this.ctx.lineWidth=caseW;
-            this.ctx.moveTo(caseW/2, (caseH/2));
-            this.ctx.lineTo(caseW/2, this.height - caseH/2)  ;
-            this.ctx.stroke();
-            //this.ctx.fill();
-
-
-
-
-            this.c.addEventListener('click', function(e) {
-                console.log(this,e);
-                var rect = collides(rects, e.offsetX, e.offsetY);
-                if (rect) {
-                    jnSynth.play(Array(Neck.matriceFormated[rect.string][rect.case].digitA ), 'chord');
-                } else {
-                    console.log('no collision');
-                }
-            }, false);
-
-
-
-        }
-        this.setFormatedMatrice = function(){
-            formatedMatrice = [];
-            for(i=0;i<this.matrice.length;i++){
-                if(!formatedMatrice[this.matrice[i].currentString]){ formatedMatrice[this.matrice[i].currentString] = [];}
-                if(!formatedMatrice[this.matrice[i].currentString][this.matrice[i].currentCase]){formatedMatrice[this.matrice[i].currentString][this.matrice[i].currentCase] = [];}
-                formatedMatrice[this.matrice[i].currentString][this.matrice[i].currentCase] = {
-                    "case": this.matrice[i].currentCase,
-                    "string": this.matrice[i].currentString,
-                    "digit": this.matrice[i].currentDigit,
-                    "digitA": this.matrice[i].currentDigitA,
-                    "intervale": this.matrice[i].currentIntervale,
-                    "octave": this.matrice[i].currentOctave
-                };
-            }
-            this.matriceFormated = formatedMatrice;
-            return this.matriceFormated;
-        }
-
-        this.addCase = function (){
-            if(this.currentNbrCase < this.currentNbrCaseMax){
-                this.currentNbrCase++;
-            }
-            this.draw();
-        }
-        this.removeCase = function (){
-           if(this.currentNbrCase > this.currentNbrCaseMin){
-                this.currentNbrCase--;
-           }
-            this.draw();
-        }
-
-
-        this.setControls = function(){
-            console.log($("#addCase"),$("#removeCase"));
-            $("#addCase").click(
-                    function () {
-                        Neck.addCase();
-                    }
-            );
-            $("#removeCase").click(
-                    function () {
-                        Neck.removeCase();
-                    }
-            );
-        }
-
-
-        if (this.setFormatedMatrice() ){
-            this.draw();
-            this.setControls();
-        }
-
-    }
-
-    var s1 = new String(0,4,2);
-    var s2 =  new String(1,10,2);
-    var s3 =  new String(2,10,3);
-    var s4 =  new String(3,10,3);
-    var s5 =  new String(4,10,3);
-    var s6 =  new String(5,4,4);
-    var n = new Neck(
-            '{{ matrice }}',
-            "neck",
-            "guitar",
-            24,
-            [s1,s2,s3,s4,s5,s6]);
-</script>
 {% endblock %}

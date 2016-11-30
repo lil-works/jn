@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1>{% trans %}Your fingering baskets{% endtrans %}</h1>
+
+
+    <div class="row">
+        <div class="col-lg-8 col-sm-6">
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+            <div>
+                <a class="btn btn-default" role="group" href="{{ path('basket_fingering_new') }}"><i class="glyphicon glyphicon-plus"></i> {% trans %}create new basket{% endtrans %}</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4  col-sm-6">
+            <h2>Search form</h2>
+        </div>
+
+    </div>
+
+
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>{% trans %}Your fingering basket list{% endtrans %}</h2>
+        {% if pagination|length > 0%}
+        <p>
+            <span class="label label-info">{% trans %}fingering basket found{% endtrans %}</span> {{ pagination.getTotalItemCount }}
+        </p>
+    </div>
+
+    <table class="table myPaginator">
+        <thead>
+        <tr>
+            {% set direction = pagination.getDirection() %}
+            <th>Actions</th>
+            <th{% if pagination.isSorted('fb.id') %} class="sorted {{ direction }}"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'id', 'fb.id') }}
+            </th>
+
+            <th{% if pagination.isSorted('fb.createdAt') %} class="sorted {{ direction }}"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'createdBy', 'fb.createdAt') }}
+            </th>
+            <th{% if pagination.isSorted('fb.updatedAt') %} class="sorted {{ direction }}"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'updatedAt', 'fb.updatedAt') }}
+            </th>
+            <th{% if pagination.isSorted('fb.instrument') %} class="sorted {{ direction }}"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'instrument', 'fb.instrument') }}
+            </th>
+            <th{% if pagination.isSorted('fb.private') %} class="sorted {{ direction }}"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'private/public', 'fb.private') }}
+            </th>
+
+            <th{% if pagination.isSorted('fb.title') %} class="sorted {{ direction }}"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'title', 'fb.title') }}
+            </th>
+            <th{% if pagination.isSorted('fb.description') %} class="sorted {{ direction }}"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'description', 'fb.description') }}
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for fbasket in pagination %}
+            <tr>
+                <td>
+                    <div class="btn-group btn-group-xs" role="group" >
+                        {% if current ==  fbasket.id %}
+                            <a class="btn btn-default btn-warning" role="group" href="{{ path('basket_fingering_unselect',{fBasketId:fbasket.id}) }}"><i class="glyphicon glyphicon-remove"></i> {% trans %}unselect{% endtrans %}</a>
+                        {% else %}
+                            <a  class="btn btn-default btn-success" role="group" href="{{ path('basket_fingering_select',{fBasketId:fbasket.id}) }}"><i class="glyphicon glyphicon-asterisk"></i> {% trans %}select{% endtrans %}</a>
+                        {% endif %}
+                        <a class="btn btn-default" role="group" href="{{ path('basket_fingering_show',{fBasketId:fbasket.id}) }}"><i class="glyphicon glyphicon-eye-open"></i> {% trans %}show{% endtrans %}</a>
+                        <a class="btn btn-default" role="group" href="{{ path('basket_fingering_edit',{fBasketId:fbasket.id}) }}"><i class="glyphicon glyphicon-pencil"></i> {% trans %}edit{% endtrans %}</a>
+                        <a class="btn btn-default" role="group" href="{{ path('basket_fingering_duplicate',{fBasketId:fbasket.id}) }}"><i class="glyphicon glyphicon-log-in"></i> {% trans %}duplicate{% endtrans %}</a>
+                        <a class="btn btn-default btn-danger" role="group" href="{{ path('basket_fingering_delete',{fBasketId:fbasket.id}) }}"><i class="glyphicon glyphicon-trash"></i> {% trans %}delete{% endtrans %}</a>
+                    </div>
+                </td>
+                <td>{{ fbasket.id }}</td>
+                <td>{{ fbasket.createdAt is empty ? "" : fbasket.createdAt|date("F jS \\a\\t g:ia") }}</td>
+                <td>{{ fbasket.updatedAt is empty ? "" : fbasket.updatedAt|date("F jS \\a\\t g:ia") }}</td>
+                <td>{{ fbasket.instrument is empty ? "" : fbasket.instrument.name }}</td>
+                <td>{{ fbasket.private > 0 ? '<i class="glyphicon glyphicon-ban-circle"></i>'  : '<i class="glyphicon glyphicon-ok-circle"></i>' }}</td>
+                <td>{{ fbasket.title }}</td>
+                <td>{{ fbasket.description|raw }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>
+                    <span class="label label-warning">
+                       {% trans %}no fingering basket found, sorry{% endtrans %} ...
+                    </span>
+        </p>
+    {% endif %}
+</div>
+
+{% endblock %}

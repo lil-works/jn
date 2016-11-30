@@ -63,7 +63,11 @@ class Instrument
      */
     protected $strings;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="InstrumentFamily" ,inversedBy="instruments")
+     * @ORM\JoinColumn(name="family", referencedColumnName="id")
+     */
+    protected $family;
 
     /**
      * Constructor
@@ -238,5 +242,29 @@ class Instrument
     public function getIsDefault()
     {
         return $this->isDefault;
+    }
+
+    /**
+     * Set family
+     *
+     * @param \AppBundle\Entity\InstrumentFamily $family
+     *
+     * @return Instrument
+     */
+    public function setFamily(\AppBundle\Entity\InstrumentFamily $family = null)
+    {
+        $this->family = $family;
+
+        return $this;
+    }
+
+    /**
+     * Get family
+     *
+     * @return \AppBundle\Entity\InstrumentFamily
+     */
+    public function getFamily()
+    {
+        return $this->family;
     }
 }

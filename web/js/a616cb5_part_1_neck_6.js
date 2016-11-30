@@ -1,12 +1,12 @@
 var neck = {
 
-    init:function(canvasId){
+    init:function(canvasId,instrument){
 
-
+console.log(instrument);
 
         Neck = this;
 
-        this.getSession();
+        //this.getSession();
 
         this.canvasId = canvasId;
         this.c = document.getElementById(canvasId);
@@ -15,12 +15,15 @@ var neck = {
         this.ctx = this.c.getContext("2d");
 
 
+        this.instrument = instrument;
+        this.instrumentId = instrument.id;
 
-        this.instrumentId=this.session["instrumentId"];
+
         this.sound=this.session["sound"];
 
+
         if(!this.instrumentId)
-            this.instrumentId = 1;
+            this.instrumentId = 0;
 
         if(!this.sound)
             this.sound = "piano";
@@ -56,7 +59,7 @@ var neck = {
             $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
                 Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = {intervaleName:value.currentIntervale,toneName:value.wsName};
             });
-            Neck.drawNeck();
+            Neck.draw();
 
         });
 
@@ -99,7 +102,7 @@ var neck = {
             Neck.matrice = msg;
             Neck.formatedMatrice = formatedMatrice;
 
-            Neck.drawNeck();
+            Neck.draw();
         });
 
 
@@ -138,7 +141,7 @@ var neck = {
             }else{
                 Neck.showInlays = false;
             }
-            Neck.drawNeck();
+            Neck.draw();
         });
         $( "#fretNumSelector" ).change(function() {
             if(this.checked){
@@ -146,49 +149,50 @@ var neck = {
             }else{
                 Neck.showFretNum = false;
             }
-            Neck.drawNeck();
+            Neck.draw();
         });
         this.fillInstrumentSelector();
         $( "#instrumentSelector" ).change(function() {
-            Neck.getInstrument(this.value);
+            //Neck.getInstrument(this.value);
             Neck.instrumentId =this.value;
-            Neck.storeSession();
+            //Neck.storeSession();
+            location.reload();
 
-            Neck.insertAllRootScale();
+            //Neck.insertAllRootScale();
         });
 
         $('#soundSelector').val(Neck.sound);
         $( "#soundSelector" ).change(function() {
             Neck.sound = this.value;
             Neck.storeSession();
-            Neck.drawNeck();
+            Neck.draw();
         });
 
 
         $( "#nbrCasesMax" ).click(function() {
             Neck.displayedCase = Neck.displayedCaseMax
-            Neck.drawNeck();
+            Neck.draw();
         });
         $( "#nbrCasesReset" ).click(function() {
             Neck.displayedCase = Neck.displayedCaseMin
-            Neck.drawNeck();
+            Neck.draw();
         });
         $( "#nbrCasesAdd" ).click(function() {
             if(Neck.displayedCase<Neck.displayedCaseMax)
                 Neck.displayedCase++;
-            Neck.drawNeck();
+            Neck.draw();
         });
         $( "#nbrCasesRemove" ).click(function() {
             if(Neck.displayedCase>Neck.displayedCaseMin)
                 Neck.displayedCase--;
-            Neck.drawNeck();
+            Neck.draw();
         });
 
 
         $( "#clearRootScaleSelection" ).click(function() {
             Neck.cleanIntervalesInFormatedMatrice();
             Neck.rsBasket = [];
-            Neck.drawNeck();
+            Neck.draw();
         });
 
 
@@ -200,7 +204,7 @@ var neck = {
 
         $( "#clearSelection" ).click(function() {
             Neck.scBasket = [];
-            Neck.drawNeck();
+            Neck.draw();
         });
         $( "#fingeringSelection" ).click(function() {
             Neck.fingeringAction();
@@ -208,6 +212,8 @@ var neck = {
 
 
         $( "#searchScaleFromSelection" ).click(function() {
+            $('#loading').show();
+
             var ajax_neck_searchRootScaleByDigits = Routing.generate('ajax_neck_searchRootScaleByDigits');
 
             var digits = [];
@@ -227,6 +233,7 @@ var neck = {
 
 
             request.done(function (msg) {
+                $('#loading').hide();
 
                 $("#neckResults").empty();
 
@@ -242,10 +249,10 @@ var neck = {
                     for(i=0;i<nameList.length;i++){
                         datas[deltaList[i]] = ["C",nameList[i],colorList[i]];
                     }
-                    var site_scale_show = Routing.generate('site_scale_show',{scale_name:value.scaleName});
+                    var site_rootscale_index = Routing.generate('site_rootscale_instrumented_index',{ instrumentId:Neck.instrument.id,instrumentName:Neck.instrument.name, scale:value.scaleName,root:value.wsName});
 
 
-                    html="<li><div class=\"titleInVignette\">"+value.rootInfoTone+" <a href=\""+site_scale_show+"\">"+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas></div></li>";
+                    html="<li><div class=\"titleInVignette\"><a href=\""+site_rootscale_index+"\">"+value.rootInfoTone+" "+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas></div></li>";
                     $("#neckResultsList").append(html);
 
                     new diagram("root_"+value.rootInfoTone+"_scale_"+value.scaleId,datas);
@@ -323,6 +330,7 @@ var neck = {
                     }
                 }
                 if(newRs) {
+                    $('#loading').show();
                     var request = $.ajax({
                         url: ajax_neck_rootScale,
                         method: "POST",
@@ -334,7 +342,7 @@ var neck = {
 
 
                     request.done(function (msg) {
-
+                        $('#loading').hide();
                         $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
                             Neck.formatedMatrice[value.currentString][value.currentCase].intervale[r + "_" + s] = { intervaleName:value.currentIntervale , toneName:value.wsName };
                         });
@@ -347,7 +355,7 @@ var neck = {
                     });
                 }
             });
-            Neck.drawNeck();
+            Neck.draw();
         },
     fillRootScaleSelector:function(){
         var ajax_neck_scale = Routing.generate('ajax_neck_scale');
@@ -394,56 +402,9 @@ var neck = {
             alert( "Request failed: " + textStatus );
         });
 
-
-
-
         return true;
     },
 
-    storeSession:function(){
-        console.log("Neck.instrumentId=",Neck.instrumentId);
-        var ajax_neck_session_set = Routing.generate('ajax_neck_session_set');
-        var request = $.ajax({
-            url: ajax_neck_session_set,
-            method: "POST",
-            data: {instrumentId: Neck.instrumentId, sound: Neck.sound},
-            dataType: "html",
-            async: false
-        });
-
-        request.done(function( msg ) {
-            return true;
-        });
-
-
-        request.fail(function( jqXHR, textStatus ) {
-            return false
-        });
-    },
-    getSession:function(){
-        var ajax_neck_session_get = Routing.generate('ajax_neck_session_get');
-
-        var request = $.ajax({
-            url: ajax_neck_session_get,
-            method: "POST",
-            data: {},
-            dataType: "html",
-            async: false
-        });
-
-        request.done(function( msg ) {
-            Neck.session = Array();
-            $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function (index, value) {
-                Neck.session[index]=value;
-            });
-
-        });
-
-
-        request.fail(function( jqXHR, textStatus ) {
-            return false
-        });
-    },
     fillInstrumentSelector:function(){
         var ajax_neck_instruments = Routing.generate('ajax_neck_instruments');
         var request = $.ajax({
@@ -455,11 +416,13 @@ var neck = {
         });
 
         request.done(function( msg ) {
+
             $.each($.parseJSON(msg.replace(/&quot;/g, '\"')), function( index, value ) {
                 $('#instrumentSelector').append($('<option>', {
-                    value: value.id,
+                    value: value.id ,
                     text: value.name
                 }));
+
             });
 
             $('#instrumentSelector').val(Neck.instrumentId);
@@ -472,6 +435,18 @@ var neck = {
         });
 
         return true;
+    },
+
+    draw:function(){
+
+        if(this.instrument.id > 0 ){
+            this.drawNeck()
+        }else{
+            this.drawDiagram()
+        }
+    },
+    drawDiagram:function(){
+
     },
     drawNeck:function(){
 
@@ -500,7 +475,7 @@ var neck = {
             this.ctx.fillStyle = "#666";
             this.ctx.font="9px Georgia black";
 
-            this.ctx.fillText(this.formatedMatrice[i][0].infoTone+this.formatedMatrice[i][0].octave,   3, Neck.height-i*caseH -caseH/2 +2 );
+            this.ctx.fillText(Translator.trans(this.formatedMatrice[i][0].infoTone)+this.formatedMatrice[i][0].octave,   3, Neck.height-i*caseH -caseH/2 +2 );
 
             for(j=0;j<this.displayedCase+1;j++){
                 rects.push({x: j*caseW, y:(this.height-caseH) - i*caseH, w: caseW, h: caseH , case:j,string:i});
@@ -531,7 +506,8 @@ var neck = {
                     Neck.ctx.font="12px Georgia";
                     Neck.ctx.fillText(value.intervaleName,   j*caseW + caseW*k*1/(1+len), Neck.height-i*caseH -caseH/2 -5);
                     Neck.ctx.font="10px Georgia";
-                    Neck.ctx.fillText(value.toneName,   j*caseW + caseW*k*1/(1+len), Neck.height-i*caseH -caseH/2 +15);
+                    Neck.ctx.fillText(Translator.trans(value.toneName),   j*caseW + caseW*k*1/(1+len), Neck.height-i*caseH -caseH/2 +15);
+
                     k++;
                 });
 
@@ -614,7 +590,7 @@ var neck = {
             Neck.ctx.fillStyle = "rgba(10, 10, 10, 1)";
             Neck.ctx.fillRect( caseW/2 + c*caseW,Neck.height-s*caseH -caseH/2 - 3,6,6);
 
-            $("#currentSelectionUl").append("<li>string "+s+",case "+c+" "+Neck.formatedMatrice[s][c].infoTone+Neck.formatedMatrice[s][c].octave+"</li>");
+            $("#currentSelectionUl").append("<li>[ "+s+"-"+c+" ]"+Neck.formatedMatrice[s][c].infoTone+Neck.formatedMatrice[s][c].octave+"</li>");
         });
 
         if(Neck.scBasket.length>0){
@@ -636,7 +612,7 @@ var neck = {
             $("#rootScale-" + value).click(function () {
                 Neck.cleanIntervalesInFormatedMatrice(value);
                 Neck.rsBasket.splice(rsBasketKey, 1);
-                Neck.drawNeck();
+                Neck.draw();
             });
         });
 
@@ -654,18 +630,9 @@ var neck = {
         else
             this.scBasket.push(s+"_"+c);
 
-        this.drawNeck();
+        this.draw();
     },
-    /*
-     selectRootScaleCase:function (r,s) {
-     var i = $.inArray(r+"_"+s, this.rsBasket )
-     if(i>=0)
-     this.rcBasket.splice(i,1);
-     else
-     this.rcBasket.push(r+"_"+s);
 
-     this.drawNeck();
-     },*/
     collides:function (rects, x, y) {
         var isCollision = false;
         for (var i = 0, len = rects.length; i < len; i++) {
@@ -683,6 +650,7 @@ var neck = {
     session:Array,
     instrument:null,
     instrumentId:null,
+    instrument:null,
     formatedMatrice:null,
     matrice:null,
     scBasket:[],

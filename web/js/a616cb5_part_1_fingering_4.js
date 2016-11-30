@@ -68,7 +68,7 @@ var fingering = {
 
         this.nbrString = Fingering.formatedMatrice.length;
 
-
+console.log(this.canvasId,this.datas);
         this.draw();
 
 
@@ -151,7 +151,7 @@ var fingering = {
 
                         Fingering.ctx.font="10px Georgia";
                         Fingering.ctx.fillText(
-                            this.formatedMatrice[i][j+this.minX]["intervale"].wsname,
+                            Translator.trans(this.formatedMatrice[i][j+this.minX]["intervale"].wsname),
                             Fingering.nX0 + i * Fingering.iX + Fingering.iX/2 - 4,
                             Fingering.nY0 + j * Fingering.iY + Fingering.iY/2 - 4
                             );

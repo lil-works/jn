@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Instrumentfamilies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Icon</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for instrumentFamily in instrumentFamilies %}
+            <tr>
+                <td><a href="{{ path('instrumentfamily_show', { 'id': instrumentFamily.id }) }}">{{ instrumentFamily.id }}</a></td>
+                <td>{{ instrumentFamily.name }}</td>
+                <td>{{ instrumentFamily.icon }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('instrumentfamily_show', { 'id': instrumentFamily.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('instrumentfamily_edit', { 'id': instrumentFamily.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('instrumentfamily_new') }}">Create a new instrumentFamily</a>
+        </li>
+    </ul>
+{% endblock %}

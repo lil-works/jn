@@ -1,16 +1,91 @@
 site_homepage:
-    path:     /
-    defaults: { _controller: SiteBundle:Default:neck  }
+    path: /
+    defaults: { _controller: SiteBundle:Default:index }
+
+site_about:
+    path: /about
+    defaults: { _controller: SiteBundle:Default:about }
+
 
 site_neck:
-    path: /
-    defaults: { _controller: SiteBundle:Default:neck }
+    path: /neck/{instrumentId}-{instrumentName}
+    defaults: { _controller: "SiteBundle:Default:neck" }
+
+site_scale_index:
+    path: /scale
+    defaults: { _controller: "SiteBundle:Scale:index" }
+    methods:  [GET, POST]
+
+site_scale_show:
+    path:     /scale/{scale}
+    defaults: { _controller: "SiteBundle:Scale:show" }
+    options:
+        expose: true
+
+site_rootscale_index:
+    path: /scale-root/{scale}/{root}
+    defaults: { _controller: "SiteBundle:RootScale:index" , root: C }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+site_rootscale_omit:
+    path: /omit/{omit}/scale/{scale}/root/{root}
+    defaults: { _controller: "SiteBundle:RootScale:omit"  }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+site_scale_instrumented_index:
+    path: /neck/{instrumentId}-{instrumentName}/scale
+    defaults: { _controller: "SiteBundle:Scale:index" }
+    methods:  [GET, POST]
+
+site_scale_instrumented_show:
+    path:     /neck/{instrumentId}-{instrumentName}/scale/{scale_name}
+    defaults: { _controller: "SiteBundle:Scale:show" }
+    options:
+        expose: true
+
+site_rootscale_instrumented_index:
+    path: /neck/{instrumentId}-{instrumentName}/scale-root/{scale}/{root}
+    defaults: { _controller: "SiteBundle:RootScale:index" , root: C }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+site_fingering_instrumented_index:
+    path: /neck/{instrumentId}-{instrumentName}/fingering
+    defaults: { _controller: "SiteBundle:Fingering:index"  }
+
+site_fingering_instrumented_show:
+    path: /neck/{instrumentId}-{instrumentName}/fingering/{fingeringId}
+    defaults: { _controller: "SiteBundle:Fingering:show"  }
+
+
+site_network:
+    path: /network
+    defaults: { _controller: "SiteBundle:Scale:network"  }
+
+site_melodicLine:
+    path: /melodic-line-creator
+    defaults: { _controller: "SiteBundle:MelodicLine:index"  }
+
+
+site_scale_descriptor_show:
+    path:     /scale/by-descriptor/{descriptorId}-{descriptorName}
+    defaults: { _controller: "SiteBundle:Scale:descriptor" }
+
+
+
 site_realbook:
-    path: /realbook/all/{firstletter}
-    defaults: { _controller: SiteBundle:Realbook:index ,firstletter: "%"  }
+    path: /realbook
+    defaults: { _controller: SiteBundle:Realbook:index   }
+
 site_realbook_tune:
-    path: /realbook/{tune}/{realbook}
+    path: /realbook/tune/{tune}/{realbook}
     defaults: { _controller: SiteBundle:Realbook:tune }
+
 site_realbook_download:
     path: /realbook/download/{tune}/{realbook}
     defaults: { _controller: SiteBundle:Realbook:download }
@@ -19,77 +94,90 @@ site_realbook_generate:
     defaults: { _controller: SiteBundle:Realbook:generate }
 
 
-site_scale_index:
-    path: /scale
-    defaults: { _controller: "SiteBundle:Scale:index" }
-    methods:  [GET, POST]
-
-site_scale_show:
-    path:     /scale/{scale_name}
-    defaults: { _controller: "SiteBundle:Scale:show" }
-    options:
-        expose: true
-
-site_scale_descriptor_show:
-    path:     /scale/descriptor/{descriptor_name}
-    defaults: { _controller: "SiteBundle:Scale:descriptor" }
-
-site_rootscale_index:
-    path: /scale-root/{scale}/{root}
-    defaults: { _controller: "SiteBundle:RootScale:index" , root: C }
-    methods:  [GET, POST]
-    options:
-            expose: true
-
-
 site_instrument_set:
     path:     /site_instrument_set/{instrument}
     defaults: { _controller: SiteBundle:Default:sessionSet ,instrument: 1  }
     options:
         expose: true
+
+
+
+site_sequence:
+    path: /sequence
+    defaults: { _controller: "SiteBundle:Sequence:index" }
+
+
+site_sequence_show:
+    path: /sequence/show/{sequenceId}-{sequenceName}
+    defaults: { _controller: "SiteBundle:Sequence:show" }
+
 ajax_neck_instrument:
     path:     /ajax_neck_instrument
     defaults: { _controller: SiteBundle:Ajax:instrument }
     options:
       expose: true
+      i18n: false
+
 ajax_neck_instruments:
     path:     /ajax_neck_instruments
     defaults: { _controller: SiteBundle:Ajax:instruments }
     options:
         expose: true
+        i18n: false
+
 ajax_neck_root:
     path:     /ajax_neck_root
     defaults: { _controller: SiteBundle:Ajax:root  }
     options:
         expose: true
+        i18n: false
+
 ajax_neck_scale:
     path:     /ajax_neck_scale
     defaults: { _controller: SiteBundle:Ajax:scale  }
     options:
         expose: true
+        i18n: false
+
 ajax_neck_rootScale:
     path:     /ajax_neck_rootScale
     defaults: { _controller: SiteBundle:Ajax:rootScale  }
     options:
         expose: true
+        i18n: false
+
 ajax_neck_searchRootScaleByDigits:
     path:     /ajax_neck_searchRootScaleByDigits
     defaults: { _controller: SiteBundle:Ajax:searchRootScaleByDigits  }
     options:
         expose: true
+        i18n: false
+
 ajax_neck_session_set:
     path:     /ajax_neck_session_set
     defaults: { _controller: SiteBundle:Ajax:SessionSet  }
     options:
         expose: true
+        i18n: false
+
 ajax_neck_session_get:
     path:     /ajax_neck_session_get
     defaults: { _controller: SiteBundle:Ajax:SessionGet  }
     options:
         expose: true
+        i18n: false
 
 ajax_neck_fingering:
     path:     /ajax_neck_fingering
     defaults: { _controller: SiteBundle:Ajax:Fingering  }
     options:
         expose: true
+        i18n: false
+
+
+ajax_neck_searchFingering:
+    path:     /ajax_neck_searchfingering
+    defaults: { _controller: SiteBundle:Ajax:SearchFingering  }
+    options:
+        expose: true
+        i18n: false

@@ -1,0 +1,90 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Admin Fingering Basket</h1>
+
+
+    <div class="row">
+        <div class="col-lg-8 col-sm-6">
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+        </div>
+
+        <div class="col-lg-4  col-sm-6">
+            <h2>Search form</h2>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>fingering basket list</h2>
+            {% if pagination|length > 0%}
+            <p>
+                <span class="label label-info">fingering basket  found</span> {{ pagination.getTotalItemCount }}
+            </p>
+        </div>
+
+        <table class="table myPaginator">
+            <thead>
+            <tr>
+                {% set direction = pagination.getDirection() %}
+                <th>Actions</th>
+                <th{% if pagination.isSorted('fb.id') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'id', 'fb.id') }}
+                </th>
+                <th{% if pagination.isSorted('fb.createdBy') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'createdBy', 'fb.createdBy') }}
+                </th>
+                <th{% if pagination.isSorted('fb.createdAt') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'createdBy', 'fb.createdAt') }}
+                </th>
+                <th{% if pagination.isSorted('fb.updatedAt') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'updatedAt', 'fb.updatedAt') }}
+                </th>
+                <th{% if pagination.isSorted('fb.instrument') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'instrument', 'fb.instrument') }}
+                </th>
+                <th{% if pagination.isSorted('fb.private') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'private/public', 'fb.private') }}
+                </th>
+
+                <th{% if pagination.isSorted('fb.title') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'title', 'fb.title') }}
+                </th>
+                <th{% if pagination.isSorted('fb.description') %} class="sorted {{ direction }}"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'description', 'fb.description') }}
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for fbasket in pagination %}
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>{{ fbasket.id }}</td>
+                    <td>{{ fbasket.createdBy.username }}</td>
+                    <td>{{ fbasket.createdAt is empty ? "" : fbasket.createdAt|date("F jS \\a\\t g:ia") }}</td>
+                    <td>{{ fbasket.updatedAt is empty ? "" : fbasket.updatedAt|date("F jS \\a\\t g:ia") }}</td>
+                    <td>{{ fbasket.instrument.name }}</td>
+                    <td>{{ fbasket.private > 0 ? '<i class="glyphicon glyphicon-ban-circle"></i>'  : '<i class="glyphicon glyphicon-ok-circle"></i>' }}</td>
+                    <td>{{ fbasket.title }}</td>
+                    <td>{{ fbasket.description|raw }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>
+                    <span class="label label-warning">
+                       fingering basket not found... sorry
+                    </span>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

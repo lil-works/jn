@@ -19,9 +19,16 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new JMS\TranslationBundle\JMSTranslationBundle(),
+            new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
+            new Liip\ThemeBundle\LiipThemeBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new AppBundle\AppBundle(),
             new SiteBundle\SiteBundle(),
+            new BasketBundle\BasketBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -7,34 +7,60 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\DomCrawler\Crawler;
 use AppBundle\Entity\Tune;
 use AppBundle\Entity\TunesRealbooks;
+use SiteBundle\Filter\TuneFilter;
 
 class RealbookController extends Controller
 {
-    public function indexAction(Request $request,$firstletter = null)
+    /**
+     * Lists all Descriptor entities.
+     * @Method("GET")
+     */
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $dql = "
-            SELECT t  FROM AppBundle:Tune t
-            WHERE t.title LIKE :firstletter
-              ";
-        $query = $em->createQuery($dql);
-        $query->setParameter('firstletter', $firstletter."%");
-        $tunes = $query->getResult();
 
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage
-            ->setTitle( $seoPage->getTitle() . " • Realbooks" )
-            ->addMeta('name', 'description', "search tune in the realbooks")
-        ;
+
+
+        $dql = "
+            SELECT t.title, GROUP_CONCAT(r.name) as realbookNameList ,GROUP_CONCAT(r.id) as realbookIdList FROM AppBundle:Tune t
+            LEFT JOIN AppBundle:TunesRealbooks tr WITH tr.tune = t.id
+            LEFT JOIN AppBundle:Realbook r WITH tr.realbook = r.id
+            WHERE t.title
+            LIKE :title
+            GROUP BY t.id
+              ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('title', '%%');
+
+
+        $form = $this->get('form.factory')->create(TuneFilter::class);
+
+        if ($request->query->has($form->getName())) {
+            $form->submit($request->query->get($form->getName()));
+            $data = $form->getData();
+            $query->setParameter('title',"%" . $data['title'] . "%");
+        }
+
+
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
         return $this->render('SiteBundle:Realbook:index.html.twig',array(
-            'tunes'=>$tunes,
-            'firstletter'=>$firstletter
+            'pagination'=>$pagination,
+            'form'=>$form->createView()
         ));
     }
+
     /**
      * Finds and displays a Author entity.
      * @ParamConverter("realbook", class="AppBundle\Entity\Realbook",options={"mapping": {"realbook": "name"  }})

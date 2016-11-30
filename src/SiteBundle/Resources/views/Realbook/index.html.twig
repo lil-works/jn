@@ -1,37 +1,78 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Realbooks</h1>
-    <div id="container1">
-    <div id="col1">
-        <h2>Filter</h2>
-        <div id="realbook-tuneList">
-            <a href="{{ path('site_realbook') }}">All index</a><br>
-            {% for i in range("A", "Z") %}
-                <a href="{{ path('site_realbook',{firstletter:i}) }}">{{ i }}</a>,
-            {% endfor %}
-        </div>
-    </div>
-    <div id="col2">
-        <div>
-            <h2>Tune list:</h2>
-        <ul>
-            {% for tune in tunes %}
-                <li>
-                    <ul>{{ tune.title }}:
-                        {% for tune_realbook in tune.tunesrealbooks  %}
-                            {%  set realbook = tune_realbook.realbook %}
-                            <li>
-                                <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:realbook.name }) }}">
-                                    {{ realbook.name }}</a>
-                            </li>
-                        {% endfor %}
 
-                    </ul>
-                </li>
-            {% endfor %}
-        </ul>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Realbooks</h1>
         </div>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <form method="get" action="" name="tune_filter" >
+            {{ form_start(form) }}
+                {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
+            <input class="btn btn-default" type="submit" value="{% trans %}search{% endtrans %}" />
+            {{ form_end(form) }}
+            </form>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{% trans %}Tune list{% endtrans %}</h2>
+            {% if pagination|length > 0%}
+                    <p>
+                        <span class="label label-info">{% trans %}tunes found{% endtrans %}</span> {{ pagination.getTotalItemCount }}
+                    </p>
+            </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+
+                <th>title</th>
+                <th>versions</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+                {% for tune in pagination %}
+                    <tr>
+                        <td>{{ tune.title }}</td>
+                        <td>
+                            {% for tune_realbook in tune.realbookNameList|split(',')  %}
+
+                                    <a class="label label-success" href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:tune_realbook}) }}">
+                                        {{ tune_realbook }}</a>
+
+                            {% endfor %}
+                        </td>
+
+                   </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            {% else %}
+                <p>
+                    <span class="label label-warning">
+                        {% trans %}tune not found... sorry{% endtrans %}
+                    </span>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
 {% endblock %}
+

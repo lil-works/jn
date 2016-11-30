@@ -1,0 +1,23 @@
+<ul class="list-inline">
+        <li>
+        <a href="{{ path("site_homepage", {"_locale": "en"}) }}">
+            {% image '@SiteBundle/Resources/public/images/flag/32/en.png' %}
+                <img alt="en" class="flag" src="{{ asset_url }}"  >
+            {% endimage %}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path("site_homepage", {"_locale": "fr"}) }}">
+            {% image '@SiteBundle/Resources/public/images/flag/32/fr.png' %}
+                <img  alt="fr" class="flag"  src="{{ asset_url }}"  >
+            {% endimage %}
+        </a>
+    </li>
+    <li>
+        <a href="{{ path("site_homepage", {"_locale": "es"}) }}" >
+            {% image '@SiteBundle/Resources/public/images/flag/32/es.png' %}
+                <img  alt="es" class="flag"  src="{{ asset_url }}" >
+            {% endimage %}
+        </a>
+    </li>
+</ul>

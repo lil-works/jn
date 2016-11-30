@@ -1,0 +1,45 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Rhythmsequences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Signaturenominator</th>
+                <th>Signaturedenominator</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rhythmSequence in rhythmSequences %}
+            <tr>
+                <td><a href="{{ path('rhythmsequence_show', { 'id': rhythmSequence.id }) }}">{{ rhythmSequence.id }}</a></td>
+                <td>{{ rhythmSequence.signatureNominator }}</td>
+                <td>{{ rhythmSequence.signatureDenominator }}</td>
+                <td>{{ rhythmSequence.name }}</td>
+                <td>{{ rhythmSequence.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('rhythmsequence_show', { 'id': rhythmSequence.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rhythmsequence_edit', { 'id': rhythmSequence.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rhythmsequence_new') }}">Create a new rhythmSequence</a>
+        </li>
+    </ul>
+{% endblock %}

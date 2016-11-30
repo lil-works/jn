@@ -1,13 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
     <h1>Intervale list</h1>
+
     <ul class="contentMenu">
         <li>
             <a href="{{ path('intervale_new') }}">Create a new entry</a>
         </li>
     </ul>
-    <table>
+    <table  class="table myPaginator">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,13 +24,15 @@
                 <td><a href="{{ path('intervale_show', { 'id': intervale.id }) }}">{{ intervale.id }}</a></td>
                 <td>{{ intervale.name }}</td>
                 <td>{{ intervale.delta }}</td>
-                <td>{{ intervale.color }}</td>
+                <td  style="background-color: #{{  intervale.color  }};">{{ intervale.color }}</td>
                 <td>
                     <ul>
                         <li>
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             <a href="{{ path('intervale_show', { 'id': intervale.id }) }}">show</a>
                         </li>
                         <li>
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             <a href="{{ path('intervale_edit', { 'id': intervale.id }) }}">edit</a>
                         </li>
                     </ul>

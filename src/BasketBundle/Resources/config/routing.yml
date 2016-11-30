@@ -1,0 +1,49 @@
+basket_homepage:
+    path:     /basket
+    defaults: { _controller: BasketBundle:Default:index }
+
+basket_fingering_user:
+    path:     /basket/user/{username}
+    defaults: { _controller: BasketBundle:Default:user }
+
+basket_fingering_delete:
+    path:     /basket/delete/{fBasketId}
+    defaults: { _controller: BasketBundle:Default:delete }
+
+basket_fingering_edit:
+    path:     /basket/edit/{fBasketId}
+    defaults: { _controller: BasketBundle:Default:edit }
+
+basket_fingering_add:
+    path:     /basket/add-fingering/{instrumentId}-{instrumentName}/{westernSystemId}/{scaleId}/{fingeringId}/{xList}/{yList}/{dList}/{wList}/{iList}
+    defaults: { _controller: BasketBundle:Default:add }
+    options:
+        expose: true
+
+basket_fingering_show:
+    path:     /basket/show/{fBasketId}
+    defaults: { _controller: BasketBundle:Default:show }
+
+basket_fingering_deletefingering:
+    path:     /basket/delete/{fBasketId}/{fingeringId}
+    defaults: { _controller: BasketBundle:Default:deleteFingering }
+
+basket_fingering_empty:
+    path:     /basket/delete/{fBasketId}
+    defaults: { _controller: BasketBundle:Default:empty }
+
+basket_fingering_select:
+    path:     /basket/select/{fBasketId}
+    defaults: { _controller: BasketBundle:Default:select }
+
+basket_fingering_unselect:
+    path:     /basket/unselect/{fBasketId}
+    defaults: { _controller: BasketBundle:Default:unselect }
+
+basket_fingering_duplicate:
+    path:     /basket/duplicate/{fBasketId}
+    defaults: { _controller: BasketBundle:Default:duplicate }
+
+basket_fingering_new:
+    path:     /basket/new
+    defaults: { _controller: BasketBundle:Default:new }

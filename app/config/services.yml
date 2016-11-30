@@ -10,6 +10,12 @@ services:
         tags:
             - { name: twig.extension }
 
+    basket.twig_extension:
+        class: BasketBundle\Twig\BasketExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
     app.instrument_uploader:
         class: AppBundle\FileUploader
         arguments: ['%instrument_directory%']
@@ -23,3 +29,18 @@ services:
              entityManager: "@doctrine.orm.entity_manager"
         tags:
             - { name: validator.constraint_validator, alias: UniqueInCollectionValidator  }
+    site.tune.subscriber:
+        class: SiteBundle\Subscriber\PaginateTuneSubscriber
+        tags:
+            - { name: knp_paginator.subscriber }
+    app.form.type.fingering:
+        class: AppBundle\Form\FingeringType
+        tags:
+            - { name: form.type }
+        arguments: ['@?doctrine']
+    app.listener.maintenance:
+        class: AppBundle\Listener\MaintenanceListener
+        arguments:
+            container: "@service_container"
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
