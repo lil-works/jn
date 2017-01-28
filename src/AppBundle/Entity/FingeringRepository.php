@@ -86,10 +86,248 @@ SELECT f.id as fId,count(ff.x) as countx,count(ff.y) as county, group_concat(ff.
 
 
     }
+
+    public function findFingeringByRootAndScaleCycle($instrument,$aOfConcatainedRS=null){
+
+        $wIds = $sIds = $wId_sId = array();
+        if(!is_null($aOfConcatainedRS)){
+            foreach($aOfConcatainedRS as $a){
+                array_push($wIds , $a['wId']);
+                array_push($sIds , $a['sId']);
+                array_push($wId_sId ,$a['wId'] .'_'. $a['sId']);
+            }
+        }
+
+        $sql = "
+SELECT * FROM
+(
+SELECT
+    IF(r2.xAddOs = rMatrice.currentCase
+            AND r2.y = rMatrice.currentString,
+        COUNT(CONCAT(y, '_', xAddOs)),
+        COUNT(CONCAT(y, '_', x))) AS commonFingerCound,
+
+    sel_wId AS wsIdCycle,
+    sel_wName AS wsNameCycle,
+    fId,
+    sel_sId,
+    (SELECT
+            COUNT(*)
+        FROM
+            fingering_finger
+        WHERE
+            fingering = fId) AS fCount,
+    (SELECT
+            GROUP_CONCAT(intervale_id)
+        FROM
+            scales_intervales
+        WHERE
+            scale_id = sel_sId) AS sel_iList,
+    GROUP_CONCAT(sel_createdIId
+        ORDER BY sel_createdIId),
+    IF(GROUP_CONCAT(sel_createdIId
+            ORDER BY sel_createdIId) = (SELECT
+                GROUP_CONCAT(intervale_id)
+            FROM
+                scales_intervales
+            WHERE
+                scale_id = sel_sId),
+        1,
+        NULL) AS exact,
+    IF(GROUP_CONCAT(DISTINCT (sel_createdIId)
+            ORDER BY sel_createdIId) = (SELECT
+                GROUP_CONCAT(intervale_id)
+            FROM
+                scales_intervales
+            WHERE
+                scale_id = sel_sId),
+        1,
+        NULL) AS allIn,
+
+
+
+
+    IF(r2.xAddOs = rMatrice.currentCase
+            AND r2.y = rMatrice.currentString,
+        GROUP_CONCAT(r2.xAddOs
+            ORDER BY y),
+        GROUP_CONCAT(r2.x
+            ORDER BY y)) AS xList,
+    GROUP_CONCAT(r2.y
+        ORDER BY y) AS yList,
+    GROUP_CONCAT(currentDigitA
+        ORDER BY y) AS digitAList,
+    IF(MAX(currentDigitA) - MIN(currentDigitA) = 13,
+        1,
+        NULL) AS weak,
+    IF((SELECT
+                MIN(name)
+            FROM
+                intervale
+            WHERE
+                id = sel_createdIId) = 9,
+        1,
+        NULL) AS root9,
+    GROUP_CONCAT(sel_populated_wName
+        ORDER BY y) AS wsNameList,
+    GROUP_CONCAT((SELECT
+                name
+            FROM
+                intervale
+            WHERE
+                id = sel_createdIId)
+        ORDER BY y) AS intervaleList,
+    GROUP_CONCAT((SELECT
+                color
+            FROM
+                intervale
+            WHERE
+                id = sel_createdIId)
+        ORDER BY y) AS intervaleColorList,
+    CONCAT(GROUP_CONCAT(DISTINCT (sel_sId)),
+            '_',
+            GROUP_CONCAT(DISTINCT (sel_wId)),
+            '_',
+            GROUP_CONCAT(r2.y),
+            '_',
+            IF(r2.xAddOs = rMatrice.currentCase
+                    AND r2.y = rMatrice.currentString,
+                GROUP_CONCAT(r2.xAddOs),
+                GROUP_CONCAT(r2.x))) AS fingerprint,
+    IF(r2.xAddOs = rMatrice.currentCase
+            AND r2.y = rMatrice.currentString,
+        MIN(r2.xAddOs),
+        MIN(r2.x)) AS minX,
+    IF(r2.xAddOs = rMatrice.currentCase
+            AND r2.y = rMatrice.currentString,
+        MAX(r2.xAddOs),
+        MAX(r2.x)) AS maxX,
+    IF(r2.xAddOs = rMatrice.currentCase
+            AND r2.y = rMatrice.currentString,
+        MAX(r2.xAddOs) - MIN(r2.xAddOs),
+        MAX(r2.x) - MIN(r2.x)) AS rangeX,
+    MIN(y) AS minY,
+    MAX(y) AS maxY,
+    MAX(y) - MIN(y) AS rangeY,
+    forOrder
+FROM
+    (SELECT
+    forOrder,
+        r2.sel_populated_wName,
+            r2.sel_createdId AS sel_createdId,
+            r2.sel_sId AS sel_sId,
+            r2.sel_wId AS sel_wId,
+            r2.sel_wName AS sel_wName,
+            r2.sel_createdIId,
+            oneCase AS currentCase,
+            instrument_string.pos AS currentString,
+            ROUND(((12 * octave + (d2.value + oneCase)) - MOD((d2.value + oneCase), 12)) / 12) AS currentOctave,
+            (12 * octave + (d2.value + oneCase)) AS currentDigitA,
+            MOD((d2.value + oneCase), 12) AS currentDigit
+    FROM
+        instrument instrument
+    LEFT JOIN instrument_string instrument_string ON instrument_string.instrument = instrument.id
+    JOIN (SELECT 0 oneCase UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) virtualCase ON oneCase BETWEEN :minX AND :maxX
+    LEFT JOIN digit d2 ON instrument_string.digit = d2.id
+    JOIN (SELECT
+    forOrder,
+        si1.intervale_id AS sel_createdIId,
+            r1.id AS sel_createdId,
+            r1.sId AS sel_sId,
+            r1.wId AS sel_wId,
+            r1.wName AS sel_wName,
+            w2.name AS sel_populated_wName,
+            d3.value AS sel_populated_dValue
+    FROM
+        (SELECT
+        CONCAT(w.id, '_', s.id) AS id,
+            s.id AS sId,
+            w.id AS wId,
+            w.name AS wName,
+            find_in_set(w.id,:wIdList) as forOrder
+    FROM
+        scale s
+    LEFT JOIN western_system w ON w.intervale = 1 AND w.root IN (:wIds)
+    WHERE
+        s.id IN (:sIds)
+    HAVING id IN (:wId_sId) order by forOrder) r1
+    LEFT JOIN scale s1 ON s1.id = sId
+    LEFT JOIN western_system w1 ON w1.id = wId
+    LEFT JOIN scales_intervales si1 ON s1.id = si1.scale_id
+    LEFT JOIN western_system w2 ON w2.intervale = si1.intervale_id
+        AND w2.root = w1.id
+    LEFT JOIN digit d3 ON d3.id = w2.digit) r2
+    WHERE
+        instrument.id = :instrumentId
+            AND sel_populated_dValue = MOD((d2.value + oneCase), 12)) rMatrice
+        LEFT JOIN
+    (SELECT
+        f.id AS fId,
+            f.arpeggio AS arpeggio,
+            y + stringLoop AS y,
+            IF(x = 0, 0, x + caseLoop - 1) AS x,
+            IF(x <= 1, 0, x + caseLoop - 1) AS xAddOs,
+            caseLoop AS caseLoopIndex,
+            stringLoop AS stringLoopIndex
+    FROM
+        fingering f
+    LEFT JOIN fingering_finger ff ON ff.fingering = f.id
+    JOIN (SELECT 0 caseLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20 UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24) rCaseLoop ON caseLoop BETWEEN :minX AND :maxX
+    LEFT JOIN (SELECT 0 stringLoop UNION SELECT 1 UNION SELECT 2 UNION SELECT 3) rStringLoop ON stringLoop BETWEEN :minY AND :maxY
+    GROUP BY f.id , ff.id , stringLoopIndex , caseLoopIndex) r2 ON
+    (r2.y = rMatrice.currentString
+        AND r2.x = rMatrice.currentCase)
+GROUP BY rMatrice.sel_createdId , r2.fId , r2.caseLoopIndex , r2.stringLoopIndex
+HAVING commonFingerCound = fCount
+AND allIn IS NOT NULL
+)rTot
+group by fingerprint
+having yList is not null
+order by forOrder
+        ";
+
+
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('wsIdCycle', 'wsIdCycle');
+        $rsm->addScalarResult('wsNameCycle', 'wsNameCycle');
+        $rsm->addScalarResult('fId', 'fId');
+        $rsm->addScalarResult('yList', 'yList');
+        $rsm->addScalarResult('xList', 'xList');
+        $rsm->addScalarResult('minX', 'minX');
+        $rsm->addScalarResult('minY', 'minY');
+        $rsm->addScalarResult('digitAList', 'digitAList');
+        $rsm->addScalarResult('intervaleList', 'intervaleList');
+        $rsm->addScalarResult('intervaleColorList', 'intervaleColorList');
+        $rsm->addScalarResult('wsNameList', 'wsNameList');
+        $rsm->addScalarResult('wsIdList', 'wsIdList');
+        $rsm->addScalarResult('minXnoOs', 'minXnoOs');
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        //$query->setParameter("scaleId",$scale->getId());
+        $query->setParameter("instrumentId",$instrument->getId());
+        //$query->setParameter("wsName",$westernScale->getName());
+        //$query->setParameter("wsId",$westernScale->getId());
+
+        $query->setParameter("exact",1);
+        $query->setParameter("openstring",1);
+        $query->setParameter("arpeggio",null);
+        $query->setParameter("minX",0);
+        $query->setParameter("maxX",14);
+        $query->setParameter("minY",0);
+        $query->setParameter("maxY",5);
+
+        $query->setParameter("wIdList",implode(',',$wIds));
+        $query->setParameter("wIds",$wIds);
+        $query->setParameter("sIds",$sIds);
+        $query->setParameter("wId_sId",$wId_sId);
+        return $query->getScalarResult();
+    }
     public function findFingeringByRootAndScale($instrument,$scale,$westernScale=null){
 
         $sql = "
-
+SELECT *,concat(yList,'_',xList) as fingerprint FROM
+(
 SELECT
     'no' AS openstring,
     if(arpeggio=1,'yes','no') as arpeggio,
@@ -121,7 +359,7 @@ SELECT
                 'ok',
                 NULL)),
         NULL) AS ok,
-
+    null AS minXnoOs,
     MIN(x) AS minX,
     MAX(x) AS maxX,
     MAX(x) - MIN(x) AS rangeX,
@@ -265,6 +503,7 @@ SELECT
                 NULL)),
         NULL) AS ok,
 
+    MIN(if(x>0,x,null)) AS minXnoOs,
     MIN(x) AS minX,
     MAX(x) AS maxX,
     MAX(x) - MIN(x) AS rangeX,
@@ -420,6 +659,7 @@ SELECT
                 NULL)),
         NULL) AS ok,
 
+    MIN(if(x>0,x,null)) AS minXnoOs,
     MIN(x) AS minX,
     MAX(x) AS maxX,
     MAX(x) - MIN(x) AS rangeX,
@@ -538,7 +778,9 @@ HAVING
     AND IF(:exact   ,1 ,exact = :exact )
 
     AND fId IS NOT NULL AND ok IS NOT NULL
+)rTot
 
+   group by fingerprint
         ";
 
 
@@ -547,12 +789,14 @@ HAVING
         $rsm->addScalarResult('fId', 'fId');
         $rsm->addScalarResult('yList', 'yList');
         $rsm->addScalarResult('xList', 'xList');
+        $rsm->addScalarResult('minX', 'minX');
+        $rsm->addScalarResult('minY', 'minY');
         $rsm->addScalarResult('digitAList', 'digitAList');
         $rsm->addScalarResult('intervaleList', 'intervaleList');
         $rsm->addScalarResult('intervaleColorList', 'intervaleColorList');
         $rsm->addScalarResult('wsNameList', 'wsNameList');
         $rsm->addScalarResult('wsIdList', 'wsIdList');
-
+        $rsm->addScalarResult('minXnoOs', 'minXnoOs');
 
         $query = $em->createNativeQuery($sql, $rsm);
         $query->setParameter("scaleId",$scale->getId());
@@ -560,7 +804,7 @@ HAVING
         $query->setParameter("wsName",$westernScale->getName());
         $query->setParameter("exact",1);
         $query->setParameter("openstring",1);
-        $query->setParameter("arpeggio",0);
+        $query->setParameter("arpeggio",null);
         $query->setParameter("minX",0);
         $query->setParameter("maxX",12);
         $query->setParameter("minY",0);

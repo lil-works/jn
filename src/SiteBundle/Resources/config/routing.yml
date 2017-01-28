@@ -22,6 +22,13 @@ site_scale_show:
     options:
         expose: true
 
+site_scale_root:
+    path: /scale/root/{scaleId},{root},{scaleName}
+    defaults: { _controller: "SiteBundle:Scale:root" , root: C }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
 site_rootscale_index:
     path: /scale-root/{scale}/{root}
     defaults: { _controller: "SiteBundle:RootScale:index" , root: C }
@@ -48,8 +55,22 @@ site_scale_instrumented_show:
         expose: true
 
 site_rootscale_instrumented_index:
-    path: /neck/{instrumentId}-{instrumentName}/scale-root/{scale}/{root}
-    defaults: { _controller: "SiteBundle:RootScale:index" , root: C }
+    path: /neck/{instrumentId}-{instrumentName}/root-scale/{root}/{scaleId}_{scaleName}/{addRoot}
+    defaults: { _controller: "SiteBundle:RootScale:index" , root: C , addRoot: null }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+site_rootscale_instrumented_cycle:
+    path: /neck/{instrumentId}-{instrumentName}/root-scale-cycle/{root}/{scaleId}_{scaleName}/{intervaleRoman}
+    defaults: { _controller: "SiteBundle:RootScale:cycle" , root: C , intervaleRoman: V }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+site_rootscale_instrumented_against:
+    path: /neck/{instrumentId}-{instrumentName}/root-scale-against/{rootScaleList}
+    defaults: { _controller: "SiteBundle:RootScale:against"   }
     methods:  [GET, POST]
     options:
         expose: true

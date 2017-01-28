@@ -38,9 +38,29 @@ services:
         tags:
             - { name: form.type }
         arguments: ['@?doctrine']
+
+
     app.listener.maintenance:
         class: AppBundle\Listener\MaintenanceListener
         arguments:
             container: "@service_container"
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    app.scaleRoot:
+        class: AppBundle\Services\ScaleRoot
+        arguments: ['@doctrine.orm.entity_manager','@templating', "@service_container"]
+
+    app.fingering:
+        class: AppBundle\Services\Fingering
+        arguments: ['@doctrine.orm.entity_manager','@templating', "@service_container"]
+
+    app.sequencer:
+        class: AppBundle\Services\Sequencer
+        arguments: ['@doctrine.orm.entity_manager','@templating', "@service_container"]
+
+    app.converter.rootScale:
+            class:        AppBundle\Request\ParamConverter\RootScaleConverter
+            tags:
+                - { name: request.param_converter, priority: -2, converter: rootScale_converter }
+            arguments: ['@doctrine.orm.entity_manager']

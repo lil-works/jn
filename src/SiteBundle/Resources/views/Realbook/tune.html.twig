@@ -18,16 +18,22 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <a class="glyphicon glyphicon-triangle-left" href="{{ path('site_realbook') }}">{% trans %}back to tune list{% endtrans %}</a>
+                    <div class="btn-group btn-group-xs" role="group" >
+                        <a class="btn btn-default" href="{{ path('site_realbook') }}">
+                            <i class="glyphicon glyphicon-triangle-left"></i> {% trans %}back to tune list{% endtrans %}</a>
+                        <a class="btn btn-default" href="{{ path('site_realbook_download',{ tune:tune.title, realbook:realbook.name }) }}">
+                            <i class="glyphicon glyphicon-download-alt"></i>  {% trans %}download{% endtrans %}</a>
+                    </div>
                 </div>
             </div>
             {% if versions|length > 0 %}
                 <div>
                     <h3>Other version</h3>
-                    <ul>
+                    <ul class="list-unstyled">
                         {%  for version in versions %}
                             <li>
-                                <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:version.realbookName }) }}">{{ tune.title }} • {{ version.indexName }}</a>
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                                 <a href="{{ path('site_realbook_tune',{ tune:tune.title, realbook:version.realbookName }) }}">{{ tune.title }} • {{ version.indexName }}</a>
                             </li>
                         {%  endfor %}
                     </ul>
@@ -35,13 +41,7 @@
             {% endif %}
         </div>
         <div class="col-lg-8 text-center">
-            <div class="row">
-                <a class="glyphicon glyphicon-download-alt" href="{{ path('site_realbook_download',{ tune:tune.title, realbook:realbook.name }) }}">
-                    {% trans %}download{% endtrans %}</a>
-            </div>
-            <div class="row">
             <img class="img-responsive img-thumbnail"  src="{{ asset('bundles/site/realbooks/'~img) }}" />
-            </div>
         </div>
     </div>
 

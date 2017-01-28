@@ -812,7 +812,10 @@ jnPlayFreq = function(f){
 }
 
 
-
+$(document).ready(function(){
+    jnSynth.init();
+    console.log("DOCUMENT READY jnSynth.init()")
+});
 
 var Synth, AudioSynth, AudioSynthInstrument;
 !function(){
@@ -2128,8 +2131,48 @@ FTB.playTone = function(tone){
 
     FTB.synth.triggerAttackRelease(tone, "4n");
 }
+FTB.playTones = function(tones,arpeggio){
+
+    if(arpeggio){
+
+        var myJNSYNTH = JNSYNTH.setSynth("triangle");
+        //var piano = new Tone.Synth().toMaster();
+        var piano = myJNSYNTH.synth;
+
+        var pianoPart = new Tone.Sequence(function(time, note){
+            var n = DIGIT.toneForTone(note);
+            piano.triggerAttackRelease(n, "16n", time);
+        }, tones,"16n").start();
+
+        pianoPart.loop = false;
+        pianoPart.loopEnd = "1m";
+        pianoPart.humanize = false;
+
+        Tone.Transport.bpm.value = 100;
+
+        Tone.Transport.start("+0.1");
+
+    }else{
+        var myJNSYNTH = JNSYNTH.setSynth("triangle","poly");
+
+
+        var d = [];
+
+        $.each(tones,function(k,v){
+            tones[k] = DIGIT.toneForTone(v);
+            d.push("4n");
+        });
+
+        myJNSYNTH.synth.triggerAttackRelease(tones, d);
+    }
+
+
+
+}
 FTB.manageMouse = function(canvas,datas,format){
-    canvas.addEventListener('mousedown', function(evt) {
+
+
+    FTB.canvas.addEventListener('mousedown', function(evt) {
         var mousePos = FTB.getMousePos(canvas,evt);
         var playAll = true;
         $.each(datas.fingerings,function(k1,v1){
@@ -2138,40 +2181,43 @@ FTB.manageMouse = function(canvas,datas,format){
                     mousePos.x >= v2.x0 && mousePos.x <= v2.x1 &&
                     mousePos.y >= v2.y0 && mousePos.y <= v2.y1
                 )  {
-                    playAll = false;
-                    FTB.playTone(v2.t);
+                    //playAll = false;
+                    //FTB.playTone(v2.t);
                 }
             });
         });
         if(playAll == true){
-            console.log("PLAY CHORD");
+
         }
     }, false);
 
     /*
-     * Detect when passing over string
+     * Detect when click over string
      */
-    canvas.addEventListener('mousemove', function(evt) {
+    FTB.canvas.addEventListener('click', function(evt) {
         var mousePos = FTB.getMousePos(canvas,evt);
+
+        var d = [];
         $.each(datas.fingerings,function(k1,v1){
             $.each(v1.fingers,function(k2,v2){
-                if((datas.options.format == "landscape")){
-                    if(
-                        mousePos.y >= v2.sy0 && mousePos.y <= v2.sy1
-                    )  {
-                        FTB.playTone(v2.t);
-                    }
-                }
-                else if((datas.options.format == "portrait")){
-                    if(
-                        mousePos.x >= v2.sx0 && mousePos.x <= v2.sx1
-                    )  {
-                        FTB.playTone(v2.t);
-                    }
-                }
+                d.push(v2.t);
             });
         });
+
+        if(
+            mousePos.x >=FTB.mW &&
+            mousePos.x <=FTB.width-FTB.mW &&
+            mousePos.y >=FTB.mH &&
+            mousePos.y <=FTB.height-FTB.mH &&
+
+            mousePos.x >=FTB.width/2
+        )  {
+            FTB.playTones(d,"arpeggio");
+        }else{
+            FTB.playTones(d);
+        }
     }, false);
+
 };
 
 /*
@@ -2385,6 +2431,8 @@ FTB.draw = function(canvas){
             }
         });
     });
+
+
     FTB.manageMouse(FTB.canvas,FTB.datas);
 };
 /*! jQuery v2.2.2 | (c) jQuery Foundation | jquery.org/license */
@@ -2677,8 +2725,7 @@ var neck = {
         if(!this.instrumentId)
             this.instrumentId = 0;
 
-        if(!this.sound)
-            this.sound = "piano";
+
 
         this.setControls();
         this.getInstrument( this.instrumentId );
@@ -2842,12 +2889,6 @@ var neck = {
             //Neck.insertAllRootScale();
         });
 
-        $('#soundSelector').val(Neck.sound);
-        $( "#soundSelector" ).change(function() {
-            Neck.sound = this.value;
-            Neck.storeSession();
-            Neck.draw();
-        });
 
 
         $( "#nbrCasesMax" ).click(function() {
@@ -2876,6 +2917,19 @@ var neck = {
             $( "#clearRootScaleSelection").hide();
             Neck.draw();
         });
+
+
+        if(Neck.rsBasket.length>1){
+            $( "#rootScaleSelection").show();
+            $( "#rootScaleSelection" ).click(function() {
+                $( "#rootScaleSelection").hide();
+                Neck.draw();
+            });
+        }else{
+            $( "#rootScaleSelection").hide();
+        }
+
+
 
 
         if(Neck.scBasket.length>0){
@@ -2920,10 +2974,6 @@ var neck = {
 
 
             request.done(function (msg) {
-/*
- basket_fingering_add
- path:     /basket/add-fingering/{instrumentId}-{instrumentName}/{westernSystemId}/{scaleId}/{fingeringId}/{xList}/{yList}/{dList}/{wList}/{iList}
- */
 
 
                 $('#loading').hide();
@@ -2978,13 +3028,12 @@ var neck = {
                         wList: w.join(","),
                         iList: i.join(",")
                     });
-                    console.log(basket_fingering_add);
 
 
                     for(i=0;i<nameList.length;i++){
                         datas[deltaList[i]] = ["C",nameList[i],colorList[i]];
                     }
-                    var site_rootscale_index = Routing.generate('site_rootscale_instrumented_index',{ instrumentId:Neck.instrument.id,instrumentName:Neck.instrument.name, scale:value.scaleName,root:value.wsName});
+                    var site_rootscale_index = Routing.generate('site_rootscale_instrumented_index',{ instrumentId:Neck.instrument.id,instrumentName:Neck.instrument.name, scaleName:value.scaleName, scaleId:value.scaleId,root:value.wsName});
 
                     var htmlBasket = '<a class="btn btn-default btn-xs" href="'+basket_fingering_add+'"><i class="glyphicon glyphicon-record"></i>add in basket</a>';
                     html="<li><div class=\"titleInVignette\"><a href=\""+site_rootscale_index+"\">"+value.rootInfoTone+" "+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas>"+htmlBasket+"</div></li>";
@@ -3067,7 +3116,6 @@ var neck = {
                     var request = $.ajax({
                         url: ajax_neck_rootScale,
                         method: "POST",
-                        //data: {i: $("#instrumentSelector").attr("option", "selected").val(), r: r, s: s},
                         data: {i: Neck.instrumentId, r: r, s: s},
                         dataType: "html",
                         async: false
@@ -3173,8 +3221,6 @@ var neck = {
     draw:function(){
 
 
-        jnSynth.init(this.sound);
-
         this.ctx.clearRect(0, 0, this.width, this.height);
 
         if(this.instrument.id > 0 ){
@@ -3201,6 +3247,22 @@ var neck = {
                 Neck.draw();
             });
         });
+
+        if(Neck.rsBasket.length>1){
+            $( "#rootScaleSelection").show();
+            $( "#rootScaleSelection" ).click(function() {
+                var site_rootscale_instrumented_against = Routing.generate('site_rootscale_instrumented_against',{
+                    instrumentId: Neck.instrument.id ,
+                    instrumentName:Neck.instrument.name,
+                    rootScaleList: Neck.rsBasket.join(",")
+                });
+
+                window.location.href = site_rootscale_instrumented_against;
+
+            });
+        }else{
+            $( "#rootScaleSelection").hide();
+        }
 
 
     },
@@ -3323,6 +3385,8 @@ var neck = {
             if (rect) {
 
                 Neck.selectStringCase(rect.string , rect.case );
+
+
                 jnSynth.play(Array(
                     Neck.formatedMatrice[rect.string][rect.case].digitA,
                     Neck.formatedMatrice[rect.string][rect.case].digitA
@@ -3330,6 +3394,7 @@ var neck = {
             }
             if (rectC) {
                 Neck.selectStringCase(rectC.string , rectC.case );
+
                 jnSynth.play(Array(
                     Neck.formatedMatrice[rectC.string][rectC.case].digitA,
                     Neck.formatedMatrice[rectC.string][rectC.case].digitA
@@ -3457,7 +3522,11 @@ var neck = {
             var rect = Neck.collides(Neck.rectsInNeck, e.offsetX, e.offsetY);
             if (rect) {
                 Neck.selectStringCase(rect.string , rect.case );
-                jnSynth.play(Array(Neck.formatedMatrice[rect.string][rect.case].digitA ), 'chord');
+
+                Neck.playTones(
+                    Array(
+                        Neck.formatedMatrice[rect.string][rect.case].infoTone +
+                        Neck.formatedMatrice[rect.string][rect.case].octave  ),"arpeggio");
             }
         });
 
@@ -3598,6 +3667,43 @@ var neck = {
 
 
     },
+    playTones:function(tones,arpeggio){
+
+        if(arpeggio){
+            var myJNSYNTH = JNSYNTH.setSynth("triangle");
+            //var piano = new Tone.Synth().toMaster();
+            var piano = myJNSYNTH.synth;
+
+            var pianoPart = new Tone.Sequence(function(time, note){
+                var n = DIGIT.toneForTone(note);
+                piano.triggerAttackRelease(n, "4n", time);
+            }, tones,"4n").start();
+
+            pianoPart.loop = false;
+            pianoPart.loopEnd = "1m";
+            pianoPart.humanize = false;
+
+            Tone.Transport.bpm.value = 120;
+
+            Tone.Transport.start("+0.1");
+
+        }else{
+            var myJNSYNTH = JNSYNTH.setSynth("triangle","poly");
+
+
+            var d = [];
+
+            $.each(tones,function(k,v){
+                tones[k] = DIGIT.toneForTone(v);
+                d.push("4n");
+            });
+
+            myJNSYNTH.synth.triggerAttackRelease(tones, d);
+        }
+
+
+
+    },
     tones:Array("C","C#/Db","D","D#/Eb","E","F","F#/Gb","G","G#/Ab","A","A#/Bb","B","C"),
     rects:[],
     rectsC:[],
@@ -3617,7 +3723,6 @@ var neck = {
     inlays:[3,5,7,9,12,15,17,19,21,24],
     showFretNum:true,
     roman:['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVII','XIX','XX','XXI','XXII','XXIII','XXIV'],
-    sound:"piano",
     rsColors:["hsl(265, 33%, 67%)", "hsl(344, 95%, 77%)","hsl(159, 96%, 63%)","hsl(27, 76%, 73%)","hsl(359, 96%, 90%)"],
     fColors:["rgba(100,30,20,.1)", "rgba(87,120,20,.1)", "rgba(30,100,20,.1)","rgba(20,30,100,.1)","rgba(100,30,100,.1)","rgba(100,100,20,.1)"],
     firstCase:1,

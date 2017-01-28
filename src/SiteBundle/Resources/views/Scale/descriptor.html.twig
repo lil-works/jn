@@ -4,28 +4,28 @@
         <div class="col-lg-2">
             <h2>{{ descriptor.name|trans|capitalize }}</h2>
         </div>
-
-
         <div class="col-lg-10">
-            <h3>{% trans %}Select scales by descriptor:{% endtrans %}</h3>
+            <h3>
+                {% trans %}Select scales by descriptor:{% endtrans %}
+            </h3>
             <div class="btn-group" role="group" aria-label="descriptors">
             {% for scaleType in scaleTypes %}
                 <div type="button" class="btn btn-default btn-md" style="color: #{{ scaleType.color }}">
                     <i class="glyphicon glyphicon-tag"></i>
-                    <a href="{{ path('site_scale_descriptor_show' , {descriptorId:scaleType.id,descriptorName:scaleType.name} ) }}">{{ scaleType.name }}</a>
+                    <a href="{{ path('site_scale_descriptor_show' , {descriptorId:scaleType.id,descriptorName:scaleType.name|trans} ) }}">
+                        {{ scaleType.name|trans }}
+                    </a>
                 </div>
-
             {% endfor %}
             </div>
         </div>
     </div>
 
-
-
     <div class="row">
         <div class="col-lg-12">
-            <h2>Scale described as {{ descriptor.name }}</h2>
-
+            <h3>
+                {% trans %}Scale described as:{% endtrans %} {{ descriptor.name|trans }}
+            </h3>
             {% for scale in scales %}
                 <div class="panel panel-default text-center" style="width: 280px; float: left">
                     <div class="panel-heading">
@@ -46,7 +46,6 @@
                     </div>
                 </div>
             {% endfor %}
-
         </div>
     </div>
 

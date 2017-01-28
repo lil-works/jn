@@ -1,1 +1,62 @@
 @import url(http://fonts.googleapis.com/css?family=Rubik);
+
+
+.circle-container {
+    position: relative;
+    width: 30em;
+    height: 30em;
+    padding: 0em;
+    /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
+    /*border: #ccc solid 1px;
+    border-radius: 50%;
+    margin: 0 auto 0;
+    padding-right: 10px;*/
+}
+.circle-container div {
+    display: block;
+    position: absolute;
+    top: 50%; left: 50%;
+    margin: auto;
+}
+.circle-container img { display: block; width: 100%;  }
+.circleCell{width: 220px; }
+.deg0   { transform: rotate(-90deg) translate(15em) rotate(0deg); }
+.deg30  { transform: rotate(-60deg) translate(15em) rotate(0deg); }
+.deg60  { transform: rotate(-30deg) translate(15em) rotate(0deg); }
+.deg90  { transform: rotate(0deg)   translate(15em) rotate(0deg);  }
+.deg120 { transform: rotate(30deg)  translate(15em) rotate(0deg);}
+.deg150 { transform: rotate(60deg)  translate(15em) rotate(0deg);}
+.deg180 { text-align: right;  transform: rotate(90deg)  translate(15em) rotate(-180deg);}
+.deg210 { text-align: right; transform: rotate(120deg) translate(15em) rotate(-180deg);}
+.deg240 { text-align: right; transform: rotate(150deg) translate(15em) rotate(-180deg);}
+.deg270 { text-align: right; transform: rotate(180deg) translate(15em) rotate(-180deg);}
+.deg300 { text-align: right; transform: rotate(210deg) translate(15em) rotate(-180deg);}
+.deg330 { text-align: right; transform: rotate(240deg) translate(15em) rotate(-180deg);}
+
+
+
+
+.interval{
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 21px;
+    padding: 5px;
+    border: #ccc solid 1px;
+    border-radius: 50%;
+}
+.root{
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 21px;
+    padding: 5px;
+    border: #ccc solid 1px;
+    border-radius: 50%;
+}
+
+.instrumentIcon{
+    width:64px;
+}

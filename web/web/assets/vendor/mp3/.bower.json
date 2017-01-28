@@ -1,0 +1,16 @@
+{
+  "name": "mp3",
+  "_cacheHeaders": {
+    "ETag": "\"591f3ed56f3368479660c8224a158d31\"",
+    "Last-Modified": "Thu, 19 Jun 2014 23:28:17 GMT",
+    "Content-Length": "207931",
+    "Content-Type": "application/octet-stream",
+    "Content-Disposition": "attachment; filename=mp3.js"
+  },
+  "_release": "e-tag:591f3ed56",
+  "main": "index.js",
+  "_source": "https://github.com/audiocogs/mp3.js/releases/download/v0.1.0/mp3.js",
+  "_target": "*",
+  "_originalSource": "https://github.com/audiocogs/mp3.js/releases/download/v0.1.0/mp3.js",
+  "_direct": true
+}

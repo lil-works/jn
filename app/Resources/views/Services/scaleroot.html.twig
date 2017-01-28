@@ -1,0 +1,77 @@
+{%  set aTones = populatedScale[0].toneList|split(',')  %}
+    {%  set aIntervales = populatedScale[0].intervaleNameList|split(',')  %}
+    {%  set aIntervalesColors = populatedScale[0].intervaleColorList|split(',')  %}
+
+{%  set MySortByScoreAndRoman = sortByScoreAndRoman(containTheRefAndIsContainedInRef)  %}
+{%  set datas = MySortByScoreAndRoman["datas"]  %}
+{%  set romans = MySortByScoreAndRoman["romans"]  %}
+
+
+
+<div class="row">
+    <div class="col-lg-12 table-responsive">
+        <table class="table" >
+            <thead>
+            <tr>
+                <th>{% trans %}Interval from current scale{% endtrans %}</th>
+                {% for k,v in datas %}
+                    <th>{% trans %}scale count loop{% endtrans %} {{ k }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody style="font-size: smaller;">
+            {% for roman in romans %}
+            <tr>
+                <td>{{ roman }}</td>
+                {% for loopIndex,data in datas %}
+                    {% if roman in data|keys %}
+                        {% for romanIndex,rss in data %}
+                            {% if romanIndex == roman %}
+                                <td>
+                                {% for rs in rss %}
+
+                                        <div style="font-weight:bold;color: #{{  rs["iRootColor"]  }}">
+                                            {% if instrument.id is defined %}
+                                                <a class="btn btn-xs" href="{{ path('site_rootscale_instrumented_index',{
+                                                    root:rs["rootName"]|trans,
+                                                    scaleName:rs["scaleName"]|trans,
+                                                    scaleId:rs["scaleId"],
+                                                    instrumentId:instrument.id,
+                                                    instrumentName:instrument.name
+                                                }) }}">
+                                                    show on {{ instrument.name }}
+                                                </a>
+                                            {% else %}
+
+                                            {% endif %}
+                                            <a class="btn btn-xs" href="{{ path('site_scale_root',{
+                                                root:rs["rootName"]|trans,
+                                                scaleId:rs["scaleId"],
+                                                scaleName:rs["scaleName"]|trans
+                                                }) }}">
+                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                            </a>
+                                            <a class="btn btn-xs" onclick="jnSynth.play('{{  rs["digitAList"] }}','scale');"  href="#{% trans %}play{% endtrans %}">
+                                                <i class="glyphicon glyphicon-play"></i>
+                                            </a>
+                                            {{ rs["rootName"]|trans }} {{ rs["scaleName"]|trans }}
+                                            <br>
+                                            {{  rs["toneList"] }}
+                                        </div>
+
+
+                                {% endfor %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <td>&nbsp;</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>

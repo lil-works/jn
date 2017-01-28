@@ -1,53 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump(edges,nodes) }}
   <h1>Network</h1>
     <div id="mynetwork" ></div>
     <script type="text/javascript" src="{{ asset('bundles/app/js/vis/dist/vis.js') }}"></script>
 <script>
 
+
     window.onload  = function(){
     // Instantiate our network object.
     var container = document.getElementById('mynetwork');
 
-        var nodes = [
-            {id: 1, label: "C", group: 0},
-            {id: 2, label: "E", group: 0},
-            {id: 3, label: "G", group: 0},
-            {id: 4, label: "G", group: 1},
-            {id: 5, label: "B", group: 1},
-            {id: 6, label: "D", group: 1},
-            {id: 7, label: "F", group: 2},
-            {id: 8, label: "A", group: 2},
-            {id: 9, label: "C", group: 2},
-            {id: 10, label: "D", group: 3},
-            {id: 11, label: "F#", group: 3},
-            {id: 12, label: "A", group: 3},
-            {id: 13, label: "Bb", group: 4},
-            {id: 14, label: "D", group: 4},
-            {id: 15, label: "F", group: 4}
-        ];
-        var edges = [
-            {from: 1, to: 2}, {from: 1, to: 3}, {from: 2, to: 3},
-            {from: 4, to: 5}, {from: 4, to: 6}, {from: 5, to: 6},
-            {from: 7, to: 8}, {from: 7, to: 9}, {from: 8, to: 9},
-            {from: 10, to: 11}, {from: 10, to: 12}, {from: 11, to: 12},
-            {from: 13, to: 14}, {from: 13, to: 15}, {from: 14, to: 15},
+        JSONNodes = '{{ nodes }}';
+        JSONEdges = '{{ edges }}';
 
 
-            {from: 4, to: 3},
-            {from: 10, to: 6},
-            {from: 8, to: 12},
-            {from: 6, to: 10},
-            {from: 6, to: 14},
-            {from: 10, to: 14},
-            {from: 7, to: 15},
-            {from: 9, to: 1}
 
-        ]
     var data = {
-        nodes: nodes,
-        edges: edges
+        nodes: JSON.parse(JSONNodes.replace(/&quot;/g, '\"')),
+        edges: JSON.parse(JSONEdges.replace(/&quot;/g, '\"'))
     };
     var options = {
         interaction:{

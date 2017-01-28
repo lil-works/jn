@@ -1,67 +1,94 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>{{ scale.name }}</h1>
-<div id="container1">
-    <div id="col1">
-        <div>
-            <h2>tagged as:</h2>
-            <ul class="tagged">
-                {% for descriptor in scale.descriptors %}
-                    <li >
-                        <a style="color: #{{ descriptor.color }}" href="{{ path('site_scale_descriptor_show',{descriptorName:descriptor.name,descriptorId:descriptor.id}) }}">{{ descriptor.name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{{ scale.name|trans|capitalize }}</h2>
         </div>
-
-        <div>
-            <h2>Intervals</h2>
-            {%  for intervale in scale.intervales %}
-                <span class="intervale" style="color: #{{  intervale.color }}">{{  intervale.name }}</span>
-            {% endfor %}
-        </div>
-
-        <div>
-            <h2>Diagram:</h2>
-            <canvas id="diagram" width="180" height="180"></canvas>
-            <script>
-                var datas = {};
-                {% for intervale in scale.intervales %}
-                datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
-                {% endfor %}
-                new diagram("diagram",datas);
-            </script>
-        </div>
-        <div style="margin-right:50px;text-align: justify; ">
-            <ul id="scaleList">All intervals matching scales  ({{ matchingScales|length }}):
-                {% for scale in matchingScales %}
-                    <li><a href="{{ path('site_scale_show',{ scale:scale.scaleName }) }}">{{ scale.scaleName }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <h2>Scale in key:</h2>
-        <ul id="populatedScale">
-            {% for p in populatedScale %}
-                <li>
-
-                    <a  onclick="jnSynth.play('{{  p.digitAList }}','scale')"  href="#play">play</a>
-
-                </li>
-                <li>
-
-                    <ul class="rootedPopulatedScale">
-                        <span class="rootScaleName">{{ p.rootName }} {{ scale.name }}</span>
-                        {% for tone in p.toneList|split(',') %}
-                            <li>{{ tone }}</li>
-                        {% endfor %}
-                    </ul>
-
-                </li>
-            {% endfor %}
-
-        </ul>
     </div>
 
-</div>
+    <div class="row">
+        <div class="col-lg-4">
+            <h3>{% trans %}Tagged as{% endtrans %}</h3>
+            <div class="btn-group" role="group" aria-label="descriptors">
+                {% for descriptor in scale.descriptors %}
+                    <div type="button" class="btn btn-default btn-md" style="color: #{{ descriptor.color }}">
+                        <i class="glyphicon glyphicon-tag"></i>
+                        <a href="{{ path('site_scale_descriptor_show' , {descriptorId:descriptor.id,descriptorName:descriptor.name} ) }}">
+                            {{ descriptor.name|trans }}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                <h3>{% trans %}Intervals{% endtrans %}</h3>
+                {%  for intervale in scale.intervales %}
+                    <span class="interval" style="color: #{{  intervale.color }}">{{  intervale.name }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                <h3>{% trans %}Diagram{% endtrans %}</h3>
+                <canvas id="diagram" width="180" height="180"></canvas>
+                <script>
+                    var datas = {};
+                    {% for intervale in scale.intervales %}
+                    datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                    {% endfor %}
+                    new diagram("diagram",datas);
+                </script>
+            </div>
+            <div style="margin-right:50px;text-align: justify; ">
+                <ul id="scaleList">{% trans %}All intervals matching scales{% endtrans %}  ({{ matchingScales|length }}):
+                    {% for scale in matchingScales %}
+                        <li>
+                            <a href="{{ path('site_scale_show',{ scale:scale.scaleName }) }}">
+                                {{ scale.scaleName|trans }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <h3>{{ scale.name|trans }} {% trans %}in all key{% endtrans %}</h3>
+
+            {% set sorted = sortByRoot( populatedScale) %}
+            {% set circleClass = ['deg0','deg30','deg60','deg90','deg120','deg150','deg180','deg210','deg240','deg270','deg300','deg330'] %}
+            {% set roots = [['C'],['G'],['D'],['A'],['E'],['B'],['Gb','F#'],['Db','C#'],['Ab','G#'],['Eb','D#'],['Bb','A#'],['F']] %}
+
+            <div class='circle-container'>
+                {% for k,c in circleClass %}
+                    <div class="{{ c }} circleCell">
+                        {% for root in roots[k] %}
+                            {% if "#" not in root %}
+                                {% for p in sorted[root] %}
+                                    <ul class="list list-inline">
+                                    {% if roots[k][1] is defined %}
+                                        <a class="btn btn-xs" href="{{ path('site_scale_root',{root:roots[k][1],scaleId:scale.id,scaleName:scale.name}) }}">
+                                            (<i class="glyphicon glyphicon-eye-open"></i> {{ roots[k][1] }})
+                                        </a>
+                                        {% endif %}
+                                        <a class="btn btn-xs" onclick="jnSynth.play('{{  p.digitAList }}','scale');"  href="#{% trans %}play{% endtrans %}">
+                                            <i class="glyphicon glyphicon-play"></i>
+                                        </a>
+                                        <a class="btn btn-xs" href="{{ path('site_scale_root',{root:root,scaleId:scale.id,scaleName:scale.name}) }}">
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                        </a>
+                                        <strong>{{ p.rootName|trans }}</strong>
+                                        <br>
+                                        {% for tone in p.toneList|split(',') %}
+                                            <li>{{ tone|trans }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endfor %}
+                            {% endif %}
+
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}

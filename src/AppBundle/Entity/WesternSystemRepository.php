@@ -20,4 +20,123 @@ class WesternSystemRepository extends \Doctrine\ORM\EntityRepository
         $query = $em->createNativeQuery($sql, $rsm);
         return $query->getScalarResult();
     }
+
+    public function findOneByRootAndDigit($param){
+
+
+
+
+        $em = $this->getEntityManager();
+        $dql = "
+          SELECT w
+          FROM AppBundle:WesternSystem w
+          WHERE w.intervale = 1 and w.digit = :dId
+
+
+          ";
+
+        $query = $em->createQuery($dql);
+
+        $query->setParameter('dId', $param["dId"]);
+
+        return $query->getResult();
+    }
+
+    public function findOneByRootNameAndIntervale($param){
+
+
+
+
+        $em = $this->getEntityManager();
+        $dql = "
+          SELECT w
+          FROM AppBundle:WesternSystem w
+          WHERE w.name = :rootName and w.intervale = :iId
+          ";
+
+        $query = $em->createQuery($dql);
+
+        $query->setParameter('rootName', $param["rootName"]);
+        $query->setParameter('iId', $param["iId"]);
+
+        $r = $query->getResult();
+
+
+
+        return $r[0];
+    }
+    public function findOneInFamilyRootByIntervale($param){
+
+
+
+
+        $em = $this->getEntityManager();
+        $dql = "
+          SELECT w
+          FROM AppBundle:WesternSystem w
+          WHERE w.root = :root and w.intervale = :intervale
+
+
+          ";
+
+        $query = $em->createQuery($dql);
+
+        $query->setParameter('root', $param["root"]);
+        $query->setParameter('intervale', $param["intervale"]);
+
+        $r = $query->getResult();
+        return $r[0];
+    }
+
+    public function findOneByRootAndIntervale($param){
+
+
+
+
+        $em = $this->getEntityManager();
+        $dql = "
+          SELECT w
+          FROM AppBundle:WesternSystem w
+          WHERE w.root = :wIdRoot and w.intervale = :iId
+
+
+          ";
+
+        $query = $em->createQuery($dql);
+
+        $query->setParameter('iId', $param["iId"]);
+        $query->setParameter('wIdRoot', $param["wIdRoot"]);
+
+        $result = $query->getResult();
+
+        $result = $query->getResult();
+
+        return $result[0];
+    }
+    public function findOneByRootName($name){
+
+
+
+
+        $em = $this->getEntityManager();
+        $dql = "
+          SELECT w
+          FROM AppBundle:WesternSystem w
+          WHERE w.name = :name and w.intervale = 1
+
+
+          ";
+
+        $query = $em->createQuery($dql);
+
+
+        $query->setParameter('name', $name);
+
+        $result = $query->getResult();
+
+
+        return $result[0];
+    }
+
+
 }

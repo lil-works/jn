@@ -19,16 +19,20 @@ class MenuBuilder implements ContainerAwareInterface
 
 
 
+
     /**
      * @param FactoryInterface $factory
      *
      * Add any other dependency you need
      */
-    public function __construct(FactoryInterface $factory,\Doctrine\ORM\EntityManager $em, ContainerInterface $container    )
+    public function __construct(FactoryInterface $factory,\Doctrine\ORM\EntityManager $em,  ContainerInterface $container  )
     {
         $this->factory = $factory;
         $this->em = $em;
         $this->container = $container;
+
+
+
     }
 
     public function createMainMenu(array $options)
@@ -45,7 +49,6 @@ class MenuBuilder implements ContainerAwareInterface
 
 
         $menu = $this->factory->createItem('scales', array('childrenAttributes' => array('class' => 'dropdown-menu')));
-        //$menu->addChild('Scales', array('route' => 'site_scale_index'));
         $descriptors = $this->em->getRepository('AppBundle:Descriptor')->findAll();
 
         foreach($descriptors as $descriptor){
@@ -102,7 +105,27 @@ class MenuBuilder implements ContainerAwareInterface
         $params = $request->getParentRequest()->get('_route_params');
         $route = $request->getParentRequest()->get('_route');
 
+
         $menu = $this->factory->createItem('Available necks', array('childrenAttributes' => array('class' => 'dropdown-menu')));
+
+        $instrumentFamilies = $this->em->getRepository('AppBundle:InstrumentFamily')->findAll();
+        foreach($instrumentFamilies as $instrumentFamily){
+            foreach($instrumentFamily->getInstruments() as $instrument){
+                $params["instrumentId"] = $instrument->getId();
+                $params["instrumentName"] = $instrument->getName();
+                $menu->addChild($instrument->getName(), array(
+                    'route' => 'site_neck',
+                    'routeParameters' => $params
+                ));
+            }
+        }
+
+        $params["instrumentId"] = 0;
+        $params["instrumentName"] = "any";
+        $menu->addChild("any", array(
+            'route' => $route,
+            'routeParameters' => $params
+        ));
 
         return $menu;
     }
@@ -110,18 +133,32 @@ class MenuBuilder implements ContainerAwareInterface
     public function createUserMenu(array $options)
     {
 
-        $request = $this->container->get('request_stack');
-        $params = $request->getParentRequest()->get('_route_params');
-        $route = $request->getParentRequest()->get('_route');
-
         $menu = $this->factory->createItem('User', array('childrenAttributes' => array('class' => 'dropdown-menu')));
 
+        if (TRUE === $this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+            $menu->addChild('Profile', array('route' => 'fos_user_profile_show'));
+            $menu->addChild('Logout', array('route' => 'fos_user_security_logout'));
+        }else{
+            $menu->addChild('Register', array('route' => 'fos_user_registration_register'));
+            $menu->addChild('Login', array('route' => 'fos_user_security_login'));
+        }
 
-        $menu->addChild('Register', array('route' => 'fos_user_registration_register'));
-        $menu->addChild('Login', array('route' => 'fos_user_security_login'));
-        $menu->addChild('Profile', array('route' => 'fos_user_profile_show'));
-        $menu->addChild('Logout', array('route' => 'fos_user_security_logout'));
 
+        return $menu;
+    }
+
+    public function createBasketMenu()
+    {
+
+
+        $menu = $this->factory->createItem('Baskets', array('childrenAttributes' => array('class' => 'dropdown-menu')));
+        if (TRUE === $this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+            $menu->addChild('Your fingering basket', array(
+                    'route' => "basket_fingering_user",
+                    'routeParameters' => array(
+                        "username"=>$this->container->get('security.token_storage')->getToken()->getUser()->getUsername())
+                ));
+            }
         return $menu;
     }
 }

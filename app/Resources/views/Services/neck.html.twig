@@ -1,0 +1,36 @@
+
+<h2>
+    {% if instrument.family.icon is not null %}
+        <img class="instrumentIcon" src="{{ asset('uploads/instrument/' ~  instrument.family.icon ) }}">
+    {% endif %}
+    <a href="{{ path('site_neck' ,{ instrumentId:instrument.id,instrumentName:instrument.name} ) }}">{{ instrument.name|trans|capitalize }}</a>
+    {% if  westernSystem is defined %}
+    • {{ westernSystem.name|trans }} {{ scale.name|trans  }}</h2>
+    {% endif %}
+{% if drawNeck == true %}
+    <div id="neck">
+        <h3>
+            {% trans %}neck controls{% endtrans %}
+        </h3>
+        <div class="btn-group" role="group" aria-label="fret">
+            <span class="btn btn-label btn-xs">{% trans %}frets: {% endtrans %}</span>
+            <button type="button" class="btn btn-default btn-xs" id="nbrCasesReset">5</button>
+            <button type="button" class="btn btn-default btn-xs" id="nbrCasesRemove">-</button>
+            <button type="button" class="btn btn-default btn-xs" id="nbrCasesAdd">+</button>
+            <button type="button" class="btn btn-default btn-xs" id="nbrCasesMax">{% trans %}all{% endtrans %}</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="inlayNum">
+
+            <label for="inlaysSelector">{% trans %}show inlays{% endtrans %}</label>
+            <input type="checkbox" id="inlaysSelector" checked>
+
+
+            <label for="fretNumSelector">{% trans %}show fret numbers{% endtrans %}</label>
+            <input type="checkbox" id="fretNumSelector" checked>
+
+        </div>
+        <div>
+            <canvas id="myNeck" width="580" height="260"></canvas>
+        </div>
+    </div>
+{% endif %}

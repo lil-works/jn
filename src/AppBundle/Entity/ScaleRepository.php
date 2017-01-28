@@ -12,7 +12,96 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class ScaleRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    public function findContainTheRefAndIsContainedInRef($scale,$root){
+            $sql = "
+    SELECT
+    count(rootScale) as common,
+    scaleId,rootName,rootId,scaleName,
+	(
+    SELECT
+		group_concat(d.value + 36)
+	from scale s
+    left join scales_intervales si on si.scale_id = s.id
+    left join western_system w on w.intervale = si.intervale_id  AND w.root = (SELECT id FROM western_system WHERE intervale=1 and name=:root)
+    left join digit d on d.id = w.digit
+    where s.id = scaleId
+    ) as digitAList,
+(
+    SELECT
+		group_concat(w.name)
+	from scale s
+    left join scales_intervales si on si.scale_id = s.id
+    left join western_system w on w.intervale = si.intervale_id  AND w.root = (SELECT id FROM western_system WHERE intervale=1 and name=:root)
+    where s.id = scaleId
+    ) as toneList,
+    IF(
+    (  SELECT count(*) FROM scales_intervales WHERE scale_id = scaleIdRef) = count(rootScale),
+    'yes','no'
+    ) as containTheRef,
+    IF(
+    (SELECT count(*) FROM scales_intervales WHERE scale_id = scaleId) = count(rootScale),
+    'yes','no'
+    ) as isContainedInRef,
+    (SELECT count(*) FROM scales_intervales WHERE scale_id = scaleId) -
+    (SELECT count(*) FROM scales_intervales WHERE scale_id = scaleIdRef)
+     as score
+    FROM
+    (
+    SELECT
+            concat(wRoot.id,'_',s.id) as rootScale,
+            s.id as scaleId ,
+            s.name as scaleName,
+            wRoot.name as rootName,
+            wRoot.id as rootId,
+            wScale.name as wScaleName,
+            wScale.digit as wScaleDigit,
+            (select value from digit where id=wScale.digit) as wScaleDigitValue
 
+        FROM scale s
+    LEFT JOIN scales_intervales si ON si.scale_id = s.id
+    LEFT JOIN western_system wRoot ON wRoot.intervale=1
+    LEFT JOIN western_system wScale ON wScale.root=wRoot.id and wScale.intervale = si.intervale_id
+    LEFT JOIN western_system wScaleMem ON wScaleMem.id=wScale.id
+
+    )r1
+     join
+    (
+    SELECT
+            concat(wRoot.id,'_',s.id) as rootScaleRef,
+            s.id as scaleIdRef ,
+            s.name as scaleNameRef,
+            wRoot.name as rootNameRef,
+            wScale.name as wScaleNameRef,
+            wScale.digit as wScaleDigitRef
+        FROM scale s
+        LEFT JOIN scales_intervales si ON si.scale_id = s.id
+        LEFT JOIN western_system wRoot ON wRoot.intervale=1 and wRoot.name = :root
+        LEFT JOIN western_system wScale ON wScale.root=wRoot.id and wScale.intervale = si.intervale_id
+        WHERE s.id = :scaleId
+
+    )r2
+    WHERE r2.wScaleDigitRef = r1.wScaleDigit
+    GROUP BY rootScale
+    HAVING containTheRef  = 'yes' OR isContainedInRef='yes'
+    ORDER BY score,wScaleName
+
+            ;
+            ";
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('score', 'score');
+        $rsm->addScalarResult('scaleId', 'scaleId');
+        $rsm->addScalarResult('scaleName', 'scaleName');
+        $rsm->addScalarResult('rootName', 'rootName');
+        $rsm->addScalarResult('toneList', 'toneList');
+        $rsm->addScalarResult('digitAList', 'digitAList');
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        $query->setParameter("scaleId",$scale->getId());
+        $query->setParameter("root",$root);
+
+        return $query->getScalarResult();
+    }
     public function findAllByEverything($search){
 
         $em = $this->getEntityManager();
@@ -172,7 +261,9 @@ order by ratio asc
                 digit as rootDigitId,
                 (SELECT d2.value FROM digit d2 WHERE d2.id=digit) as rootDigitA,
                 group_concat(newToneName order by intervaleDelta1) as toneList ,
-                group_concat(newDigitA+36 order by intervaleDelta1) as digitAList
+                group_concat(newDigitA+36 order by intervaleDelta1) as digitAList,
+                group_concat(intervaleName1 order by intervaleDelta1) as intervaleNameList,
+                group_concat(intervaleColor1 order by intervaleDelta1) as intervaleColorList
                 FROM
                 (
                 SELECT
@@ -198,6 +289,7 @@ order by ratio asc
                         s1.id AS scaleId1,
                             s1.name AS scaleName1,
                             i1.id AS intervaleId1,
+                            i1.name AS intervaleName1,
                             i1.delta AS intervaleDelta1,
                             i1.color AS intervaleColor1
                     FROM
@@ -219,6 +311,8 @@ order by ratio asc
         $rsm->addScalarResult('rootDigitA', 'rootDigitA');
         $rsm->addScalarResult('toneList', 'toneList');
         $rsm->addScalarResult('digitAList', 'digitAList');
+        $rsm->addScalarResult('intervaleNameList', 'intervaleNameList');
+        $rsm->addScalarResult('intervaleColorList', 'intervaleColorList');
 
         $query = $em->createNativeQuery($sql, $rsm);
         $query->setParameter("scaleId",$scaleId);
@@ -298,6 +392,513 @@ order by ratio asc
         $rsm->addScalarResult('name', 'name');
 
         $query = $em->createNativeQuery($sql, $rsm);
+        return $query->getScalarResult();
+    }
+
+
+
+
+
+    /*
+     *
+
+            ;
+     */
+
+
+    public function findForScaleRootService($scale,$westernSystem,$descriptors=null){
+        $sql = "
+    SELECT
+    count(rootScale) as common,
+    scaleId,rootName
+    ,iRootName,iRootColor,iRootRoman,iRootDistance
+    ,rootId,scaleName,
+	    (
+
+		SELECT group_concat(ws.name  ORDER by i.delta)
+        from scale s
+        left join scales_intervales si on si.scale_id = s.id
+        left join western_system ws on ws.intervale = si.intervale_id
+        left join intervale i on i.id = si.intervale_id
+        where s.id = scaleId AND ws.root = rootId
+
+    ) as toneList,
+        (
+
+		SELECT group_concat( (floor( (dR.value+i.delta)/12)+2) *12 + d.value ORDER by i.delta)
+        from scale s
+        left join scales_intervales si on si.scale_id = s.id
+        left join western_system ws on ws.intervale = si.intervale_id
+        left join intervale i on i.id = si.intervale_id
+        left join digit d on ws.digit = d.id
+        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=rootId)
+
+
+        where s.id = scaleId AND ws.root = rootId
+
+    ) as digitAList,
+
+    IF(
+    (  SELECT count(*) FROM scales_intervales WHERE scale_id = scaleIdRef) = count(rootScale),
+    'yes','no'
+    ) as containTheRef,
+    IF(
+    (SELECT count(*) FROM scales_intervales WHERE scale_id = scaleId) = count(rootScale),
+    'yes','no'
+    ) as isContainedInRef,
+    (SELECT count(*) FROM scales_intervales WHERE scale_id = scaleId) -
+    (SELECT count(*) FROM scales_intervales WHERE scale_id = scaleIdRef)
+     as score
+    FROM
+    (
+    SELECT
+            concat(wRoot.id,'_',s.id) as rootScale,
+            s.id as scaleId ,
+            s.name as scaleName,
+            wRoot.name as rootName,
+            wRoot.id as rootId,
+            wScale.name as wScaleName,
+            wScale.digit as wScaleDigit,
+            (select value from digit where id=wScale.digit) as wScaleDigitValue
+
+        FROM scale s
+    LEFT JOIN scales_intervales si ON si.scale_id = s.id
+
+    LEFT JOIN western_system wRoot ON  wRoot.id IN(
+				    SELECT t4.id FROM scale t1
+					LEFT JOIN scales_intervales t2 on t2.scale_id = t1.id
+					LEFT JOIN western_system t3 on t3.intervale=t2.intervale_id and t3.root=(SELECT id FROM western_system WHERE name=:root and intervale=1)
+                    LEFT JOIN western_system t4 on t4.intervale=1 and t4.name=t3.name
+
+					WHERE t1.id=:scaleId
+
+
+        )
+    LEFT JOIN western_system wScale ON wScale.root=wRoot.id and wScale.intervale = si.intervale_id
+
+
+    WHERE s.id  in (SELECT id  from scale left join scales_intervales on scale_id = id group by id having count(intervale_id)<12 )
+    )r1
+     join
+    (
+    SELECT
+            concat(wRoot.id,'_',s.id) as rootScaleRef,
+            s.id as scaleIdRef ,
+            s.name as scaleNameRef,
+            wRoot.name as rootNameRef,
+            wScale.name as wScaleNameRef,
+            wScale.digit as wScaleDigitRef,
+            iRoot.name as iRootName,
+            iRoot.roman as iRootRoman,
+            iRoot.color as iRootColor,
+            iRoot.distance as iRootDistance
+        FROM scale s
+        LEFT JOIN scales_intervales si ON si.scale_id = s.id
+        LEFT JOIN western_system wRoot ON wRoot.intervale=1 and wRoot.name = :root
+        LEFT JOIN western_system wScale ON wScale.root=wRoot.id and wScale.intervale = si.intervale_id
+        LEFT JOIN intervale iRoot ON iRoot.id=si.intervale_id
+        WHERE s.id = :scaleId
+
+    )r2
+    WHERE r2.wScaleDigitRef = r1.wScaleDigit
+    GROUP BY rootScale
+    HAVING containTheRef  = 'yes' OR isContainedInRef='yes'
+    ORDER BY abs (iRootDistance) , score,wScaleName
+
+            ;
+            ";
+
+
+        $sql = "
+
+SELECT
+
+	target_w_root.id as target_w_rootId,
+    target_w_root.name as rootName,
+    target_i1.id as target_iId,
+    target_i1.roman as iRootRoman,
+    target_i1.distance as iRootDistance,
+    target_i1.color as iRootColor,
+    target_s1.id as scaleId,
+    target_s1.name as scaleName,
+    COUNT(target_digit.value) as common,
+    countRef,
+
+    (select count(intervale_id) as countRef from scales_intervales where scale_id=target_s1.id) -
+    countRef
+     as score,
+
+    (select count(intervale_id) as countRef from scales_intervales where scale_id=target_s1.id) as countTarget,
+    (
+		SELECT group_concat(ws.name  ORDER by i.delta)
+        from scale s
+        left join scales_intervales si on si.scale_id = s.id
+        left join western_system ws on ws.intervale = si.intervale_id
+        left join intervale i on i.id = si.intervale_id
+        where s.id = target_s1.id AND ws.root = target_w_rootId
+    ) as toneList,
+    (
+
+		SELECT group_concat( (floor( (dR.value+i.delta)/12)+2) *12 + d.value ORDER by i.delta)
+        from scale s
+        left join scales_intervales si on si.scale_id = s.id
+        left join western_system ws on ws.intervale = si.intervale_id
+        left join intervale i on i.id = si.intervale_id
+        left join digit d on ws.digit = d.id
+        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
+
+
+        where s.id = target_s1.id AND ws.root = target_w_rootId
+
+    ) as digitAList
+FROM
+    scale ref_s1
+        LEFT JOIN
+    scales_intervales ref_si1 ON ref_si1.scale_id = ref_s1.id
+		JOIN (select count(intervale_id) as countRef from scales_intervales where scale_id=:scaleId)r2
+		LEFT JOIN
+    western_system ref_w_root ON ref_w_root.name = :root AND ref_w_root.intervale = 1
+		LEFT JOIN
+    western_system ref_w_populated ON ref_w_populated.root = ref_w_root.id AND ref_w_populated.intervale = ref_si1.intervale_id
+
+        JOIN
+	scale target_s1
+        LEFT JOIN
+    scales_intervales target_si1 ON target_si1.scale_id = target_s1.id
+
+        JOIN
+    intervale target_i1
+		LEFT JOIN
+    western_system target_w_rootFromIntervale ON target_w_rootFromIntervale.root = ref_w_root.id AND target_w_rootFromIntervale.intervale = target_i1.id
+		LEFT JOIN
+    western_system target_w_root ON target_w_root.name = target_w_rootFromIntervale.name AND target_w_root.intervale = 1
+		LEFT JOIN
+    western_system target_w_populated ON target_w_populated.root = target_w_root.id AND target_w_populated.intervale = target_si1.intervale_id
+		LEFT JOIN
+    digit target_digit ON target_digit.id = target_w_populated.digit
+
+
+
+WHERE ref_s1.id = :scaleId AND target_i1.roman IS NOT NULL AND   (  target_i1.roman IN('I','IV','V ') OR target_i1.id IN(SELECT intervale_id from scales_intervales where scale_id = :scaleId) )
+AND target_w_populated.digit = ref_w_populated.digit
+
+
+GROUP BY target_s1.id,target_i1.id
+HAVING countRef = common OR common = countTarget
+
+ORDER BY abs (iRootDistance) , score";
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('score', 'score');
+        $rsm->addScalarResult('scaleId', 'scaleId');
+        $rsm->addScalarResult('scaleName', 'scaleName');
+        $rsm->addScalarResult('rootName', 'rootName');
+        $rsm->addScalarResult('toneList', 'toneList');
+        $rsm->addScalarResult('digitAList', 'digitAList');
+        $rsm->addScalarResult('iRootName', 'iRootName');
+        $rsm->addScalarResult('iRootColor', 'iRootColor');
+        $rsm->addScalarResult('iRootRoman', 'iRootRoman');
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        #$query->setParameter("countDescriptors",count($descriptors));
+        //$query->setParameter("descriptors",$descriptors);
+        $query->setParameter("scaleId",$scale->getId());
+        //$query->setParameter("rootDigit",$westernSystem->getDigit()->getValue());
+        $query->setParameter("root",$westernSystem->getName());
+
+        return $query->getScalarResult();
+    }
+
+
+
+
+
+
+
+
+    public function findForScaleRootLimitedService($scale,$westernSystem,$descriptors=null,$absoluteLimit=1){
+
+
+
+        $sql = "
+
+SELECT
+
+	target_w_root.id as target_w_rootId,
+    target_w_root.name as rootName,
+    target_i1.id as target_iId,
+    target_i1.roman as iRootRoman,
+    target_i1.distance as iRootDistance,
+    target_i1.color as iRootColor,
+    target_s1.id as scaleId,
+    target_s1.name as scaleName,
+    COUNT(target_digit.value) as common,
+    countRef,
+
+    (select count(intervale_id) as countRef from scales_intervales where scale_id=target_s1.id) -
+    countRef
+     as score,
+
+    (select count(intervale_id) as countRef from scales_intervales where scale_id=target_s1.id) as countTarget,
+    (
+		SELECT group_concat(ws.name  ORDER by i.delta)
+        from scale s
+        left join scales_intervales si on si.scale_id = s.id
+        left join western_system ws on ws.intervale = si.intervale_id
+        left join intervale i on i.id = si.intervale_id
+        where s.id = target_s1.id AND ws.root = target_w_rootId
+    ) as toneList,
+    (
+
+		SELECT group_concat( (floor( (dR.value+i.delta)/12)+2) *12 + d.value ORDER by i.delta)
+        from scale s
+        left join scales_intervales si on si.scale_id = s.id
+        left join western_system ws on ws.intervale = si.intervale_id
+        left join intervale i on i.id = si.intervale_id
+        left join digit d on ws.digit = d.id
+        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
+
+
+        where s.id = target_s1.id AND ws.root = target_w_rootId
+
+    ) as digitAList
+FROM
+    scale ref_s1
+        LEFT JOIN
+    scales_intervales ref_si1 ON ref_si1.scale_id = ref_s1.id
+		JOIN (select count(intervale_id) as countRef from scales_intervales where scale_id=:scaleId)r2
+		LEFT JOIN
+    western_system ref_w_root ON ref_w_root.name = :root AND ref_w_root.intervale = 1
+		LEFT JOIN
+    western_system ref_w_populated ON ref_w_populated.root = ref_w_root.id AND ref_w_populated.intervale = ref_si1.intervale_id
+
+        LEFT JOIN
+	scale target_s1 on (SELECT count(*) from scales_intervales where scale_id=target_s1.id)  BETWEEN :scaleIntervaleCount - 1 AND :scaleIntervaleCount + 1
+        LEFT JOIN
+    scales_intervales target_si1 ON target_si1.scale_id = target_s1.id
+
+        JOIN
+    intervale target_i1
+		LEFT JOIN
+    western_system target_w_rootFromIntervale ON target_w_rootFromIntervale.root = ref_w_root.id AND target_w_rootFromIntervale.intervale = target_i1.id
+		LEFT JOIN
+    western_system target_w_root ON target_w_root.name = target_w_rootFromIntervale.name AND target_w_root.intervale = 1
+		LEFT JOIN
+    western_system target_w_populated ON target_w_populated.root = target_w_root.id AND target_w_populated.intervale = target_si1.intervale_id
+		LEFT JOIN
+    digit target_digit ON target_digit.id = target_w_populated.digit
+
+
+
+WHERE ref_s1.id = :scaleId AND target_i1.roman IS NOT NULL AND   (  target_i1.roman = 'I' )
+AND target_w_populated.digit = ref_w_populated.digit
+
+
+GROUP BY target_s1.id,target_i1.id
+HAVING countRef = common OR common = countTarget
+
+ORDER BY abs (iRootDistance) , score";
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('score', 'score');
+        $rsm->addScalarResult('scaleId', 'scaleId');
+        $rsm->addScalarResult('scaleName', 'scaleName');
+        $rsm->addScalarResult('rootName', 'rootName');
+        $rsm->addScalarResult('toneList', 'toneList');
+        $rsm->addScalarResult('digitAList', 'digitAList');
+        $rsm->addScalarResult('iRootName', 'iRootName');
+        $rsm->addScalarResult('iRootColor', 'iRootColor');
+        $rsm->addScalarResult('iRootRoman', 'iRootRoman');
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        #$query->setParameter("countDescriptors",count($descriptors));
+        //$query->setParameter("descriptors",$descriptors);
+        $query->setParameter("scaleId",$scale->getId());
+        $query->setParameter("scaleIntervaleCount",count($scale->getIntervales()));
+        $query->setParameter("root",$westernSystem->getName());
+
+        return $query->getScalarResult();
+    }
+
+
+
+    public function findEdgesAndNodes($aOfConcatainedRS=null){
+
+        $wIds = $sIds = $wId_sId = array();
+        if(!is_null($aOfConcatainedRS)){
+            foreach($aOfConcatainedRS as $a){
+                array_push($wIds , $a['wId']);
+                array_push($sIds , $a['sId']);
+                array_push($wId_sId ,$a['wId'] .'_'. $a['sId']);
+            }
+        }
+
+        $em = $this->getEntityManager();
+
+        $sqlEdges = "SELECT least(fromTone, toTone) as fromTone
+  , greatest(fromTone, toTone) as toTone,count(c) as countTone from (
+SELECT  sel_populated_wName as fromTone,  sel_populated_wName2 as toTone , 1 as c FROM
+(
+SELECT
+
+
+            si1.intervale_id AS sel_createdIId,
+            r1.id AS sel_createdId,
+            r1.sId AS sel_sId,
+            r1.wId AS sel_wId,
+            r1.wName AS sel_wName,
+            w2.name AS sel_populated_wName,
+            d3.value AS sel_populated_dValue
+    FROM
+        (SELECT
+        CONCAT(w.id, '_', s.id) AS id,
+            s.id AS sId,
+            w.id AS wId,
+            w.name AS wName
+    FROM
+        scale s
+    LEFT JOIN western_system w ON w.intervale = 1 AND w.root IN (:wIds)
+    WHERE
+        s.id IN (:sIds)
+    HAVING id IN (:wId_sId)) r1
+    LEFT JOIN scale s1 ON s1.id = sId
+    LEFT JOIN western_system w1 ON w1.id = wId
+    LEFT JOIN scales_intervales si1 ON s1.id = si1.scale_id
+    LEFT JOIN western_system w2 ON w2.intervale = si1.intervale_id
+        AND w2.root = w1.id
+    LEFT JOIN digit d3 ON d3.id = w2.digit
+
+    )r1
+
+    LEFT JOIN
+
+    (
+    SELECT
+
+
+        si1.intervale_id AS sel_createdIId2,
+            r1.id AS sel_createdId2,
+            r1.sId AS sel_sId2,
+            r1.wId AS sel_wId2,
+            r1.wName AS sel_wName2,
+            w2.name AS sel_populated_wName2,
+            d3.value AS sel_populated_dValue2
+    FROM
+        (SELECT
+        CONCAT(w.id, '_', s.id) AS id,
+            s.id AS sId,
+            w.id AS wId,
+            w.name AS wName
+    FROM
+        scale s
+    LEFT JOIN western_system w ON w.intervale = 1 AND w.root IN (:wIds)
+    WHERE
+        s.id IN (:sIds)
+    HAVING id IN (:wId_sId)) r1
+    LEFT JOIN scale s1 ON s1.id = sId
+    LEFT JOIN western_system w1 ON w1.id = wId
+    LEFT JOIN scales_intervales si1 ON s1.id = si1.scale_id
+    LEFT JOIN western_system w2 ON w2.intervale = si1.intervale_id
+        AND w2.root = w1.id
+    LEFT JOIN digit d3 ON d3.id = w2.digit
+
+
+
+    )r2 ON sel_createdId2=sel_createdId and sel_populated_wName !=sel_populated_wName2
+
+)r3
+group by fromTone,toTone";
+
+$sqlNodes = "
+SELECT
+
+count(*) as size,
+group_concat(r1.id) as createdIdGroup,
+        si1.intervale_id AS sel_createdIId,
+            r1.id AS sel_createdId,
+            r1.sId AS sel_sId,
+            r1.wId AS sel_wId,
+            r1.wName AS sel_wName,
+            w2.name AS sel_populated_wName2,
+            w2.name AS sel_populated_wName,
+            d3.value AS sel_populated_dValue
+    FROM
+        (SELECT
+        CONCAT(w.id, '_', s.id) AS id,
+            s.id AS sId,
+            w.id AS wId,
+            w.name AS wName
+    FROM
+        scale s
+    LEFT JOIN western_system w ON w.intervale = 1 AND w.root IN (:wIds)
+    WHERE
+        s.id IN (:sIds)
+    HAVING id IN (:wId_sId)) r1
+    LEFT JOIN scale s1 ON s1.id = sId
+    LEFT JOIN western_system w1 ON w1.id = wId
+    LEFT JOIN scales_intervales si1 ON s1.id = si1.scale_id
+    LEFT JOIN western_system w2 ON w2.intervale = si1.intervale_id
+        AND w2.root = w1.id
+    LEFT JOIN digit d3 ON d3.id = w2.digit
+   group by sel_populated_dValue";
+
+
+        $rsmEdges = new ResultSetMapping;
+        $rsmEdges->addScalarResult('fromTone', 'from');
+        $rsmEdges->addScalarResult('toTone', 'to');
+        $rsmEdges->addScalarResult('countTone', 'value');
+
+        $queryEdges = $em->createNativeQuery($sqlEdges, $rsmEdges);
+
+
+        $queryEdges->setParameter("wIds",$wIds);
+        $queryEdges->setParameter("sIds",$sIds);
+        $queryEdges->setParameter("wId_sId",$wId_sId);
+
+        $rsmNodes = new ResultSetMapping;
+        $rsmNodes->addScalarResult('sel_populated_wName2', 'label');
+        $rsmNodes->addScalarResult('sel_populated_wName', 'id');
+        $rsmNodes->addScalarResult('size', 'value');
+        $rsmNodes->addScalarResult('createdIdGroup', 'group');
+
+        $queryNodes = $em->createNativeQuery($sqlNodes, $rsmNodes);
+
+
+        $queryNodes->setParameter("wIds",$wIds);
+        $queryNodes->setParameter("sIds",$sIds);
+        $queryNodes->setParameter("wId_sId",$wId_sId);
+
+        return array(
+            "edges"=>$queryEdges->getScalarResult(),
+            "nodes"=>$queryNodes->getScalarResult()
+        );
+
+
+    }
+
+    public function populateScaleByWesternSystem($westernSystem,$scale){
+
+        $sql = "
+SELECT s.id as scaleId,s.name as scaleName,wRoot.id as wRootId,wRoot.name as wRootName,wPopulated.name as wPopulatedName  FROM scale s
+LEFT JOIN scales_intervales si on si.scale_id = s.id
+LEFT JOIN western_system  wRoot on wRoot.id = :westernSystemId
+LEFT JOIN western_system  wPopulated on wPopulated.root = wRoot.id and wPopulated.intervale = si.intervale_id
+
+
+where  s.id = :scaleId";
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('scaleId', 'scaleId');
+        $rsm->addScalarResult('scaleName', 'scaleName');
+        $rsm->addScalarResult('wRootId', 'wRootId');
+        $rsm->addScalarResult('wRootName', 'wRootName');
+        $rsm->addScalarResult('wPopulatedName', 'wPopulatedName');
+
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        $query->setParameter("scaleId",$scale->getId());
+        $query->setParameter("westernSystemId",$westernSystem->getId());
+
         return $query->getScalarResult();
     }
 }

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {%  set aTones = populatedScale[0].toneList|split(',')  %}
+    {%  set aIntervales = populatedScale[0].intervaleNameList|split(',')  %}
+    {%  set aIntervalesColors = populatedScale[0].intervaleColorList|split(',')  %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{{ root|trans }}
+                <a href="{{ path('site_scale_show' , {scale:scale.name} ) }}">
+                    {{ scale.name|trans|capitalize }}
+                </a></h2>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-4">
+        <h3>{% trans %}Tagged as{% endtrans %}</h3>
+        <div class="btn-group" role="group" aria-label="descriptors">
+            {% for descriptor in scale.descriptors %}
+                <div type="button" class="btn btn-default btn-md" style="color: #{{ descriptor.color }}">
+                    <i class="glyphicon glyphicon-tag"></i>
+                    <a href="{{ path('site_scale_descriptor_show' , {descriptorId:descriptor.id,descriptorName:descriptor.name} ) }}">
+                        {{ descriptor.name|trans }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+        <div class="col-lg-4">
+        <div>
+            <h3>{% trans %}Intervals{% endtrans %}</h3>
+            {%  for intervale in scale.intervales %}
+                <span class="interval" style="color: #{{  intervale.color }}">{{  intervale.name }}</span>
+            {% endfor %}
+        </div>
+        </div>
+        <div class="col-lg-4">
+        <div>
+            <h3>{% trans %}Diagram{% endtrans %}</h3>
+            <canvas id="diagram" width="180" height="180"></canvas>
+            <script>
+                var datas = {};
+                {% for intervale in scale.intervales %}
+                datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                {% endfor %}
+                new diagram("diagram",datas);
+            </script>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 table-responsive">
+            {{ scaleRootService|raw }}
+        </div>
+
+    </div>
+
+
+{% endblock %}

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script src="{{ asset('bundles/app/js/PACE.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/pace.css') }}">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +16,7 @@
 
 
     {% stylesheets '@SiteBundle/Resources/public/css/sticky-footer-navbar.css' filter="cssrewrite"  %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+    <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -45,17 +49,42 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
-    {% javascripts '@SiteBundle/Resources/public/js/*' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script src="{{ asset('bundles/site/js/jquery-2.2.2.min.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/audiosFunctions.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/audiosynth.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/diagram.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/diagram2.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/fingering.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/fingering2.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/fingeringPicker.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/fretboard.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/lineCreator.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/neck.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/site.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/sessionManager.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/utils.js') }}"></script>
 
+    {#
+    {% javascripts '@SiteBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
     {% stylesheets '@SiteBundle/Resources/public/css/*.css' filter="cssrewrite"  %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
-    <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Rubik">
+        <link rel="stylesheet" type="text/css"
+              href="https://fonts.googleapis.com/css?family=Rubik">
+        #}
+
+
+    <script>
+        window.paceOptions = {
+            ajax: false,
+            restartOnRequestAfter: false,
+        };
+    </script>
+
 </head>
 
 <body onload="jnSynth.init();" >

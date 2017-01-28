@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-lg-12 table-responsive">
+
+        {%  set sortedFingerings = sortFingerings(fingerings)  %}
+        {% if  sortedFingerings['count'] == 0 %}
+            <div>{% trans %}no fingering found{% endtrans %}</div>
+        {% else %}
+            <p>{% trans %}fingerings found{% endtrans %}  {{ sortedFingerings['count'] }}</p>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        {% trans %}min fret \ min string{% endtrans %}
+                    </th>
+                    {% for y,sortedFingeringY in sortedFingerings['yListed'] %}
+                        <th>{{ y }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for x,sortedFingeringX in sortedFingerings['xListed'] %}
+                <tr>
+                    <td>{{ x }}</td>
+                    {% for y,sortedFingeringY in sortedFingerings['yListed'] %}
+                        <td>
+                            {% set countForCanvas = 0 %}
+                        {% for fingeringInXY in sortedFingeringX %}
+                            {% if fingeringInXY['minY'] == y %}
+                                <li>
+                                    <div class="fingeringContainer">
+                                        <canvas id="myFingering_{{ x~'_'~y~'_'~countForCanvas }}" width="130" height="150"></canvas>
+                                    </div>
+                                    <script>
+                                        var d = {
+                                            instrument:{
+                                                strings:'{{ instrumentForJs }}'
+                                            },
+                                            options:{
+                                                format:"auto", // portrait,landscape,auto
+                                                autoSize:true, // Set fret num automaticaly
+                                                showInterval:true,
+                                                showTone:true
+                                            }
+                                        }
+                                        var myFTB = FTB.init(d,'{{ fingeringInXY['json'] }}');
+                                        myFTB.draw("myFingering_{{  x~'_'~y~'_'~countForCanvas }}");
+                                        {% set countForCanvas = countForCanvas +1 %}
+                                    </script>
+
+                                    <a class="btn btn-default btn-xs" href="{{ path('basket_fingering_add' ,{
+                                    instrumentId:instrument.id,
+                                    instrumentName:instrument.name ,
+                                    scaleId:scale.id,
+                                    westernSystemId:westernSystem.id,
+                                    fingeringId:fingeringInXY['fId'],
+                                    xList:fingeringInXY['xList'],
+                                    yList:fingeringInXY['yList'],
+                                    iList:fingeringInXY['intervaleList'],
+                                    wList:fingeringInXY['wsNameList'],
+                                    dList:fingeringInXY['digitAList']
+                                    } ) }}">
+
+                                        <i class="glyphicon glyphicon-record"></i>
+                                        {% trans %}add in basket{% endtrans %}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+
+
+
+
+{% if drawNeck == true %}
+<script>
+    var n = neck.init("myNeck" ,{
+        'id':{{ instrument.id }} ,
+        'name':'{{ instrument.name }}',
+        'caseMax':'{{ instrument.caseMax }}'
+    } );
+    n.displayedCase=14;
+    n.insertFingerings('{{ fingeringsJSON }}');
+    n.insertRootScale({{ westernSystem.id }},{{ scale.id }});
+
+</script>
+        </div>
+    </div>
+{% endif %}

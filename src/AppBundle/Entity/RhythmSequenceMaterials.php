@@ -25,7 +25,7 @@ class RhythmSequenceMaterials
     /**
      * @var integer
      *
-     * @ORM\Column(name="integer", type="integer" , nullable=false)
+     * @ORM\Column(name="pos", type="integer" , nullable=false)
      */
     private $pos;
 
@@ -67,29 +67,7 @@ class RhythmSequenceMaterials
         return $this->id;
     }
 
-    /**
-     * Set pos
-     *
-     * @param \pos $pos
-     *
-     * @return RhythmSequenceMaterials
-     */
-    public function setPos(\pos $pos)
-    {
-        $this->pos = $pos;
-
-        return $this;
-    }
-
-    /**
-     * Get pos
-     *
-     * @return \pos
-     */
-    public function getPos()
-    {
-        return $this->pos;
-    }
+   
 
     /**
      * Set isSilent
@@ -185,5 +163,29 @@ class RhythmSequenceMaterials
     public function getRhythmMaterial()
     {
         return $this->rhythm_material;
+    }
+
+    /**
+     * Set pos
+     *
+     * @param integer $pos
+     *
+     * @return RhythmSequenceMaterials
+     */
+    public function setPos($pos)
+    {
+        $this->pos = $pos;
+
+        return $this;
+    }
+
+    /**
+     * Get pos
+     *
+     * @return integer
+     */
+    public function getPos()
+    {
+        return $this->pos;
     }
 }

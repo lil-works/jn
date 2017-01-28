@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>
+                {{ westernSystem.name|trans }} {{ scale.name|trans }}
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="list list-inline">
+                {% trans %}Other roots:{% endtrans %}
+                {% for root in roots|root %}
+                    <li>
+                        <a class="root" href="{{ path('site_rootscale_instrumented_index',{instrumentId:instrument.id,instrumentName:instrument.name,root:root.name,scaleName:scale.name|trans,scaleId:scale.id}) }}">
+                            {{ root.name|trans }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul class="list list-inline">
+                {% trans %}Cycle{% endtrans %}
+                {% for intervale in intervales %}
+                    {% if intervale.roman is not null and  intervale.roman%12!=0 %}
+                        <li>
+                            <a style="color: #{{ intervale.color }};" class="interval" href="{{ path('site_rootscale_instrumented_cycle',{instrumentId:instrument.id,instrumentName:instrument.name,root:westernSystem.name|trans,scale:scale.name,intervaleRoman:intervale.roman}) }}">
+                                {{ intervale.roman }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+
+            <div class="col-lg-6">
+                <h2>{% trans %}Diagram:{% endtrans %}</h2>
+                <canvas id="diagram" width="180" height="180"></canvas>
+                <script>
+                    var datas = {};
+                    {% for intervale in scale.intervales %}
+                    datas[{{ intervale.delta }}] = ["C","{{ intervale.name  }}","{{ intervale.color  }}"];
+                    {% endfor %}
+                    new diagram("diagram",datas);
+                </script>
+            </div>
+
+
+            <h2>{% trans %}Intervals{% endtrans %}</h2>
+            {%  for intervale in scale.intervales %}
+                <span class="interval" style="color: #{{  intervale.color }}">{{ intervale.name }}</span>
+            {% endfor %}
+            <ul id="populatedScale" class="list-inline">
+                {% for p in populatedScale %}
+                    <li>
+                        <a href="{{ path('site_scale_root' , {root:westernSystem.name|trans,scaleId:scale.id,scaleName:scale.name} ) }}">
+                            <i class="glyphicon glyphicon-eye-open"></i> {{ westernSystem.name|trans }}
+                        </a>
+                        <a href="{{ path('site_scale_show' , {scale:scale.name} ) }}">
+                            <i class="glyphicon glyphicon-eye-open"></i> {{ scale.name|trans }}
+                        </a>
+                        <a  onclick="jnSynth.play('{{  p.digitAList }}','scale')"  href="#play"><i class="glyphicon glyphicon-play"></i>{% trans %}play tones{% endtrans %}</a>
+                        <ul class="rootedPopulatedScale list-inline">
+                            <span class="rootScaleName">{{ p.rootName|trans }} {{ scale.name|trans }}</span>
+                            {% for tone in p.toneList|split(',') %}
+                                <li>{{ tone|trans }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="btn-group" role="group" aria-label="descriptors">
+                {% for descriptor in scale.descriptors %}
+                    <div type="button" class="btn btn-default btn-md" style="color: #{{ descriptor.color }}">
+                        <i class="glyphicon glyphicon-tag"></i>
+                        <a href="{{ path('site_scale_descriptor_show' , {descriptorName:descriptor.name|trans,descriptorId:descriptor.id} ) }}">
+                            {{ descriptor.name|trans }}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
+            {{ scaleRootService|raw }}
+        </div>
+        <div class="col-lg-6">
+            {{ fingeringService['neck']|raw }}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans %}Fingerings{% endtrans %}</h3>
+                </div>
+                <div class="panel-body">
+                    {{ fingeringService['fingering']|raw }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}

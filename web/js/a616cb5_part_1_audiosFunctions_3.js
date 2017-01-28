@@ -157,4 +157,7 @@ jnPlayFreq = function(f){
 }
 
 
-
+$(document).ready(function(){
+    jnSynth.init();
+    console.log("DOCUMENT READY jnSynth.init()")
+});

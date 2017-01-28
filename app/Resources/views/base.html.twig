@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script src="{{ asset('bundles/app/js/PACE.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/pace.css') }}">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,30 +40,58 @@
     {% endimage %}
 
     {% javascripts
-    'bundles/bazingajstranslation/js/translator.min.js'
-    'bundles/app/js/translations/config.js'
-    'bundles/app/js/translations/messages/*.js' %}
+        'bundles/bazingajstranslation/js/translator.min.js'
+        'bundles/app/js/translations/config.js'
+        'bundles/app/js/translations/messages/*.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
-    {% javascripts '@SiteBundle/Resources/public/js/*' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script src="{{ asset('bundles/site/js/jquery-2.2.2.min.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/audiosFunctions.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/audiosynth.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/diagram.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/diagram2.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/fingering.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/fingering2.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/fretboard.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/lineCreator.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/neck.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/site.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/sessionManager.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/utils.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/synth/synth.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/digit/digit.js') }}"></script>
+    <script src="{{ asset('bundles/site/js/sequencer/sequencer.js') }}"></script>
 
+
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/site.css') }}">
+    {#
+    {% javascripts '@SiteBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
     {% stylesheets '@SiteBundle/Resources/public/css/*.css' filter="cssrewrite"  %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
-    <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Rubik">
+        <link rel="stylesheet" type="text/css"
+              href="https://fonts.googleapis.com/css?family=Rubik">
+        #}
+
+
+    <script>
+        window.paceOptions = {
+            ajax: false,
+            restartOnRequestAfter: false,
+        };
+    </script>
+
 </head>
 
-<body onload="jnSynth.init();" >
-
+<body>
 <!-- Wrap all page content here -->
 <div id="wrap">
 
@@ -76,21 +108,26 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scales<b class="caret"></b></a>
-                            {{ render(controller("SiteBundle:Scale:Menu" , {context:"navbar"})) }}
-                    </li>
-                    <li><a href="{{ path('site_melodicLine') }}">{% trans %}Melodic Line Creator{% endtrans %}</a></li>
-                    <li><a href="{{ path('site_realbook') }}">Realbooks</a></li>
-                    <li><a href="#contact">Contact</a></li>
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Available necks <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            {{ render(controller("SiteBundle:Instrument:Menu" , {context:"navbar"})) }}
-                        </ul>
+                        {{ render(controller("SiteBundle:Instrument:Menu" , {context:"navbar"})) }}
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tags"></i> Scales <b class="caret"></b></a>
+                            {{ render(controller("SiteBundle:Scale:Menu" , {context:"navbar"})) }}
+                    </li>
+
+                    <li><a href="{{ path('site_realbook') }}"><i class="glyphicon glyphicon-book"></i> Realbooks</a></li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-shopping-cart"></i> Basket <b class="caret"></b></a>
+                        {{ render(controller("BasketBundle:Default:Menu" )) }}
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> User <b class="caret"></b></a>
                         {{ render(controller("SiteBundle:User:Menu" , {context:"navbar"})) }}
                     </li>
                     <li class="dropdown">
@@ -117,11 +154,41 @@
 
 <footer class="footer">
     <div class="container">
+        <div style="padding: 18px;">
+            <div  style="float: left;" id="coinwidget-bitcoin-1GVbS5pCm1J1xCJmgep7wswSe6iBfjCiYh"></div>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="UJC26TP955L3Q" />
+                <input type="image" src="https://www.paypal.com/fr_FR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate" />
+                <img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
+            </form>
+        </div>
+        <script src="//blockr.io/js_external/coinwidget/coin.js"></script>
+        <script>
+            CoinWidgetCom.go({
+                wallet_address: '1GVbS5pCm1J1xCJmgep7wswSe6iBfjCiYh',
+                currency: 'bitcoin',
+                counter: 'count',
+                lbl_button: 'Donate',
+                lbl_count: 'donations',
+                lbl_amount: 'BTC',
+                lbl_address: 'Use address below to donate. Thanks!',
+                qrcode: true,
+                alignment: 'bl',
+                decimals: 8,
+                size: "small",
+                color: "light",
+                countdownFrom: "0",
+                element: "#coinwidget-bitcoin-1GVbS5pCm1J1xCJmgep7wswSe6iBfjCiYh",
+                onShow: function(){},
+                onHide: function(){}
+            });
+        </script>
 
-
-
-        <p class="pull-right"><a href="http://www.lil-works.com">lil-works</a> &nbsp; ©Copyright 2017</p>
-
+        <p class="pull-right">
+            <a href="http://www.lil-works.com">
+                lil-works</a> &nbsp; ©Copyright 2017
+        </p>
     </div>
 </footer>
 

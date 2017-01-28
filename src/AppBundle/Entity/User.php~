@@ -21,6 +21,21 @@ class User extends BaseUser
     protected $id;
 
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Instrument")
+     * @ORM\JoinColumn(name="favoriteInstrument", referencedColumnName="id")
+     */
+    private $favoriteInstrument;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="favoriteLanguage", type="string",nullable=true)
+     */
+    private $favoriteLanguage;
+
+
 
 
     /**
@@ -90,5 +105,53 @@ class User extends BaseUser
     public function getFingeringbaskets()
     {
         return $this->fingeringbaskets;
+    }
+
+    /**
+     * Set favoriteInstrument
+     *
+     * @param \AppBundle\Entity\Instrument $favoriteInstrument
+     *
+     * @return User
+     */
+    public function setFavoriteInstrument(\AppBundle\Entity\Instrument $favoriteInstrument = null)
+    {
+        $this->favoriteInstrument = $favoriteInstrument;
+
+        return $this;
+    }
+
+    /**
+     * Get favoriteInstrument
+     *
+     * @return \AppBundle\Entity\Instrument
+     */
+    public function getFavoriteInstrument()
+    {
+        return $this->favoriteInstrument;
+    }
+
+    /**
+     * Set favoriteLanguage
+     *
+     * @param string $favoriteLanguage
+     *
+     * @return User
+     */
+    public function setFavoriteLanguage($favoriteLanguage)
+    {
+        $this->favoriteLanguage = $favoriteLanguage;
+
+        return $this;
+    }
+
+    /**
+     * Get favoriteLanguage
+     *
+     * @return string
+     */
+    public function getFavoriteLanguage()
+    {
+        return $this->favoriteLanguage;
     }
 }

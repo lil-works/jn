@@ -17,6 +17,9 @@ use AppBundle\Entity\WesternSystem;
 use AppBundle\Entity\Scale;
 use AppBundle\Entity\User;
 
+use Knp\Menu\Matcher\Matcher;
+use Knp\Menu\MenuFactory;
+use Knp\Menu\Renderer\ListRenderer;
 
 class DefaultController extends Controller
 {
@@ -282,5 +285,9 @@ class DefaultController extends Controller
         }
         $em->flush();
         return $this->redirect($request->headers->get('referer'));
+    }
+    public function menuAction()
+    {
+        return $this->render('BasketBundle:Default:navbar.html.twig',array());
     }
 }

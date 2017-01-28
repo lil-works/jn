@@ -135,8 +135,48 @@ FTB.playTone = function(tone){
 
     FTB.synth.triggerAttackRelease(tone, "4n");
 }
+FTB.playTones = function(tones,arpeggio){
+
+    if(arpeggio){
+
+        var myJNSYNTH = JNSYNTH.setSynth("triangle");
+        //var piano = new Tone.Synth().toMaster();
+        var piano = myJNSYNTH.synth;
+
+        var pianoPart = new Tone.Sequence(function(time, note){
+            var n = DIGIT.toneForTone(note);
+            piano.triggerAttackRelease(n, "16n", time);
+        }, tones,"16n").start();
+
+        pianoPart.loop = false;
+        pianoPart.loopEnd = "1m";
+        pianoPart.humanize = false;
+
+        Tone.Transport.bpm.value = 100;
+
+        Tone.Transport.start("+0.1");
+
+    }else{
+        var myJNSYNTH = JNSYNTH.setSynth("triangle","poly");
+
+
+        var d = [];
+
+        $.each(tones,function(k,v){
+            tones[k] = DIGIT.toneForTone(v);
+            d.push("4n");
+        });
+
+        myJNSYNTH.synth.triggerAttackRelease(tones, d);
+    }
+
+
+
+}
 FTB.manageMouse = function(canvas,datas,format){
-    canvas.addEventListener('mousedown', function(evt) {
+
+
+    FTB.canvas.addEventListener('mousedown', function(evt) {
         var mousePos = FTB.getMousePos(canvas,evt);
         var playAll = true;
         $.each(datas.fingerings,function(k1,v1){
@@ -145,40 +185,43 @@ FTB.manageMouse = function(canvas,datas,format){
                     mousePos.x >= v2.x0 && mousePos.x <= v2.x1 &&
                     mousePos.y >= v2.y0 && mousePos.y <= v2.y1
                 )  {
-                    playAll = false;
-                    FTB.playTone(v2.t);
+                    //playAll = false;
+                    //FTB.playTone(v2.t);
                 }
             });
         });
         if(playAll == true){
-            console.log("PLAY CHORD");
+
         }
     }, false);
 
     /*
-     * Detect when passing over string
+     * Detect when click over string
      */
-    canvas.addEventListener('mousemove', function(evt) {
+    FTB.canvas.addEventListener('click', function(evt) {
         var mousePos = FTB.getMousePos(canvas,evt);
+
+        var d = [];
         $.each(datas.fingerings,function(k1,v1){
             $.each(v1.fingers,function(k2,v2){
-                if((datas.options.format == "landscape")){
-                    if(
-                        mousePos.y >= v2.sy0 && mousePos.y <= v2.sy1
-                    )  {
-                        FTB.playTone(v2.t);
-                    }
-                }
-                else if((datas.options.format == "portrait")){
-                    if(
-                        mousePos.x >= v2.sx0 && mousePos.x <= v2.sx1
-                    )  {
-                        FTB.playTone(v2.t);
-                    }
-                }
+                d.push(v2.t);
             });
         });
+
+        if(
+            mousePos.x >=FTB.mW &&
+            mousePos.x <=FTB.width-FTB.mW &&
+            mousePos.y >=FTB.mH &&
+            mousePos.y <=FTB.height-FTB.mH &&
+
+            mousePos.x >=FTB.width/2
+        )  {
+            FTB.playTones(d,"arpeggio");
+        }else{
+            FTB.playTones(d);
+        }
     }, false);
+
 };
 
 /*
@@ -392,5 +435,7 @@ FTB.draw = function(canvas){
             }
         });
     });
+
+
     FTB.manageMouse(FTB.canvas,FTB.datas);
 };
