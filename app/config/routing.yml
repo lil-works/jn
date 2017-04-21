@@ -22,4 +22,4 @@ _bazinga_jstranslation:
 
 liip_theme:
     resource: "@LiipThemeBundle/Resources/config/routing.xml"
-    prefix: /theme
+    prefix: /themejs

@@ -2,8 +2,6 @@ admin_homepage:
     path:     /admin
     defaults: { _controller: "AppBundle:Default:index" }
 
-
-
 app_instrument:
     resource: "@AppBundle/Resources/config/routing/instrument.yml"
     prefix:   /admin/instrument
