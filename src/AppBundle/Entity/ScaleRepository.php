@@ -509,85 +509,6 @@ order by ratio asc
             ";
 
 
-        $sql = "
-
-SELECT
-
-	target_w_root.id as target_w_rootId,
-    target_w_root.name as rootName,
-    target_i1.id as target_iId,
-    target_i1.roman as iRootRoman,
-    target_i1.distance as iRootDistance,
-    target_i1.color as iRootColor,
-    target_s1.id as scaleId,
-    target_s1.name as scaleName,
-    COUNT(target_digit.value) as common,
-    countRef,
-
-    (select count(intervale_id) as countRef from scales_intervales where scale_id=target_s1.id) -
-    countRef
-     as score,
-
-    (select count(intervale_id) as countRef from scales_intervales where scale_id=target_s1.id) as countTarget,
-    (
-		SELECT group_concat(ws.name  ORDER by i.delta)
-        from scale s
-        left join scales_intervales si on si.scale_id = s.id
-        left join western_system ws on ws.intervale = si.intervale_id
-        left join intervale i on i.id = si.intervale_id
-        where s.id = target_s1.id AND ws.root = target_w_rootId
-    ) as toneList,
-    (
-
-		SELECT group_concat( (floor( (dR.value+i.delta)/12)+2) *12 + d.value ORDER by i.delta)
-        from scale s
-        left join scales_intervales si on si.scale_id = s.id
-        left join western_system ws on ws.intervale = si.intervale_id
-        left join intervale i on i.id = si.intervale_id
-        left join digit d on ws.digit = d.id
-        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
-
-
-        where s.id = target_s1.id AND ws.root = target_w_rootId
-
-    ) as digitAList
-FROM
-    scale ref_s1
-        LEFT JOIN
-    scales_intervales ref_si1 ON ref_si1.scale_id = ref_s1.id
-		JOIN (select count(intervale_id) as countRef from scales_intervales where scale_id=:scaleId)r2
-		LEFT JOIN
-    western_system ref_w_root ON ref_w_root.name = :root AND ref_w_root.intervale = 1
-		LEFT JOIN
-    western_system ref_w_populated ON ref_w_populated.root = ref_w_root.id AND ref_w_populated.intervale = ref_si1.intervale_id
-
-        JOIN
-	scale target_s1
-        LEFT JOIN
-    scales_intervales target_si1 ON target_si1.scale_id = target_s1.id
-
-        JOIN
-    intervale target_i1
-		LEFT JOIN
-    western_system target_w_rootFromIntervale ON target_w_rootFromIntervale.root = ref_w_root.id AND target_w_rootFromIntervale.intervale = target_i1.id
-		LEFT JOIN
-    western_system target_w_root ON target_w_root.name = target_w_rootFromIntervale.name AND target_w_root.intervale = 1
-		LEFT JOIN
-    western_system target_w_populated ON target_w_populated.root = target_w_root.id AND target_w_populated.intervale = target_si1.intervale_id
-		LEFT JOIN
-    digit target_digit ON target_digit.id = target_w_populated.digit
-
-
-
-WHERE ref_s1.id = :scaleId AND target_i1.roman IS NOT NULL AND   (  target_i1.roman IN('I','IV','V ') OR target_i1.id IN(SELECT intervale_id from scales_intervales where scale_id = :scaleId) )
-AND target_w_populated.digit = ref_w_populated.digit
-
-
-GROUP BY target_s1.id,target_i1.id
-HAVING countRef = common OR common = countTarget
-
-ORDER BY abs (iRootDistance) , score";
-
 
 
         $sql = "
@@ -731,7 +652,7 @@ SELECT
         left join scales_intervales si on si.scale_id = s.id
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
-        where s.id = target_s1.id AND ws.root = target_w_rootId
+        where s.id = target_s1.id AND ws.root = :rootId
     ) as toneList,
     (
 
@@ -741,10 +662,10 @@ SELECT
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
         left join digit d on ws.digit = d.id
-        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
+        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=:rootId)
 
 
-        where s.id = target_s1.id AND ws.root = target_w_rootId
+        where s.id = target_s1.id AND ws.root = :rootId
 
     ) as digitAList
 FROM
@@ -801,6 +722,7 @@ ORDER BY abs (iRootDistance) , score";
         $query->setParameter("scaleId",$scale->getId());
         $query->setParameter("scaleIntervaleCount",count($scale->getIntervales()));
         $query->setParameter("root",$westernSystem->getName());
+        $query->setParameter("rootId",$westernSystem->getId());
 
         return $query->getScalarResult();
     }
