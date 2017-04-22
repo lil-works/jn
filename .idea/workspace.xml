@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScaleRepository.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScaleRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2673913" vertical-offset="9327" max-vertical-offset="13755">
-              <caret line="630" column="6" selection-start-line="630" selection-start-column="6" selection-end-line="630" selection-end-column="6" />
+            <state vertical-scroll-proportion="-6.96" vertical-offset="9327" max-vertical-offset="13755">
+              <caret line="645" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="911" selection-end-column="0" />
               <folding>
                 <marker date="1492839907000" expanded="true" signature="366:2938" placeholder="SELECT count..concat..." />
                 <marker date="1492839907000" expanded="true" signature="451:765" placeholder="SELECT group..scale..." />
@@ -138,11 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.0681818" vertical-offset="0" max-vertical-offset="2775">
-              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.71030045" vertical-offset="1244" max-vertical-offset="2850">
+              <caret line="105" column="53" selection-start-line="105" selection-start-column="53" selection-end-line="105" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -257,8 +257,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
-        <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
       </list>
     </option>
   </component>
@@ -1313,18 +1313,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.0681818" vertical-offset="0" max-vertical-offset="2775">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2673913" vertical-offset="9327" max-vertical-offset="13755">
-          <caret line="630" column="6" selection-start-line="630" selection-start-column="6" selection-end-line="630" selection-end-column="6" />
+        <state vertical-scroll-proportion="-6.96" vertical-offset="9327" max-vertical-offset="13755">
+          <caret line="645" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="911" selection-end-column="0" />
           <folding>
             <marker date="1492839907000" expanded="true" signature="366:2938" placeholder="SELECT count..concat..." />
             <marker date="1492839907000" expanded="true" signature="451:765" placeholder="SELECT group..scale..." />
@@ -1399,6 +1391,14 @@
             <marker date="1492839907000" expanded="true" signature="28829:29825" placeholder="SELECT count..." />
             <marker date="1492839907000" expanded="true" signature="31018:31403" placeholder="SELECT s.id ..scale..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71030045" vertical-offset="1244" max-vertical-offset="2850">
+          <caret line="105" column="53" selection-start-line="105" selection-start-column="53" selection-end-line="105" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
