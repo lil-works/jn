@@ -616,7 +616,7 @@ ORDER BY abs (iRootDistance) , score";
         left join scales_intervales si on si.scale_id = s.id
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
-        where s.id = target_s1.id AND ws.root = target_w_root.id
+        where s.id = target_s1.id AND ws.root = :rootId
     ) as toneList,
     (
 
@@ -626,10 +626,10 @@ ORDER BY abs (iRootDistance) , score";
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
         left join digit d on ws.digit = d.id
-        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_root.id)
+        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=:rootId)
 
 
-        where s.id = target_s1.id AND ws.root = target_w_root.id
+        where s.id = target_s1.id AND ws.root = :rootId
 
     ) as digitAList
 FROM
@@ -654,7 +654,7 @@ FROM
 		LEFT JOIN
     western_system target_w_root ON target_w_root.name = target_w_rootFromIntervale.name AND target_w_root.intervale = 1
 		LEFT JOIN
-    western_system target_w_populated ON target_w_populated.root = target_w_root.id AND target_w_populated.intervale = target_si1.intervale_id
+    western_system target_w_populated ON target_w_populated.root = :rootId AND target_w_populated.intervale = target_si1.intervale_id
 		LEFT JOIN
     digit target_digit ON target_digit.id = target_w_populated.digit
 
@@ -689,6 +689,7 @@ ORDER BY abs (iRootDistance) , score
         $query->setParameter("scaleId",$scale->getId());
         //$query->setParameter("rootDigit",$westernSystem->getDigit()->getValue());
         $query->setParameter("root",$westernSystem->getName());
+        $query->setParameter("rootId",$westernSystem->getId());
 
         return $query->getScalarResult();
     }
