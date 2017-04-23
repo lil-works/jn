@@ -7,6 +7,7 @@
     {% else %}
         {{ render(controller('FOSUserBundle:Security:login')) }}
         <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans([], 'FOSUserBundle') }}</a>
+        <a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a>
     {% endif %}
 </div>
 

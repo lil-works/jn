@@ -25,134 +25,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScaleRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.96" vertical-offset="9327" max-vertical-offset="13755">
-              <caret line="645" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="911" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.8636365" vertical-offset="1244" max-vertical-offset="2895">
+              <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
               <folding>
-                <marker date="1492839907000" expanded="true" signature="366:2938" placeholder="SELECT count..concat..." />
-                <marker date="1492839907000" expanded="true" signature="451:765" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="637:699" placeholder="SELECT id FR..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="793:1061" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="973:1035" placeholder="SELECT id FR..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="1096:1162" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="1236:1299" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="1368:1431" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="1440:1506" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="1541:2189" placeholder="SELECT conca..scale..." />
-                <marker date="1492839907000" expanded="true" signature="1824:1869" placeholder="select value..digit..." />
-                <marker date="1492839907000" expanded="true" signature="2219:2771" placeholder="SELECT conca..scale..." />
-                <marker date="1492839907000" expanded="true" signature="4570:5062" placeholder="SELECT d3.va..scale..." />
-                <marker date="1492839907000" expanded="true" signature="5463:6710" placeholder="SELECT *,ROU..id..." />
-                <marker date="1492839907000" expanded="true" signature="5536:6521" placeholder="SELECT s1.id..." />
-                <marker date="1492839907000" expanded="true" signature="5716:5801" placeholder="SELECT ws2.n..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="5841:5904" placeholder="SELECT value..digit..." />
-                <marker date="1492839907000" expanded="true" signature="6029:6115" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="7464:8019" placeholder="SELECT scale..id..." />
-                <marker date="1492839907000" expanded="true" signature="7578:7905" placeholder="SELECT s1.id..scale..." />
-                <marker date="1492839907000" expanded="true" signature="7653:7723" placeholder="SELECT COUNT..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="8659:10760" placeholder="SELECT name ..*..." />
-                <marker date="1492839907000" expanded="true" signature="8755:8802" placeholder="SELECT d2.va..digit..." />
-                <marker date="1492839907000" expanded="true" signature="9223:10701" placeholder="SELECT *, (S..id..." />
-                <marker date="1492839907000" expanded="true" signature="9274:9532" placeholder="SELECT ws3.n..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="9579:9929" placeholder="SELECT d1.va..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="9994:10585" placeholder="SELECT s1.id..scale..." />
-                <marker date="1492839907000" expanded="true" signature="11513:13439" placeholder="SELECT name ..*..." />
-                <marker date="1492839907000" expanded="true" signature="11644:11691" placeholder="SELECT d2.va..digit..." />
-                <marker date="1492839907000" expanded="true" signature="11926:13326" placeholder="SELECT *, (S..id..." />
-                <marker date="1492839907000" expanded="true" signature="11977:12235" placeholder="SELECT ws3.n..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="12282:12632" placeholder="SELECT d1.va..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="12697:13233" placeholder="SELECT s1.id..scale..." />
-                <marker date="1492839907000" expanded="true" signature="13965:13990" placeholder="SELECT id,na..scale..." />
-                <marker date="1492839907000" expanded="true" signature="14414:17944" placeholder="SELECT count..concat..." />
-                <marker date="1492839907000" expanded="true" signature="14558:14862" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="14896:15394" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="15275:15341" placeholder="SELECT digit..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="15433:15499" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="15573:15636" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="15705:15768" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="15777:15843" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="15878:16952" placeholder="SELECT conca..scale..." />
-                <marker date="1492839907000" expanded="true" signature="16161:16206" placeholder="select value..digit..." />
-                <marker date="1492839907000" expanded="true" signature="16368:16708" placeholder="SELECT t4.id..scale..." />
-                <marker date="1492839907000" expanded="true" signature="16532:16594" placeholder="SELECT id FR..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="16842:16950" placeholder="SELECT id fr..scale..." />
-                <marker date="1492839907000" expanded="true" signature="16981:17755" placeholder="SELECT conca..scale..." />
-                <marker date="1492839907000" expanded="true" signature="18005:20953" placeholder="SELECT targe..scale..." />
-                <marker date="1492839907000" expanded="true" signature="18353:18442" placeholder="select count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="18480:18569" placeholder="select count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="18595:18905" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="18934:19439" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="19313:19380" placeholder="SELECT digit..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="19571:19656" placeholder="select count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="20705:20773" placeholder="SELECT inter..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="22190:25186" placeholder="SELECT targe..scale..." />
-                <marker date="1492839907000" expanded="true" signature="22538:22627" placeholder="select count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="22665:22754" placeholder="select count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="22780:23090" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="23119:23624" placeholder="SELECT group..scale..." />
-                <marker date="1492839907000" expanded="true" signature="23498:23565" placeholder="SELECT digit..western_system..." />
-                <marker date="1492839907000" expanded="true" signature="23756:23841" placeholder="select count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="24123:24189" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1492839907000" expanded="true" signature="26718:28811" placeholder="SELECT least..sel_populated_wName..." />
-                <marker date="1492839907000" expanded="true" signature="26831:28781" placeholder="SELECT sel_p..intervale_id..." />
-                <marker date="1492839907000" expanded="true" signature="26920:27786" placeholder="SELECT si1.i..CONCAT..." />
-                <marker date="1492839907000" expanded="true" signature="27217:27499" placeholder="SELECT CONCA..scale..." />
-                <marker date="1492839907000" expanded="true" signature="27822:28691" placeholder="SELECT si1.i..CONCAT..." />
-                <marker date="1492839907000" expanded="true" signature="28122:28404" placeholder="SELECT CONCA..scale..." />
-                <marker date="1492839907000" expanded="true" signature="28829:29825" placeholder="SELECT count..." />
-                <marker date="1492839907000" expanded="true" signature="31018:31403" placeholder="SELECT s.id ..scale..." />
+                <marker date="1492976770000" expanded="true" signature="3429:3525" placeholder="service:" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.9583335" vertical-offset="844" max-vertical-offset="3180">
-              <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="870">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="750">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71030045" vertical-offset="1244" max-vertical-offset="2850">
-              <caret line="105" column="53" selection-start-line="105" selection-start-column="53" selection-end-line="105" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/services.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="1065">
-              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.15404364" vertical-offset="0" max-vertical-offset="779">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -162,16 +51,48 @@
         <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+              <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PasswordResettingListener.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/EventListener/PasswordResettingListener.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="555">
+              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+              <folding>
+                <element signature="e#42#75#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+              <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resetting.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/resetting.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing_dev.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/routing_dev.yml">
+      <file leaf-file-name="resetting.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/resetting.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -181,18 +102,28 @@
       <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="21" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <file leaf-file-name="connexion.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/connexion.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="285">
+              <caret line="9" column="80" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="change_password.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/change_password.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <caret line="6" column="63" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -208,11 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Filter/FingeringFilter.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/Services/scaleroot-inactive.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/root.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/TwigBundle/views/Exception/error404.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js" />
         <option value="$PROJECT_DIR$/web/bundles/site/js/fretboard.js" />
         <option value="$PROJECT_DIR$/app/Resources/views/baseAdmin.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/loop.html.twig" />
@@ -247,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/QuoteType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/Services/Sequencer/sequencer.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/ParamConverter/RootScaleConverter.php" />
-        <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/WesternSystemRepository.php" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Lang/navbar.html.twig" />
@@ -255,10 +180,16 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Request/ParamConverter/RootScaleConverter.php" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/email/password_reseting.email.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/EventListener/PasswordResetingListener.php" />
+        <option value="$PROJECT_DIR$/app/config/routing.yml" />
+        <option value="$PROJECT_DIR$/app/config/security.yml" />
+        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/connexion.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
       </list>
     </option>
   </component>
@@ -322,7 +253,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -336,29 +267,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="UserBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mp3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -372,41 +297,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="file-saver" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -420,363 +327,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Scale" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BasketBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ForTranslation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwigBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Exception" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KnpPaginatorBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FOSUserBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jolineck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="var" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -785,7 +336,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NoemaParetoManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../storeOffline" />
     <property name="options.lastSelected" value="org.jetbrains.plugins.terminal.TerminalOptionsConfigurable" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -851,17 +402,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32572114" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32572114" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3676681" sideWeight="0.49936467" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3676681" sideWeight="0.49936467" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47159532" sideWeight="0.5006353" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -920,48 +471,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Quote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1500">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Author.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="3840">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Descriptor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2190">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3135">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/Sequencer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="885">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/config/services.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/FingeringController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="765">
@@ -1273,41 +782,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="1065">
-          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing_dev.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1318,86 +795,162 @@
         <state vertical-scroll-proportion="-6.96" vertical-offset="9327" max-vertical-offset="13755">
           <caret line="645" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="911" selection-end-column="0" />
           <folding>
-            <marker date="1492839907000" expanded="true" signature="366:2938" placeholder="SELECT count..concat..." />
-            <marker date="1492839907000" expanded="true" signature="451:765" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="637:699" placeholder="SELECT id FR..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="793:1061" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="973:1035" placeholder="SELECT id FR..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="1096:1162" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="1236:1299" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="1368:1431" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="1440:1506" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="1541:2189" placeholder="SELECT conca..scale..." />
-            <marker date="1492839907000" expanded="true" signature="1824:1869" placeholder="select value..digit..." />
-            <marker date="1492839907000" expanded="true" signature="2219:2771" placeholder="SELECT conca..scale..." />
-            <marker date="1492839907000" expanded="true" signature="4570:5062" placeholder="SELECT d3.va..scale..." />
-            <marker date="1492839907000" expanded="true" signature="5463:6710" placeholder="SELECT *,ROU..id..." />
-            <marker date="1492839907000" expanded="true" signature="5536:6521" placeholder="SELECT s1.id..." />
-            <marker date="1492839907000" expanded="true" signature="5716:5801" placeholder="SELECT ws2.n..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="5841:5904" placeholder="SELECT value..digit..." />
-            <marker date="1492839907000" expanded="true" signature="6029:6115" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="7464:8019" placeholder="SELECT scale..id..." />
-            <marker date="1492839907000" expanded="true" signature="7578:7905" placeholder="SELECT s1.id..scale..." />
-            <marker date="1492839907000" expanded="true" signature="7653:7723" placeholder="SELECT COUNT..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="8659:10760" placeholder="SELECT name ..*..." />
-            <marker date="1492839907000" expanded="true" signature="8755:8802" placeholder="SELECT d2.va..digit..." />
-            <marker date="1492839907000" expanded="true" signature="9223:10701" placeholder="SELECT *, (S..id..." />
-            <marker date="1492839907000" expanded="true" signature="9274:9532" placeholder="SELECT ws3.n..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="9579:9929" placeholder="SELECT d1.va..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="9994:10585" placeholder="SELECT s1.id..scale..." />
-            <marker date="1492839907000" expanded="true" signature="11513:13439" placeholder="SELECT name ..*..." />
-            <marker date="1492839907000" expanded="true" signature="11644:11691" placeholder="SELECT d2.va..digit..." />
-            <marker date="1492839907000" expanded="true" signature="11926:13326" placeholder="SELECT *, (S..id..." />
-            <marker date="1492839907000" expanded="true" signature="11977:12235" placeholder="SELECT ws3.n..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="12282:12632" placeholder="SELECT d1.va..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="12697:13233" placeholder="SELECT s1.id..scale..." />
-            <marker date="1492839907000" expanded="true" signature="13965:13990" placeholder="SELECT id,na..scale..." />
-            <marker date="1492839907000" expanded="true" signature="14414:17944" placeholder="SELECT count..concat..." />
-            <marker date="1492839907000" expanded="true" signature="14558:14862" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="14896:15394" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="15275:15341" placeholder="SELECT digit..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="15433:15499" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="15573:15636" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="15705:15768" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="15777:15843" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="15878:16952" placeholder="SELECT conca..scale..." />
-            <marker date="1492839907000" expanded="true" signature="16161:16206" placeholder="select value..digit..." />
-            <marker date="1492839907000" expanded="true" signature="16368:16708" placeholder="SELECT t4.id..scale..." />
-            <marker date="1492839907000" expanded="true" signature="16532:16594" placeholder="SELECT id FR..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="16842:16950" placeholder="SELECT id fr..scale..." />
-            <marker date="1492839907000" expanded="true" signature="16981:17755" placeholder="SELECT conca..scale..." />
-            <marker date="1492839907000" expanded="true" signature="18005:20953" placeholder="SELECT targe..scale..." />
-            <marker date="1492839907000" expanded="true" signature="18353:18442" placeholder="select count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="18480:18569" placeholder="select count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="18595:18905" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="18934:19439" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="19313:19380" placeholder="SELECT digit..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="19571:19656" placeholder="select count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="20705:20773" placeholder="SELECT inter..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="22190:25186" placeholder="SELECT targe..scale..." />
-            <marker date="1492839907000" expanded="true" signature="22538:22627" placeholder="select count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="22665:22754" placeholder="select count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="22780:23090" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="23119:23624" placeholder="SELECT group..scale..." />
-            <marker date="1492839907000" expanded="true" signature="23498:23565" placeholder="SELECT digit..western_system..." />
-            <marker date="1492839907000" expanded="true" signature="23756:23841" placeholder="select count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="24123:24189" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1492839907000" expanded="true" signature="26718:28811" placeholder="SELECT least..sel_populated_wName..." />
-            <marker date="1492839907000" expanded="true" signature="26831:28781" placeholder="SELECT sel_p..intervale_id..." />
-            <marker date="1492839907000" expanded="true" signature="26920:27786" placeholder="SELECT si1.i..CONCAT..." />
-            <marker date="1492839907000" expanded="true" signature="27217:27499" placeholder="SELECT CONCA..scale..." />
-            <marker date="1492839907000" expanded="true" signature="27822:28691" placeholder="SELECT si1.i..CONCAT..." />
-            <marker date="1492839907000" expanded="true" signature="28122:28404" placeholder="SELECT CONCA..scale..." />
-            <marker date="1492839907000" expanded="true" signature="28829:29825" placeholder="SELECT count..." />
-            <marker date="1492839907000" expanded="true" signature="31018:31403" placeholder="SELECT s.id ..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..concat..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT id FR..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT id FR..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT conca..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select value..digit..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT conca..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT d3.va..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT *,ROU..id..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT s1.id..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT ws2.n..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT value..digit..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT scale..id..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT s1.id..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT name ..*..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT d2.va..digit..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT *, (S..id..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT ws3.n..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT d1.va..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT s1.id..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT name ..*..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT d2.va..digit..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT *, (S..id..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT ws3.n..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT d1.va..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT s1.id..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT id,na..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..concat..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT digit..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT conca..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select value..digit..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT t4.id..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT id FR..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT id fr..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT conca..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT targe..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT digit..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT inter..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT targe..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT group..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT digit..western_system..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="select count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT least..sel_populated_wName..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT sel_p..intervale_id..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT si1.i..CONCAT..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT CONCA..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT si1.i..CONCAT..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT CONCA..scale..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT count..." />
+            <marker date="1492839907000" expanded="true" signature="-1:-1" placeholder="SELECT s.id ..scale..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/EventListener/PasswordResettingListener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="555">
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <element signature="e#42#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/resetting.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/resetting.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/change_password.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="6" column="63" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="21" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/connexion.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="285">
+          <caret line="9" column="80" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+          <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71030045" vertical-offset="1244" max-vertical-offset="2850">
-          <caret line="105" column="53" selection-start-line="105" selection-start-column="53" selection-end-line="105" selection-end-column="53" />
+        <state vertical-scroll-proportion="-7.8636365" vertical-offset="1244" max-vertical-offset="2895">
+          <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+          <folding>
+            <marker date="1492976770000" expanded="true" signature="3429:3525" placeholder="service:" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15404364" vertical-offset="0" max-vertical-offset="779">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="37" />
           <folding />
         </state>
       </provider>
