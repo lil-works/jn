@@ -145,11 +145,12 @@ sonata_seo:
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
 swiftmailer:
-    transport:            sendmail
-    username:             '%mailer_user%'
-    password:             '%mailer_password%'
-    host:                 '%mailer_host%'
-
+    username: '%mailer_user%'
+    password:  '%mailer_password%'
+    encryption: '%mailer_encryption%'
+    port: '%mailer_port%'
+    auth_mode: '%mailer_auth%'
+    host: '%mailer_host%'
 
 parameters:
     instrument_directory: '%kernel.root_dir%/../web/uploads/instrument'

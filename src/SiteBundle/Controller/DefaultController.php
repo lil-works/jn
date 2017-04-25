@@ -11,6 +11,7 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
         $instrumentFamilies = $em->getRepository('AppBundle:InstrumentFamily')->findAll();
 
