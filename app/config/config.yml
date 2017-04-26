@@ -102,7 +102,7 @@ fos_user:
     user_class: AppBundle\Entity\User
     from_email:
             address:        no-relply@jolineck.com
-            sender_name:    JoliNeck 
+            sender_name:    JoliNeck
     service:
             mailer: fos_user.mailer.twig_swift
     #resetting:
