@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext" target-language="en">
+    <body>
+      <trans-unit id="1" approved="yes">
+        <source><![CDATA[A]]></source>
+        <target><![CDATA[A]]></target>
+      </trans-unit>
+      <trans-unit id="2" approved="yes">
+        <source><![CDATA[A#]]></source>
+        <target><![CDATA[A#]]></target>
+      </trans-unit>
+      <trans-unit id="3" approved="yes">
+        <source><![CDATA[A##]]></source>
+        <target><![CDATA[A##]]></target>
+      </trans-unit>
+      <trans-unit id="4" approved="yes">
+        <source><![CDATA[A#/Bb]]></source>
+        <target><![CDATA[A#/Bb]]></target>
+      </trans-unit>
+      <trans-unit id="5" approved="yes">
+        <source><![CDATA[Ab]]></source>
+        <target><![CDATA[Ab]]></target>
+      </trans-unit>
+      <trans-unit id="6" approved="yes">
+        <source><![CDATA[Abb]]></source>
+        <target><![CDATA[Abb]]></target>
+      </trans-unit>
+      <trans-unit id="7" approved="yes">
+        <source><![CDATA[Against]]></source>
+        <target><![CDATA[Against]]></target>
+      </trans-unit>
+      <trans-unit id="8" approved="yes">
+        <source><![CDATA[All intervals matching scales]]></source>
+        <target><![CDATA[all intervals matching scales]]></target>
+      </trans-unit>
+      <trans-unit id="9" approved="yes">
+        <source><![CDATA[Available necks]]></source>
+        <target><![CDATA[Available necks]]></target>
+      </trans-unit>
+      <trans-unit id="10" approved="yes">
+        <source><![CDATA[B]]></source>
+        <target><![CDATA[B]]></target>
+      </trans-unit>
+      <trans-unit id="11" approved="yes">
+        <source><![CDATA[B#]]></source>
+        <target><![CDATA[B#]]></target>
+      </trans-unit>
+      <trans-unit id="12" approved="yes">
+        <source><![CDATA[B##]]></source>
+        <target><![CDATA[B##]]></target>
+      </trans-unit>
+      <trans-unit id="13" approved="yes">
+        <source><![CDATA[Bb]]></source>
+        <target><![CDATA[Bb]]></target>
+      </trans-unit>
+      <trans-unit id="14" approved="yes">
+        <source><![CDATA[Bbb]]></source>
+        <target><![CDATA[Bbb]]></target>
+      </trans-unit>
+      <trans-unit id="15" approved="yes">
+        <source><![CDATA[C]]></source>
+        <target><![CDATA[C]]></target>
+      </trans-unit>
+      <trans-unit id="16" approved="yes">
+        <source><![CDATA[C#]]></source>
+        <target><![CDATA[C#]]></target>
+      </trans-unit>
+      <trans-unit id="17" approved="yes">
+        <source><![CDATA[C##]]></source>
+        <target><![CDATA[C##]]></target>
+      </trans-unit>
+      <trans-unit id="18" approved="yes">
+        <source><![CDATA[C#/Db]]></source>
+        <target><![CDATA[C#/Db]]></target>
+      </trans-unit>
+      <trans-unit id="19" approved="yes">
+        <source><![CDATA[Cb]]></source>
+        <target><![CDATA[Cb]]></target>
+      </trans-unit>
+      <trans-unit id="20" approved="yes">
+        <source><![CDATA[Cbb]]></source>
+        <target><![CDATA[Cbb]]></target>
+      </trans-unit>
+      <trans-unit id="21" approved="yes">
+        <source><![CDATA[Cycle]]></source>
+        <target><![CDATA[cycle]]></target>
+      </trans-unit>
+      <trans-unit id="22" approved="yes">
+        <source><![CDATA[D]]></source>
+        <target><![CDATA[D]]></target>
+      </trans-unit>
+      <trans-unit id="23" approved="yes">
+        <source><![CDATA[D#]]></source>
+        <target><![CDATA[D#]]></target>
+      </trans-unit>
+      <trans-unit id="24" approved="yes">
+        <source><![CDATA[D##]]></source>
+        <target><![CDATA[D##]]></target>
+      </trans-unit>
+      <trans-unit id="25" approved="yes">
+        <source><![CDATA[D#/Eb]]></source>
+        <target><![CDATA[D#/Eb]]></target>
+      </trans-unit>
+      <trans-unit id="26" approved="yes">
+        <source><![CDATA[Db]]></source>
+        <target><![CDATA[Db]]></target>
+      </trans-unit>
+      <trans-unit id="27" approved="yes">
+        <source><![CDATA[Dbb]]></source>
+        <target><![CDATA[Dbb]]></target>
+      </trans-unit>
+      <trans-unit id="28" approved="yes">
+        <source><![CDATA[Diagram]]></source>
+        <target><![CDATA[Diagram]]></target>
+      </trans-unit>
+      <trans-unit id="29" approved="yes">
+        <source><![CDATA[Diagram:]]></source>
+        <target><![CDATA[Diagram:]]></target>
+      </trans-unit>
+      <trans-unit id="30" approved="yes">
+        <source><![CDATA[E]]></source>
+        <target><![CDATA[E]]></target>
+      </trans-unit>
+      <trans-unit id="31" approved="yes">
+        <source><![CDATA[E#]]></source>
+        <target><![CDATA[E#]]></target>
+      </trans-unit>
+      <trans-unit id="32" approved="yes">
+        <source><![CDATA[E##]]></source>
+        <target><![CDATA[E##]]></target>
+      </trans-unit>
+      <trans-unit id="33" approved="yes">
+        <source><![CDATA[Eb]]></source>
+        <target><![CDATA[Eb]]></target>
+      </trans-unit>
+      <trans-unit id="34" approved="yes">
+        <source><![CDATA[Ebb]]></source>
+        <target><![CDATA[Ebb]]></target>
+      </trans-unit>
+      <trans-unit id="35" approved="yes">
+        <source><![CDATA[F]]></source>
+        <target><![CDATA[F]]></target>
+      </trans-unit>
+      <trans-unit id="36" approved="yes">
+        <source><![CDATA[F#]]></source>
+        <target><![CDATA[F#]]></target>
+      </trans-unit>
+      <trans-unit id="37" approved="yes">
+        <source><![CDATA[F##]]></source>
+        <target><![CDATA[F##]]></target>
+      </trans-unit>
+      <trans-unit id="38" approved="yes">
+        <source><![CDATA[F#/Gb]]></source>
+        <target><![CDATA[F#/Gb]]></target>
+      </trans-unit>
+      <trans-unit id="39" approved="yes">
+        <source><![CDATA[Fb]]></source>
+        <target><![CDATA[Fb]]></target>
+      </trans-unit>
+      <trans-unit id="40" approved="yes">
+        <source><![CDATA[Fbb]]></source>
+        <target><![CDATA[Fbb]]></target>
+      </trans-unit>
+      <trans-unit id="41" approved="yes">
+        <source><![CDATA[Fingering ]]></source>
+        <target><![CDATA[Fingering ]]></target>
+      </trans-unit>
+      <trans-unit id="42" approved="yes">
+        <source><![CDATA[Fingerings]]></source>
+        <target><![CDATA[Fingerings]]></target>
+      </trans-unit>
+      <trans-unit id="43" approved="yes">
+        <source><![CDATA[G]]></source>
+        <target><![CDATA[G]]></target>
+      </trans-unit>
+      <trans-unit id="44" approved="yes">
+        <source><![CDATA[G#]]></source>
+        <target><![CDATA[G#]]></target>
+      </trans-unit>
+      <trans-unit id="45" approved="yes">
+        <source><![CDATA[G##]]></source>
+        <target><![CDATA[G##]]></target>
+      </trans-unit>
+      <trans-unit id="46" approved="yes">
+        <source><![CDATA[G#/Ab]]></source>
+        <target><![CDATA[G#/Ab]]></target>
+      </trans-unit>
+      <trans-unit id="47" approved="yes">
+        <source><![CDATA[Gb]]></source>
+        <target><![CDATA[Gb]]></target>
+      </trans-unit>
+      <trans-unit id="48" approved="yes">
+        <source><![CDATA[Gbb]]></source>
+        <target><![CDATA[Gbb]]></target>
+      </trans-unit>
+      <trans-unit id="49" approved="yes">
+        <source><![CDATA[Harmonic map]]></source>
+        <target><![CDATA[Harmonic map]]></target>
+      </trans-unit>
+      <trans-unit id="50" approved="yes">
+        <source><![CDATA[Intervals]]></source>
+        <target><![CDATA[Intervals]]></target>
+      </trans-unit>
+      <trans-unit id="51" approved="yes">
+        <source><![CDATA[Major]]></source>
+        <target><![CDATA[Major]]></target>
+      </trans-unit>
+      <trans-unit id="52" approved="yes">
+        <source><![CDATA[Matching root/scale (%nbr%)]]></source>
+        <target><![CDATA[Matching root/scale (%nbr%)]]></target>
+      </trans-unit>
+      <trans-unit id="53" approved="yes">
+        <source><![CDATA[No matching root scale ...]]></source>
+        <target><![CDATA[No matching root scale ...]]></target>
+      </trans-unit>
+      <trans-unit id="54" approved="yes">
+        <source><![CDATA[Other roots:]]></source>
+        <target><![CDATA[Other roots:]]></target>
+      </trans-unit>
+      <trans-unit id="55" approved="yes">
+        <source><![CDATA[Scale described as:]]></source>
+        <target><![CDATA[Scale described as:]]></target>
+      </trans-unit>
+      <trans-unit id="56" approved="yes">
+        <source><![CDATA[Select scales by descriptor:]]></source>
+        <target><![CDATA[Select scales by descriptor:]]></target>
+      </trans-unit>
+      <trans-unit id="57" approved="yes">
+        <source><![CDATA[Tagged as]]></source>
+        <target><![CDATA[Tagged as]]></target>
+      </trans-unit>
+      <trans-unit id="58" approved="yes">
+        <source><![CDATA[Tune list]]></source>
+        <target><![CDATA[Tune list]]></target>
+      </trans-unit>
+      <trans-unit id="59" approved="yes">
+        <source><![CDATA[Welcome here... Jolineck is happy to provide tools for neck instrument players (as well as all kind of musician).]]></source>
+        <target><![CDATA[Welcome here... Jolineck is happy to provide tools for neck instrument players (as well as all kind of musician).]]></target>
+      </trans-unit>
+      <trans-unit id="60" approved="yes">
+        <source><![CDATA[You don't want to select a neck]]></source>
+        <target><![CDATA[You don't want to select a neck]]></target>
+      </trans-unit>
+      <trans-unit id="61" approved="yes">
+        <source><![CDATA[aeolian b5]]></source>
+        <target><![CDATA[aeolian b5]]></target>
+      </trans-unit>
+      <trans-unit id="62" approved="yes">
+        <source><![CDATA[all]]></source>
+        <target><![CDATA[all]]></target>
+      </trans-unit>
+      <trans-unit id="63" approved="yes">
+        <source><![CDATA[any]]></source>
+        <target><![CDATA[any]]></target>
+      </trans-unit>
+      <trans-unit id="64" approved="yes">
+        <source><![CDATA[arabian]]></source>
+        <target><![CDATA[arabian]]></target>
+      </trans-unit>
+      <trans-unit id="65" approved="yes">
+        <source><![CDATA[auxiliary augmented (LCCTO)]]></source>
+        <target><![CDATA[auxiliary augmented (LCCTO)]]></target>
+      </trans-unit>
+      <trans-unit id="66" approved="yes">
+        <source><![CDATA[auxiliary diminished (LCCTO)]]></source>
+        <target><![CDATA[auxiliary diminished (LCCTO)]]></target>
+      </trans-unit>
+      <trans-unit id="67" approved="yes">
+        <source><![CDATA[auxiliary diminished blues (LCCTO)]]></source>
+        <target><![CDATA[auxiliary diminished blues (LCCTO)]]></target>
+      </trans-unit>
+      <trans-unit id="68" approved="yes">
+        <source><![CDATA[back to tune list]]></source>
+        <target><![CDATA[back to tune list]]></target>
+      </trans-unit>
+      <trans-unit id="69" approved="yes">
+        <source><![CDATA[bass]]></source>
+        <target><![CDATA[bass]]></target>
+      </trans-unit>
+      <trans-unit id="70" approved="yes">
+        <source><![CDATA[bass 5 string (low B)]]></source>
+        <target><![CDATA[bass 5 string (low B)]]></target>
+      </trans-unit>
+      <trans-unit id="71" approved="yes">
+        <source><![CDATA[byzantine]]></source>
+        <target><![CDATA[byzantine]]></target>
+      </trans-unit>
+      <trans-unit id="72" approved="yes">
+        <source><![CDATA[clear selection]]></source>
+        <target><![CDATA[clear selection]]></target>
+      </trans-unit>
+      <trans-unit id="73" approved="yes">
+        <source><![CDATA[current selection]]></source>
+        <target><![CDATA[current selection]]></target>
+      </trans-unit>
+      <trans-unit id="74" approved="yes">
+        <source><![CDATA[difficulty ]]></source>
+        <target><![CDATA[difficulty ]]></target>
+      </trans-unit>
+      <trans-unit id="75" approved="yes">
+        <source><![CDATA[diminished]]></source>
+        <target><![CDATA[diminished]]></target>
+      </trans-unit>
+      <trans-unit id="76" approved="yes">
+        <source><![CDATA[display controls]]></source>
+        <target><![CDATA[display controls]]></target>
+      </trans-unit>
+      <trans-unit id="77" approved="yes">
+        <source><![CDATA[dorian]]></source>
+        <target><![CDATA[dorian]]></target>
+      </trans-unit>
+      <trans-unit id="78" approved="yes">
+        <source><![CDATA[dorian #4]]></source>
+        <target><![CDATA[dorian #4]]></target>
+      </trans-unit>
+      <trans-unit id="79" approved="yes">
+        <source><![CDATA[dorian b2]]></source>
+        <target><![CDATA[dorian b2]]></target>
+      </trans-unit>
+      <trans-unit id="80" approved="yes">
+        <source><![CDATA[download]]></source>
+        <target><![CDATA[download]]></target>
+      </trans-unit>
+      <trans-unit id="81" approved="yes">
+        <source><![CDATA[enter here]]></source>
+        <target><![CDATA[enter here]]></target>
+      </trans-unit>
+      <trans-unit id="82" approved="yes">
+        <source><![CDATA[eolian]]></source>
+        <target><![CDATA[eolian]]></target>
+      </trans-unit>
+      <trans-unit id="83" approved="yes">
+        <source><![CDATA[ethiopian tizita minor]]></source>
+        <target><![CDATA[ethiopian tizita minor]]></target>
+      </trans-unit>
+      <trans-unit id="84" approved="yes">
+        <source><![CDATA[find scales containing selection]]></source>
+        <target><![CDATA[find scales containing selection]]></target>
+      </trans-unit>
+      <trans-unit id="85" approved="yes">
+        <source><![CDATA[fingering string loop]]></source>
+        <target><![CDATA[fingering string loop]]></target>
+      </trans-unit>
+      <trans-unit id="86" approved="yes">
+        <source><![CDATA[frets: ]]></source>
+        <target><![CDATA[frets: ]]></target>
+      </trans-unit>
+      <trans-unit id="87" approved="yes">
+        <source><![CDATA[guitar]]></source>
+        <target><![CDATA[guitar]]></target>
+      </trans-unit>
+      <trans-unit id="88" approved="yes">
+        <source><![CDATA[guitar (D A D F# B E)]]></source>
+        <target><![CDATA[guitar (D A D F# B E)]]></target>
+      </trans-unit>
+      <trans-unit id="89" approved="yes">
+        <source><![CDATA[guitar (D A D G Bb D)]]></source>
+        <target><![CDATA[guitar (D A D G Bb D)]]></target>
+      </trans-unit>
+      <trans-unit id="90" approved="yes">
+        <source><![CDATA[gypsy]]></source>
+        <target><![CDATA[gypsy]]></target>
+      </trans-unit>
+      <trans-unit id="91" approved="yes">
+        <source><![CDATA[harmonic minor]]></source>
+        <target><![CDATA[harmonic minor]]></target>
+      </trans-unit>
+      <trans-unit id="92" approved="yes">
+        <source><![CDATA[in all key]]></source>
+        <target><![CDATA[in all key]]></target>
+      </trans-unit>
+      <trans-unit id="93" approved="yes">
+        <source><![CDATA[indian ascending]]></source>
+        <target><![CDATA[indian ascending]]></target>
+      </trans-unit>
+      <trans-unit id="94" approved="yes">
+        <source><![CDATA[indian descending]]></source>
+        <target><![CDATA[indian descending]]></target>
+      </trans-unit>
+      <trans-unit id="95" approved="yes">
+        <source><![CDATA[ionian]]></source>
+        <target><![CDATA[ionian]]></target>
+      </trans-unit>
+      <trans-unit id="96" approved="yes">
+        <source><![CDATA[ionian #5]]></source>
+        <target><![CDATA[ionian #5]]></target>
+      </trans-unit>
+      <trans-unit id="97" approved="yes">
+        <source><![CDATA[japanese]]></source>
+        <target><![CDATA[japanese]]></target>
+      </trans-unit>
+      <trans-unit id="98" approved="yes">
+        <source><![CDATA[jewish]]></source>
+        <target><![CDATA[jewish]]></target>
+      </trans-unit>
+      <trans-unit id="99" approved="yes">
+        <source><![CDATA[locrian]]></source>
+        <target><![CDATA[locrian]]></target>
+      </trans-unit>
+      <trans-unit id="100" approved="yes">
+        <source><![CDATA[locrian #6]]></source>
+        <target><![CDATA[locrian #6]]></target>
+      </trans-unit>
+      <trans-unit id="101" approved="yes">
+        <source><![CDATA[lydian]]></source>
+        <target><![CDATA[lydian]]></target>
+      </trans-unit>
+      <trans-unit id="102" approved="yes">
+        <source><![CDATA[lydian #2]]></source>
+        <target><![CDATA[lydian #2]]></target>
+      </trans-unit>
+      <trans-unit id="103" approved="yes">
+        <source><![CDATA[lydian #5]]></source>
+        <target><![CDATA[lydian #5]]></target>
+      </trans-unit>
+      <trans-unit id="104" approved="yes">
+        <source><![CDATA[lydian (LCCTO)]]></source>
+        <target><![CDATA[lydian (LCCTO)]]></target>
+      </trans-unit>
+      <trans-unit id="105" approved="yes">
+        <source><![CDATA[lydian augmented (LCCTO)]]></source>
+        <target><![CDATA[lydian augmented (LCCTO)]]></target>
+      </trans-unit>
+      <trans-unit id="106" approved="yes">
+        <source><![CDATA[lydian b7 (LCCTO)]]></source>
+        <target><![CDATA[lydian b7 (LCCTO)]]></target>
+      </trans-unit>
+      <trans-unit id="107" approved="yes">
+        <source><![CDATA[lydian diminished (LCCTO)]]></source>
+        <target><![CDATA[lydian diminished (LCCTO)]]></target>
+      </trans-unit>
+      <trans-unit id="108" approved="yes">
+        <source><![CDATA[lydian dominant]]></source>
+        <target><![CDATA[lydian dominant]]></target>
+      </trans-unit>
+      <trans-unit id="109" approved="yes">
+        <source><![CDATA[melodic minor]]></source>
+        <target><![CDATA[melodic minor]]></target>
+      </trans-unit>
+      <trans-unit id="110" approved="yes">
+        <source><![CDATA[mixolydian]]></source>
+        <target><![CDATA[mixolydian]]></target>
+      </trans-unit>
+      <trans-unit id="111" approved="yes">
+        <source><![CDATA[mixolydian b6]]></source>
+        <target><![CDATA[mixolydian b6]]></target>
+      </trans-unit>
+      <trans-unit id="112" approved="yes">
+        <source><![CDATA[monostring (C)]]></source>
+        <target><![CDATA[monostring (C)]]></target>
+      </trans-unit>
+      <trans-unit id="113" approved="yes">
+        <source><![CDATA[neck controls]]></source>
+        <target><![CDATA[neck controls]]></target>
+      </trans-unit>
+      <trans-unit id="114" approved="yes">
+        <source><![CDATA[no selected neck]]></source>
+        <target><![CDATA[no selected neck]]></target>
+      </trans-unit>
+      <trans-unit id="115" approved="yes">
+        <source><![CDATA[oriental]]></source>
+        <target><![CDATA[oriental]]></target>
+      </trans-unit>
+      <trans-unit id="116" approved="yes">
+        <source><![CDATA[pentatonic]]></source>
+        <target><![CDATA[pentatonic]]></target>
+      </trans-unit>
+      <trans-unit id="117" approved="yes">
+        <source><![CDATA[pentatonic major]]></source>
+        <target><![CDATA[pentatonic major]]></target>
+      </trans-unit>
+      <trans-unit id="118" approved="yes">
+        <source><![CDATA[pentatonic major b2]]></source>
+        <target><![CDATA[pentatonic major b2]]></target>
+      </trans-unit>
+      <trans-unit id="119" approved="yes">
+        <source><![CDATA[pentatonic minor]]></source>
+        <target><![CDATA[pentatonic minor]]></target>
+      </trans-unit>
+      <trans-unit id="120" approved="yes">
+        <source><![CDATA[pentatonic minor 6]]></source>
+        <target><![CDATA[pentatonic minor 6]]></target>
+      </trans-unit>
+      <trans-unit id="121" approved="yes">
+        <source><![CDATA[pentatonic minor b5]]></source>
+        <target><![CDATA[pentatonic minor b5]]></target>
+      </trans-unit>
+      <trans-unit id="122" approved="yes">
+        <source><![CDATA[pentatonic minor blues]]></source>
+        <target><![CDATA[pentatonic minor blues]]></target>
+      </trans-unit>
+      <trans-unit id="123" approved="yes">
+        <source><![CDATA[pentatonic whole tone]]></source>
+        <target><![CDATA[pentatonic whole tone]]></target>
+      </trans-unit>
+      <trans-unit id="124" approved="yes">
+        <source><![CDATA[persian]]></source>
+        <target><![CDATA[persian]]></target>
+      </trans-unit>
+      <trans-unit id="125" approved="yes">
+        <source><![CDATA[phrygian]]></source>
+        <target><![CDATA[phrygian]]></target>
+      </trans-unit>
+      <trans-unit id="126" approved="yes">
+        <source><![CDATA[phrygian dominant]]></source>
+        <target><![CDATA[phrygian dominant]]></target>
+      </trans-unit>
+      <trans-unit id="127" approved="yes">
+        <source><![CDATA[play]]></source>
+        <target><![CDATA[play]]></target>
+      </trans-unit>
+      <trans-unit id="128" approved="yes">
+        <source><![CDATA[play tones]]></source>
+        <target><![CDATA[play tones]]></target>
+      </trans-unit>
+      <trans-unit id="129" approved="yes">
+        <source><![CDATA[romanian]]></source>
+        <target><![CDATA[romanian]]></target>
+      </trans-unit>
+      <trans-unit id="130" approved="yes">
+        <source><![CDATA[root]]></source>
+        <target><![CDATA[root]]></target>
+      </trans-unit>
+      <trans-unit id="131" approved="yes">
+        <source><![CDATA[scale]]></source>
+        <target><![CDATA[scale]]></target>
+      </trans-unit>
+      <trans-unit id="132" approved="yes">
+        <source><![CDATA[search]]></source>
+        <target><![CDATA[search]]></target>
+      </trans-unit>
+      <trans-unit id="133" approved="yes">
+        <source><![CDATA[selected root/scale]]></source>
+        <target><![CDATA[selected root/scale]]></target>
+      </trans-unit>
+      <trans-unit id="134" approved="yes">
+        <source><![CDATA[selection controls]]></source>
+        <target><![CDATA[selection controls]]></target>
+      </trans-unit>
+      <trans-unit id="135" approved="yes">
+        <source><![CDATA[show fret numbers]]></source>
+        <target><![CDATA[show fret numbers]]></target>
+      </trans-unit>
+      <trans-unit id="136" approved="yes">
+        <source><![CDATA[show inlays]]></source>
+        <target><![CDATA[show inlays]]></target>
+      </trans-unit>
+      <trans-unit id="137" approved="yes">
+        <source><![CDATA[show on neck]]></source>
+        <target><![CDATA[show on neck]]></target>
+      </trans-unit>
+      <trans-unit id="138" approved="yes">
+        <source><![CDATA[show selected root/scale together]]></source>
+        <target><![CDATA[show selected root/scale together]]></target>
+      </trans-unit>
+      <trans-unit id="139" approved="yes">
+        <source><![CDATA[sound]]></source>
+        <target><![CDATA[sound]]></target>
+      </trans-unit>
+      <trans-unit id="140" approved="yes">
+        <source><![CDATA[superlocrian]]></source>
+        <target><![CDATA[superlocrian]]></target>
+      </trans-unit>
+      <trans-unit id="141" approved="yes">
+        <source><![CDATA[tagged as:]]></source>
+        <target><![CDATA[tagged as:]]></target>
+      </trans-unit>
+      <trans-unit id="142" approved="yes">
+        <source><![CDATA[tune not found... sorry]]></source>
+        <target><![CDATA[tune not found... sorry]]></target>
+      </trans-unit>
+      <trans-unit id="143" approved="yes">
+        <source><![CDATA[tunes found]]></source>
+        <target><![CDATA[tunes found]]></target>
+      </trans-unit>
+      <trans-unit id="144" approved="yes">
+        <source><![CDATA[ukulele soprano]]></source>
+        <target><![CDATA[ukulele soprano]]></target>
+      </trans-unit>
+      <trans-unit id="145" approved="yes">
+        <source><![CDATA[violin]]></source>
+        <target><![CDATA[violin]]></target>
+      </trans-unit>
+      <trans-unit id="146" approved="yes">
+        <source><![CDATA[whole tone]]></source>
+        <target><![CDATA[whole tone]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

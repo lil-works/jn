@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext" target-language="en">
+    <body>
+      <trans-unit id="1" approved="yes">
+        <source><![CDATA[Maybe]]></source>
+        <target><![CDATA[Maybe]]></target>
+      </trans-unit>
+      <trans-unit id="2" approved="yes">
+        <source><![CDATA[No]]></source>
+        <target><![CDATA[No]]></target>
+      </trans-unit>
+      <trans-unit id="3" approved="yes">
+        <source><![CDATA[Yes]]></source>
+        <target><![CDATA[yes]]></target>
+      </trans-unit>
+      <trans-unit id="4" approved="yes">
+        <source><![CDATA[difficult]]></source>
+        <target><![CDATA[difficult]]></target>
+      </trans-unit>
+      <trans-unit id="5" approved="yes">
+        <source><![CDATA[easy]]></source>
+        <target><![CDATA[easy]]></target>
+      </trans-unit>
+      <trans-unit id="6" approved="yes">
+        <source><![CDATA[icon]]></source>
+        <target><![CDATA[icon]]></target>
+      </trans-unit>
+      <trans-unit id="7" approved="yes">
+        <source><![CDATA[really easy]]></source>
+        <target><![CDATA[really easy]]></target>
+      </trans-unit>
+      <trans-unit id="8" approved="yes">
+        <source><![CDATA[regular]]></source>
+        <target><![CDATA[regular]]></target>
+      </trans-unit>
+      <trans-unit id="9" approved="yes">
+        <source><![CDATA[tricky]]></source>
+        <target><![CDATA[tricky]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

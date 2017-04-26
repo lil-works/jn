@@ -197,3 +197,10 @@ knp_menu:
     # the renderer to use, list is also available by default
     default_renderer: twig
 
+lexik_translation:
+    fallback_locale: [en]         # (required) default locale(s) to use
+    managed_locales: [en, fr, es] # (required) locales that the bundle has to manage
+    storage:
+        type: orm                  # orm | mongodb | propel
+        #object_manager: something  # The name of the entity / document manager which uses different connection (see: http://symfony.com/doc/current/cookbook/doctrine/multiple_entity_managers.html)
+                                       # When using propel, this can be used to specify the propel connection name

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2017-04-26T11:00:51Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="56dd8d0bbe9dcb95403cd2c187064106af47af84" resname="Maybe">
+        <source>Maybe</source>
+        <target state="new">Maybe</target>
+        <jms:reference-file line="36">/../src/AppBundle/Filter/FingeringFilter.php</jms:reference-file>
+        <jms:reference-file line="44">/../src/AppBundle/Filter/FingeringFilter.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="816c52fd2bdd94a63cd0944823a6c0aa9384c103" resname="No">
+        <source>No</source>
+        <target state="new">No</target>
+        <jms:reference-file line="38">/../src/AppBundle/Filter/FingeringFilter.php</jms:reference-file>
+        <jms:reference-file line="46">/../src/AppBundle/Filter/FingeringFilter.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5397e0583f14f6c88de06b1ef28f460a1fb5b0ae" resname="Yes">
+        <source>Yes</source>
+        <target state="new">Yes</target>
+        <jms:reference-file line="37">/../src/AppBundle/Filter/FingeringFilter.php</jms:reference-file>
+        <jms:reference-file line="45">/../src/AppBundle/Filter/FingeringFilter.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d2a26f03aa5a723edc8f716f82e1c12db45074d6" resname="difficult">
+        <source>difficult</source>
+        <target state="new">difficult</target>
+        <jms:reference-file line="17">/../src/AppBundle/Form/Type/DifficultyType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="861c4f67e887dec85292d36ab05cd7a1a7275228" resname="easy">
+        <source>easy</source>
+        <target state="new">easy</target>
+        <jms:reference-file line="15">/../src/AppBundle/Form/Type/DifficultyType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f8995ba5891b07e328c60d6bd6c10159878c5a13" resname="icon">
+        <source>icon</source>
+        <target state="new">icon</target>
+        <jms:reference-file line="23">/../src/AppBundle/Form/InstrumentType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b6d02c79965325d1280e7db3e47fd71ce504a133" resname="really easy">
+        <source>really easy</source>
+        <target state="new">really easy</target>
+        <jms:reference-file line="14">/../src/AppBundle/Form/Type/DifficultyType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5f51efbecdb644c4ea8a109f81947c1490d5ba62" resname="regular">
+        <source>regular</source>
+        <target state="new">regular</target>
+        <jms:reference-file line="16">/../src/AppBundle/Form/Type/DifficultyType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="22bd6f1be3239c0c1d4052f47ff887908d2eb432" resname="tricky">
+        <source>tricky</source>
+        <target state="new">tricky</target>
+        <jms:reference-file line="18">/../src/AppBundle/Form/Type/DifficultyType.php</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

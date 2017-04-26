@@ -27,3 +27,7 @@ _bazinga_jstranslation:
 liip_theme:
     resource: "@LiipThemeBundle/Resources/config/routing.xml"
     prefix: /themejs
+
+lexik_translation_edition:
+    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+    prefix:   /translation
