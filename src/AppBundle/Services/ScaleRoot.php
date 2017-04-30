@@ -88,6 +88,8 @@ class ScaleRoot implements ContainerAwareInterface
             return $this->templating->render('Services/scaleroot-limited.html.twig', array(
                 "instrument"=>$instrument,
                 "root"=>$this->westernSystem->getName(),
+                "rootId"=>$this->westernSystem->getId(),
+                "rootId"=>$this->westernSystem->getName(),
                 "roots"=>$roots,
                 "populatedScale"=>$populatedScale,
                 "scale"=>$this->scale,

@@ -45,8 +45,6 @@ class WesternSystemRepository extends \Doctrine\ORM\EntityRepository
     public function findOneByRootNameAndIntervale($param){
 
 
-
-
         $em = $this->getEntityManager();
         $dql = "
           SELECT w
@@ -61,9 +59,29 @@ class WesternSystemRepository extends \Doctrine\ORM\EntityRepository
 
         $r = $query->getResult();
 
+        // eg E# is not in western system
+        if(count($r) == 0){
+
+            $dql = "
+          SELECT w
+          FROM AppBundle:WesternSystem w
+          LEFT JOIN  AppBundle:Digit d WITH d.id = w.digit
+          LEFT JOIN  AppBundle:WesternSystem w2 WITH w2.digit = d.id and w2.intervale = 1
+          WHERE w.name = :rootName
 
 
-        return $r[0];
+          ";
+            $query = $em->createQuery($dql);
+
+            $query->setParameter('rootName', $param["rootName"]);
+
+
+            $r = $query->getResult();
+
+
+        }
+            return $r[0];
+
     }
     public function findOneInFamilyRootByIntervale($param){
 

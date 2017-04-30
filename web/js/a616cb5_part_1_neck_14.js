@@ -1,7 +1,7 @@
 var neck = {
 
     init:function(canvasId,instrument){
-
+        console.log("NECK INIT");
         Neck = this;
 
         //this.getSession();
@@ -301,19 +301,14 @@ var neck = {
                         y.push(splited[0]);
 
                         var ak = $.inArray(Neck.formatedMatrice[splited[0]][splited[1]].digitA%12,digitList);
-                        console.log(
-                            ak,
-                            Neck.formatedMatrice[splited[0]][splited[1]].digit,
-                            Neck.formatedMatrice[splited[0]][splited[1]].digitA,
-                            Neck.formatedMatrice[splited[0]][splited[1]].digitA%12,
-                            digitList
-                        );
+
                         if(ak != -1 ){
                             d.push(Neck.formatedMatrice[splited[0]][splited[1]].digitA);
                             i.push(nameList[ak]);
                             w.push(wsList[ak]);
                         }
                     });
+
                     var basket_fingering_add = Routing.generate('basket_fingering_add',{
                         instrumentId: Neck.instrument.id ,
                         instrumentName:Neck.instrument.name,
@@ -331,7 +326,16 @@ var neck = {
                     for(i=0;i<nameList.length;i++){
                         datas[deltaList[i]] = ["C",nameList[i],colorList[i]];
                     }
-                    var site_rootscale_index = Routing.generate('site_rootscale_instrumented_index',{ instrumentId:Neck.instrument.id,instrumentName:Neck.instrument.name, scaleName:value.scaleName, scaleId:value.scaleId,root:value.wsName});
+
+
+                    var site_rootscale_index = Routing.generate('site_rootscale_instrumented_index',{
+                        instrumentId:Neck.instrument.id,
+                        instrumentName:Neck.instrument.name,
+                        scaleName:value.scaleName,
+                        scaleId:value.scaleId,
+                        rootName:value.wsName,
+                        rootId:value.wsId
+                    });
 
                     var htmlBasket = '<a class="btn btn-default btn-xs" href="'+basket_fingering_add+'"><i class="glyphicon glyphicon-record"></i>add in basket</a>';
                     html="<li><div class=\"titleInVignette\"><a href=\""+site_rootscale_index+"\">"+value.rootInfoTone+" "+value.scaleName+"</a></div><div><canvas id=\"root_"+value.rootInfoTone+"_scale_"+value.scaleId+"\" width=\"180\" height=\"180\"></canvas>"+htmlBasket+"</div></li>";
@@ -933,7 +937,7 @@ var neck = {
             Neck.fingerprint.push(v+"_"+xList[k]);
         });
 
-        console.log(Neck.fingerprint,Neck.fingerprintIncremented);
+
 
 
         var ajax_neck_searchFingering = Routing.generate('ajax_neck_searchFingering');

@@ -19,175 +19,105 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_TOOLBAR" value="true" />
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="jolyneck" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScaleRoot.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/ScaleRoot.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.75" vertical-offset="465" max-vertical-offset="1470">
-              <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scaleroot.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.52" vertical-offset="469" max-vertical-offset="1230">
-              <caret line="53" column="102" selection-start-line="53" selection-start-column="102" selection-end-line="53" selection-end-column="102" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ScaleRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.96" vertical-offset="117" max-vertical-offset="13620">
-              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+            <state vertical-scroll-proportion="57.08" vertical-offset="9049" max-vertical-offset="13695">
+              <caret line="413" column="31" selection-start-line="413" selection-start-column="31" selection-end-line="413" selection-end-column="31" />
               <folding>
-                <marker date="1493529156000" expanded="true" signature="362:2929" placeholder="SELECT count..concat..." />
-                <marker date="1493529156000" expanded="true" signature="447:756" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="628:690" placeholder="SELECT id FR..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="784:1052" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="964:1026" placeholder="SELECT id FR..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="1087:1153" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="1227:1290" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="1359:1422" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="1431:1497" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="1532:2180" placeholder="SELECT conca..scale..." />
-                <marker date="1493529156000" expanded="true" signature="1815:1860" placeholder="select value..digit..." />
-                <marker date="1493529156000" expanded="true" signature="2210:2762" placeholder="SELECT conca..scale..." />
-                <marker date="1493529156000" expanded="true" signature="4601:5093" placeholder="SELECT d3.va..scale..." />
-                <marker date="1493529156000" expanded="true" signature="5494:6741" placeholder="SELECT *,ROU..id..." />
-                <marker date="1493529156000" expanded="true" signature="5567:6552" placeholder="SELECT s1.id..." />
-                <marker date="1493529156000" expanded="true" signature="5747:5832" placeholder="SELECT ws2.n..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="5872:5935" placeholder="SELECT value..digit..." />
-                <marker date="1493529156000" expanded="true" signature="6060:6146" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="7495:8050" placeholder="SELECT scale..id..." />
-                <marker date="1493529156000" expanded="true" signature="7609:7936" placeholder="SELECT s1.id..scale..." />
-                <marker date="1493529156000" expanded="true" signature="7684:7754" placeholder="SELECT COUNT..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="8690:10791" placeholder="SELECT name ..*..." />
-                <marker date="1493529156000" expanded="true" signature="8786:8833" placeholder="SELECT d2.va..digit..." />
-                <marker date="1493529156000" expanded="true" signature="9254:10732" placeholder="SELECT *, (S..id..." />
-                <marker date="1493529156000" expanded="true" signature="9305:9563" placeholder="SELECT ws3.n..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="9610:9960" placeholder="SELECT d1.va..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="10025:10616" placeholder="SELECT s1.id..scale..." />
-                <marker date="1493529156000" expanded="true" signature="11544:13470" placeholder="SELECT name ..*..." />
-                <marker date="1493529156000" expanded="true" signature="11675:11722" placeholder="SELECT d2.va..digit..." />
-                <marker date="1493529156000" expanded="true" signature="11957:13357" placeholder="SELECT *, (S..id..." />
-                <marker date="1493529156000" expanded="true" signature="12008:12266" placeholder="SELECT ws3.n..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="12313:12663" placeholder="SELECT d1.va..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="12728:13264" placeholder="SELECT s1.id..scale..." />
-                <marker date="1493529156000" expanded="true" signature="13996:14021" placeholder="SELECT id,na..scale..." />
-                <marker date="1493529156000" expanded="true" signature="14445:17975" placeholder="SELECT count..concat..." />
-                <marker date="1493529156000" expanded="true" signature="14589:14893" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="14927:15425" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="15306:15372" placeholder="SELECT digit..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="15464:15530" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="15604:15667" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="15736:15799" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="15808:15874" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="15909:16983" placeholder="SELECT conca..scale..." />
-                <marker date="1493529156000" expanded="true" signature="16192:16237" placeholder="select value..digit..." />
-                <marker date="1493529156000" expanded="true" signature="16399:16739" placeholder="SELECT t4.id..scale..." />
-                <marker date="1493529156000" expanded="true" signature="16563:16625" placeholder="SELECT id FR..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="16873:16981" placeholder="SELECT id fr..scale..." />
-                <marker date="1493529156000" expanded="true" signature="17012:17786" placeholder="SELECT conca..scale..." />
-                <marker date="1493529156000" expanded="true" signature="17999:20764" placeholder="SELECT targe..scale..." />
-                <marker date="1493529156000" expanded="true" signature="18256:18345" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="18373:18462" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="18469:18669" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="18501:18590" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="18817:19217" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="19049:19116" placeholder="SELECT digit..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="19339:19423" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="19460:19545" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="20519:20587" placeholder="SELECT inter..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="20603:20671" placeholder="SELECT inter..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="22010:24872" placeholder="SELECT targe..scale..." />
-                <marker date="1493529156000" expanded="true" signature="22358:22447" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="22485:22574" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="22595:22855" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="22947:23303" placeholder="SELECT group..scale..." />
-                <marker date="1493529156000" expanded="true" signature="23242:23248" placeholder="SELECT digit..western_system..." />
-                <marker date="1493529156000" expanded="true" signature="23381:23466" placeholder="select count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="23792:23858" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493529156000" expanded="true" signature="26339:28432" placeholder="SELECT least..sel_populated_wName..." />
-                <marker date="1493529156000" expanded="true" signature="26452:28402" placeholder="SELECT sel_p..intervale_id..." />
-                <marker date="1493529156000" expanded="true" signature="26541:27407" placeholder="SELECT si1.i..CONCAT..." />
-                <marker date="1493529156000" expanded="true" signature="26838:27120" placeholder="SELECT CONCA..scale..." />
-                <marker date="1493529156000" expanded="true" signature="27443:28312" placeholder="SELECT si1.i..CONCAT..." />
-                <marker date="1493529156000" expanded="true" signature="27743:28025" placeholder="SELECT CONCA..scale..." />
-                <marker date="1493529156000" expanded="true" signature="28458:29454" placeholder="SELECT count..." />
-                <marker date="1493529156000" expanded="true" signature="30647:31032" placeholder="SELECT s.id ..scale..." />
+                <marker date="1493538349000" expanded="true" signature="362:2929" placeholder="SELECT count..concat..." />
+                <marker date="1493538349000" expanded="true" signature="447:756" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="628:690" placeholder="SELECT id FR..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="784:1052" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="964:1026" placeholder="SELECT id FR..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="1087:1153" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="1227:1290" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="1359:1422" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="1431:1497" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="1532:2180" placeholder="SELECT conca..scale..." />
+                <marker date="1493538349000" expanded="true" signature="1815:1860" placeholder="select value..digit..." />
+                <marker date="1493538349000" expanded="true" signature="2210:2762" placeholder="SELECT conca..scale..." />
+                <marker date="1493538349000" expanded="true" signature="4601:5093" placeholder="SELECT d3.va..scale..." />
+                <marker date="1493538349000" expanded="true" signature="5494:6741" placeholder="SELECT *,ROU..id..." />
+                <marker date="1493538349000" expanded="true" signature="5567:6552" placeholder="SELECT s1.id..." />
+                <marker date="1493538349000" expanded="true" signature="5747:5832" placeholder="SELECT ws2.n..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="5872:5935" placeholder="SELECT value..digit..." />
+                <marker date="1493538349000" expanded="true" signature="6060:6146" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="7495:8050" placeholder="SELECT scale..id..." />
+                <marker date="1493538349000" expanded="true" signature="7609:7936" placeholder="SELECT s1.id..scale..." />
+                <marker date="1493538349000" expanded="true" signature="7684:7754" placeholder="SELECT COUNT..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="8690:10823" placeholder="SELECT name ..*..." />
+                <marker date="1493538349000" expanded="true" signature="8818:8865" placeholder="SELECT d2.va..digit..." />
+                <marker date="1493538349000" expanded="true" signature="9286:10764" placeholder="SELECT *, (S..id..." />
+                <marker date="1493538349000" expanded="true" signature="9337:9595" placeholder="SELECT ws3.n..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="9642:9992" placeholder="SELECT d1.va..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="10057:10648" placeholder="SELECT s1.id..scale..." />
+                <marker date="1493538349000" expanded="true" signature="11627:13553" placeholder="SELECT name ..*..." />
+                <marker date="1493538349000" expanded="true" signature="11758:11805" placeholder="SELECT d2.va..digit..." />
+                <marker date="1493538349000" expanded="true" signature="12040:13440" placeholder="SELECT *, (S..id..." />
+                <marker date="1493538349000" expanded="true" signature="12091:12349" placeholder="SELECT ws3.n..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="12396:12746" placeholder="SELECT d1.va..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="12811:13347" placeholder="SELECT s1.id..scale..." />
+                <marker date="1493538349000" expanded="true" signature="14079:14104" placeholder="SELECT id,na..scale..." />
+                <marker date="1493538349000" expanded="true" signature="14528:18058" placeholder="SELECT count..concat..." />
+                <marker date="1493538349000" expanded="true" signature="14672:14976" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="15010:15508" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="15389:15455" placeholder="SELECT digit..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="15547:15613" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="15687:15750" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="15819:15882" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="15891:15957" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="15992:17066" placeholder="SELECT conca..scale..." />
+                <marker date="1493538349000" expanded="true" signature="16275:16320" placeholder="select value..digit..." />
+                <marker date="1493538349000" expanded="true" signature="16482:16822" placeholder="SELECT t4.id..scale..." />
+                <marker date="1493538349000" expanded="true" signature="16646:16708" placeholder="SELECT id FR..western_system..." />
+                <marker date="1493538349000" expanded="true" signature="16956:17064" placeholder="SELECT id fr..scale..." />
+                <marker date="1493538349000" expanded="true" signature="17095:17869" placeholder="SELECT conca..scale..." />
+                <marker date="1493538349000" expanded="true" signature="18109:20934" placeholder="SELECT targe..scale..." />
+                <marker date="1493538349000" expanded="true" signature="18457:18546" placeholder="select count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="18584:18673" placeholder="select count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="18699:19017" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="19046:19412" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="19543:19628" placeholder="select count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="20686:20754" placeholder="SELECT inter..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="22156:25018" placeholder="SELECT targe..scale..." />
+                <marker date="1493538349000" expanded="true" signature="22504:22593" placeholder="select count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="22631:22720" placeholder="select count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="22746:23064" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="23093:23457" placeholder="SELECT group..scale..." />
+                <marker date="1493538349000" expanded="true" signature="23588:23673" placeholder="select count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="23955:24021" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493538349000" expanded="true" signature="26484:28577" placeholder="SELECT least..sel_populated_wName..." />
+                <marker date="1493538349000" expanded="true" signature="26597:28547" placeholder="SELECT sel_p..intervale_id..." />
+                <marker date="1493538349000" expanded="true" signature="26686:27552" placeholder="SELECT si1.i..CONCAT..." />
+                <marker date="1493538349000" expanded="true" signature="26983:27265" placeholder="SELECT CONCA..scale..." />
+                <marker date="1493538349000" expanded="true" signature="27588:28457" placeholder="SELECT si1.i..CONCAT..." />
+                <marker date="1493538349000" expanded="true" signature="27888:28170" placeholder="SELECT CONCA..scale..." />
+                <marker date="1493538349000" expanded="true" signature="28603:29599" placeholder="SELECT count..." />
+                <marker date="1493538349000" expanded="true" signature="30792:31177" placeholder="SELECT s.id ..scale..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scaleroot-inactive.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot-inactive.html.twig">
+      <file leaf-file-name="a616cb5_part_1_neck_14.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/a616cb5_part_1_neck_14.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="255">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15585">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scaleroot-limited.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot-limited.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.416666" vertical-offset="353" max-vertical-offset="1230">
-              <caret line="53" column="78" selection-start-line="53" selection-start-column="78" selection-end-line="53" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="audiosFunctions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2775">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6340819" vertical-offset="1800" max-vertical-offset="3210">
-              <caret line="152" column="21" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
-              <folding>
-                <element signature="n#style#0;n#ins#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseAdmin.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/baseAdmin.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2970">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baseHome.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/baseHome.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.916666" vertical-offset="1928" max-vertical-offset="2850">
-              <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="173" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -196,9 +126,91 @@
       <file leaf-file-name="RootScaleController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.75" vertical-offset="90" max-vertical-offset="2895">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.5" vertical-offset="840" max-vertical-offset="2895">
+              <caret line="74" column="113" selection-start-line="74" selection-start-column="113" selection-end-line="74" selection-end-column="113" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WesternSystemRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WesternSystemRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.708333" vertical-offset="616" max-vertical-offset="2490">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <marker date="1493540914000" expanded="true" signature="337:412" placeholder="SELECT id,di..western_system..." />
+                <marker date="1493540914000" expanded="true" signature="858:958" placeholder="SELECT w FRO..AppBundle..." />
+                <marker date="1493540914000" expanded="true" signature="1242:1349" placeholder="SELECT w FRO..AppBundle..." />
+                <marker date="1493540914000" expanded="true" signature="1658:1891" placeholder="SELECT w FRO..AppBundle..." />
+                <marker date="1493540914000" expanded="true" signature="2236:2345" placeholder="SELECT w FRO..AppBundle..." />
+                <marker date="1493540914000" expanded="true" signature="2713:2819" placeholder="SELECT w FRO..AppBundle..." />
+                <marker date="1493540914000" expanded="true" signature="3222:3322" placeholder="SELECT w FRO..AppBundle..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cycle.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/cycle.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.09977324" vertical-offset="451" max-vertical-offset="2070">
+              <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="3135">
+              <caret line="56" column="33" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scaleroot-limited.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot-limited.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.125" vertical-offset="210" max-vertical-offset="1245">
+              <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/DefaultController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.75" vertical-offset="30" max-vertical-offset="885">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScaleRoot.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/ScaleRoot.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.56" vertical-offset="1032" max-vertical-offset="1500">
+              <caret line="91" column="55" selection-start-line="91" selection-start-column="55" selection-end-line="91" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.14" vertical-offset="374" max-vertical-offset="2312">
+              <caret line="43" column="28" selection-start-line="25" selection-start-column="16" selection-end-line="43" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -213,7 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/descriptor.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Twig/AppExtension.php" />
         <option value="$PROJECT_DIR$/web/bundles/site/js/digit/digit.js" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/fretboard.js" />
@@ -223,16 +234,12 @@
         <option value="$PROJECT_DIR$/app/Resources/views/Services/fingering.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Scale/network.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Controller/ScaleController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Services/ScaleRoot.php" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/cycle.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Default/neck.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/neck.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/FingeringRepository.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/Services/neck.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Services/Fingering.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/Services/fingering-against.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/against.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Services/Sequencer.php" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/sequencer.js" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/digit/digit.js" />
@@ -240,12 +247,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/QuoteType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/Services/Sequencer/sequencer.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/ParamConverter/RootScaleConverter.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/WesternSystemRepository.php" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/Lang/navbar.html.twig" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index-addroot.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Request/ParamConverter/RootScaleConverter.php" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/email/password_reseting.email.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/EventListener/PasswordResetingListener.php" />
@@ -258,12 +262,20 @@
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
-        <option value="$PROJECT_DIR$/app/Resources/views/Services/scaleroot.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/Services/scaleroot-limited.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php" />
         <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js" />
         <option value="$PROJECT_DIR$/app/Resources/views/baseHome.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Services/scaleroot.html.twig" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/neck.js" />
+        <option value="$PROJECT_DIR$/web/js/a616cb5_part_1_neck_14.js" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Services/ScaleRoot.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Services/scaleroot-limited.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/WesternSystemRepository.php" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/cycle.html.twig" />
       </list>
     </option>
   </component>
@@ -326,7 +338,175 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="var" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RootScale" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SiteBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -367,6 +547,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jolineck" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DQL" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -601,17 +825,17 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32451922" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3941345" sideWeight="0.49936467" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3941345" sideWeight="0.49936467" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47159532" sideWeight="0.5006353" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253012" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -665,83 +889,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/EventListener/PasswordResettingListener.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="555">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/resetting.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/resetting.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/change_password.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="6" column="63" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config_prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="779">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="779">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="885">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/connexion.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="285">
-          <caret line="9" column="80" selection-start-line="8" selection-start-column="117" selection-end-line="9" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ForTranslation/translation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="779">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Hydrator/SequenceHydrator.php.TOREMOVE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="750">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/translations/messages.es.xlf">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11535">
@@ -843,13 +990,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/neck.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5130" max-vertical-offset="15525">
-          <caret line="381" column="15" selection-start-line="364" selection-start-column="12" selection-end-line="381" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1365">
@@ -880,14 +1020,6 @@
           <folding>
             <element signature="e#41#72#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -963,135 +1095,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="3135">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="29" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.75" vertical-offset="90" max-vertical-offset="2895">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/ScaleRoot.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.75" vertical-offset="465" max-vertical-offset="1470">
-          <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.52" vertical-offset="469" max-vertical-offset="1230">
-          <caret line="53" column="102" selection-start-line="53" selection-start-column="102" selection-end-line="53" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot-inactive.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot-limited.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.416666" vertical-offset="353" max-vertical-offset="1230">
-          <caret line="53" column="78" selection-start-line="53" selection-start-column="78" selection-end-line="53" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.96" vertical-offset="117" max-vertical-offset="13620">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding>
-            <marker date="1493529156000" expanded="true" signature="362:2929" placeholder="SELECT count..concat..." />
-            <marker date="1493529156000" expanded="true" signature="447:756" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="628:690" placeholder="SELECT id FR..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="784:1052" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="964:1026" placeholder="SELECT id FR..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="1087:1153" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="1227:1290" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="1359:1422" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="1431:1497" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="1532:2180" placeholder="SELECT conca..scale..." />
-            <marker date="1493529156000" expanded="true" signature="1815:1860" placeholder="select value..digit..." />
-            <marker date="1493529156000" expanded="true" signature="2210:2762" placeholder="SELECT conca..scale..." />
-            <marker date="1493529156000" expanded="true" signature="4601:5093" placeholder="SELECT d3.va..scale..." />
-            <marker date="1493529156000" expanded="true" signature="5494:6741" placeholder="SELECT *,ROU..id..." />
-            <marker date="1493529156000" expanded="true" signature="5567:6552" placeholder="SELECT s1.id..." />
-            <marker date="1493529156000" expanded="true" signature="5747:5832" placeholder="SELECT ws2.n..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="5872:5935" placeholder="SELECT value..digit..." />
-            <marker date="1493529156000" expanded="true" signature="6060:6146" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="7495:8050" placeholder="SELECT scale..id..." />
-            <marker date="1493529156000" expanded="true" signature="7609:7936" placeholder="SELECT s1.id..scale..." />
-            <marker date="1493529156000" expanded="true" signature="7684:7754" placeholder="SELECT COUNT..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="8690:10791" placeholder="SELECT name ..*..." />
-            <marker date="1493529156000" expanded="true" signature="8786:8833" placeholder="SELECT d2.va..digit..." />
-            <marker date="1493529156000" expanded="true" signature="9254:10732" placeholder="SELECT *, (S..id..." />
-            <marker date="1493529156000" expanded="true" signature="9305:9563" placeholder="SELECT ws3.n..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="9610:9960" placeholder="SELECT d1.va..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="10025:10616" placeholder="SELECT s1.id..scale..." />
-            <marker date="1493529156000" expanded="true" signature="11544:13470" placeholder="SELECT name ..*..." />
-            <marker date="1493529156000" expanded="true" signature="11675:11722" placeholder="SELECT d2.va..digit..." />
-            <marker date="1493529156000" expanded="true" signature="11957:13357" placeholder="SELECT *, (S..id..." />
-            <marker date="1493529156000" expanded="true" signature="12008:12266" placeholder="SELECT ws3.n..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="12313:12663" placeholder="SELECT d1.va..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="12728:13264" placeholder="SELECT s1.id..scale..." />
-            <marker date="1493529156000" expanded="true" signature="13996:14021" placeholder="SELECT id,na..scale..." />
-            <marker date="1493529156000" expanded="true" signature="14445:17975" placeholder="SELECT count..concat..." />
-            <marker date="1493529156000" expanded="true" signature="14589:14893" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="14927:15425" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="15306:15372" placeholder="SELECT digit..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="15464:15530" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="15604:15667" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="15736:15799" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="15808:15874" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="15909:16983" placeholder="SELECT conca..scale..." />
-            <marker date="1493529156000" expanded="true" signature="16192:16237" placeholder="select value..digit..." />
-            <marker date="1493529156000" expanded="true" signature="16399:16739" placeholder="SELECT t4.id..scale..." />
-            <marker date="1493529156000" expanded="true" signature="16563:16625" placeholder="SELECT id FR..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="16873:16981" placeholder="SELECT id fr..scale..." />
-            <marker date="1493529156000" expanded="true" signature="17012:17786" placeholder="SELECT conca..scale..." />
-            <marker date="1493529156000" expanded="true" signature="17999:20764" placeholder="SELECT targe..scale..." />
-            <marker date="1493529156000" expanded="true" signature="18256:18345" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="18373:18462" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="18469:18669" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="18501:18590" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="18817:19217" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="19049:19116" placeholder="SELECT digit..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="19339:19423" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="19460:19545" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="20519:20587" placeholder="SELECT inter..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="20603:20671" placeholder="SELECT inter..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="22010:24872" placeholder="SELECT targe..scale..." />
-            <marker date="1493529156000" expanded="true" signature="22358:22447" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="22485:22574" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="22595:22855" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="22947:23303" placeholder="SELECT group..scale..." />
-            <marker date="1493529156000" expanded="true" signature="23242:23248" placeholder="SELECT digit..western_system..." />
-            <marker date="1493529156000" expanded="true" signature="23381:23466" placeholder="select count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="23792:23858" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493529156000" expanded="true" signature="26339:28432" placeholder="SELECT least..sel_populated_wName..." />
-            <marker date="1493529156000" expanded="true" signature="26452:28402" placeholder="SELECT sel_p..intervale_id..." />
-            <marker date="1493529156000" expanded="true" signature="26541:27407" placeholder="SELECT si1.i..CONCAT..." />
-            <marker date="1493529156000" expanded="true" signature="26838:27120" placeholder="SELECT CONCA..scale..." />
-            <marker date="1493529156000" expanded="true" signature="27443:28312" placeholder="SELECT si1.i..CONCAT..." />
-            <marker date="1493529156000" expanded="true" signature="27743:28025" placeholder="SELECT CONCA..scale..." />
-            <marker date="1493529156000" expanded="true" signature="28458:29454" placeholder="SELECT count..." />
-            <marker date="1493529156000" expanded="true" signature="30647:31032" placeholder="SELECT s.id ..scale..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1121,10 +1129,247 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6340819" vertical-offset="1800" max-vertical-offset="3210">
+        <state vertical-scroll-proportion="-20.0" vertical-offset="1800" max-vertical-offset="3210">
           <caret line="152" column="21" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#ins#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/public/js/translations/routes/fr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.75" vertical-offset="558" max-vertical-offset="1245">
+          <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Fingering/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.416667" vertical-offset="209" max-vertical-offset="720">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/fretboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1923075" vertical-offset="3589" max-vertical-offset="6690">
+          <caret line="250" column="25" selection-start-line="250" selection-start-column="22" selection-end-line="250" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/fingering.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1923075" vertical-offset="1744" max-vertical-offset="3750">
+          <caret line="127" column="25" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/lineCreator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3975">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/Default/neck.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.291667" vertical-offset="1328" max-vertical-offset="1815">
+          <caret line="105" column="14" selection-start-line="105" selection-start-column="14" selection-end-line="105" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/neck.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15585">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/a616cb5_part_1_neck_14.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15585">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="30" max-vertical-offset="885">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Controller/RootScaleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5" vertical-offset="840" max-vertical-offset="2895">
+          <caret line="74" column="113" selection-start-line="74" selection-start-column="113" selection-end-line="74" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="57.08" vertical-offset="9049" max-vertical-offset="13695">
+          <caret line="413" column="31" selection-start-line="413" selection-start-column="31" selection-end-line="413" selection-end-column="31" />
+          <folding>
+            <marker date="1493538349000" expanded="true" signature="362:2929" placeholder="SELECT count..concat..." />
+            <marker date="1493538349000" expanded="true" signature="447:756" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="628:690" placeholder="SELECT id FR..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="784:1052" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="964:1026" placeholder="SELECT id FR..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="1087:1153" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="1227:1290" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="1359:1422" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="1431:1497" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="1532:2180" placeholder="SELECT conca..scale..." />
+            <marker date="1493538349000" expanded="true" signature="1815:1860" placeholder="select value..digit..." />
+            <marker date="1493538349000" expanded="true" signature="2210:2762" placeholder="SELECT conca..scale..." />
+            <marker date="1493538349000" expanded="true" signature="4601:5093" placeholder="SELECT d3.va..scale..." />
+            <marker date="1493538349000" expanded="true" signature="5494:6741" placeholder="SELECT *,ROU..id..." />
+            <marker date="1493538349000" expanded="true" signature="5567:6552" placeholder="SELECT s1.id..." />
+            <marker date="1493538349000" expanded="true" signature="5747:5832" placeholder="SELECT ws2.n..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="5872:5935" placeholder="SELECT value..digit..." />
+            <marker date="1493538349000" expanded="true" signature="6060:6146" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="7495:8050" placeholder="SELECT scale..id..." />
+            <marker date="1493538349000" expanded="true" signature="7609:7936" placeholder="SELECT s1.id..scale..." />
+            <marker date="1493538349000" expanded="true" signature="7684:7754" placeholder="SELECT COUNT..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="8690:10823" placeholder="SELECT name ..*..." />
+            <marker date="1493538349000" expanded="true" signature="8818:8865" placeholder="SELECT d2.va..digit..." />
+            <marker date="1493538349000" expanded="true" signature="9286:10764" placeholder="SELECT *, (S..id..." />
+            <marker date="1493538349000" expanded="true" signature="9337:9595" placeholder="SELECT ws3.n..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="9642:9992" placeholder="SELECT d1.va..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="10057:10648" placeholder="SELECT s1.id..scale..." />
+            <marker date="1493538349000" expanded="true" signature="11627:13553" placeholder="SELECT name ..*..." />
+            <marker date="1493538349000" expanded="true" signature="11758:11805" placeholder="SELECT d2.va..digit..." />
+            <marker date="1493538349000" expanded="true" signature="12040:13440" placeholder="SELECT *, (S..id..." />
+            <marker date="1493538349000" expanded="true" signature="12091:12349" placeholder="SELECT ws3.n..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="12396:12746" placeholder="SELECT d1.va..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="12811:13347" placeholder="SELECT s1.id..scale..." />
+            <marker date="1493538349000" expanded="true" signature="14079:14104" placeholder="SELECT id,na..scale..." />
+            <marker date="1493538349000" expanded="true" signature="14528:18058" placeholder="SELECT count..concat..." />
+            <marker date="1493538349000" expanded="true" signature="14672:14976" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="15010:15508" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="15389:15455" placeholder="SELECT digit..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="15547:15613" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="15687:15750" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="15819:15882" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="15891:15957" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="15992:17066" placeholder="SELECT conca..scale..." />
+            <marker date="1493538349000" expanded="true" signature="16275:16320" placeholder="select value..digit..." />
+            <marker date="1493538349000" expanded="true" signature="16482:16822" placeholder="SELECT t4.id..scale..." />
+            <marker date="1493538349000" expanded="true" signature="16646:16708" placeholder="SELECT id FR..western_system..." />
+            <marker date="1493538349000" expanded="true" signature="16956:17064" placeholder="SELECT id fr..scale..." />
+            <marker date="1493538349000" expanded="true" signature="17095:17869" placeholder="SELECT conca..scale..." />
+            <marker date="1493538349000" expanded="true" signature="18109:20934" placeholder="SELECT targe..scale..." />
+            <marker date="1493538349000" expanded="true" signature="18457:18546" placeholder="select count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="18584:18673" placeholder="select count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="18699:19017" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="19046:19412" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="19543:19628" placeholder="select count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="20686:20754" placeholder="SELECT inter..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="22156:25018" placeholder="SELECT targe..scale..." />
+            <marker date="1493538349000" expanded="true" signature="22504:22593" placeholder="select count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="22631:22720" placeholder="select count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="22746:23064" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="23093:23457" placeholder="SELECT group..scale..." />
+            <marker date="1493538349000" expanded="true" signature="23588:23673" placeholder="select count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="23955:24021" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493538349000" expanded="true" signature="26484:28577" placeholder="SELECT least..sel_populated_wName..." />
+            <marker date="1493538349000" expanded="true" signature="26597:28547" placeholder="SELECT sel_p..intervale_id..." />
+            <marker date="1493538349000" expanded="true" signature="26686:27552" placeholder="SELECT si1.i..CONCAT..." />
+            <marker date="1493538349000" expanded="true" signature="26983:27265" placeholder="SELECT CONCA..scale..." />
+            <marker date="1493538349000" expanded="true" signature="27588:28457" placeholder="SELECT si1.i..CONCAT..." />
+            <marker date="1493538349000" expanded="true" signature="27888:28170" placeholder="SELECT CONCA..scale..." />
+            <marker date="1493538349000" expanded="true" signature="28603:29599" placeholder="SELECT count..." />
+            <marker date="1493538349000" expanded="true" signature="30792:31177" placeholder="SELECT s.id ..scale..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/ScaleRoot.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.56" vertical-offset="1032" max-vertical-offset="1500">
+          <caret line="91" column="55" selection-start-line="91" selection-start-column="55" selection-end-line="91" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Services/scaleroot-limited.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.125" vertical-offset="210" max-vertical-offset="1245">
+          <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/WesternSystemRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.708333" vertical-offset="616" max-vertical-offset="2490">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <marker date="1493540914000" expanded="true" signature="337:412" placeholder="SELECT id,di..western_system..." />
+            <marker date="1493540914000" expanded="true" signature="858:958" placeholder="SELECT w FRO..AppBundle..." />
+            <marker date="1493540914000" expanded="true" signature="1242:1349" placeholder="SELECT w FRO..AppBundle..." />
+            <marker date="1493540914000" expanded="true" signature="1658:1891" placeholder="SELECT w FRO..AppBundle..." />
+            <marker date="1493540914000" expanded="true" signature="2236:2345" placeholder="SELECT w FRO..AppBundle..." />
+            <marker date="1493540914000" expanded="true" signature="2713:2819" placeholder="SELECT w FRO..AppBundle..." />
+            <marker date="1493540914000" expanded="true" signature="3222:3322" placeholder="SELECT w FRO..AppBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="3135">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.14" vertical-offset="374" max-vertical-offset="2312">
+          <caret line="43" column="28" selection-start-line="25" selection-start-column="16" selection-end-line="43" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/views/RootScale/cycle.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09977324" vertical-offset="451" max-vertical-offset="2070">
+          <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#1;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

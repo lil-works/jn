@@ -33,7 +33,8 @@
                                         <div style="font-weight:bold;color: #{{  rs["iRootColor"]  }}">
                                             {% if instrument.id is defined %}
                                                 <a class="btn btn-xs" href="{{ path('site_rootscale_instrumented_index',{
-                                                    root:rs["rootName"]|trans,
+                                                    rootId:rs["rootId"],
+                                                    rootName:rs["rootName"]|trans,
                                                     scaleName:rs["scaleName"]|trans,
                                                     scaleId:rs["scaleId"],
                                                     instrumentId:instrument.id,

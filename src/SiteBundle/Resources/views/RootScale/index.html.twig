@@ -16,7 +16,7 @@
                 {% trans %}Other roots:{% endtrans %}
                 {% for root in roots|root %}
                     <li>
-                        <a class="root" href="{{ path('site_rootscale_instrumented_index',{instrumentId:instrument.id,instrumentName:instrument.name|trans,root:root.name,scaleName:scale.name|trans,scaleId:scale.id}) }}">
+                        <a class="root" href="{{ path('site_rootscale_instrumented_index',{instrumentId:instrument.id,instrumentName:instrument.name|trans,rootId:root.id,rootName:root.name|trans,scaleName:scale.name|trans,scaleId:scale.id}) }}">
                             {{ root.name|trans }}
                         </a>
                     </li>
@@ -25,9 +25,18 @@
             <ul class="list list-inline">
                 {% trans %}Cycle{% endtrans %}
                 {% for intervale in intervales %}
-                    {% if intervale.roman is not null  %}
+                    {% if intervale.roman is not null and  intervale.roman != 'I'  %}
                         <li>
-                            <a style="color: #{{ intervale.color }};" class="interval" href="{{ path('site_rootscale_instrumented_cycle',{instrumentId:instrument.id,instrumentName:instrument.name|trans,root:westernSystem.name|trans,scaleId:scale.id,scaleName:scale.name|trans,intervaleRoman:intervale.roman}) }}">
+                            <a style="color: #{{ intervale.color }};" class="interval"
+                               href="{{ path('site_rootscale_instrumented_cycle',{
+                               instrumentId:instrument.id,
+                               instrumentName:instrument.name|trans,
+                               rootId:westernSystem.id,
+                               rootName:westernSystem.name|trans,
+                               scaleId:scale.id,
+                               scaleName:scale.name|trans,
+                               intervaleRoman:intervale.roman
+                               }) }}">
                                 {{ intervale.roman }}
                             </a>
                         </li>

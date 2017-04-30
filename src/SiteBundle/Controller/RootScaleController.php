@@ -15,7 +15,7 @@ class RootScaleController extends Controller
 {
     /**
      * Blablabla
-     * @ParamConverter("westernSystem", class="AppBundle\Entity\WesternSystem",options={"mapping": {"root": "name"  }})
+     * @ParamConverter("westernSystem", class="AppBundle\Entity\WesternSystem",options={"mapping": { "rootId":"id"  }})
      * @ParamConverter("scale", class="AppBundle\Entity\Scale",options={"mapping": {"scaleId": "id"  }})
      * @ParamConverter("instrument", class="AppBundle\Entity\Instrument",options={"mapping": {"instrumentId": "id"  }})
      *   @ParamConverter("rootScale", class="AppBundle:Scale", converter="rootScale_converter")
@@ -72,7 +72,7 @@ class RootScaleController extends Controller
 
     /**
      * Blablabla
-     * @ParamConverter("westernSystem", class="AppBundle\Entity\WesternSystem",options={"mapping": {"root": "name"  }})
+     * @ParamConverter("westernSystem", class="AppBundle\Entity\WesternSystem",options={"mapping": {"rootId": "id"  }})
      * @ParamConverter("scale", class="AppBundle\Entity\Scale",options={"mapping": {"scaleId": "id"  }})
      * @ParamConverter("instrument", class="AppBundle\Entity\Instrument",options={"mapping": {"instrumentId": "id"  }})
      * @ParamConverter("intervale", class="AppBundle\Entity\Intervale",options={"mapping": {"intervaleRoman": "roman"  }})

@@ -55,15 +55,15 @@ site_scale_instrumented_show:
         expose: true
 
 site_rootscale_instrumented_index:
-    path: /neck/{instrumentId}-{instrumentName}/root-scale/{root}/{scaleId}_{scaleName}/{addRoot}
-    defaults: { _controller: "SiteBundle:RootScale:index" , root: C , addRoot: null }
+    path: /neck/{instrumentId}-{instrumentName}/root-scale/{rootId}_{rootName}/{scaleId}_{scaleName}/{addRoot}
+    defaults: { _controller: "SiteBundle:RootScale:index" , rootId: 21 ,rootName: C , addRoot: null }
     methods:  [GET, POST]
     options:
         expose: true
 
 site_rootscale_instrumented_cycle:
-    path: /neck/{instrumentId}-{instrumentName}/root-scale-cycle/{root}/{scaleId}_{scaleName}/{intervaleRoman}
-    defaults: { _controller: "SiteBundle:RootScale:cycle" , root: C , intervaleRoman: V }
+    path: /neck/{instrumentId}-{instrumentName}/root-scale-cycle/{rootId}_{rootName}/{scaleId}_{scaleName}/{intervaleRoman}
+    defaults: { _controller: "SiteBundle:RootScale:cycle" , rootId: 21 ,rootName: C , intervaleRoman: V }
     methods:  [GET, POST]
     options:
         expose: true

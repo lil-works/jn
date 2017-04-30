@@ -258,6 +258,7 @@ order by ratio asc
 
             SELECT
                 name as rootName,
+                root as rootId,
                 digit as rootDigitId,
                 (SELECT d2.value FROM digit d2 WHERE d2.id=digit) as rootDigitA,
                 group_concat(newToneName order by intervaleDelta1) as toneList ,
@@ -308,6 +309,7 @@ order by ratio asc
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
         $rsm->addScalarResult('rootName', 'rootName');
+        $rsm->addScalarResult('rootId', 'rootId');
         $rsm->addScalarResult('rootDigitA', 'rootDigitA');
         $rsm->addScalarResult('toneList', 'toneList');
         $rsm->addScalarResult('digitAList', 'digitAList');
@@ -593,9 +595,12 @@ ORDER BY abs (iRootDistance) , score";
         $rsm->addScalarResult('scaleId', 'scaleId');
         $rsm->addScalarResult('scaleName', 'scaleName');
         $rsm->addScalarResult('rootName', 'rootName');
+        $rsm->addScalarResult('target_w_rootId', 'rootId');
+
         $rsm->addScalarResult('toneList', 'toneList');
         $rsm->addScalarResult('digitList', 'digitList');
         $rsm->addScalarResult('iRootName', 'iRootName');
+
         $rsm->addScalarResult('iRootColor', 'iRootColor');
         $rsm->addScalarResult('iRootRoman', 'iRootRoman');
 
