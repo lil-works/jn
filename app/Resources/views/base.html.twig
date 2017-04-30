@@ -141,6 +141,18 @@
 
     <!-- Begin page content -->
     <div class="container">
+        {% if app.environment == "prod" %}
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- jolineck -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-2677445990102112"
+                 data-ad-slot="9349218863"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        {% endif %}
+
         {% block body %}
         {% endblock %}
         <div class="row">
@@ -155,7 +167,7 @@
 <footer class="footer">
     <div class="container">
         <div style="padding: 18px;">
-            <div  style="float: left;" id="coinwidget-bitcoin-1GVbS5pCm1J1xCJmgep7wswSe6iBfjCiYh"></div>
+
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
                 <input type="hidden" name="hosted_button_id" value="UJC26TP955L3Q" />
@@ -163,27 +175,6 @@
                 <img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
             </form>
         </div>
-        <script src="//blockr.io/js_external/coinwidget/coin.js"></script>
-        <script>
-            CoinWidgetCom.go({
-                wallet_address: '1GVbS5pCm1J1xCJmgep7wswSe6iBfjCiYh',
-                currency: 'bitcoin',
-                counter: 'count',
-                lbl_button: 'Donate',
-                lbl_count: 'donations',
-                lbl_amount: 'BTC',
-                lbl_address: 'Use address below to donate. Thanks!',
-                qrcode: true,
-                alignment: 'bl',
-                decimals: 8,
-                size: "small",
-                color: "light",
-                countdownFrom: "0",
-                element: "#coinwidget-bitcoin-1GVbS5pCm1J1xCJmgep7wswSe6iBfjCiYh",
-                onShow: function(){},
-                onHide: function(){}
-            });
-        </script>
 
         <p class="pull-right">
             <a href="http://www.lil-works.com">
@@ -192,7 +183,18 @@
     </div>
 </footer>
 
+{% if app.environment == "prod" %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+        ga('create', 'UA-85672159-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+{% endif %}
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
