@@ -15,10 +15,26 @@ var jnSynth = {
         this.piano = Synth.createInstrument(instrumentName);
     },
 
-    play : function(digits , mode){
+    play : function(digits , mode ){
         if(!$.isArray(digits)){
             digits = digits.split(",");
         }
+
+
+        if( mode == 'scale' && digits[0]<12){
+            var dmem = 0;
+           for (var i in digits){
+               digits[i] = parseFloat(digits[i])+parseFloat(24);
+               var count = 1;
+               while(dmem>=digits[i]){
+                   digits[i] = parseFloat(digits[i])+parseFloat(12);
+                   count++;
+               }
+
+                   dmem = digits[i];
+           }
+        }
+
         digits.sort();
         $.each(digits,function(key,value){
             if(key>0){

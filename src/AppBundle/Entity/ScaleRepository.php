@@ -539,18 +539,18 @@ SELECT
     ) as toneList,
     (
 
-		SELECT group_concat( (floor( (dR.value+i.delta)/12)+2) *12 + d.value ORDER by i.delta)
+		SELECT group_concat( d.value ORDER by i.delta)
         from scale s
         left join scales_intervales si on si.scale_id = s.id
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
         left join digit d on ws.digit = d.id
-        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
+
 
 
         where s.id = target_s1.id AND ws.root = target_w_rootId
 
-    ) as digitAList
+    ) as digitList
 FROM
     scale ref_s1
         LEFT JOIN
@@ -594,7 +594,7 @@ ORDER BY abs (iRootDistance) , score";
         $rsm->addScalarResult('scaleName', 'scaleName');
         $rsm->addScalarResult('rootName', 'rootName');
         $rsm->addScalarResult('toneList', 'toneList');
-        $rsm->addScalarResult('digitAList', 'digitAList');
+        $rsm->addScalarResult('digitList', 'digitList');
         $rsm->addScalarResult('iRootName', 'iRootName');
         $rsm->addScalarResult('iRootColor', 'iRootColor');
         $rsm->addScalarResult('iRootRoman', 'iRootRoman');
@@ -650,18 +650,16 @@ SELECT
     ) as toneList,
     (
 
-		SELECT group_concat( (floor( (dR.value+i.delta)/12)+2) *12 + d.value ORDER by i.delta)
+		SELECT group_concat( d.value ORDER by i.delta)
         from scale s
         left join scales_intervales si on si.scale_id = s.id
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
         left join digit d on ws.digit = d.id
-        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
-
 
         where s.id = target_s1.id AND ws.root = target_w_rootId
 
-    ) as digitAList
+    ) as digitList
 FROM
     scale ref_s1
         LEFT JOIN
@@ -705,7 +703,7 @@ ORDER BY abs (iRootDistance) , score";
         $rsm->addScalarResult('scaleName', 'scaleName');
         $rsm->addScalarResult('rootName', 'rootName');
         $rsm->addScalarResult('toneList', 'toneList');
-        $rsm->addScalarResult('digitAList', 'digitAList');
+        $rsm->addScalarResult('digitList', 'digitList');
         $rsm->addScalarResult('iRootName', 'iRootName');
         $rsm->addScalarResult('iRootColor', 'iRootColor');
         $rsm->addScalarResult('iRootRoman', 'iRootRoman');

@@ -670,10 +670,16 @@ var jnSynth = {
         this.piano = Synth.createInstrument(instrumentName);
     },
 
-    play : function(digits , mode){
+    play : function(digits , mode , fromDigitToDigitA){
         if(!$.isArray(digits)){
             digits = digits.split(",");
         }
+
+        if(fromDigitToDigitA && mode == 'scale' ){
+
+        }
+        alert(digits);
+        
         digits.sort();
         $.each(digits,function(key,value){
             if(key>0){
