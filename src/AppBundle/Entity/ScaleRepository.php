@@ -19,7 +19,7 @@ class ScaleRepository extends \Doctrine\ORM\EntityRepository
     scaleId,rootName,rootId,scaleName,
 	(
     SELECT
-		group_concat(d.value + 36)
+		group_concat(d.value)
 	from scale s
     left join scales_intervales si on si.scale_id = s.id
     left join western_system w on w.intervale = si.intervale_id  AND w.root = (SELECT id FROM western_system WHERE intervale=1 and name=:root)

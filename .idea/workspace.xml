@@ -65,87 +65,87 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScaleRepository.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScaleRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39398086" vertical-offset="117" max-vertical-offset="13620">
-              <caret line="27" column="16" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="16" />
+            <state vertical-scroll-proportion="-3.96" vertical-offset="117" max-vertical-offset="13620">
+              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding>
-                <marker date="1493528431000" expanded="true" signature="362:2934" placeholder="SELECT count..concat..." />
-                <marker date="1493528431000" expanded="true" signature="447:761" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="633:695" placeholder="SELECT id FR..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="789:1057" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="969:1031" placeholder="SELECT id FR..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="1092:1158" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="1232:1295" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="1364:1427" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="1436:1502" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="1537:2185" placeholder="SELECT conca..scale..." />
-                <marker date="1493528431000" expanded="true" signature="1820:1865" placeholder="select value..digit..." />
-                <marker date="1493528431000" expanded="true" signature="2215:2767" placeholder="SELECT conca..scale..." />
-                <marker date="1493528431000" expanded="true" signature="4606:5098" placeholder="SELECT d3.va..scale..." />
-                <marker date="1493528431000" expanded="true" signature="5499:6746" placeholder="SELECT *,ROU..id..." />
-                <marker date="1493528431000" expanded="true" signature="5572:6557" placeholder="SELECT s1.id..." />
-                <marker date="1493528431000" expanded="true" signature="5752:5837" placeholder="SELECT ws2.n..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="5877:5940" placeholder="SELECT value..digit..." />
-                <marker date="1493528431000" expanded="true" signature="6065:6151" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="7500:8055" placeholder="SELECT scale..id..." />
-                <marker date="1493528431000" expanded="true" signature="7614:7941" placeholder="SELECT s1.id..scale..." />
-                <marker date="1493528431000" expanded="true" signature="7689:7759" placeholder="SELECT COUNT..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="8695:10796" placeholder="SELECT name ..*..." />
-                <marker date="1493528431000" expanded="true" signature="8791:8838" placeholder="SELECT d2.va..digit..." />
-                <marker date="1493528431000" expanded="true" signature="9259:10737" placeholder="SELECT *, (S..id..." />
-                <marker date="1493528431000" expanded="true" signature="9310:9568" placeholder="SELECT ws3.n..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="9615:9965" placeholder="SELECT d1.va..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="10030:10621" placeholder="SELECT s1.id..scale..." />
-                <marker date="1493528431000" expanded="true" signature="11549:13475" placeholder="SELECT name ..*..." />
-                <marker date="1493528431000" expanded="true" signature="11680:11727" placeholder="SELECT d2.va..digit..." />
-                <marker date="1493528431000" expanded="true" signature="11962:13362" placeholder="SELECT *, (S..id..." />
-                <marker date="1493528431000" expanded="true" signature="12013:12271" placeholder="SELECT ws3.n..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="12318:12668" placeholder="SELECT d1.va..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="12733:13269" placeholder="SELECT s1.id..scale..." />
-                <marker date="1493528431000" expanded="true" signature="14001:14026" placeholder="SELECT id,na..scale..." />
-                <marker date="1493528431000" expanded="true" signature="14450:17980" placeholder="SELECT count..concat..." />
-                <marker date="1493528431000" expanded="true" signature="14594:14898" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="14932:15430" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="15311:15377" placeholder="SELECT digit..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="15469:15535" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="15609:15672" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="15741:15804" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="15813:15879" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="15914:16988" placeholder="SELECT conca..scale..." />
-                <marker date="1493528431000" expanded="true" signature="16197:16242" placeholder="select value..digit..." />
-                <marker date="1493528431000" expanded="true" signature="16404:16744" placeholder="SELECT t4.id..scale..." />
-                <marker date="1493528431000" expanded="true" signature="16568:16630" placeholder="SELECT id FR..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="16878:16986" placeholder="SELECT id fr..scale..." />
-                <marker date="1493528431000" expanded="true" signature="17017:17791" placeholder="SELECT conca..scale..." />
-                <marker date="1493528431000" expanded="true" signature="18004:20769" placeholder="SELECT targe..scale..." />
-                <marker date="1493528431000" expanded="true" signature="18261:18350" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="18378:18467" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="18474:18674" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="18506:18595" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="18822:19222" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="19054:19121" placeholder="SELECT digit..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="19344:19428" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="19465:19550" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="20524:20592" placeholder="SELECT inter..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="20608:20676" placeholder="SELECT inter..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="22015:24877" placeholder="SELECT targe..scale..." />
-                <marker date="1493528431000" expanded="true" signature="22363:22452" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="22490:22579" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="22600:22860" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="22952:23308" placeholder="SELECT group..scale..." />
-                <marker date="1493528431000" expanded="true" signature="23247:23253" placeholder="SELECT digit..western_system..." />
-                <marker date="1493528431000" expanded="true" signature="23386:23471" placeholder="select count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="23797:23863" placeholder="SELECT count..scales_intervales..." />
-                <marker date="1493528431000" expanded="true" signature="26344:28437" placeholder="SELECT least..sel_populated_wName..." />
-                <marker date="1493528431000" expanded="true" signature="26457:28407" placeholder="SELECT sel_p..intervale_id..." />
-                <marker date="1493528431000" expanded="true" signature="26546:27412" placeholder="SELECT si1.i..CONCAT..." />
-                <marker date="1493528431000" expanded="true" signature="26843:27125" placeholder="SELECT CONCA..scale..." />
-                <marker date="1493528431000" expanded="true" signature="27448:28317" placeholder="SELECT si1.i..CONCAT..." />
-                <marker date="1493528431000" expanded="true" signature="27748:28030" placeholder="SELECT CONCA..scale..." />
-                <marker date="1493528431000" expanded="true" signature="28463:29459" placeholder="SELECT count..." />
-                <marker date="1493528431000" expanded="true" signature="30652:31037" placeholder="SELECT s.id ..scale..." />
+                <marker date="1493529156000" expanded="true" signature="362:2929" placeholder="SELECT count..concat..." />
+                <marker date="1493529156000" expanded="true" signature="447:756" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="628:690" placeholder="SELECT id FR..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="784:1052" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="964:1026" placeholder="SELECT id FR..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="1087:1153" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="1227:1290" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="1359:1422" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="1431:1497" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="1532:2180" placeholder="SELECT conca..scale..." />
+                <marker date="1493529156000" expanded="true" signature="1815:1860" placeholder="select value..digit..." />
+                <marker date="1493529156000" expanded="true" signature="2210:2762" placeholder="SELECT conca..scale..." />
+                <marker date="1493529156000" expanded="true" signature="4601:5093" placeholder="SELECT d3.va..scale..." />
+                <marker date="1493529156000" expanded="true" signature="5494:6741" placeholder="SELECT *,ROU..id..." />
+                <marker date="1493529156000" expanded="true" signature="5567:6552" placeholder="SELECT s1.id..." />
+                <marker date="1493529156000" expanded="true" signature="5747:5832" placeholder="SELECT ws2.n..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="5872:5935" placeholder="SELECT value..digit..." />
+                <marker date="1493529156000" expanded="true" signature="6060:6146" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="7495:8050" placeholder="SELECT scale..id..." />
+                <marker date="1493529156000" expanded="true" signature="7609:7936" placeholder="SELECT s1.id..scale..." />
+                <marker date="1493529156000" expanded="true" signature="7684:7754" placeholder="SELECT COUNT..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="8690:10791" placeholder="SELECT name ..*..." />
+                <marker date="1493529156000" expanded="true" signature="8786:8833" placeholder="SELECT d2.va..digit..." />
+                <marker date="1493529156000" expanded="true" signature="9254:10732" placeholder="SELECT *, (S..id..." />
+                <marker date="1493529156000" expanded="true" signature="9305:9563" placeholder="SELECT ws3.n..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="9610:9960" placeholder="SELECT d1.va..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="10025:10616" placeholder="SELECT s1.id..scale..." />
+                <marker date="1493529156000" expanded="true" signature="11544:13470" placeholder="SELECT name ..*..." />
+                <marker date="1493529156000" expanded="true" signature="11675:11722" placeholder="SELECT d2.va..digit..." />
+                <marker date="1493529156000" expanded="true" signature="11957:13357" placeholder="SELECT *, (S..id..." />
+                <marker date="1493529156000" expanded="true" signature="12008:12266" placeholder="SELECT ws3.n..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="12313:12663" placeholder="SELECT d1.va..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="12728:13264" placeholder="SELECT s1.id..scale..." />
+                <marker date="1493529156000" expanded="true" signature="13996:14021" placeholder="SELECT id,na..scale..." />
+                <marker date="1493529156000" expanded="true" signature="14445:17975" placeholder="SELECT count..concat..." />
+                <marker date="1493529156000" expanded="true" signature="14589:14893" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="14927:15425" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="15306:15372" placeholder="SELECT digit..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="15464:15530" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="15604:15667" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="15736:15799" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="15808:15874" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="15909:16983" placeholder="SELECT conca..scale..." />
+                <marker date="1493529156000" expanded="true" signature="16192:16237" placeholder="select value..digit..." />
+                <marker date="1493529156000" expanded="true" signature="16399:16739" placeholder="SELECT t4.id..scale..." />
+                <marker date="1493529156000" expanded="true" signature="16563:16625" placeholder="SELECT id FR..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="16873:16981" placeholder="SELECT id fr..scale..." />
+                <marker date="1493529156000" expanded="true" signature="17012:17786" placeholder="SELECT conca..scale..." />
+                <marker date="1493529156000" expanded="true" signature="17999:20764" placeholder="SELECT targe..scale..." />
+                <marker date="1493529156000" expanded="true" signature="18256:18345" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="18373:18462" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="18469:18669" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="18501:18590" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="18817:19217" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="19049:19116" placeholder="SELECT digit..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="19339:19423" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="19460:19545" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="20519:20587" placeholder="SELECT inter..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="20603:20671" placeholder="SELECT inter..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="22010:24872" placeholder="SELECT targe..scale..." />
+                <marker date="1493529156000" expanded="true" signature="22358:22447" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="22485:22574" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="22595:22855" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="22947:23303" placeholder="SELECT group..scale..." />
+                <marker date="1493529156000" expanded="true" signature="23242:23248" placeholder="SELECT digit..western_system..." />
+                <marker date="1493529156000" expanded="true" signature="23381:23466" placeholder="select count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="23792:23858" placeholder="SELECT count..scales_intervales..." />
+                <marker date="1493529156000" expanded="true" signature="26339:28432" placeholder="SELECT least..sel_populated_wName..." />
+                <marker date="1493529156000" expanded="true" signature="26452:28402" placeholder="SELECT sel_p..intervale_id..." />
+                <marker date="1493529156000" expanded="true" signature="26541:27407" placeholder="SELECT si1.i..CONCAT..." />
+                <marker date="1493529156000" expanded="true" signature="26838:27120" placeholder="SELECT CONCA..scale..." />
+                <marker date="1493529156000" expanded="true" signature="27443:28312" placeholder="SELECT si1.i..CONCAT..." />
+                <marker date="1493529156000" expanded="true" signature="27743:28025" placeholder="SELECT CONCA..scale..." />
+                <marker date="1493529156000" expanded="true" signature="28458:29454" placeholder="SELECT count..." />
+                <marker date="1493529156000" expanded="true" signature="30647:31032" placeholder="SELECT s.id ..scale..." />
               </folding>
             </state>
           </provider>
@@ -171,11 +171,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="audiosFunctions.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="audiosFunctions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2775">
-              <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.6914213" vertical-offset="0" max-vertical-offset="2775">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -260,8 +260,8 @@
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/Services/scaleroot.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/Services/scaleroot-limited.html.twig" />
-        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php" />
+        <option value="$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js" />
       </list>
     </option>
   </component>
@@ -956,95 +956,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2775">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding />
+        <state vertical-scroll-proportion="-3.96" vertical-offset="117" max-vertical-offset="13620">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <folding>
+            <marker date="1493529156000" expanded="true" signature="362:2929" placeholder="SELECT count..concat..." />
+            <marker date="1493529156000" expanded="true" signature="447:756" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="628:690" placeholder="SELECT id FR..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="784:1052" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="964:1026" placeholder="SELECT id FR..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="1087:1153" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="1227:1290" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="1359:1422" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="1431:1497" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="1532:2180" placeholder="SELECT conca..scale..." />
+            <marker date="1493529156000" expanded="true" signature="1815:1860" placeholder="select value..digit..." />
+            <marker date="1493529156000" expanded="true" signature="2210:2762" placeholder="SELECT conca..scale..." />
+            <marker date="1493529156000" expanded="true" signature="4601:5093" placeholder="SELECT d3.va..scale..." />
+            <marker date="1493529156000" expanded="true" signature="5494:6741" placeholder="SELECT *,ROU..id..." />
+            <marker date="1493529156000" expanded="true" signature="5567:6552" placeholder="SELECT s1.id..." />
+            <marker date="1493529156000" expanded="true" signature="5747:5832" placeholder="SELECT ws2.n..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="5872:5935" placeholder="SELECT value..digit..." />
+            <marker date="1493529156000" expanded="true" signature="6060:6146" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="7495:8050" placeholder="SELECT scale..id..." />
+            <marker date="1493529156000" expanded="true" signature="7609:7936" placeholder="SELECT s1.id..scale..." />
+            <marker date="1493529156000" expanded="true" signature="7684:7754" placeholder="SELECT COUNT..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="8690:10791" placeholder="SELECT name ..*..." />
+            <marker date="1493529156000" expanded="true" signature="8786:8833" placeholder="SELECT d2.va..digit..." />
+            <marker date="1493529156000" expanded="true" signature="9254:10732" placeholder="SELECT *, (S..id..." />
+            <marker date="1493529156000" expanded="true" signature="9305:9563" placeholder="SELECT ws3.n..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="9610:9960" placeholder="SELECT d1.va..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="10025:10616" placeholder="SELECT s1.id..scale..." />
+            <marker date="1493529156000" expanded="true" signature="11544:13470" placeholder="SELECT name ..*..." />
+            <marker date="1493529156000" expanded="true" signature="11675:11722" placeholder="SELECT d2.va..digit..." />
+            <marker date="1493529156000" expanded="true" signature="11957:13357" placeholder="SELECT *, (S..id..." />
+            <marker date="1493529156000" expanded="true" signature="12008:12266" placeholder="SELECT ws3.n..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="12313:12663" placeholder="SELECT d1.va..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="12728:13264" placeholder="SELECT s1.id..scale..." />
+            <marker date="1493529156000" expanded="true" signature="13996:14021" placeholder="SELECT id,na..scale..." />
+            <marker date="1493529156000" expanded="true" signature="14445:17975" placeholder="SELECT count..concat..." />
+            <marker date="1493529156000" expanded="true" signature="14589:14893" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="14927:15425" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="15306:15372" placeholder="SELECT digit..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="15464:15530" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="15604:15667" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="15736:15799" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="15808:15874" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="15909:16983" placeholder="SELECT conca..scale..." />
+            <marker date="1493529156000" expanded="true" signature="16192:16237" placeholder="select value..digit..." />
+            <marker date="1493529156000" expanded="true" signature="16399:16739" placeholder="SELECT t4.id..scale..." />
+            <marker date="1493529156000" expanded="true" signature="16563:16625" placeholder="SELECT id FR..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="16873:16981" placeholder="SELECT id fr..scale..." />
+            <marker date="1493529156000" expanded="true" signature="17012:17786" placeholder="SELECT conca..scale..." />
+            <marker date="1493529156000" expanded="true" signature="17999:20764" placeholder="SELECT targe..scale..." />
+            <marker date="1493529156000" expanded="true" signature="18256:18345" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="18373:18462" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="18469:18669" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="18501:18590" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="18817:19217" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="19049:19116" placeholder="SELECT digit..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="19339:19423" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="19460:19545" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="20519:20587" placeholder="SELECT inter..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="20603:20671" placeholder="SELECT inter..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="22010:24872" placeholder="SELECT targe..scale..." />
+            <marker date="1493529156000" expanded="true" signature="22358:22447" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="22485:22574" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="22595:22855" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="22947:23303" placeholder="SELECT group..scale..." />
+            <marker date="1493529156000" expanded="true" signature="23242:23248" placeholder="SELECT digit..western_system..." />
+            <marker date="1493529156000" expanded="true" signature="23381:23466" placeholder="select count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="23792:23858" placeholder="SELECT count..scales_intervales..." />
+            <marker date="1493529156000" expanded="true" signature="26339:28432" placeholder="SELECT least..sel_populated_wName..." />
+            <marker date="1493529156000" expanded="true" signature="26452:28402" placeholder="SELECT sel_p..intervale_id..." />
+            <marker date="1493529156000" expanded="true" signature="26541:27407" placeholder="SELECT si1.i..CONCAT..." />
+            <marker date="1493529156000" expanded="true" signature="26838:27120" placeholder="SELECT CONCA..scale..." />
+            <marker date="1493529156000" expanded="true" signature="27443:28312" placeholder="SELECT si1.i..CONCAT..." />
+            <marker date="1493529156000" expanded="true" signature="27743:28025" placeholder="SELECT CONCA..scale..." />
+            <marker date="1493529156000" expanded="true" signature="28458:29454" placeholder="SELECT count..." />
+            <marker date="1493529156000" expanded="true" signature="30647:31032" placeholder="SELECT s.id ..scale..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ScaleRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/SiteBundle/Resources/public/js/audiosFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39398086" vertical-offset="117" max-vertical-offset="13620">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="16" />
-          <folding>
-            <marker date="1493528431000" expanded="true" signature="362:2934" placeholder="SELECT count..concat..." />
-            <marker date="1493528431000" expanded="true" signature="447:761" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="633:695" placeholder="SELECT id FR..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="789:1057" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="969:1031" placeholder="SELECT id FR..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="1092:1158" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="1232:1295" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="1364:1427" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="1436:1502" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="1537:2185" placeholder="SELECT conca..scale..." />
-            <marker date="1493528431000" expanded="true" signature="1820:1865" placeholder="select value..digit..." />
-            <marker date="1493528431000" expanded="true" signature="2215:2767" placeholder="SELECT conca..scale..." />
-            <marker date="1493528431000" expanded="true" signature="4606:5098" placeholder="SELECT d3.va..scale..." />
-            <marker date="1493528431000" expanded="true" signature="5499:6746" placeholder="SELECT *,ROU..id..." />
-            <marker date="1493528431000" expanded="true" signature="5572:6557" placeholder="SELECT s1.id..." />
-            <marker date="1493528431000" expanded="true" signature="5752:5837" placeholder="SELECT ws2.n..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="5877:5940" placeholder="SELECT value..digit..." />
-            <marker date="1493528431000" expanded="true" signature="6065:6151" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="7500:8055" placeholder="SELECT scale..id..." />
-            <marker date="1493528431000" expanded="true" signature="7614:7941" placeholder="SELECT s1.id..scale..." />
-            <marker date="1493528431000" expanded="true" signature="7689:7759" placeholder="SELECT COUNT..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="8695:10796" placeholder="SELECT name ..*..." />
-            <marker date="1493528431000" expanded="true" signature="8791:8838" placeholder="SELECT d2.va..digit..." />
-            <marker date="1493528431000" expanded="true" signature="9259:10737" placeholder="SELECT *, (S..id..." />
-            <marker date="1493528431000" expanded="true" signature="9310:9568" placeholder="SELECT ws3.n..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="9615:9965" placeholder="SELECT d1.va..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="10030:10621" placeholder="SELECT s1.id..scale..." />
-            <marker date="1493528431000" expanded="true" signature="11549:13475" placeholder="SELECT name ..*..." />
-            <marker date="1493528431000" expanded="true" signature="11680:11727" placeholder="SELECT d2.va..digit..." />
-            <marker date="1493528431000" expanded="true" signature="11962:13362" placeholder="SELECT *, (S..id..." />
-            <marker date="1493528431000" expanded="true" signature="12013:12271" placeholder="SELECT ws3.n..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="12318:12668" placeholder="SELECT d1.va..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="12733:13269" placeholder="SELECT s1.id..scale..." />
-            <marker date="1493528431000" expanded="true" signature="14001:14026" placeholder="SELECT id,na..scale..." />
-            <marker date="1493528431000" expanded="true" signature="14450:17980" placeholder="SELECT count..concat..." />
-            <marker date="1493528431000" expanded="true" signature="14594:14898" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="14932:15430" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="15311:15377" placeholder="SELECT digit..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="15469:15535" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="15609:15672" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="15741:15804" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="15813:15879" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="15914:16988" placeholder="SELECT conca..scale..." />
-            <marker date="1493528431000" expanded="true" signature="16197:16242" placeholder="select value..digit..." />
-            <marker date="1493528431000" expanded="true" signature="16404:16744" placeholder="SELECT t4.id..scale..." />
-            <marker date="1493528431000" expanded="true" signature="16568:16630" placeholder="SELECT id FR..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="16878:16986" placeholder="SELECT id fr..scale..." />
-            <marker date="1493528431000" expanded="true" signature="17017:17791" placeholder="SELECT conca..scale..." />
-            <marker date="1493528431000" expanded="true" signature="18004:20769" placeholder="SELECT targe..scale..." />
-            <marker date="1493528431000" expanded="true" signature="18261:18350" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="18378:18467" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="18474:18674" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="18506:18595" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="18822:19222" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="19054:19121" placeholder="SELECT digit..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="19344:19428" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="19465:19550" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="20524:20592" placeholder="SELECT inter..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="20608:20676" placeholder="SELECT inter..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="22015:24877" placeholder="SELECT targe..scale..." />
-            <marker date="1493528431000" expanded="true" signature="22363:22452" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="22490:22579" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="22600:22860" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="22952:23308" placeholder="SELECT group..scale..." />
-            <marker date="1493528431000" expanded="true" signature="23247:23253" placeholder="SELECT digit..western_system..." />
-            <marker date="1493528431000" expanded="true" signature="23386:23471" placeholder="select count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="23797:23863" placeholder="SELECT count..scales_intervales..." />
-            <marker date="1493528431000" expanded="true" signature="26344:28437" placeholder="SELECT least..sel_populated_wName..." />
-            <marker date="1493528431000" expanded="true" signature="26457:28407" placeholder="SELECT sel_p..intervale_id..." />
-            <marker date="1493528431000" expanded="true" signature="26546:27412" placeholder="SELECT si1.i..CONCAT..." />
-            <marker date="1493528431000" expanded="true" signature="26843:27125" placeholder="SELECT CONCA..scale..." />
-            <marker date="1493528431000" expanded="true" signature="27448:28317" placeholder="SELECT si1.i..CONCAT..." />
-            <marker date="1493528431000" expanded="true" signature="27748:28030" placeholder="SELECT CONCA..scale..." />
-            <marker date="1493528431000" expanded="true" signature="28463:29459" placeholder="SELECT count..." />
-            <marker date="1493528431000" expanded="true" signature="30652:31037" placeholder="SELECT s.id ..scale..." />
-          </folding>
+        <state vertical-scroll-proportion="0.6914213" vertical-offset="0" max-vertical-offset="2775">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
