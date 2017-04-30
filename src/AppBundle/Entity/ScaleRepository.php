@@ -13,7 +13,7 @@ class ScaleRepository extends \Doctrine\ORM\EntityRepository
 {
 
     public function findContainTheRefAndIsContainedInRef($scale,$root){
-            $sql = "
+        $sql = "
     SELECT
     count(rootScale) as common,
     scaleId,rootName,rootId,scaleName,
@@ -111,16 +111,16 @@ class ScaleRepository extends \Doctrine\ORM\EntityRepository
         if(is_null($search)){
             $query = $repository->createQueryBuilder('s')->getQuery();
         }else{
-        $query = $repository->createQueryBuilder('s')
-            ->innerJoin('s.intervales', 'i')
-            ->innerJoin('s.descriptors', 'd')
-            ->where('s.name LIKE :name ')
-            ->andWhere('i.id IN ( :intervales )')
-            ->andWhere('d.id IN ( :descriptors )')
-            ->setParameter('name',  "%".$search["name"]."%" )
-            ->setParameter('descriptors',  $search["descriptors"] )
-            ->setParameter('intervales',  $search["intervales"] )
-            ->getQuery();
+            $query = $repository->createQueryBuilder('s')
+                ->innerJoin('s.intervales', 'i')
+                ->innerJoin('s.descriptors', 'd')
+                ->where('s.name LIKE :name ')
+                ->andWhere('i.id IN ( :intervales )')
+                ->andWhere('d.id IN ( :descriptors )')
+                ->setParameter('name',  "%".$search["name"]."%" )
+                ->setParameter('descriptors',  $search["descriptors"] )
+                ->setParameter('intervales',  $search["intervales"] )
+                ->getQuery();
         }
 
         return $query->getResult();
@@ -509,11 +509,9 @@ order by ratio asc
             ";
 
 
-
-
         $sql = "
 
-        SELECT
+SELECT
 
 	target_w_root.id as target_w_rootId,
     target_w_root.name as rootName,
@@ -537,7 +535,7 @@ order by ratio asc
         left join scales_intervales si on si.scale_id = s.id
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
-        where s.id = target_s1.id AND ws.root = :rootId
+        where s.id = target_s1.id AND ws.root = target_w_rootId
     ) as toneList,
     (
 
@@ -547,10 +545,10 @@ order by ratio asc
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
         left join digit d on ws.digit = d.id
-        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=:rootId)
+        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
 
 
-        where s.id = target_s1.id AND ws.root = :rootId
+        where s.id = target_s1.id AND ws.root = target_w_rootId
 
     ) as digitAList
 FROM
@@ -575,7 +573,7 @@ FROM
 		LEFT JOIN
     western_system target_w_root ON target_w_root.name = target_w_rootFromIntervale.name AND target_w_root.intervale = 1
 		LEFT JOIN
-    western_system target_w_populated ON target_w_populated.root = :rootId AND target_w_populated.intervale = target_si1.intervale_id
+    western_system target_w_populated ON target_w_populated.root = target_w_root.id AND target_w_populated.intervale = target_si1.intervale_id
 		LEFT JOIN
     digit target_digit ON target_digit.id = target_w_populated.digit
 
@@ -588,10 +586,7 @@ AND target_w_populated.digit = ref_w_populated.digit
 GROUP BY target_s1.id,target_i1.id
 HAVING countRef = common OR common = countTarget
 
-ORDER BY abs (iRootDistance) , score
-
-        ";
-
+ORDER BY abs (iRootDistance) , score";
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping;
         $rsm->addScalarResult('score', 'score');
@@ -610,7 +605,6 @@ ORDER BY abs (iRootDistance) , score
         $query->setParameter("scaleId",$scale->getId());
         //$query->setParameter("rootDigit",$westernSystem->getDigit()->getValue());
         $query->setParameter("root",$westernSystem->getName());
-        $query->setParameter("rootId",$westernSystem->getId());
 
         return $query->getScalarResult();
     }
@@ -652,7 +646,7 @@ SELECT
         left join scales_intervales si on si.scale_id = s.id
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
-        where s.id = target_s1.id AND ws.root = :rootId
+        where s.id = target_s1.id AND ws.root = target_w_rootId
     ) as toneList,
     (
 
@@ -662,10 +656,10 @@ SELECT
         left join western_system ws on ws.intervale = si.intervale_id
         left join intervale i on i.id = si.intervale_id
         left join digit d on ws.digit = d.id
-        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=:rootId)
+        left join digit dR on dR.id = (SELECT digit from western_system WHERE intervale=1 and root=target_w_rootId)
 
 
-        where s.id = target_s1.id AND ws.root = :rootId
+        where s.id = target_s1.id AND ws.root = target_w_rootId
 
     ) as digitAList
 FROM
@@ -722,7 +716,6 @@ ORDER BY abs (iRootDistance) , score";
         $query->setParameter("scaleId",$scale->getId());
         $query->setParameter("scaleIntervaleCount",count($scale->getIntervales()));
         $query->setParameter("root",$westernSystem->getName());
-        $query->setParameter("rootId",$westernSystem->getId());
 
         return $query->getScalarResult();
     }
@@ -816,7 +809,7 @@ SELECT
 )r3
 group by fromTone,toTone";
 
-$sqlNodes = "
+        $sqlNodes = "
 SELECT
 
 count(*) as size,
