@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext" target-language="en">
+    <body>
+      <trans-unit id="1" approved="yes">
+        <source><![CDATA[unselect fingering basket]]></source>
+        <target><![CDATA[unselect fingering basket]]></target>
+      </trans-unit>
+      <trans-unit id="2" approved="yes">
+        <source><![CDATA[unselect]]></source>
+        <target><![CDATA[unselect]]></target>
+      </trans-unit>
+      <trans-unit id="3" approved="yes">
+        <source><![CDATA[create new basket]]></source>
+        <target><![CDATA[create new basket]]></target>
+      </trans-unit>
+      <trans-unit id="4" approved="yes">
+        <source><![CDATA[delete]]></source>
+        <target><![CDATA[delete]]></target>
+      </trans-unit>
+      <trans-unit id="5" approved="yes">
+        <source><![CDATA[edit]]></source>
+        <target><![CDATA[edit]]></target>
+      </trans-unit>
+      <trans-unit id="6" approved="yes">
+        <source><![CDATA[empty basket]]></source>
+        <target><![CDATA[empty basket]]></target>
+      </trans-unit>
+      <trans-unit id="7" approved="yes">
+        <source><![CDATA[duplicate this basket]]></source>
+        <target><![CDATA[duplicate this basket]]></target>
+      </trans-unit>
+      <trans-unit id="8" approved="yes">
+        <source><![CDATA[duplicate]]></source>
+        <target><![CDATA[duplicate]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

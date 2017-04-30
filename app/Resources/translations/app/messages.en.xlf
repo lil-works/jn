@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2017-04-30T08:20:41Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="e9ea20200a281da4737e79cd2c06289c61c1f2b2" resname="Harmonic map is off">
+        <source>Harmonic map is off</source>
+        <target state="new">Harmonic map is off</target>
+        <jms:reference-file line="6">/../../../../../../../.././app/Resources/views/Services/scaleroot-inactive.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="24eb05fdb85b6000a97bc1733bc1f24a8a188bd5" resname="I was lost and afraid every time I had to play a rich chord like CMaj6(9|#11) or D7(#9|13).&#10;                        All that stuff exceeded me!&#10;                        How can I do?&#10;                        I have only 4 fingers to play with on the neck (sometimes five with my thumb).&#10;                        How to make sound all these fancy alterations?">
+        <source xml:space="preserve">I was lost and afraid every time I had to play a rich chord like CMaj6(9|#11) or D7(#9|13).
+                        All that stuff exceeded me!
+                        How can I do?
+                        I have only 4 fingers to play with on the neck (sometimes five with my thumb).
+                        How to make sound all these fancy alterations?</source>
+        <target xml:space="preserve" state="new">I was lost and afraid every time I had to play a rich chord like CMaj6(9|#11) or D7(#9|13).
+                        All that stuff exceeded me!
+                        How can I do?
+                        I have only 4 fingers to play with on the neck (sometimes five with my thumb).
+                        How to make sound all these fancy alterations?</target>
+        <jms:reference-file line="103">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5ffd4290c5b7f646524ec988a3d8a4de57e17a5e" resname="Interval from current scale">
+        <source>Interval from current scale</source>
+        <target state="new">Interval from current scale</target>
+        <jms:reference-file line="16">/../../../../../../../.././app/Resources/views/Services/scaleroot-limited.html.twig</jms:reference-file>
+        <jms:reference-file line="16">/../../../../../../../.././app/Resources/views/Services/scaleroot.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="06f03466a883455a1ad435dc80170ac372911215" resname="More than 2500 tune from 10 realbook completed">
+        <source>More than 2500 tune from 10 realbook completed</source>
+        <target state="new">More than 2500 tune from 10 realbook completed</target>
+        <jms:reference-file line="142">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bc3023b36063a7681db24681472b54fa11f0d4ec" resname="Page not found">
+        <source>Page not found</source>
+        <target state="new">Page not found</target>
+        <jms:reference-file line="4">/../../../../../../../.././app/Resources/TwigBundle/views/Exception/error404.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77193f3f7edbb2342846d734201c56d150bab51e" resname="Sequencer">
+        <source>Sequencer</source>
+        <target state="new">Sequencer</target>
+        <jms:reference-file line="1">/../../../../../../../.././app/Resources/views/Services/Sequencer/sequencer.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6a0fd0dec7cbca02715a0a55baa57b05fd0dc85f" resname="The requested page couldn't be located. Checkout for any URL&#10;        misspelling">
+        <source xml:space="preserve">The requested page couldn't be located. Checkout for any URL
+        misspelling</source>
+        <target xml:space="preserve" state="new">The requested page couldn't be located. Checkout for any URL
+        misspelling</target>
+        <jms:reference-file line="11">/../../../../../../../.././app/Resources/TwigBundle/views/Exception/error404.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0bdd53ea9f853048160ba0e8cf15237e7e9493b6" resname="Welcome here... Jolineck is happy to provide tools for neck instrument players (as well as all kind of musician).">
+        <source>Welcome here... Jolineck is happy to provide tools for neck instrument players (as well as all kind of musician).</source>
+        <target state="new">Welcome here... Jolineck is happy to provide tools for neck instrument players (as well as all kind of musician).</target>
+        <jms:reference-file line="71">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5499342ccf37ac3e23c85251cc067e39c67bea7f" resname="You can also make a gift with paypal or bitcoins">
+        <source>You can also make a gift with paypal or bitcoins</source>
+        <target state="new">You can also make a gift with paypal or bitcoins</target>
+        <jms:reference-file line="126">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ae8f7caab4bfa7a07c441a463eb4596de5cdab47" resname="You like this project. You can help us. We want to translate these webpages in most languages">
+        <source>You like this project. You can help us. We want to translate these webpages in most languages</source>
+        <target state="new">You like this project. You can help us. We want to translate these webpages in most languages</target>
+        <jms:reference-file line="123">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d35765a6384709acfdf4949618d9d401753c00bc" resname="about jolineck">
+        <source>about jolineck</source>
+        <target state="new">about jolineck</target>
+        <jms:reference-file line="100">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="66448f6154c4dc3a1af517e2ad6dbb59a7789121" resname="add in basket">
+        <source>add in basket</source>
+        <target state="new">add in basket</target>
+        <jms:reference-file line="69">/../../../../../../../.././app/Resources/views/Services/fingering-against.html.twig</jms:reference-file>
+        <jms:reference-file line="69">/../../../../../../../.././app/Resources/views/Services/fingering-cycle.html.twig</jms:reference-file>
+        <jms:reference-file line="64">/../../../../../../../.././app/Resources/views/Services/fingering.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d87c448044defb778f33158d8ccf94a20531d600" resname="all">
+        <source>all</source>
+        <target state="new">all</target>
+        <jms:reference-file line="20">/../../../../../../../.././app/Resources/views/Services/neck.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="97b7840aa87ff25d97d89b509b3dc2f73c48f4d8" resname="click here to activate">
+        <source>click here to activate</source>
+        <target state="new">click here to activate</target>
+        <jms:reference-file line="8">/../../../../../../../.././app/Resources/views/Services/scaleroot-inactive.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c4f7a0c5ece6cb41cd750061d21bbd5aca471771" resname="fingerings found">
+        <source>fingerings found</source>
+        <target state="new">fingerings found</target>
+        <jms:reference-file line="9">/../../../../../../../.././app/Resources/views/Services/fingering-against.html.twig</jms:reference-file>
+        <jms:reference-file line="9">/../../../../../../../.././app/Resources/views/Services/fingering-cycle.html.twig</jms:reference-file>
+        <jms:reference-file line="8">/../../../../../../../.././app/Resources/views/Services/fingering.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="eef420f8b4e9345da5d33e546ac407459d2b9f9a" resname="frets: ">
+        <source>frets: </source>
+        <target state="new">frets: </target>
+        <jms:reference-file line="16">/../../../../../../../.././app/Resources/views/Services/neck.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c2b66ba39704416dab1db51cfd3e2247da276f04" resname="min fret \ min string">
+        <source>min fret \ min string</source>
+        <target state="new">min fret \ min string</target>
+        <jms:reference-file line="14">/../../../../../../../.././app/Resources/views/Services/fingering-against.html.twig</jms:reference-file>
+        <jms:reference-file line="14">/../../../../../../../.././app/Resources/views/Services/fingering-cycle.html.twig</jms:reference-file>
+        <jms:reference-file line="13">/../../../../../../../.././app/Resources/views/Services/fingering.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ed421c1cc6202be48feafe5006023a3f03085765" resname="neck controls">
+        <source>neck controls</source>
+        <target state="new">neck controls</target>
+        <jms:reference-file line="13">/../../../../../../../.././app/Resources/views/Services/neck.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="07ef112c3176cca3b44bd0f81a1cf96f73508d0a" resname="no fingering found">
+        <source>no fingering found</source>
+        <target state="new">no fingering found</target>
+        <jms:reference-file line="7">/../../../../../../../.././app/Resources/views/Services/fingering-against.html.twig</jms:reference-file>
+        <jms:reference-file line="7">/../../../../../../../.././app/Resources/views/Services/fingering-cycle.html.twig</jms:reference-file>
+        <jms:reference-file line="6">/../../../../../../../.././app/Resources/views/Services/fingering.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="516626bf8a5006ecce1803eeb6a747182000d4f8" resname="play">
+        <source>play</source>
+        <target state="new">play</target>
+        <jms:reference-file line="54">/../../../../../../../.././app/Resources/views/Services/scaleroot-limited.html.twig</jms:reference-file>
+        <jms:reference-file line="54">/../../../../../../../.././app/Resources/views/Services/scaleroot.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5a2167345525367d6d384e28f8f324406ce41803" resname="read more ...">
+        <source>read more ...</source>
+        <target state="new">read more ...</target>
+        <jms:reference-file line="110">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+        <jms:reference-file line="129">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+        <jms:reference-file line="146">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4168d1f81b260dffee616f72c075c8376e37f491" resname="realbooks">
+        <source>realbooks</source>
+        <target state="new">realbooks</target>
+        <jms:reference-file line="139">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d858d9a496729d1aab181b0d1cd22ff6b3d1d30f" resname="return to the homepage">
+        <source>return to the homepage</source>
+        <target state="new">return to the homepage</target>
+        <jms:reference-file line="15">/../../../../../../../.././app/Resources/TwigBundle/views/Exception/error404.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3b0c83cdad0b661c202ad0798bab1b2cf3b20304" resname="scale count loop">
+        <source>scale count loop</source>
+        <target state="new">scale count loop</target>
+        <jms:reference-file line="18">/../../../../../../../.././app/Resources/views/Services/scaleroot-limited.html.twig</jms:reference-file>
+        <jms:reference-file line="18">/../../../../../../../.././app/Resources/views/Services/scaleroot.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a5d1a10967fbbd39c08fcb7bb48199cf4f2391a3" resname="show fret numbers">
+        <source>show fret numbers</source>
+        <target state="new">show fret numbers</target>
+        <jms:reference-file line="28">/../../../../../../../.././app/Resources/views/Services/neck.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="46b11bd8a71d5b8b58083c91445a7647be08b957" resname="show inlays">
+        <source>show inlays</source>
+        <target state="new">show inlays</target>
+        <jms:reference-file line="24">/../../../../../../../.././app/Resources/views/Services/neck.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1055d21695bec11a102626edf7f7ae1ecceb44f8" resname="want to help">
+        <source>want to help</source>
+        <target state="new">want to help</target>
+        <jms:reference-file line="120">/../../../../../../../.././app/Resources/views/baseHome.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
