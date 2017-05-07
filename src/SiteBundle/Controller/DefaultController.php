@@ -63,6 +63,15 @@ class DefaultController extends Controller
             $instrument = new Instrument();
         }
 
+        $instrumentFamilies = $em->getRepository('AppBundle:InstrumentFamily')->findAll();
+
+
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage
+            ->setTitle($seoPage->getTitle() . " • Search fingering")
+            ->addMeta('name', 'description', "select your instrument and scale and get corresponding fingering")
+        ;
+
 
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage
@@ -71,7 +80,8 @@ class DefaultController extends Controller
         ;
 
         return $this->render('SiteBundle:Default:search.html.twig',array(
-            "instrument"=>$instrument
+            "instrument"=>$instrument,
+            "instrumentFamilies"=>$instrumentFamilies
         ));
     }
     public function rootScaleSearchInstrumentedResultsAction(Request $request, $instrumentId, $rootNameList,$scaleIdList){

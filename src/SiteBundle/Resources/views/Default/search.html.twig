@@ -1,6 +1,27 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>{% trans %}search for fingering{% endtrans %}</h1>
+    <h1>
+        {{ instrument.name }}
+        {% trans %}search for fingering{% endtrans %}
+    </h1>
+
+
+    <div>
+        <h4>choose other instrument</h4>
+        <ul class="list list-inline">
+    {% for instrumentFamily in instrumentFamilies %}
+            {% for otherInstrument in instrumentFamily.instruments %}
+                {% if otherInstrument.id !=  instrument.id %}
+                <li class="list-item">
+                    <a class="btn btn-xs" href="{{ path('site_searchscale_instrumented',{instrumentId: otherInstrument.id,instrumentName: otherInstrument.name}) }}">{{ otherInstrument.name }}</a>
+                </li>
+                    {% endif %}
+            {% endfor %}
+
+    {% endfor %}
+        </ul>
+    </div>
+
     <form id="getFingerings" method="post" action="" >
         <select name="root" id="root">
             <option value="Gb">{% trans %}Gb{% endtrans %}</option>
@@ -44,19 +65,12 @@
     <script>
 
         $("#search").click(function(){
-
             var rootNames = new Array();
             var scaleIds = new Array();
             $("#basket").find('li').each(function(){
-
-
                 rootNames.push($(this).attr('root'));
                 scaleIds.push($(this).attr('scaleId'));
-
             });
-
-
-
 
             var action = Routing.generate('site_searchfingering_rootscale_results',{
                 instrumentId: {{ instrument.id }},
@@ -64,8 +78,8 @@
                 scaleIdList:scaleIds.join(',')
             });
 
-
             $("#getFingerings").attr('action',action)
+
             $("#getFingerings").submit();
 
         });
@@ -84,7 +98,7 @@
             window.clearTimeout($(this).data("timeout"));
             $(this).data("timeout", setTimeout(function () {
                 searchScales();
-            }, 500));
+            }, 800));
         });
         $('#scaleSeeker').bind('input', function() {
 

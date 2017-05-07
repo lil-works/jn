@@ -13,7 +13,7 @@ site_neck:
 
 site_searchscale_instrumented:
     path: /neck/{instrumentId}-{instrumentName}/search
-    defaults: { _controller: "SiteBundle:Default:searchScale" }
+    defaults: { _controller: "SiteBundle:Default:searchScale" , instrumentId: 1 , instrumentName: guitar }
 
 site_searchscale_instrumented_searchForScale:
     path: /neck/{instrumentId}
