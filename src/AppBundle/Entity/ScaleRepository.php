@@ -904,4 +904,30 @@ where  s.id = :scaleId";
 
         return $query->getScalarResult();
     }
+
+
+
+
+
+    public function ajaxFindByName($string)
+
+    {
+
+        $sql = "
+SELECT s.id,s.name  FROM scale s
+where  s.name LIKE :name";
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('name', 'name');
+        $rsm->addScalarResult('id', 'id');
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        $query->setParameter("name","%".$string."%");
+
+
+        return $query->getScalarResult();
+    }
+
+
+
 }

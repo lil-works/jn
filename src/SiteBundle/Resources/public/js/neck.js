@@ -1,7 +1,7 @@
 var neck = {
 
     init:function(canvasId,instrument){
-        console.log("NECK INIT");
+
         Neck = this;
 
         //this.getSession();

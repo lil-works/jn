@@ -11,6 +11,30 @@ site_neck:
     path: /neck/{instrumentId}-{instrumentName}
     defaults: { _controller: "SiteBundle:Default:neck" }
 
+site_searchscale_instrumented:
+    path: /neck/{instrumentId}-{instrumentName}/search
+    defaults: { _controller: "SiteBundle:Default:searchScale" }
+
+site_searchscale_instrumented_searchForScale:
+    path: /neck/{instrumentId}
+    defaults: { _controller: "SiteBundle:Ajax:scaleSearch" }
+    options:
+        expose: true
+        i18n: false
+site_searchfingering_rootscale:
+    path: /neck/{instrumentId}/{rootName}/{scaleId}
+    defaults: { _controller: "SiteBundle:Ajax:rootScaleSearchInstrumented" }
+    options:
+        expose: true
+        i18n: false
+
+site_searchfingering_rootscale_results:
+    path: /neck/{instrumentId}/{rootNameList}/{scaleIdList}
+    defaults: { _controller: "SiteBundle:Default:rootScaleSearchInstrumentedResults" }
+    options:
+        expose: true
+
+
 site_scale_index:
     path: /scale
     defaults: { _controller: "SiteBundle:Scale:index" }

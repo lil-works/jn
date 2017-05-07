@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>{% trans %}search for fingering{% endtrans %}</h1>
+    <form id="getFingerings" method="post" action="" >
+        <select name="root" id="root">
+            <option value="Gb">{% trans %}Gb{% endtrans %}</option>
+            <option value="Db">{% trans %}Db{% endtrans %}</option>
+            <option value="Ab">{% trans %}Ab{% endtrans %}</option>
+            <option value="Eb">{% trans %}Eb{% endtrans %}</option>
+            <option value="Bb">{% trans %}Bb{% endtrans %}</option>
+            <option value="F">{% trans %}F{% endtrans %}</option>
+            <option value="C" selected>{% trans %}C{% endtrans %}</option>
+            <option value="G">{% trans %}G{% endtrans %}</option>
+            <option value="D">{% trans %}D{% endtrans %}</option>
+            <option value="A">{% trans %}A{% endtrans %}</option>
+            <option value="E">{% trans %}E{% endtrans %}</option>
+            <option value="B">{% trans %}B{% endtrans %}</option>
+            <option value="Fs">{% trans %}F#{% endtrans %}</option>
+            <option value="Cs">{% trans %}C#{% endtrans %}</option>
+            <option value="Gs">{% trans %}G#{% endtrans %}</option>
+            <option value="Ds">{% trans %}D#{% endtrans %}</option>
+            <option value="As">{% trans %}A#{% endtrans %}</option>
+        </select>
+        <input name="scale" id="scaleSeeker">
+
+    </form>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>{% trans %}search results{% endtrans %}</h2>
+            <ul id="searchResults" class="list list-inline">
+            </ul>
+            </div>
+        <div class="col-lg-6">
+            <h2>{% trans %}your selection{% endtrans %}</h2>
+            <button id="search" class="search-hidden" >{% trans %}get your fingering{% endtrans %}</button>
+            <ul id="basket">
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="fingerings"></div>
+    <script>
+
+        $("#search").click(function(){
+
+            var rootNames = new Array();
+            var scaleIds = new Array();
+            $("#basket").find('li').each(function(){
+
+
+                rootNames.push($(this).attr('root'));
+                scaleIds.push($(this).attr('scaleId'));
+
+            });
+
+
+
+
+            var action = Routing.generate('site_searchfingering_rootscale_results',{
+                instrumentId: {{ instrument.id }},
+                rootNameList:rootNames.join(','),
+                scaleIdList:scaleIds.join(',')
+            });
+
+
+            $("#getFingerings").attr('action',action)
+            $("#getFingerings").submit();
+
+        });
+
+        var url = Routing.generate('site_searchscale_instrumented_searchForScale',{
+            instrumentId: {{ instrument.id }}
+        });
+
+
+        $("#scaleSeeker").bind("input propertychange", function (evt) {
+            // If it's the propertychange event, make sure it's the value that changed.
+            if (window.event && event.type == "propertychange" && event.propertyName != "value")
+                return;
+
+            // Clear any previously set timer before setting a fresh one
+            window.clearTimeout($(this).data("timeout"));
+            $(this).data("timeout", setTimeout(function () {
+                searchScales();
+            }, 500));
+        });
+        $('#scaleSeeker').bind('input', function() {
+
+        });
+        $('#root').change(function() {
+            searchScales();
+        });
+
+        function searchScales(){
+            $( "#searchResults").empty();
+
+            var root = $('#root').find(":selected").val();
+            var rootName = $('#root').find(":selected").text();
+
+            var request = $.ajax({
+                url: url,
+                method: "GET",
+                //async: false,
+                data: { string : $('#scaleSeeker').val() }
+
+            });
+
+            request.done(function( msg ) {
+                $.each($.parseJSON(msg), function(key,value){
+                    $( "#searchResults" ).append('<li onclick="addBasket(\''+root+'\',\''+value.id+'\',\''+value.name+'\')" class="list-item"><a class="btn btn-primary btn-sm" href="#" role="button">' + rootName + ' ' + value.name + '</a></li>');
+                });
+            });
+            request.fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
+            });
+
+        }
+        function removeBasket(root,scaleId){
+            $('#basket_'+root+'_'+scaleId).remove();
+
+            manageSearchButton();
+
+        }
+        function addBasket(root,scaleId,scaleName){
+
+            if( ! $('#basket_'+root+'_'+scaleId).length ){
+                var rootName = root.replace("s", "#");
+                $( "#basket" ).append('<li scaleId="'+scaleId+'" root="'+rootName+'" onclick="removeBasket(\''+root+'\',\''+scaleId+'\')" id="basket_'+root+'_'+scaleId+'" class="list-item"><a class="btn btn-primary btn-sm" href="#" role="button">' + rootName + ' ' + scaleName + '</a></li>');
+            }
+            manageSearchButton();
+        }
+        function manageSearchButton(){
+            if($("#basket").find('li').length > 0){
+                $("#search").attr('class','search-visible');
+            }else{
+                $("#search").attr('class','search-hidden');
+            }
+        }
+    </script>
+    <style>
+        .search-hidden{
+            visibility: hidden;
+        }
+        .search-visible{
+            visibility: visible;
+        }
+    </style>
+{% endblock %}

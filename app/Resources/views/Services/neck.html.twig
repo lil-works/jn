@@ -1,4 +1,6 @@
-
+{% if myNeck is not defined or myNeck=="" %}
+    {% set myNeck = 'myNeck_'~westernSystem.id~'_'~scale.id %}
+{% endif %}
 <h2>
     {% if instrument.family.icon is not null %}
         <img class="instrumentIcon" src="{{ asset('uploads/instrument/' ~  instrument.family.icon ) }}">
@@ -30,7 +32,7 @@
 
         </div>
         <div>
-            <canvas id="myNeck" width="580" height="260"></canvas>
+            <canvas id="{{ myNeck }}" width="580" height="260"></canvas>
         </div>
     </div>
 {% endif %}

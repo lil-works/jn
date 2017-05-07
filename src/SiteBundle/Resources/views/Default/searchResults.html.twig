@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{% trans %}search results{% endtrans %}</h1>
+
+
+
+    <div>
+        <ul class="tabs">
+            {% for tab in tabs %}
+                {% if notfirst is not defined %}
+                    <li class="tab-link current" data-tab="{{ tab.id }}">{{ tab.name }}</li>
+                {% else %}
+                    <li class="tab-link" data-tab="{{ tab.id }}">{{ tab.name }}</li>
+                {% endif %}
+                {% set notfirst = 1 %}
+            {% endfor %}
+        </ul>
+    {% for k,service in services %}
+        {% if notfirst2 is not defined %}
+            <div id="{{ tabs[k].id }}" class="tab-content current">
+                {{ service.neck|raw }}
+                {{ service.fingering|raw }}
+            </div>
+        {% else %}
+            <div id="{{ tabs[k].id }}" class="tab-content">
+                {{ service.neck|raw }}
+                {{ service.fingering|raw }}
+            </div>
+        {% endif %}
+        {% set notfirst2 = 1 %}
+
+
+
+    {% endfor %}
+    </div>
+
+<style>
+    ul.tabs{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+    ul.tabs li{
+        background: none;
+        color: #222;
+        display: inline-block;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+
+    ul.tabs li.current{
+        background: #ededed;
+        color: #222;
+    }
+
+    .tab-content{
+        display: none;
+        background: #ededed;
+        padding: 15px;
+    }
+
+    .tab-content.current{
+        display: inherit;
+    }
+</style>
+    <script>
+        $(document).ready(function(){
+            $('ul.tabs li').click(function(){
+                console.log($(this));
+                var tab_id = $(this).attr('data-tab');
+
+                $('ul.tabs li').removeClass('current');
+                $('.tab-content').removeClass('current');
+
+                $(this).addClass('current');
+                $("#"+tab_id).addClass('current');
+            })
+
+        })
+    </script>
+{% endblock %}

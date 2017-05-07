@@ -57,7 +57,9 @@
                                             </a>
                                             {{ rs["rootName"]|trans }} {{ rs["scaleName"]|trans }}
                                             <br>
-                                            {{  rs["toneList"] }}
+                                            {% for tone in rs["toneList"]|split(',') %}
+                                                {{ tone|trans }}
+                                            {% endfor %}
                                         </div>
 
 

@@ -24,6 +24,7 @@ class AjaxController extends Controller
         $response->setContent(json_encode($output));
         return $response;
     }
+
     public function sessionSetAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -155,6 +156,33 @@ class AjaxController extends Controller
         $response->setContent(json_encode($request->get('i')));
 
         return $response;
+    }
+
+    public function scaleSearchAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $scales = $em->getRepository('AppBundle:Scale')->ajaxFindByName('%'.$request->get("string").'%');
+
+
+        $response = new Response();
+        $response->setContent(json_encode($scales));
+
+
+        return $response;
+    }
+    public function rootScaleSearchInstrumentedAction(Request $request,$instrumentId,$rootName,$scaleId)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $westernSystem = $em->getRepository('AppBundle:WesternSystem')->findOneByRootName($rootName);
+        $instrument = $em->getRepository('AppBundle:Instrument')->find($instrumentId);
+        $scale = $em->getRepository('AppBundle:Scale')->find($scaleId);
+
+
+        $fingeringService = $this->get('app.fingering')->init($scale,$westernSystem)->getFingerings($instrument,true);
+
+        return new Response(json_encode(utf8_encode($fingeringService["fingering"])));
     }
 
 }

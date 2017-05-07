@@ -41,6 +41,9 @@ class Fingering implements ContainerAwareInterface
         return $this;
     }
 
+    public function getRootScale(){
+        return $this->westernSystem->getName() . " " . $this->scale->getName();
+    }
 
     private function calculateCycling(){
         $o = array();
@@ -118,7 +121,7 @@ class Fingering implements ContainerAwareInterface
 
         return array("neck"=>$neckTemplate,"fingering"=>$fingeringTemplate);
     }
-    public function getFingerings($instrument,$drawNeck=true){
+    public function getFingerings($instrument,$drawNeck=true,$neckName = null){
 
         if(is_null($this->intervale) || $this->intervale->getDelta()%12 == 0){
             $fingerings = $this->em->getRepository('AppBundle:Fingering')->findFingeringByRootAndScale($instrument,$this->scale,$this->westernSystem);
@@ -150,6 +153,7 @@ class Fingering implements ContainerAwareInterface
             "instrumentForJs"=>json_encode($instrumentForJs),
             "fingeringsJSON"=>json_encode($fingerings),
             "drawNeck"=>$drawNeck,
+            "myNeck"=>$neckName
         ));
         $fingeringTemplate = $this->templating->render($view, array(
             "instrument"=>$instrument,
@@ -160,6 +164,7 @@ class Fingering implements ContainerAwareInterface
             "instrumentForJs"=>json_encode($instrumentForJs),
             "fingeringsJSON"=>json_encode($fingerings),
             "drawNeck"=>$drawNeck,
+            "myNeck"=>$neckName
         ));
 
         return array("neck"=>$neckTemplate,"fingering"=>$fingeringTemplate);
